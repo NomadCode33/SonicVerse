@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.pic-rest {
+  height: 60rem;
+  margin: 0 auto;
+  width: 85%;
+  background-image: url('./public/blackbackground.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 30vh; /* makes sure it fills screen */
+}
