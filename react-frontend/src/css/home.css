@@ -115,6 +115,7 @@ header {
 
 .nav-bar nav {
   line-height: 1.0;
+  /*width: 50rem;*/
 }
 
 .nav-box {

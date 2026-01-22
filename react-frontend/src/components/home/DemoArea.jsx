@@ -8,7 +8,7 @@ const DemoArea = () => {
       features: [
         {
           title: "Characters",
-          link: "./pages/Characters",
+          link: "/characters",
           img: "img/blackbackground.png",
           description: "Explore heroes and villains across the Sonic universe.",
           buttonText: "View Characters",

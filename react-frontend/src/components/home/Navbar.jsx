@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import "../../css/home.css"
 
 const Navbar = () => {
@@ -5,16 +6,16 @@ const Navbar = () => {
     <header className="clearfix">
 			<section className="header-box">
 				<div className="head-title">
-					  <a href="/"><img className="icon" src="/img/dndicon.png" alt="D&D Logo"/></a>
+					  <Link to="/"><img className="icon" src="/img/dndicon.png" alt="D&D Logo"/></Link>
             <h1 className="bangers">SonicVerse</h1>
 				</div>
 				
 				<div className="nav-bar">
 					<nav>
 						<ul className="nav-box">
-							<li><a className="nav-button" href="spells.html">Spells</a></li>
-							<li><a className="nav-button" href="">Schools</a></li>
-							<li><a className="nav-button" href="">Menu</a></li>
+							<li><Link className="nav-button" to="/characters">Characters</Link></li>
+							<li><Link className="nav-button" to="">Schools</Link></li>
+							<li><Link className="nav-button" to="">Menu</Link></li>
 						</ul>
 					</nav>
 				</div>
