@@ -1,25 +1,35 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Disclaimer from "./components/Disclaimer";
-/*import Home from "./pages/Home";
+import Home from "./pages/Home";
+/*import Navbar from "./components/home/Navbar";
+import Hero from "./components/home/Hero";
+import Disclaimer from "./components/home/Disclaimer";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Characters from "./pages/Characters";*/
-import "./css/home.css"
+//
 
 const App = () => {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Disclaimer />
-      <div>App</div>
+      <Home />
     </>
   );
 }
 
 export default App
+/*
+Old way of showing my pages on App.jsx
+return (
+    <>
+      <Home />
+      <div>App</div>
+    </>
+  );
+
+*/
+
+
 
 /*
 import React from "react";
