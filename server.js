@@ -34,10 +34,6 @@ app.use(express.static(path.join(__dirname, 'react-frontend/dist')));
     response.sendFile(__dirname + '/index.html');
 });*/
 
-app.get("/api/characters/:choice", (req, res) => {
-  res.json({ name: req.params.choice });
-});
-
 app.get(/.*/, (req, res) => {
   res.sendFile(
     path.join(__dirname, 'react-frontend/dist/index.html')
