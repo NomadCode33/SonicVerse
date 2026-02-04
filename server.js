@@ -34,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'react-frontend/dist')));
     response.sendFile(__dirname + '/index.html');
 });*/
 
+app.use('/api', apiRoutes);
+
 app.get(/.*/, (req, res) => {
   res.sendFile(
     path.join(__dirname, 'react-frontend/dist/index.html')
@@ -44,7 +46,6 @@ app.get(/.*/, (req, res) => {
 //app.use('/home', homeRoutes);
 //app.use('/dashboard', dashboardRoutes);
 //app.use('/sonic-hub', sonicHubRoutes);
-app.use('/api', apiRoutes);
 
 // This listens for the PORT of the server we host it on
 // If that PORT doesn't exist, then we use the PORT that we set prior
