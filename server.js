@@ -23,9 +23,10 @@ app.set('view engine', 'ejs');
 //app.set('views', path.join(__dirname, 'views'));
 
 app.use(cors());
-app.use(express.static('public'));
+//app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'react-frontend/dist')));
 //app.use(logger('dev'));
 
 // The root route, the home page
@@ -33,10 +34,20 @@ app.use(express.json());
     response.sendFile(__dirname + '/index.html');
 });*/
 
+app.get("/api/characters/:choice", (req, res) => {
+  res.json({ name: req.params.choice });
+});
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(
+    path.join(__dirname, 'react-frontend/dist/index.html')
+  );
+});
+
 // Using the different routes for home, dashboard, etc.
 //app.use('/home', homeRoutes);
 //app.use('/dashboard', dashboardRoutes);
-app.use('/sonic-hub', sonicHubRoutes);
+//app.use('/sonic-hub', sonicHubRoutes);
 app.use('/api', apiRoutes);
 
 // This listens for the PORT of the server we host it on

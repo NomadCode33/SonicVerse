@@ -1,0 +1,112 @@
+import "../../css/characters.css"
+
+const CharacterTraits = () => {
+  return (
+    <section className="char-traits">
+          <section className="description-box">
+            <div className="text">
+              <h2 className="uncial">Description: <span className="description"></span></h2>
+              <span className="desc-text"></span>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+          </section>
+	  </section>
+  )
+}
+
+export default CharacterTraits
+
+/*
+<section className="text">
+          <h2 className="uncial">Level: <span className="level reg-font"></span></h2>
+          <h2 className="uncial">School: <span className="school reg-font"></span></h2>
+          <h2 className="uncial">Description: <span className="description reg-font"></span></h2>
+          <ul className="descript-slot reg-font"></ul>
+          <h2 className="uncial">Higher Level: <span className="high-level reg-font"></span></h2>
+          <ul className="high-level-descript-slot reg-font"></ul>
+          <h2 className="uncial">Attack Type: <span className="attack-type reg-font"></span></h2>
+          <h2 className="uncial">Damage Type: <span className="damage-type reg-font"></span></h2>
+          <h2 className="uncial">Damage/Heal at Slot Level: <span className="reg-font"></span></h2>
+          <ul className="damage-heal-slot reg-font"></ul>
+          <h2 className="uncial">Casting Time: <span className="cast-time reg-font"></span></h2>
+          <h2 className="uncial">Range: <span className="range reg-font"></span></h2>
+          <h2 className="uncial">Components: <span className="one-comp reg-font"></span></h2>
+          <ul className="components reg-font"></ul>
+          <h2 className="uncial">Duration: <span className="duration reg-font"></span></h2>
+          <h2 className="uncial">Concentration: <span className="concentration reg-font"></span></h2>
+          <h2 className="uncial">Ritual: <span className="ritual reg-font"></span></h2>
+          <h2 className="uncial">Material: <span className="material reg-font"></span></h2>
+          <h2 className="uncial">Class(es): <span className="one-className reg-font"></span></h2>
+          <ul className="className-list reg-font"></ul>
+          <h2 className="uncial">Subclass(es): <span className="one-subclass reg-font"></span></h2>
+          <ul className="subclass-list reg-font"></ul>
+        </section>
+*/

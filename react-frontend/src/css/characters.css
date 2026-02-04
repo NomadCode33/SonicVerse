@@ -31,7 +31,7 @@ html {
 body {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
-  background-image: url('./img/classic_sonic.jpg');
+  background-image: url('');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -41,6 +41,20 @@ body {
 
 .bangers {
   font-family: "Bangers", "Rubik", sans-serif;
+}
+
+.uncial {
+  font-family: "Uncial Antiqua", "MedievalSharp", sans-serif;
+}
+
+.medieval {
+  font-family: "MedievalSharp", "Uncial Antiqua", sans-serif;
+}
+
+.reg-font {
+  font-family: "Rosarivo","IM Fell English", sans-serif;
+  font-weight: normal;
+  font-size: 1.8rem; /*16.5px*/
 }
 
 .comp-item {
@@ -163,7 +177,7 @@ header {
   height: 60rem;
   margin: 0 auto;
   width: 90%;
-  background-image: url('./public/img/blackbackground.png');
+  background-image: url('/img/blackbackground.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -198,3 +212,637 @@ header {
 .d-content {
   padding-top: 3.5rem;
 }
+
+/******************************************
+/* SEARCH BOX
+/*******************************************/
+#search-box {
+  margin: 4rem auto;
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  width: 30%;
+  height: 20rem;
+  background: rgb(244, 187, 68);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+}
+
+.target-box {
+  display: none;
+  visibility: hidden;
+}
+
+.bar {
+  font-size: 1.6rem;
+  padding: 0.3rem 0.5rem;
+  background-color: white;
+  border: 0.1rem solid #888;
+  border-radius: 0.4rem;
+  color: black;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+}
+
+.src-btn {
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  padding: 0.3rem 0.5rem;
+  background-color: #f0f0f0;
+  border: 0.1rem solid #888;
+  color: #000;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+  /*cursor: pointer;*/
+}
+
+.src-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.text-content {
+  padding-bottom: 2.3rem;
+}
+
+.text-content p {
+  font-size: 1.6rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.title {
+  font-size: 3.2rem;
+  margin: 2rem 0 1.5rem 0;
+}
+
+/**************************************************************
+/* MAIN
+/**************************************************************/
+#main-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 8rem;
+}
+
+/******************************************
+/* NAME & PICTURE
+/*******************************************/
+.char-name {
+  font-size: 2.4rem;
+  margin: 2rem 0 0 2rem;
+  margin: 3rem auto;
+  text-align: center;
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  width: 30%;
+  background: rgb(244, 187, 68);
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+}
+
+.char-pic {
+  margin: 3rem auto;
+  /*width: 50%;*/
+  display: block;
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+}
+
+/******************************************
+/* CHARACTER NOT FOUND
+/*******************************************/
+#characterNotFound {
+  font-size: 2.08rem;
+  margin: 0 auto;
+  padding: 0.7rem;
+  text-align: center;
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  width: 30%;
+  height: auto;
+  min-height: auto;
+  background: rgb(244, 187, 68);
+  display: none;
+  font-weight: bold;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+
+  /* essential to keep text inside the box */
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* 🔥 React toggles THIS */
+#characterNotFound.show {
+  display: block;
+}
+
+/******************************************
+/* BASIC INFO
+/*******************************************/
+.basic-info {
+  margin: 3rem auto;
+  margin-top: 5rem;
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  width: 33%;
+  height: auto;
+  min-height: auto;
+  background: rgb(244, 187, 68);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+}
+
+.basic-info .text {
+  flex: 1;
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /*height: 100%;*/
+}
+
+.char-name,
+.char-pic {
+  align-self: center;
+  text-align: center;
+}
+
+/*.char-pic {
+  width: 70%;
+}*/
+
+.text {
+  padding-left: 0;
+}
+
+.text h2 {
+  font-size: 2.4rem;
+}
+
+/*.attire-slot {
+  font-size: 1.6rem;
+  margin-top: 0;
+  display: none;
+}*/
+
+
+/*.components, .damage-heal-slot, 
+.class-list, .subclass-list,
+.descript-slot, .high-level-descript-slot {
+  font-size: 1.6rem;
+  margin-top: 0;
+  display: none;
+}*/
+
+/******************************************
+/* CHARACTER TRAITS
+/*******************************************/
+.char-traits {
+  margin: 3rem auto;
+  margin-top: 5rem;
+  padding-right: 1.8rem;
+  /*border: 0.2rem solid red;*/
+  border-radius: 1rem;
+  width: 63%;
+  height: 101.2rem;
+  min-height: 0;
+  /*max-height: 101.2rem;*/
+  overflow: visible;   /* 🔑 allow shadows to escape */
+  position: relative;
+  overflow-y: auto; /* allows scrolling to happen inside element*/
+  /*background: rgb(244, 187, 68);*/
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: stretch;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+/*1012px*/
+
+/*.char-traits-scroll {
+  padding-right: 1.8rem;
+  height: 100%;
+  overflow-y: auto; 
+}*/
+
+.char-traits .text {
+  /*flex: 1;*/
+  padding: 0 3rem;
+  padding: 1.5rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /*height: 100%;*/
+}
+
+.description-box {
+  margin-bottom: 1.5rem;
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  width: 100%;
+  height: 30rem;
+  max-height: 30rem;
+  overflow-y: auto; /* allows scrolling to happen inside element*/
+  background: rgb(244, 187, 68);
+  display: flex;
+  flex: 0 0 auto; 
+  align-items: flex-start;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 0 0 auto;  /* ❗ lock height */ /* 👈 prevents collapsing */
+}
+
+.card-content {
+  margin-bottom: 1.5rem;
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  width: 30%;
+  height: 30rem;
+  max-height: 30rem;
+  overflow-y: auto; /* allows scrolling to happen inside element*/
+  background: rgb(244, 187, 68);
+  display: flex;
+  align-items: flex-start;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
+}
+
+
+/******************************************
+/* FOOTER
+/*******************************************/
+footer {
+  margin-top: 9%;
+}
+
+#footer-img {
+  margin-top: 7rem;
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+/******************************************************************
+/* MEDIA QUERIES
+/******************************************************************/
+/******************************************
+/* PHONES
+/*******************************************/
+/* Phones (480px and below) */
+@media screen and (max-width: 480px) and (orientation: portrait) {
+  body {
+    background-image: url('../img/shenron&dragonball.webp');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+  
+  #search-box {
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 90%;
+  }
+
+  #spellNotFound {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .key-facts {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    width: 90%;
+    padding: 0 0 0 2rem;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+
+  .char-name {
+    margin: 2rem 0 0 2rem;
+    margin: 3rem auto;
+    width: 65%;
+  }
+
+  .char-pic {
+    width: 80%;
+  }
+}
+
+/* landscape */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  body {
+    background-image: url('../img/shenron&ball.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+
+  #search-box {
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 60%;
+  }
+
+  #spellNotFound {
+    width: 60%;
+    margin: 1rem auto;
+  }
+
+  .key-facts {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    width: 90%;
+    padding: 0 0 0 4rem;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+
+  .char-name {
+    margin: 2rem 0 0 2rem;
+    margin: 30px auto;
+    width: 40%;
+  }
+
+  .char-pic {
+    width: 50%;
+  }  
+}
+
+/******************************************
+/* SMALLER PHONES & SMALL TABLETS
+/*******************************************/
+/* Phones (481px and 699) */
+@media screen and (max-width: 481px) and (max-width: 699px) and (orientation: portrait) {
+  body {
+    background-image: url('../img/shenron&dragonball.webp');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+  
+  #search-box {
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 90%;
+  }
+
+  #spellNotFound {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .key-facts {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    width: 90%;
+    padding: 0 0 0 4rem;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+
+  .char-name {
+    margin: 20rem 0 0 20rem;
+    margin: 30rem auto;
+    width: 60%;
+  }
+
+  .char-pic {
+    width: 80%;
+  }
+}
+
+/******************************************
+/* MINI TABLETS
+/*******************************************/
+/* ipad/mini type tablets (min-width: 700px) and (max-width: 850px) */
+@media screen and (min-width: 700px) and (max-width: 850px) and (orientation: portrait) {
+  body {
+    background-image: url('../img/shenron&ball.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+  
+  #search-box {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 58%;
+  }
+
+  #spellNotFound {
+    width: 58%;
+    margin: 10px auto;
+  }
+  
+  .char-name {
+    margin: 20px 0 0 20px;
+    margin: 30px auto;
+    width: 40%;
+  }
+
+  .key-facts {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    padding: 0 40px 0 40px;
+    flex: 1;
+  }
+
+  .char-pic {
+    width: 45%;
+  }
+
+  #footer-img {
+    width: 85%;
+  }
+}
+
+/* Covers iPads 9.7", 10.2", some Minis */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  body {
+    background-image: url('../img/shenron&ball.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+
+  #search-box {
+    margin: 20px 0 0 20px;
+    margin-top: 20px;
+    width: 45%;
+  }
+
+  #spellNotFound {
+    width: 45%;
+    margin-left: 20px;
+  }
+
+  .key-facts {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    width: 90%;
+    padding: 0 0 0 40px;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+
+  .char-name {
+    margin: 20px 0 0 20px;
+    margin: 30px auto;
+    width: 30%;
+  }
+
+  .char-pic {
+    width: 50%;
+  }  
+}
+
+/******************************************
+/* NEWER TABLETS
+/*******************************************/
+/* Tablets (min-width: 851px and max-width: 1024px) */
+@media screen and (min-width: 851px) and (max-width: 1024px) and (orientation: portrait) {
+  body {
+    background-image: url('../img/shenronplaymat.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+  
+  #search-box {
+    margin-top: 20px;
+    width: 45%;
+  }
+
+  #spellNotFound {
+    width: 45%;
+    margin-left: 20px;
+  }
+
+  .char-name {
+    margin: 20px 0 0 20px;
+    margin: 30px auto;
+    width: 30%;
+  }
+
+  .key-facts {
+    flex-direction: row;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    padding: 0 40px 0 40px;
+  }
+
+  .char-pic {
+    width: 50%;
+  }
+}
+
+
+/* Newer iPads Air & iPad Pro 11" */
+/*@media screen and (min-width: 1025px) and (max-width: 1366px) and (orientation: landscape) {
+  body {
+    background-image: url('../img/shenronplaymat.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    min-height: 100vh;
+  }
+  
+  #search-box {
+    margin: 20px 0 0 20px;
+    margin-top: 20px;
+    width: 35%;
+  }
+
+  #spellNotFound {
+    width: 35%;
+    margin-left: 20px;
+  }
+
+  .key-facts {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .key-facts .text {
+    width: 90%;
+    padding: 0 0 0 60px;
+    flex: 1;
+    justify-content: space-evenly;
+  }
+
+  .char-name {
+    margin: 20px 0 0 20px;
+    margin: 30px auto;
+    width: 25%;
+  }
+
+  .char-pic {
+    width: 45%;
+  }
+}
+*/
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

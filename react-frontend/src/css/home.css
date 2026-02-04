@@ -31,7 +31,7 @@ html {
 body {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
-  background-image: url('./img/classic_sonic.jpg');
+  background-image: url('/img/classic_sonic.jpg'); /*background-image: url('./img/classic_sonic.jpg');*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -164,7 +164,7 @@ header {
   height: 60rem;
   margin: 0 auto;
   width: 90%;
-  background-image: url('./public/img/blackbackground.png');
+  background-image: url('/img/blackbackground.png'); /*background-image: url('./public/img/blackbackground.png')*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

@@ -3,7 +3,8 @@ export const characters = {
         "id": 1,
         "images": {
             "modern": [
-                {"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/w_400,f_auto,q_auto/sonicadventurepose_e5lily.webp"},
+                {"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/f_auto,q_auto/sonicadventurepose_e5lily.webp"},
+                //{"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/w_400,f_auto,q_auto/sonicadventurepose_e5lily.webp"},
                 {"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/Sonic_adventure_tyk15y.webp"},
                 {"caption": "Sonic Adventure 2", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/sonic_adventure2_cr4bvh.webp"},
                 {"caption": "Sonic Adventure 2: Battle", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/Sonic_sa2battle_imtu0k.webp"},
@@ -1828,7 +1829,7 @@ export const characters = {
         "id": 2,
         "images": {
             "modern": [
-                {"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/eggman_sonicadventure_in1ezo.webp"},
+                {"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/w_400,f_auto,q_auto/eggman_sonicadventure_in1ezo.webp"},
                 {"caption": "Sonic Adventure", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/eggman_sonicadventure_4_k66qml.webp"},
                 {"caption": "Sonic Adventure 2", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/eggman_sonicadventure2_euxtg1.webp"},
                 {"caption": "Sonic Advance 2", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/eggman_sonicadvance2_abg9yb.webp"},
