@@ -297,6 +297,7 @@ header {
 /*******************************************/
 .char-name {
   font-size: clamp(1.8rem, 5vw, 3.5rem);
+  /*font-size: 2.4rem;*/
   margin: 2rem 0 0 2rem;
   margin: 3rem auto;
   text-align: center;
@@ -463,6 +464,15 @@ header {
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
+.quote-box {
+  height: 13rem;
+}
+
+.learn-box {
+  height: 7rem;
+  
+}
+
 .card-container {
   width: 100%;
   display: flex;
@@ -486,6 +496,9 @@ header {
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
+.desc-text {
+  font-size: 2rem;
+}
 
 /******************************************
 /* FOOTER

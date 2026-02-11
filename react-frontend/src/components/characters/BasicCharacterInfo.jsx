@@ -7,7 +7,7 @@ const BasicCharacterInfo = ({ character }) => {
             <h2 className="char-name bangers">{character?.name || "Name"}</h2>
 		    <img className="char-pic" src={character?.images?.modern[0]?.img} alt="Character Picture"/> {/* or {character?.images?.modern[0]?.img} */}
 
-            <h2 className="uncial">First Appearance: <span className="first-appearance reg-font">{ character?.firstAppearance?.alt?.name || character?.firstAppearance?.name}</span></h2>
+            <h2 className="uncial">First Appearance: <span className="first-appearance reg-font">{character?.firstAppearance?.alt?.name || character?.firstAppearance?.name}</span></h2>
             <h2 className="uncial">Age: <span className="age reg-font"></span></h2>
             <h2 className="uncial">Birthplace: <span className="birthplace reg-font"></span></h2>
 			<h2 className="uncial">Species: <span className="species reg-font"></span></h2>

@@ -7,7 +7,7 @@ const MainAreaInfo = ({ character }) => {
     <main id="main-area">
         {/* BasicCharacterInfo now receives data */}
         <BasicCharacterInfo character={character} />
-        <CharacterTraits />
+        <CharacterTraits character={character}/>
     </main>
   )
 }

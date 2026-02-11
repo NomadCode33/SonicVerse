@@ -1,81 +1,118 @@
 import "../../css/characters.css"
 
-const CharacterTraits = () => {
+const CharacterTraits = ({ character }) => {
   return (
     <section className="char-traits">
           <section className="description-box">
             <div className="text">
               <h2 className="uncial">Description: <span className="description"></span></h2>
+              <span className="desc-text">{character?.description}</span>
+            </div>
+          </section>
+
+          <section className="description-box quote-box">
+            <div className="text">
+              <h2 className="uncial">Quote: <span className="quote"></span></h2>
+              <span className="desc-text">{character?.quote}</span>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Likes: <span className="likes"></span></h2>
+                  <span className="desc-text">{character?.likes}</span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Dislikes: <span className="dislikes"></span></h2>
+                  <span className="desc-text">{character?.dislikes}</span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Weaknesses: <span className="weaknesses"></span></h2>
+                  <span className="desc-text">{character?.weaknesses}</span>
+                </div>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Nicknames: <span className="nicknames"></span></h2>
+                  <span className="desc-text">{character?.nicknames}</span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Affiliation: <span className="affiliation"></span></h2>
+                  <span className="desc-text">{character?.affiliation}</span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Character Theme(s): <span className="description"></span></h2>
+                  <span className="desc-text">{character?.characterThemes?.song}</span>
+                </div>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+          </section>
+
+          <section className="card-container">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Skills: <span className="skills"></span></h2>
+                  <span className="desc-text">{character?.abilities?.skills}</span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Techniques: <span className="techniques"></span></h2>
+                  <span className="desc-text">{character?.abilities?.techniques?.name}</span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Ability Type: <span className="ability-type"></span></h2>
+                  <span className="desc-text">{character?.abilities?.abilityType?.name}</span>
+                </div>
+            </div>
+          </section>
+
+          <section className="description-box learn-box">
+            <div className="text">
+              <h2 className="uncial">Learn More: <span className="learn-more">{character?.learnMore}</span></h2>
               <span className="desc-text"></span>
-            </div>
-          </section>
-
-          <section className="card-container">
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-          </section>
-
-          <section className="card-container">
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-          </section>
-
-          <section className="card-container">
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
             </div>
           </section>
 	  </section>

@@ -3062,16 +3062,17 @@ export const characters = {
         ],
         "canon": "Yes",
         "firstAppearance": {
-            "index": "sonic-the-hedgehog-2-8-bit",
-            "name": "Sonic the Hedgehog 2 (8-bit)",
+            "index": "sonic-the-hedgehog-2",
+            "name": "Sonic the Hedgehog 2",
             "year": "1992",
-            "url": "/api/games/sonic-the-hedgehog-2-8-bit",
+            "url": "/api/games/sonic-the-hedgehog-2",
+            "note": "Sonic 2 came out one month after the 8-bit version.",
             "alt": {
-                "index": "sonic-the-hedgehog-2",
-                "name": "Sonic the Hedgehog 2",
+                "index": "sonic-the-hedgehog-2-8-bit",
+                "name": "Sonic the Hedgehog 2 (8-bit)",
                 "year": "1992",
-                "url": "/api/games/sonic-the-hedgehog-2",
-                "note": "Sonic 2 came out one month after the 8-bit version."
+                "url": "/api/games/sonic-the-hedgehog-2-8-bit",
+                "note": "Sonic 2 8-bit came out one month before the 16-bit version on Genesis."
             }
         },
         "gameAppearances": [
@@ -3288,15 +3289,6 @@ export const characters = {
             "Meek around women and easily flustered due to his young age, making him easy to manipulate (e.g., by Amy and Rouge)",
         ],
         "abilities": {
-            "abilities": [
-            "Propellor Flight", 
-            "Genius-Level Intellect", 
-            "Dummy Rings", 
-            "Dummy Ring Bomb", 
-            "Tails Swipe", 
-            "Rolling Combo",
-            "and various other abilities"
-        ],
             "skills": [
                 "Flight",
                 "Genius-level intellect",
@@ -5886,13 +5878,13 @@ export const characters = {
             "name": "Sonic the Hedgehog 3 (1994)",
             "year": "1994",
             "url": "/api/games/sonic-the-hedgehog-3",
-            "alt": {
+            /*"alt": {
                 "index": "sonic-3-and-knuckles",
                 "name": "Sonic the Hedgehog 3 & Knuckles (1994)",
                 "year": "1994",
                 "url": "/api/games/sonic-3-and-knuckles",
                 "note": "The full combined game experience featuring Knuckles' complete role."
-            }
+            }*/
         },
         "gameAppearances": [
             "Sonic the Hedgehog 3",
@@ -7109,11 +7101,11 @@ export const characters = {
             "name": "Knuckles' Chaotix",
             "year": "1995",
             "url": "/api/games/knuckles-chaotix",
-            "alt": {
+            /*"alt": {
                 //"index": "chaotix",
-                "name": "Chaotix",
+                "name": "Chaotix (Knuckles' Chaotix)",
                 "note": "This the Japanese name for the game."
-            }
+            }*/
         },
         "gameAppearances": [
             "Knuckles' Chaotix",
@@ -7762,11 +7754,11 @@ export const characters = {
             "name": "Knuckles' Chaotix",
             "year": "1995",
             "url": "/api/games/knuckles-chaotix",
-            "alt": {
+            /*"alt": {
                 //"index": "chaotix",
-                "name": "Chaotix",
+                "name": "Chaotix (Knuckles' Chaotix)",
                 "note": "This the Japanese name for the game."
-            }
+            }*/
         },
         "gameAppearances": [
             "Knuckles' Chaotix",
