@@ -1,27 +1,32 @@
 import "../../css/characters.css"
 
 const BasicCharacterInfo = ({ character }) => {
+  if (!character) return null;
+
   return (
     <section className="basic-info">
 		<section className="text">
             <h2 className="char-name bangers">{character?.name || "Name"}</h2>
 		    <img className="char-pic" src={character?.images?.modern[0]?.img} alt="Character Picture"/> {/* or {character?.images?.modern[0]?.img} */}
+			{/*Picture captions*/}
 
             <h2 className="uncial">First Appearance: <span className="first-appearance reg-font">{character?.firstAppearance?.alt?.name || character?.firstAppearance?.name}</span></h2>
             <h2 className="uncial">Age: <span className="age reg-font"></span></h2>
             <h2 className="uncial">Birthplace: <span className="birthplace reg-font"></span></h2>
 			<h2 className="uncial">Species: <span className="species reg-font"></span></h2>
             <h2 className="uncial">Favorite Food: <span className="favorite-food reg-font"></span></h2>
+			<ul className="fav-food-slot reg-font"></ul>
             <h2 className="uncial">Gender: <span className="gender reg-font"></span></h2>
-			<h2 className="uncial">Fur: <span className="fur reg-font"></span></h2>
-            <h2 className="uncial">Skin: <span className="skin reg-font"></span></h2>
+			<h2 className="uncial fur-toggle">Fur: <span className="fur reg-font"></span></h2>
+            <h2 className="uncial skin-toggle">Skin: <span className="skin reg-font"></span></h2>
             <h2 className="uncial">Eye Color: <span className="eyes reg-font"></span></h2>
-            <h2 className="uncial">Hair: <span className="hair reg-font"></span></h2>
-            <h2 className="uncial">Color Scheme: <span className="c-scheme reg-font"></span></h2>
+            <h2 className="uncial hair-toggle">Hair: <span className="hair reg-font"></span></h2>
+            <h2 className="uncial c-scheme-toggle">Color Scheme: <span className="c-scheme reg-font"></span></h2>
             <h2 className="uncial">Height: <span className="height reg-font"></span></h2>
             <h2 className="uncial">Weight: <span className="weight reg-font"></span></h2>
             <h2 className="uncial">Canon?: <span className="canon reg-font"></span></h2>
-            <h2 className="uncial">From IDW Comics?: <span className="from-idw reg-font"></span></h2>
+			<h2 className="uncial">Role & Morality: <span className="canon reg-font">{`${character?.alignment?.role}, ${character?.alignment?.morality}` || ""}</span></h2>
+            <h2 className="uncial idw-toggle">From IDW Comics?: <span className="from-idw reg-font"></span></h2>
             <h2 className="uncial">Attire: <span className="attire reg-font"></span></h2>
             <ul className="attire-slot reg-font"></ul>
 		</section>

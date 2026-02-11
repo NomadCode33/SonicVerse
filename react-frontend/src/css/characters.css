@@ -31,12 +31,12 @@ html {
 body {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
-  background-image: url('/img/classic_sonic.jpg');
+  background-image: url('/img/IDW75CharsCover.webp');
   /*background-image: url('./img/classic_sonic.jpg');*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   min-height: 100vh; /* makes sure it fills screen */
 }
 
@@ -75,10 +75,10 @@ header {
 .head-title {
   margin: 0;
   width: 20rem;
+  color: white;
   display: flex;
   align-items: center;  /* vertically align text with logo */
   gap: 1.0rem;
-  color: white;
 }
 /*width: 15rem*/
 
@@ -87,11 +87,11 @@ header {
 }
 
 .head-title a {
-  display: inline-block; /* shrink to content size */
+  margin: 0;             /* remove extra margin */
+  padding: 0;            /* remove extra padding */
   width: auto;           /* remove any inherited width */
   height: auto;          /* remove any inherited height */
-  padding: 0;            /* remove extra padding */
-  margin: 0;             /* remove extra margin */
+  display: inline-block; /* shrink to content size */
 }
 
 /*.logo-title {
@@ -113,10 +113,10 @@ header {
 }*/
 
 .icon {
-  display: block;
   margin: 0.85rem 0 0.85rem 0.9rem;
   width: 3rem;
   height: 3rem;
+  display: block;
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
 }
 /*width: 22%*/
@@ -133,13 +133,13 @@ header {
 }
 
 .nav-box {
-  width: 30rem;
-  padding: 0;
   margin: 1.3rem auto;
+  padding: 0;
+  width: 30rem;
+  color: white;
   list-style: none;
   display: flex;
   justify-content: space-evenly;
-  color: white;
 }
 
 .nav-box li {
@@ -147,17 +147,17 @@ header {
 }
 
 .nav-button {
-  display: inline-block;
   padding: 0.5rem 1rem;
   border: 0.1rem solid rgb(249, 246, 238);
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
   background-color: transparent;
   vertical-align: middle;
   color: rgb(249, 246, 238);
   text-transform: uppercase;
-  font-size: 1.4rem;
-  border-radius: 0.3rem;
-  text-decoration: none;
-  font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
@@ -175,8 +175,8 @@ header {
 /* PIC REST & DISCLAIMER
 /**************************************************************/
 .pic-rest {
-  height: 60rem;
   margin: 0 auto;
+  height: 60rem;
   width: 90%;
   background-image: url('/img/blackbackground.png');
   background-size: cover;
@@ -186,8 +186,8 @@ header {
 }
 
 .disclaimer {
-  height: 15rem;
   margin: 0 auto;
+  height: 15rem;
   width: 90%;
   color: rgb(245, 193, 66);
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(63, 113, 48)); /*rgb(63, 113, 48)*/
@@ -251,12 +251,12 @@ header {
 
 .src-btn {
   margin-left: 1rem;
-  font-size: 1.6rem;
   padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 1.6rem;
   background-color: #f0f0f0;
   border: 0.1rem solid #888;
   color: #000;
-  border-radius: 0.4rem;
   cursor: pointer;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
@@ -272,38 +272,38 @@ header {
 }
 
 .text-content p {
-  font-size: 1.6rem;
   margin: 1.5rem 0 2rem 0;
+  font-size: 1.6rem;
 }
 
 .title {
-  font-size: 3.2rem;
   margin: 2rem 0 1.5rem 0;
+  font-size: 3.2rem;
 }
 
 /**************************************************************
 /* MAIN
 /**************************************************************/
 #main-area {
+  margin-top: 8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-top: 8rem;
 }
 
 /******************************************
 /* NAME & PICTURE
 /*******************************************/
 .char-name {
-  font-size: clamp(1.8rem, 5vw, 3.5rem);
-  /*font-size: 2.4rem;*/
   margin: 2rem 0 0 2rem;
   margin: 3rem auto;
-  text-align: center;
   border: 0.2rem solid red;
   border-radius: 1rem;
   width: auto;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  /*font-size: 2.4rem;*/
+  text-align: center;
   background: rgb(244, 187, 68);
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
@@ -320,15 +320,15 @@ header {
 /* CHARACTER NOT FOUND
 /*******************************************/
 #characterNotFound {
-  font-size: 2.08rem;
   margin: 0 auto;
   padding: 0.7rem;
-  text-align: center;
   border: 0.2rem solid red;
   border-radius: 1rem;
   width: 30%;
   height: auto;
   min-height: auto;
+  font-size: 2.08rem;
+  text-align: center;
   background: rgb(244, 187, 68);
   display: none;
   font-weight: bold;
@@ -366,8 +366,8 @@ header {
 }
 
 .basic-info .text {
-  flex: 1;
   padding: 0 3rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -439,12 +439,15 @@ header {
 }*/
 
 .char-traits .text {
-  /*flex: 1;*/
-  padding: 0 3rem;
-  padding: 1.5rem 3rem 0 3rem;
+  padding: 1.5rem 3rem 1.5rem 3rem;
+  height: 100%;   /* 🔥 critical */
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 1rem; /* If in column, or otherwise, it spaces out the children/elements inside container*/
+  /*flex: 1;*/
+  /*padding: 0 3rem;
+  padding: 1.5rem 3rem 0 3rem;*/
+  /*justify-content: space-evenly;*/
   /*height: 100%;*/
 }
 
@@ -455,7 +458,8 @@ header {
   width: 100%;
   height: 30rem;
   max-height: 30rem;
-  overflow-y: auto; /* allows scrolling to happen inside element*/
+  /*overflow-y: auto;*/ /* allows scrolling to happen inside element*/
+  overflow: hidden;
   background: rgb(244, 187, 68);
   display: flex;
   flex: 0 0 auto; 
@@ -464,13 +468,17 @@ header {
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
+
 .quote-box {
-  height: 13rem;
+  height: 14rem;
+}
+
+.weakness-box {
+  height: 26rem;
 }
 
 .learn-box {
   height: 7rem;
-  
 }
 
 .card-container {
@@ -483,9 +491,10 @@ header {
 
 .card-content {
   margin-bottom: 1.5rem;
+  /*padding-right: 2.5rem;*/
   border: 0.2rem solid red;
   border-radius: 1rem;
-  width: 30%;
+  width: 31%;
   height: 30rem;
   max-height: 30rem;
   overflow-y: auto; /* allows scrolling to happen inside element*/
@@ -496,9 +505,38 @@ header {
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
-.desc-text {
-  font-size: 2rem;
+.preferences {
+  width: 49%;
 }
+
+/*.card-content .text {
+  padding: 0 3rem;
+  padding: 1.5rem 3rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}*/
+
+.desc-text {
+  flex: 1;
+  font-size: 2rem;
+  min-height: 0;               /* 🔥 takes remaining space */
+  overflow-y: auto;        /* 🔥 only this scrolls */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+
+.learn-more {
+  color: rgb(0, 36, 173);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.learn-more:hover {
+  color: rgb(63, 113, 48); /* your green */
+}
+
 
 /******************************************
 /* FOOTER
