@@ -119,10 +119,16 @@ const CharacterTraits = ({ character }) => {
             <div className="card-content">
                 <div className="text">
                   <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
-                  <h3 className="uncial creator-toggle">Creator(s): <span className="creators"></span></h3>
-                  <ul className="creator-slot creator-toggle reg-font">{character?.realWorldDesigners?.creators?.name}</ul>
-                  <h3 className="uncial artist-toggle">Artists(s): <span className="artists"></span></h3>
-                  <ul className="artist-slot artist-toggle reg-font">{character?.realWorldDesigners?.artists?.name}</ul>
+                  
+                  <div className="creator-toggle">
+                    <h3 className="uncial">Creator(s): <span className="creators"></span></h3>
+                    <ul className="creator-slot reg-font">{character?.realWorldDesigners?.creators?.name}</ul>
+                  </div>
+
+                  <div className="artist-toggle">
+                    <h3 className="uncial">Artists(s): <span className="artists"></span></h3>
+                    <ul className="artist-slot reg-font">{character?.realWorldDesigners?.artists?.name}</ul>
+                  </div>
                   <span className="desc-text"></span>
                 </div>
             </div>

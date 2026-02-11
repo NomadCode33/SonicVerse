@@ -7,13 +7,13 @@ import Footer from "../components/home/Footer";
 
 const Home = () => {
   return (
-    <>
+    <main className="home-page">
       <Navbar />
       <Hero />
       <Disclaimer />
       <DemoArea />
       <Footer />
-    </>
+    </main>
   )
 }
 

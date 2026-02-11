@@ -12,7 +12,7 @@ const Characters = () => {
   const [character, setCharacter] = useState(null);
 
   return (
-    <>
+    <main className="characters-page">
       <Navbar />
       <Hero />
       <Disclaimer />
@@ -22,7 +22,7 @@ const Characters = () => {
 
       {/* Pass character down so MainAreaInfo can display it */}
       <MainAreaInfo character={character} />
-    </>
+    </main>
   )
 }
 

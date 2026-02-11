@@ -28,7 +28,7 @@ html {
   font-size: 62.5%; 
 }
 
-body {
+.characters-page {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
   background-image: url('/img/IDW75CharsCover.webp');
@@ -470,7 +470,7 @@ header {
 
 
 .quote-box {
-  height: 14rem;
+  height: 16rem; /*14rem originally*/
 }
 
 .weakness-box {

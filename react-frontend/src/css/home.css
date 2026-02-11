@@ -28,7 +28,7 @@ html {
   font-size: 62.5%; 
 }
 
-body {
+.home-page {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
   background-image: url('/img/classic_sonic.jpg'); /*background-image: url('./img/classic_sonic.jpg');*/
