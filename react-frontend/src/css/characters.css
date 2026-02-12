@@ -493,6 +493,7 @@ header {
 
 .quote-box {
   height: 16rem; /*14rem originally*/
+  display: block;
 }
 
 .char-quote {
