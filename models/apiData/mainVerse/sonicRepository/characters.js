@@ -3047,7 +3047,11 @@ export const characters = {
             "Sweetie (by Rouge)",
             "Gear Head (by Sonic)"
         ],
-        "quote": "...I may not be Sonic, but there are things only I can do!",
+        "quote": {
+            "text": "...I may not be Sonic, but there are things only I can do!",
+            "char": "Miles \"Tails\" Prower",
+            "from": "Sonic Frontiers - The Final Horizon"
+        },
         "characterThemes": [
             {
                 "index": "believe-in-myself",
@@ -4353,7 +4357,11 @@ export const characters = {
             "Ames",
             "Cap'n Commander Rose"
         ],
-        "quote": "Love changes everything. It feels like every little moment in your life is huge!",
+        "quote": {
+            "text": "Love changes everything. It feels like every little moment in your life is huge!",
+            "char": "Amy to Elise",
+            "from": "Sonic the Hedgehog (2006)"
+        },
         "characterThemes": [
             {
                 "index": "my-sweet-passion",
@@ -5284,7 +5292,11 @@ export const characters = {
             "Robot Sonic (by Zazz)",
             "Cheap Replica (by Shadow)"
         ],
-        "quote": "I WILL BATTLE YOU AS MANY TIMES AS IT IS NECESSARY.",
+        "quote": {
+            "text": "I WILL BATTLE YOU AS MANY TIMES AS IT IS NECESSARY.",
+            "char": "Metal Sonic",
+            "from": "Sonic Generations"
+        },
         "characterThemes": [
             {
                 "index": "stardust-speedway-bad-future",
@@ -5859,7 +5871,11 @@ export const characters = {
             "Old Friend (by Espio)",
             "Commander Knuckles"
         ],
-        "quote": "As far back as I can remember, I've been living here on this dark island, always guarding the Master Emerald from anything that can harm it. I don't know why I was given this job, why it was my fate, destined to be here... forever.",
+        "quote": {
+            "text": "As far back as I can remember, I've been living here on this dark island, always guarding the Master Emerald from anything that can harm it. I don't know why I was given this job, why it was my fate, destined to be here... forever.",
+            "char": "Knuckles the Echidna",
+            "from": "Sonic Adventure"
+        },
         "characterThemes": [
             {
                 "index": "unknown-from-me",
@@ -7088,7 +7104,11 @@ export const characters = {
             "The Smart One (by Eggman)",
             "Vex (by Sonic)"
         ],
-        "quote": "All part of being a good detective.",
+        "quote": {
+            "text": "All part of being a good detective.",
+            "char": "Vector the Crocodile",
+            "from": "Sonic Racing: Crossworlds"
+        },
         "characterThemes": [
             {
                 "index": "team-chaotix",
@@ -7741,7 +7761,11 @@ export const characters = {
             "Mr. Espio (by Cream)",
             "Elite Ninja (by Rouge)"
         ],
-        "quote": "Timeless techniques will endure any trial! Your evil will never succeed!",
+        "quote": {
+            "text": "Timeless techniques will endure any trial! Your evil will never succeed!",
+            "char": "Espio the Chameleon",
+            "from": "Sonic Racing: Crossworlds"
+        },
         "characterThemes": [
             {
                 "index": "team-chaotix",
@@ -8289,7 +8313,11 @@ export const characters = {
             "Ultimate Pain In The Neck (by Wave)",
             "”Shatter” the Hedgehog (by Storm)"
         ],
-        "quote": "I'm letting go of that destructive anger. But I will continue to fight. Fight... with your wish in my heart. Your wish for everyone to have a chance to be happy.",
+        "quote": {
+            "text": "I'm letting go of that destructive anger. But I will continue to fight. Fight... with your wish in my heart. Your wish for everyone to have a chance to be happy.",
+            "char": "Shadow the Hedgehog",
+            "from": "Shadow Generations"
+        },
         "characterThemes": [
             {
                 "index": "throw-it-all-away",
@@ -9355,7 +9383,11 @@ export const characters = {
             "Ms. Facet",
             "Renowned Spy (By Espio)"
         ],
-        "quote": "I despise anyone who takes jewels from me! All the world's gems are mine to keep!",
+        "quote": {
+            "text": "I despise anyone who takes jewels from me! All the world's gems are mine to keep!",
+            "char": "Rouge the Bat",
+            "from": "Sonic Adventure 2"
+        },
         "characterThemes": [
             {
                 "index": "fly-in-the-freedom",

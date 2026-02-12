@@ -499,6 +499,11 @@ header {
   margin-bottom: 1rem;
 }
 
+.quote-from {
+  font-style: italic;
+  /*font-weight: bold;*/
+}
+
 .weakness-box {
   height: 21rem;
   display: block;
