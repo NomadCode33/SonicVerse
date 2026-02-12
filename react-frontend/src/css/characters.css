@@ -561,13 +561,19 @@ header {
   word-break: break-word;
 }
 
-.learn-more {
+.learn-more,
+.link-vas {
   color: rgb(0, 36, 173);
   text-decoration: underline;
   transition: color 0.2s ease;
 }
 
-.learn-more:hover {
+.link-vas {
+  text-decoration: none;
+}
+
+.learn-more:hover,
+.link-vas:hover {
   color: rgb(63, 113, 48); /* your green */
 }
 
@@ -594,7 +600,10 @@ header {
 .techniques-slot,
 .ability-type-slot,
 .relatives-slot,
-.char-theme-slot {
+.char-theme-slot,
+.va-game-slot,
+.other-va-game-slot,
+.shows-movies-slot {
   margin-left: 1rem;
   list-style-type: disc;
   list-style-position: inside;
@@ -620,13 +629,11 @@ header {
 
 .g-appearance-slot li,
 .other-media-slot li,
-.relatives-slot li {
+.relatives-slot li,
+.va-game-slot li,
+.other-va-game-slot li,
+.shows-movies-slot li {
   margin-bottom: 0.8rem;
-}
-
-.attire-area h3 {
-  margin-left: 1.6rem;
-  font-size: 2.08rem;
 }
 
 .attire-current-slot {
@@ -637,6 +644,24 @@ header {
 .attire-original-slot {
   margin-left: 3rem;
 }
+
+/******************************************
+/* TRAITS: EXTRA AREAS
+/******************************************/
+.attire-area h3 {
+  margin-left: 1.6rem;
+  font-size: 2.08rem;
+}
+
+.va-entry {
+  margin-bottom: 0.8rem;
+}
+
+.va-shows-movies {
+  margin-left: 1rem;
+}
+
+
 
 /***************************************************************
 /* FOOTER
