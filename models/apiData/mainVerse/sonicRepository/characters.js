@@ -51,7 +51,12 @@ export const characters = {
             "Speed Demon",
             "World's Fastest Hedgehog"
         ],
-        "quote": "What you see is what you get! Just a guy that loves adventure! I'm Sonic the Hedgehog!",
+        "quote": {
+            "text": "What you see is what you get! Just a guy that loves adventure! I'm Sonic the Hedgehog!",
+            "char": "Sonic the Hedgehog",
+            "from": "Sonic Adventure 2"
+        },
+        "quoteS": "What you see is what you get! Just a guy that loves adventure! I'm Sonic the Hedgehog!",
         "characterThemes": [
             {
                 "index": "you-can-do-anything",

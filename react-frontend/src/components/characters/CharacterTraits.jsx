@@ -5,117 +5,249 @@ const CharacterTraits = ({ character }) => {
 
   return (
     <section className="char-traits">
-          <section className="description-box">
+          <section className="description-box group-1">
             <div className="text">
-              <h2 className="uncial">Description: <span className="description"></span></h2>
-              <span className="desc-text">{character?.description}</span>
+              <h2 className="uncial">Description:</h2>
+              <span className="desc-text reg-font">
+                {character?.description?.[0]?.split("\n\n").map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </span>
+              {/*<span className="desc-text reg-font">{character?.description}</span>*/}
             </div>
           </section>
 
-          <section className="description-box quote-box">
+          <section className="description-box quote-box group-2">
             <div className="text">
-              <h2 className="uncial">Quote: <span className="quote"></span></h2>
-              <span className="desc-text">{character?.quote}</span>
+              <h2 className="uncial">Quote:</h2>
+              <div className="desc-text quote-info">
+                <span className="desc-text reg-font">{character?.quote?.text || character?.quoteS}</span>
+                <p className="desc-text reg-font">{character?.quote?.char}{character?.quote?.from}</p>
+              </div>
             </div>
           </section>
 
-          <section className="card-container">
+          <section className="card-container group-3">
             <div className="card-content preferences">
                 <div className="text">
-                  <h2 className="uncial">Likes: <span className="likes"></span></h2>
-                  <span className="desc-text">{character?.likes}</span>
+                  <h2 className="uncial">Likes:</h2>
+
+                    {character?.likes && (
+                      <ul className="likes-slot desc-text reg-font">
+                        {character?.likes?.map((like, index) => (
+                          <li key={index}>{like}</li>
+                        ))}
+                      </ul>
+                    )}
+                  {/*<span className="desc-text reg-font">{character?.likes}</span>*/}
                   {/*<ul className="likes-slot reg-font">{character?.likes}</ul>*/}
                 </div>
             </div>
 
             <div className="card-content preferences">
                 <div className="text">
-                  <h2 className="uncial">Dislikes: <span className="dislikes"></span></h2>
-                  <span className="desc-text">{character?.dislikes}</span>
+                  <h2 className="uncial">Dislikes:</h2>
+
+                    {character?.dislikes && (
+                      <ul className="dislikes-slot desc-text">
+                        {character?.dislikes?.map((dislike, index) => (
+                          <li key={index}>{dislike}</li>
+                        ))}
+                      </ul>
+                    )}
+                  {/*<span className="desc-text">{character?.dislikes}</span>*/}
                 </div>
             </div>
-
-          
           </section>
 
-          <section className="description-box weakness-box">
+          <section className="description-box weakness-box weakness-toggle group-4">
             <div className="text">
-              <h2 className="uncial">Weaknesses: <span className="weaknesses"></span></h2>
-              <span className="desc-text">{character?.weaknesses}</span>
+              <h2 className="uncial">Weaknesses:</h2>
+
+              <ul className="weaknesses-slot desc-text">
+                {character?.weaknesses ? (
+                  character.weaknesses.map((weakness, index) => (
+                    <li key={index}>{weakness}</li>
+                  ))
+                ) : (
+                  <li>No Known Weaknesses</li>
+                )}
+              </ul>
+              {/*<span className="desc-text reg-font">{character?.weaknesses}</span>*/}
             </div>
           </section>
 
-          <section className="card-container">
+          <section className="card-container group-5">
             <div className="card-content">
                 <div className="text">
-                  <h2 className="uncial">Attire: <span className="attire"></span></h2>
-                  <span className="desc-text">{character?.attire?.current}</span>
-                  <ul className="attire-slot reg-font"></ul>
+                  <h2 className="uncial">Attire:</h2>
+
+                  {!character?.attire?.original && (
+                    <ul className="attire-slot desc-text">
+                      {character?.attire?.current?.map((attireItem, index) => (
+                        <li key={index}>{attireItem}</li>
+                      ))}
+                      </ul>
+                  )}
+
+                  {(character?.attire?.current && character?.attire?.original) && (
+                    <div className="attire-area desc-text">
+                      <h3 className="uncial">Current:</h3>
+                      <ul className="attire-current-slot">
+                        {character?.attire?.current?.map((attireItem, index) => (
+                          <li key={index}>{attireItem}</li>
+                        ))}
+                      </ul>
+
+                      <h3 className="uncial">Original:</h3>
+                      <ul className="attire-original-slot">
+                        {character?.attire?.original?.map((attireItem, index) => (
+                          <li key={index}>{attireItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
             </div>
 
-            <div className="card-content">
+            <div className="card-content nicknames-toggle">
                 <div className="text">
-                  <h2 className="uncial">Nicknames: <span className="nicknames"></span></h2>
-                  <span className="desc-text">{character?.nicknames}</span>
+                  <h2 className="uncial">Nicknames:</h2>
+
+                  <ul className="nicknames-slot desc-text">
+                    {character?.nicknames ? (
+                      character.nicknames.map((nickname, index) => (
+                        <li key={index}>{nickname}</li>
+                      ))
+                    ) : (
+                      <li>No Nicknames</li>
+                    )}
+                  </ul>
+                  {/*<span className="desc-text reg-font">{character?.nicknames}</span>*/}
                 </div>
             </div>
 
-            <div className="card-content">
+            <div className="card-content transform-toggle">
                 <div className="text">
-                  <h2 className="uncial">Transformations: <span className="transformations"></span></h2>
-                  <span className="desc-text">{character?.transformations?.name}</span>
+                  <h2 className="uncial">Transformations:</h2>
+
+                  <ul className="transformations-slot desc-text">
+                    {character?.transformations?.length > 0 ? (
+                      character.transformations.map((transformation) => (
+                        <li key={transformation.index}>{transformation.name}</li>
+                      ))
+                    ) : (
+                      <li>No Transformations</li>
+                    )}
+                  </ul>
+                  {/*<ul className="transformations-slot desc-text">{character?.transformations?.name}</ul>*/}
                 </div>
             </div>
           </section>
 
-          <section className="card-container">
-            <div className="card-content">
+          <section className="card-container skills-toggle group-6">
+            <div className="card-content skills-toggle">
                 <div className="text">
-                  <h2 className="uncial">Skills: <span className="skills"></span></h2>
-                  <span className="desc-text">{character?.abilities?.skills}</span>
+                  <h2 className="uncial">Skills:</h2>
+
+                  <ul className="skills-slot desc-text">
+                    {character?.abilities?.skills ? (
+                      character.abilities.skills.map((skill, index) => (
+                        <li key={index}>{skill}</li>
+                      ))
+                    ) : (
+                      <li>No Known Skills</li>
+                    )}
+                  </ul>
+                  {/*<span className="desc-text">{character?.abilities?.skills}</span>*/}
                 </div>
             </div>
 
-            <div className="card-content">
+            <div className="card-content techniques-toggle">
                 <div className="text">
-                  <h2 className="uncial">Techniques: <span className="techniques"></span></h2>
-                  <span className="desc-text">{character?.abilities?.techniques?.name}</span>
+                  <h2 className="uncial">Techniques:</h2>
+
+                  <ul className="techniques-slot desc-text">
+                    {character?.abilities?.moveTechniques ? (
+                      character.abilities.moveTechniques.map((technique) => (
+                        <li key={technique.index}>{technique.name}</li>
+                      ))
+                    ) : (
+                      <li>No Known Techniques</li>
+                    )}
+                  </ul>
                 </div>
             </div>
 
-            <div className="card-content">
+            <div className="card-content ability-type-toggle">
                 <div className="text">
-                  <h2 className="uncial">Ability Type: <span className="ability-type"></span></h2>
-                  <span className="desc-text">{character?.abilities?.abilityType?.name}</span>
+                  <h2 className="uncial">Ability Type:</h2>
+
+                  <ul className="ability-type-slot desc-text">
+                    {character?.abilities?.abilityType ? (
+                      character.abilities.abilityType.map((type) => (
+                        <li key={type.index}>{type.name}</li>
+                      ))
+                    ) : (
+                      <li>No Known Ability Type(s)</li>
+                    )}
+                  </ul>
                 </div>
             </div>
           </section>
 
-          <section className="card-container">
-            <div className="card-content">
+          <section className="card-container group-7">
+            <div className="card-content affiliation-toggle">
                 <div className="text">
-                  <h2 className="uncial">Affiliation: <span className="affiliation"></span></h2>
-                  <span className="desc-text">{character?.affiliation}</span>
+                  <h2 className="uncial">Affiliation(s):</h2>
+
+                  <ul className="affiliation-slot desc-text">
+                    {character?.affiliation ? (
+                      character.affiliation.map((association, index) => (
+                        <li key={index}>{association}</li>
+                      ))
+                    ) : (
+                      <li>No Known Affiliation(s)</li>
+                    )}
+                  </ul>
+                  {/*<ul className="desc-text">{character?.affiliation}</ul>*/}
                 </div>
             </div>
 
-            <div className="card-content">
+            <div className="card-content char-theme-toggle">
                 <div className="text">
-                  <h2 className="uncial">Character Theme(s): <span className="char-themes"></span></h2>
-                  <span className="desc-text">{character?.characterThemes?.song}</span>
+                  <h2 className="uncial">Character Theme(s):</h2>
+
+                  <ul className="char-theme-slot desc-text">
+                    {character?.characterThemes ? (
+                      character.characterThemes.map((theme) => (
+                        <li key={theme.index}>{theme.song}</li>
+                      ))
+                    ) : (
+                      <li>No Known Character Themes</li>
+                    )}
+                  </ul>
                 </div>
             </div>
 
             <div className="card-content relatives-toggle">
                 <div className="text">
-                  <h2 className="uncial">Relatives: <span className="relatives"></span></h2>
-                  <span className="desc-text">{character?.relatives?.name || "No Relatives"}</span>
+                  <h2 className="uncial">Relatives:</h2>
+
+                  <ul className="relatives-slot desc-text">
+                    {character?.relatives ? (
+                      character.relatives.map((relative) => (
+                        <li key={relative.index}>{relative.name} ({relative.relationship})</li>
+                      ))
+                    ) : (
+                      <li>No Known Relatives</li>
+                    )}
+                  </ul>
                 </div>
             </div>
           </section>
 
-          <section className="card-container">
+          <section className="card-container group-8">
             <div className="card-content">
                 <div className="text">
                   <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
@@ -135,43 +267,39 @@ const CharacterTraits = ({ character }) => {
 
             <div className="card-content">
                 <div className="text">
-                  <h2 className="uncial">Game Appearances: <span className="description"></span></h2>
-                  <span className="desc-text">{character?.gameAppearances}</span>
+                  <h2 className="uncial">Game Appearances:</h2>
+
+                  <ul className="g-appearance-slot desc-text">
+                    {character?.gameAppearances ? (
+                      character.gameAppearances.map((game, index) => (
+                        <li key={index}>{game}</li>
+                      ))
+                    ) : (
+                      <li>No Known Game Appearances</li>
+                    )}
+
+                  </ul>
                 </div>
             </div>
 
             <div className="card-content">
                 <div className="text">
-                  <h2 className="uncial">Appearances in other media: <span className="description"></span></h2>
-                  <span className="desc-text">{character?.otherMedia}</span>
+                  <h2 className="uncial">Appearances in other media:</h2>
+                  
+                  <ul className="other-media-slot desc-text">
+                    {character?.otherMedia ? (
+                      character.otherMedia.map((media, index) => (
+                        <li key={index}>{media}</li>
+                      ))
+                    ) : (
+                      <li>No Known Appearances in Other Media</li>
+                    )}
+                  </ul>
                 </div>
             </div>
           </section>
 
-          <section className="card-container">
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Description: <span className="description"></span></h2>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
-          </section>
-
-          <section className="card-container">
+          <section className="card-container group-9">
             <div className="card-content">
                 <div className="text">
                   <h2 className="uncial">Description: <span className="description"></span></h2>
@@ -194,7 +322,53 @@ const CharacterTraits = ({ character }) => {
             </div>
           </section>
 
-          <section className="description-box learn-box">
+          <section className="card-container group-10">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+          </section>
+
+          <section className="card-container group-10">
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+
+            <div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Description: <span className="description"></span></h2>
+                  <span className="desc-text"></span>
+                </div>
+            </div>
+          </section>
+
+          <section className="description-box learn-box group-11">
             <div className="text">
               <h2 className="uncial">
                 Learn More:{" "} 
@@ -207,7 +381,7 @@ const CharacterTraits = ({ character }) => {
                   {character?.learnMore}
                 </a>
               </h2>
-              <span className="desc-text"></span>
+              {/*<span className="desc-text"></span>*/}
             </div>
           </section>
 	  </section>

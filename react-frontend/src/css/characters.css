@@ -19,9 +19,9 @@
 	clear: both;
 }
 
-/******************************************
+/****************************************************************
 /* BASE STYLES + LAYOUT
-/*******************************************/
+/****************************************************************/
 /* 16px * 62.5% = 10px, 1rem = 10px; */
 /* 100% 1rem = 16px */
 html {
@@ -63,9 +63,9 @@ html {
   font-size: 2.4rem;
 }
 
-/******************************************
+/**************************************************************
 /* HEADER SECTION
-/*******************************************/
+/**************************************************************/
 header {
   background: linear-gradient(90deg, rgb(0, 36, 173), rgb(50, 100, 230)); 
   /*background-color: rgb(0, 36, 173);*/
@@ -214,9 +214,9 @@ header {
   padding-top: 3.5rem;
 }
 
-/******************************************
+/*************************************************************
 /* SEARCH BOX
-/*******************************************/
+/*************************************************************/
 #search-box {
   margin: 4rem auto;
   border: 0.2rem solid red;
@@ -292,9 +292,9 @@ header {
   align-items: center;
 }
 
-/******************************************
+/*********************************************************
 /* NAME & PICTURE
-/*******************************************/
+/*********************************************************/
 .char-name {
   margin: 2rem 0 0 2rem;
   margin: 3rem auto;
@@ -316,9 +316,9 @@ header {
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
 }
 
-/******************************************
+/*********************************************************
 /* CHARACTER NOT FOUND
-/*******************************************/
+/*********************************************************/
 #characterNotFound {
   margin: 0 auto;
   padding: 0.7rem;
@@ -346,9 +346,9 @@ header {
   display: block;
 }
 
-/******************************************
+/************************************************************
 /* BASIC INFO
-/*******************************************/
+/************************************************************/
 .basic-info {
   margin: 3rem auto;
   margin-top: 5rem;
@@ -372,6 +372,11 @@ header {
   flex-direction: column;
   justify-content: space-evenly;
   /*height: 100%;*/
+}
+
+.basic-info .info-text {
+  padding: 0;
+  gap: 1rem;
 }
 
 .char-name,
@@ -407,9 +412,22 @@ header {
   display: none;
 }*/
 
-/******************************************
+.fav-food-slot {
+  margin-left: 3.2rem; 
+  font-size: 1.6rem;
+  list-style-type: disc;
+}
+
+.skin-toggle {
+  margin-left: 2rem; 
+  font-size: 1.6rem;
+}
+
+
+
+/***********************************************************
 /* CHARACTER TRAITS
-/*******************************************/
+/***********************************************************/
 .char-traits {
   margin: 3rem auto;
   margin-top: 5rem;
@@ -417,7 +435,7 @@ header {
   /*border: 0.2rem solid red;*/
   border-radius: 1rem;
   width: 63%;
-  height: 101.2rem;
+  height: 120.2rem; /*101.2rem*/
   min-height: 0;
   /*max-height: 101.2rem;*/
   overflow: visible;   /* 🔑 allow shadows to escape */
@@ -468,19 +486,27 @@ header {
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
+.description-box .desc-text p {
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
 
 .quote-box {
-  height: 16rem; /*14rem originally*/
+  height: 13.2rem; /*14rem originally*/
 }
 
 .weakness-box {
-  height: 26rem;
+  height: 21rem;
+  display: block;
 }
 
 .learn-box {
   height: 7rem;
 }
 
+/******************************************
+/* TRAITS: CARD CONTAINER
+/******************************************/
 .card-container {
   width: 100%;
   display: flex;
@@ -509,13 +535,12 @@ header {
   width: 49%;
 }
 
-/*.card-content .text {
-  padding: 0 3rem;
-  padding: 1.5rem 3rem 0 3rem;
+.card-content .text {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-}*/
+  height: 100%;
+  flex: 1;  
+}
 
 .desc-text {
   flex: 1;
@@ -525,7 +550,6 @@ header {
   overflow-wrap: break-word;
   word-break: break-word;
 }
-
 
 .learn-more {
   color: rgb(0, 36, 173);
@@ -537,10 +561,76 @@ header {
   color: rgb(63, 113, 48); /* your green */
 }
 
-
 /******************************************
+/* TRAITS: UL SLOTS
+/******************************************/
+.likes-slot,
+.dislikes-slot,
+.weaknesses-slot {
+  margin-left: 3.2rem;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.attire-slot,
+.attire-current-slot,
+.attire-original-slot,
+.nicknames-slot,
+.skills-slot,
+.affiliation-slot,
+.g-appearance-slot,
+.other-media-slot,
+.transformations-slot,
+.techniques-slot,
+.ability-type-slot,
+.relatives-slot,
+.char-theme-slot {
+  margin-left: 1rem;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.likes-slot li,
+.dislikes-slot li,
+.weaknesses-slot li,
+.attire-slot li,
+.attire-current-slot li,
+.attire-original-slot li,
+.nicknames-slot li,
+.skills-slot li,
+.affiliation-slot li,
+.g-appearance-slot li, 
+.other-media-slot li
+.transformations-slot li,
+.techniques-slot li,
+.ability-type-slot li,
+.char-theme-slot li {
+  margin-bottom: 0.4rem;
+}
+
+.g-appearance-slot li,
+.other-media-slot li,
+.relatives-slot li {
+  margin-bottom: 0.8rem;
+}
+
+.attire-area h3 {
+  margin-left: 1.6rem;
+  font-size: 2.08rem;
+}
+
+.attire-current-slot {
+  margin-bottom: 1.3rem;
+}
+
+.attire-current-slot,
+.attire-original-slot {
+  margin-left: 3rem;
+}
+
+/***************************************************************
 /* FOOTER
-/*******************************************/
+/***************************************************************/
 footer {
   margin-top: 9%;
 }

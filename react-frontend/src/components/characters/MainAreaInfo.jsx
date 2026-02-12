@@ -5,9 +5,9 @@ import CharacterTraits from "./CharacterTraits";
 const MainAreaInfo = ({ character }) => {
   return (
     <main id="main-area">
-        {/* BasicCharacterInfo now receives data */}
-        <BasicCharacterInfo character={character} />
+        {/* BasicCharacterInfo & CharacterTraits now receives data */}
         <CharacterTraits character={character}/>
+        <BasicCharacterInfo character={character} />
     </main>
   )
 }
