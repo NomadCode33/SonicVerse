@@ -492,7 +492,11 @@ header {
 }
 
 .quote-box {
-  height: 13.2rem; /*14rem originally*/
+  height: 16rem; /*14rem originally*/
+}
+
+.char-quote {
+  margin-bottom: 1rem;
 }
 
 .weakness-box {

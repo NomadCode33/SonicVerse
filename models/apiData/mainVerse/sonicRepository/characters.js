@@ -56,7 +56,6 @@ export const characters = {
             "char": "Sonic the Hedgehog",
             "from": "Sonic Adventure 2"
         },
-        "quoteS": "What you see is what you get! Just a guy that loves adventure! I'm Sonic the Hedgehog!",
         "characterThemes": [
             {
                 "index": "you-can-do-anything",
@@ -1927,7 +1926,11 @@ export const characters = {
             "Mr. Tinker (alter ego)",
             "Big Bald Meanie (by Charmy Bee)"
         ],
-        "quote": "Hahaha! Citizens of Earth, lend me your ears and listen to me very carefully! My name is Doctor Eggman, the world's greatest scientist, and soon to be the world's greatest ruler. Now witness the beginning of the greatest empire of all time! Hahahaha!",
+        "quote": {
+            "text": "Hahaha! Citizens of Earth, lend me your ears and listen to me very carefully! My name is Doctor Eggman, the world's greatest scientist, and soon to be the world's greatest ruler. Now witness the beginning of the greatest empire of all time! Hahahaha!",
+            "char": "Dr. Eggman",
+            "from": "Sonic Adventure 2"
+        },
         "characterThemes": [
             {
                 "index": "eggman",
@@ -10225,7 +10228,11 @@ export const characters = {
             }
         ],
         "nicknames": ["Unknown"],
-        "quote": "Unknown",
+        "quote": {
+            "text": "Unknown",
+            "char": "Unknown",
+            "from": "Unknown"
+        },
         "otherQuotes": ["Unknown"],
         "characterThemes": [
             {

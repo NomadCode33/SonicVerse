@@ -21,8 +21,8 @@ const CharacterTraits = ({ character }) => {
             <div className="text">
               <h2 className="uncial">Quote:</h2>
               <div className="desc-text quote-info">
-                <span className="desc-text reg-font">{character?.quote?.text || character?.quoteS}</span>
-                <p className="desc-text reg-font">{character?.quote?.char}{character?.quote?.from}</p>
+                <p className="char-quote desc-text reg-font">&quot;{character?.quote?.text || character?.quoteS}&quot;</p>
+                <p className="quote-source desc-text reg-font">- {character?.quote?.char}, {character?.quote?.from}</p>
               </div>
             </div>
           </section>
