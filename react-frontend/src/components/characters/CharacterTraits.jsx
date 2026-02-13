@@ -256,6 +256,7 @@ const CharacterTraits = ({ character }) => {
                   {character?.realWorldDesigners?.creators?.length && !character?.realWorldDesigners?.artists?.length && (
                     <div className="creator-art-area desc-text">
                       <h3 className="uncial">Creator(s):</h3>
+
                       <ul className="creator-art-slot">
                         {character.realWorldDesigners.creators.map((creator, index) => (
                           <li key={index} className="creator-art-entry">
@@ -277,7 +278,7 @@ const CharacterTraits = ({ character }) => {
                             <div className="creator-art-roles">
                               <h3 className="uncial">Job(s):</h3>
                               <ul className="creator-art-role-slot">
-                                {(creator.job || creator.role)?.map((role, i) => (
+                                {(creator.job)?.map((role, i) => (
                                   <li key={i}>• {role}</li>
                                 ))}
                               </ul>
@@ -292,6 +293,7 @@ const CharacterTraits = ({ character }) => {
                   {character?.realWorldDesigners?.artists?.length && !character?.realWorldDesigners?.creators?.length && (
                     <div className="creator-art-area desc-text">
                       <h3 className="uncial">Artist(s):</h3>
+
                       <ul className="creator-art-slot">
                         {character.realWorldDesigners.artists.map((artist, index) => (
                           <li key={index} className="creator-art-entry">
@@ -313,7 +315,7 @@ const CharacterTraits = ({ character }) => {
                             <div className="creator-art-roles">
                               <h3 className="uncial">Job(s):</h3>
                               <ul className="creator-art-role-slot">
-                                {(artist.job || artist.role)?.map((role, i) => (
+                                {(artist.job)?.map((role, i) => (
                                   <li key={i}>• {role}</li>
                                 ))}
                               </ul>
@@ -327,8 +329,10 @@ const CharacterTraits = ({ character }) => {
                   {/* Both creators and artists */}
                   {character?.realWorldDesigners?.creators?.length && character?.realWorldDesigners?.artists?.length && (
                     <div className="designer-area desc-text">
+
                       {/* Creators */}
                       <h3 className="uncial">Creator(s):</h3>
+
                       <ul className="creator-slot">
                         {character.realWorldDesigners.creators.map((creator, index) => (
                           <li key={index} className="creator-entry">
@@ -361,6 +365,7 @@ const CharacterTraits = ({ character }) => {
 
                       {/* Artists */}
                       <h3 className="uncial">Artist(s):</h3>
+                      
                       <ul className="artist-slot">
                         {character.realWorldDesigners.artists.map((artist, index) => (
                           <li key={index} className="artist-entry">
