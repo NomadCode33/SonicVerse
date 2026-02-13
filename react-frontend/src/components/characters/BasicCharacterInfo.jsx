@@ -1,4 +1,5 @@
 import "../../css/characters.css"
+import CharacterCarousel from "./char-components/basic-char-info/CharacterCarousel";
 
 const BasicCharacterInfo = ({ character }) => {
   if (!character) return null;
@@ -9,7 +10,9 @@ const BasicCharacterInfo = ({ character }) => {
             <h2 className="char-name bangers">{character?.name || "Name"}</h2>
 
 			<div className="text info-text">
-				<img className="char-pic" src={character?.images?.modern[0]?.img} alt="Character Picture"/> {/* or {character?.images?.modern[0]?.img} */}
+				{/* or {character?.images?.modern[0]?.img} */}
+				{/*<img className="char-pic" src={character?.images?.modern[0]?.img} alt="Character Picture"/> */}
+				<CharacterCarousel character={character} />
 				{/*Picture captions*/}
 
 				<h2 className="uncial">First Appearance: <span className="first-appearance reg-font">{character?.firstAppearance?.alt?.name || character?.firstAppearance?.name}</span></h2>

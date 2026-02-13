@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../css/characters.css";
 import { targetTypeMap } from "../../utils/characters/config.js";
 import { searchCharacter } from "../../utils/characters/charApi.js";
-import BasicCharacterInfo from "./BasicCharacterInfo";
+import BasicCharacterInfo from "./BasicCharacterInfo.jsx";
 
 
 const SearchBox = ({ setCharacter }) => { // <-- receive setCharacter as prop

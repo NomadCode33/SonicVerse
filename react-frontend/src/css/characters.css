@@ -423,6 +423,106 @@ header {
   font-size: 1.6rem;
 }
 
+/******************************************
+/* BASIC INFO: PICTURE CAROUSEL
+/******************************************/
+/* =========================
+   CAROUSEL WRAPPER
+========================= */
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 40rem; /* adjust as needed */
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.carousel-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 0.8rem;
+  opacity: 1;
+}
+
+.carousel-img.fade-out {
+  opacity: 0;
+}
+
+/* =========================
+   CAPTION
+========================= */
+
+.image-caption {
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #fff; /* adjust to theme */
+  opacity: 0.85;
+}
+
+/* =========================
+   ARROWS
+========================= */
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.arrow:hover {
+  opacity: 0.7;
+}
+
+.arrow.left {
+  left: -3rem; /* adjust spacing */
+}
+
+.arrow.right {
+  right: -3rem;
+}
+
+/* =========================
+   TABS
+========================= */
+
+.image-tabs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding-bottom: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  opacity: 0.7;
+}
+
+.tab.active {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+
 
 
 /***********************************************************
