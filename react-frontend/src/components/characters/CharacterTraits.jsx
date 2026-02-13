@@ -275,7 +275,7 @@ const CharacterTraits = ({ character }) => {
                               ))}
                             </h3>
                             <div className="creator-art-roles">
-                              <h3 className="uncial">Role(s):</h3>
+                              <h3 className="uncial">Job(s):</h3>
                               <ul className="creator-art-role-slot">
                                 {(creator.job || creator.role)?.map((role, i) => (
                                   <li key={i}>• {role}</li>
@@ -311,7 +311,7 @@ const CharacterTraits = ({ character }) => {
                               ))}
                             </h3>
                             <div className="creator-art-roles">
-                              <h3 className="uncial">Role(s):</h3>
+                              <h3 className="uncial">Job(s):</h3>
                               <ul className="creator-art-role-slot">
                                 {(artist.job || artist.role)?.map((role, i) => (
                                   <li key={i}>• {role}</li>
@@ -348,9 +348,9 @@ const CharacterTraits = ({ character }) => {
                               ))}
                             </h3>
                             <div className="creator-roles">
-                              <h3 className="uncial">Role(s):</h3>
+                              <h3 className="uncial">Job(s):</h3>
                               <ul className="creator-slot">
-                                {(creator.job || creator.role)?.map((role, i) => (
+                                {(creator.job)?.map((role, i) => (
                                   <li key={i}>• {role}</li>
                                 ))}
                               </ul>
@@ -380,9 +380,9 @@ const CharacterTraits = ({ character }) => {
                               ))}
                             </h3>
                             <div className="artist-roles">
-                              <h3 className="uncial">Role(s):</h3>
+                              <h3 className="uncial">Job(s):</h3>
                               <ul className="artist-slot">
-                                {(artist.job || artist.role)?.map((role, i) => (
+                                {(artist.job)?.map((role, i) => (
                                   <li key={i}>• {role}</li>
                                 ))}
                               </ul>
@@ -395,69 +395,12 @@ const CharacterTraits = ({ character }) => {
 
                   {/* Fallback if neither exists */}
                   {!character?.realWorldDesigners && (
-                    <ul>
+                    <ul className="creator-art-slot">
                       <li className="no-va-li">No Creators or Artists Found</li>
                     </ul>
                   )}
                 </div>
             </div>
-            
-            {/*<div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
-                  
-                  {!character?.realWorldDesigners?.artists && (
-                    <div className="creator-art-area desc-text">
-                      <h3 className="uncial">Creator(s):</h3>
-                      <ul className="creator-art-slot">
-                        {character?.realWorldDesigners?.creators?.map((creator, index) => (
-                          <li key={index}>{creator}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {!character?.realWorldDesigners?.creators && (
-                    <div className="creator-art-area desc-text">
-                      <h3 className="uncial">Artist(s):</h3>
-                      <ul className="creator-art-slot">
-                        {character?.realWorldDesigners?.artists?.map((artist, index) => (
-                          <li key={index}>{artist}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {(character?.realWorldDesigners?.creators && character?.realWorldDesigners?.artists) && (
-                    <div className="designer-area desc-text">
-                      <h3 className="uncial">Creator(s):</h3>
-                      <ul className="creator-slot">
-                        {character?.realWorldDesigners?.creators?.map((creator, index) => (
-                          <li key={index}>{creator}</li>
-                        ))}
-                      </ul>
-
-                      <h3 className="uncial">Artist(s):</h3>
-                      <ul className="artist-slot">
-                        {character?.realWorldDesigners?.artists?.map((artist, index) => (
-                          <li key={index}>{artist}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-            </div>*/}
-
-            {/*<div className="creator-toggle">
-                    <h3 className="uncial">Creator(s): <span className="creators"></span></h3>
-                    <ul className="creator-slot reg-font">{character?.realWorldDesigners?.creators?.name}</ul>
-                  </div>
-
-                  <div className="artist-toggle">
-                    <h3 className="uncial">Artists(s): <span className="artists"></span></h3>
-                    <ul className="artist-slot reg-font">{character?.realWorldDesigners?.artists?.name}</ul>
-                  </div>
-                  <span className="desc-text"></span>*/}
 
             <div className="card-content">
                 <div className="text">

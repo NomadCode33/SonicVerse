@@ -711,7 +711,7 @@ export const characters = {
                 },
                 {
                     "name": "Yuji Uekawa (redesign)",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
@@ -3511,7 +3511,7 @@ export const characters = {
                 },
                 {
                     "name": "Yuji Uekawa",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
@@ -6356,7 +6356,7 @@ export const characters = {
                 },
                 {
                     "name": "Yuji Uekawa",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
@@ -7440,7 +7440,7 @@ export const characters = {
                 },
                 {
                     "name": "Yuji Uekawa",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
@@ -8845,7 +8845,7 @@ export const characters = {
                 },
                 {
                     "name": "Yuji Uekawa",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
@@ -8854,7 +8854,7 @@ export const characters = {
             "artists": [
                 {
                     "name": "Yuji Uekawa",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
@@ -9928,7 +9928,7 @@ export const characters = {
                 },
                 {
                     "name": "Yuji Uekawa",
-                    "role": ["Character Designer", "Art Director"], 
+                    "job": ["Character Designer", "Art Director"], 
                     "source": {
                         wiki: "https://sonic.fandom.com/wiki/Yuji_Uekawa" 
                     }
