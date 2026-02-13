@@ -703,7 +703,8 @@ header {
 .char-theme-slot,
 .va-game-slot,
 .other-va-game-slot,
-.shows-movies-slot {
+.shows-movies-slot,
+.no-va-li {
   margin-left: 1rem;
   list-style-type: disc;
   list-style-position: inside;

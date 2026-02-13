@@ -1688,7 +1688,7 @@ export const characters = {
                 "movies": [
                     {
                         "name": "Olivier Korol",
-                        "nationality": "unknown",  
+                        "nationality": "French",  
                         "source": {
                             wiki: "https://sonic.fandom.com/wiki/Olivier_Korol", 
                             btva: "https://www.behindthevoiceactors.com/Olivier-Korol/"
