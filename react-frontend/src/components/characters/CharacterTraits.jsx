@@ -252,7 +252,203 @@ const CharacterTraits = ({ character }) => {
                 <div className="text">
                   <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
                   
-                  <div className="creator-toggle">
+                  {/* Only creators */}
+                  {character?.realWorldDesigners?.creators?.length && !character?.realWorldDesigners?.artists?.length && (
+                    <div className="creator-art-area desc-text">
+                      <h3 className="uncial">Creator(s):</h3>
+                      <ul className="creator-art-slot">
+                        {character.realWorldDesigners.creators.map((creator, index) => (
+                          <li key={index} className="creator-art-entry">
+                            <h3 className="uncial">
+                              {creator.name}{" "}
+                              {Object.values(creator.source).map((url, i) => (
+                                <sup key={i}>
+                                  <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="link-vas"
+                                  >
+                                    [{i + 1}]
+                                  </a>
+                                </sup>
+                              ))}
+                            </h3>
+                            <div className="creator-art-roles">
+                              <h3 className="uncial">Role(s):</h3>
+                              <ul className="creator-art-role-slot">
+                                {(creator.job || creator.role)?.map((role, i) => (
+                                  <li key={i}>• {role}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Only artists */}
+                  {character?.realWorldDesigners?.artists?.length && !character?.realWorldDesigners?.creators?.length && (
+                    <div className="creator-art-area desc-text">
+                      <h3 className="uncial">Artist(s):</h3>
+                      <ul className="creator-art-slot">
+                        {character.realWorldDesigners.artists.map((artist, index) => (
+                          <li key={index} className="creator-art-entry">
+                            <h3 className="uncial">
+                              {artist.name}{" "}
+                              {Object.values(artist.source).map((url, i) => (
+                                <sup key={i}>
+                                  <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="link-vas"
+                                  >
+                                    [{i + 1}]
+                                  </a>
+                                </sup>
+                              ))}
+                            </h3>
+                            <div className="creator-art-roles">
+                              <h3 className="uncial">Role(s):</h3>
+                              <ul className="creator-art-role-slot">
+                                {(artist.job || artist.role)?.map((role, i) => (
+                                  <li key={i}>• {role}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {/* Both creators and artists */}
+                  {character?.realWorldDesigners?.creators?.length && character?.realWorldDesigners?.artists?.length && (
+                    <div className="designer-area desc-text">
+                      {/* Creators */}
+                      <h3 className="uncial">Creator(s):</h3>
+                      <ul className="creator-slot">
+                        {character.realWorldDesigners.creators.map((creator, index) => (
+                          <li key={index} className="creator-entry">
+                            <h3 className="uncial">
+                              {creator.name}{" "}
+                              {Object.values(creator.source).map((url, i) => (
+                                <sup key={i}>
+                                  <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="link-vas"
+                                  >
+                                    [{i + 1}]
+                                  </a>
+                                </sup>
+                              ))}
+                            </h3>
+                            <div className="creator-roles">
+                              <h3 className="uncial">Role(s):</h3>
+                              <ul className="creator-slot">
+                                {(creator.job || creator.role)?.map((role, i) => (
+                                  <li key={i}>• {role}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Artists */}
+                      <h3 className="uncial">Artist(s):</h3>
+                      <ul className="artist-slot">
+                        {character.realWorldDesigners.artists.map((artist, index) => (
+                          <li key={index} className="artist-entry">
+                            <h3 className="uncial">
+                              {artist.name}{" "}
+                              {Object.values(artist.source).map((url, i) => (
+                                <sup key={i}>
+                                  <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="link-vas"
+                                  >
+                                    [{i + 1}]
+                                  </a>
+                                </sup>
+                              ))}
+                            </h3>
+                            <div className="artist-roles">
+                              <h3 className="uncial">Role(s):</h3>
+                              <ul className="artist-slot">
+                                {(artist.job || artist.role)?.map((role, i) => (
+                                  <li key={i}>• {role}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Fallback if neither exists */}
+                  {!character?.realWorldDesigners && (
+                    <ul>
+                      <li className="no-va-li">No Creators or Artists Found</li>
+                    </ul>
+                  )}
+                </div>
+            </div>
+            
+            {/*<div className="card-content">
+                <div className="text">
+                  <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
+                  
+                  {!character?.realWorldDesigners?.artists && (
+                    <div className="creator-art-area desc-text">
+                      <h3 className="uncial">Creator(s):</h3>
+                      <ul className="creator-art-slot">
+                        {character?.realWorldDesigners?.creators?.map((creator, index) => (
+                          <li key={index}>{creator}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {!character?.realWorldDesigners?.creators && (
+                    <div className="creator-art-area desc-text">
+                      <h3 className="uncial">Artist(s):</h3>
+                      <ul className="creator-art-slot">
+                        {character?.realWorldDesigners?.artists?.map((artist, index) => (
+                          <li key={index}>{artist}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  
+                  {(character?.realWorldDesigners?.creators && character?.realWorldDesigners?.artists) && (
+                    <div className="designer-area desc-text">
+                      <h3 className="uncial">Creator(s):</h3>
+                      <ul className="creator-slot">
+                        {character?.realWorldDesigners?.creators?.map((creator, index) => (
+                          <li key={index}>{creator}</li>
+                        ))}
+                      </ul>
+
+                      <h3 className="uncial">Artist(s):</h3>
+                      <ul className="artist-slot">
+                        {character?.realWorldDesigners?.artists?.map((artist, index) => (
+                          <li key={index}>{artist}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+            </div>*/}
+
+            {/*<div className="creator-toggle">
                     <h3 className="uncial">Creator(s): <span className="creators"></span></h3>
                     <ul className="creator-slot reg-font">{character?.realWorldDesigners?.creators?.name}</ul>
                   </div>
@@ -261,9 +457,7 @@ const CharacterTraits = ({ character }) => {
                     <h3 className="uncial">Artists(s): <span className="artists"></span></h3>
                     <ul className="artist-slot reg-font">{character?.realWorldDesigners?.artists?.name}</ul>
                   </div>
-                  <span className="desc-text"></span>
-                </div>
-            </div>
+                  <span className="desc-text"></span>*/}
 
             <div className="card-content">
                 <div className="text">
@@ -355,7 +549,7 @@ const CharacterTraits = ({ character }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3>Show(s):</h3>
+                            <h3 className="uncial">Show(s):</h3>
                             <ul className="shows-movies-slot reg-font">
                               {va.shows.map((show, i) => (
                                 <li key={i}>
@@ -399,7 +593,7 @@ const CharacterTraits = ({ character }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3>Movie(s):</h3>
+                            <h3 className="uncial">Movie(s):</h3>
                             <ul className="shows-movies-slot reg-font">
                               {va.films.map((film, i) => (
                                 <li key={i}>
@@ -475,7 +669,7 @@ const CharacterTraits = ({ character }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3>Show(s):</h3>
+                            <h3 className="uncial">Show(s):</h3>
                             <ul className="shows-movies-slot reg-font">
                               {va.shows.map((show, i) => (
                                 <li key={i}>
@@ -519,7 +713,7 @@ const CharacterTraits = ({ character }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3>Movie(s):</h3>
+                            <h3 className="uncial">Movie(s):</h3>
                             <ul className="shows-movies-slot reg-font">
                               {va.films.map((film, i) => (
                                 <li key={i}>
@@ -599,7 +793,7 @@ const CharacterTraits = ({ character }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3>Show(s):</h3>
+                            <h3 className="uncial">Show(s):</h3>
                             <ul className="shows-movies-slot reg-font">
                               {va.shows.map((show, i) => (
                                 <li key={i}>
@@ -647,7 +841,7 @@ const CharacterTraits = ({ character }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3>Movie(s):</h3>
+                            <h3 className="uncial">Movie(s):</h3>
                             <ul className="shows-movies-slot reg-font">
                               {va.films.map((film, i) => (
                                 <li key={i}>

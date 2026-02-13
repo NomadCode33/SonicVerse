@@ -710,6 +710,12 @@ header {
   list-style-position: inside;
 }
 
+.creator-art-role-slot,
+.creator-slot,
+.artist-slot {
+  margin-left: 1rem;
+}
+
 .likes-slot li,
 .dislikes-slot li,
 .weaknesses-slot li,
@@ -752,6 +758,20 @@ header {
 .attire-area h3 {
   margin-left: 1.6rem;
   font-size: 2.08rem;
+}
+
+.creator-art-entry {
+  margin-left: 0.7rem;
+  margin-bottom: 1.8rem;
+}
+
+/*.creator-art-roles {
+
+}*/
+
+.creator-entry,
+.artist-entry {
+  margin-bottom: 1.8rem;
 }
 
 .va-entry {
