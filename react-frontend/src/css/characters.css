@@ -620,6 +620,7 @@ header {
 .card-container {
   width: 100%;
   display: flex;
+  gap: 2rem; /*Remove if it doesn't work*/
   flex-direction: row;
   justify-content: space-between;
   flex: 0 0 auto;  /* ❗ lock height */ /* 👈 prevents collapsing */
@@ -630,12 +631,14 @@ header {
   /*padding-right: 2.5rem;*/
   border: 0.2rem solid red;
   border-radius: 1rem;
-  width: 31%;
+  /*width: 31%;*/ /*Replace with min-width and flex: 1 if they don't work*/
   height: 30rem;
   max-height: 30rem;
   overflow-y: auto; /* allows scrolling to happen inside element*/
   background: rgb(244, 187, 68);
   display: flex;
+  min-width: 0;
+  flex: 1;
   align-items: flex-start;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));

@@ -102,14 +102,24 @@ export const charIndex = {
             "url": "/api/characters/rouge-the-bat"
         },
         {
-            "id": "unknown",
-            "index": "unknown",
-            "name": "unknown",
-            "role": "unknown",
-            "affiliation": "unknown",
-            "abilityType": "unknown",
-            "firstAppearance": "unknown",
-            "url": "unknown"
+            "id": "",
+            "index": "tonic-the-zonic",
+            "name": "Tonic the Zonic",
+            "role": "Unknown",
+            "affiliation": "Unknown",
+            "abilityType": "Unknown",
+            "firstAppearance": "Unknown",
+            "url": "/api/characters/tonic-the-zonic"
+        },
+        {
+            "id": "Unknown",
+            "index": "Unknown",
+            "name": "Unknown",
+            "role": "Unknown",
+            "affiliation": "Unknown",
+            "abilityType": "Unknown",
+            "firstAppearance": "Unknown",
+            "url": "Unknown"
         }
     ]
 };

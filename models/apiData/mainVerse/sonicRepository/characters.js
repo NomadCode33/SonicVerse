@@ -10235,6 +10235,240 @@ export const characters = {
         "learnMore": "https://sonic.fandom.com/wiki/Rouge_the_Bat",
         "url": "/api/characters/rouge-the-bat"
     },
+    'tonic-the-zonic': {
+        "id": "Unknown",
+        "images": {
+            "modern": [
+                {"caption": "Sonic Adventure 2", "img": "https://res.cloudinary.com/dqft3srgg/image/upload/rouge_sa2_1_d05kro.webp"}
+            ]
+        },
+        "index": "Unknown",
+        "name": "Unknown",
+        "age": "Unknown",
+        "description": ["Unknown"],
+        "birthplace": "Unknown",
+        "species": "Unknown",
+        "relatives": [
+            {
+                "index": "unknown",
+                "name": "Unknown",
+                "relationship": "Unknown",
+                "url": "/api/characters/unknown"
+            }
+        ],
+        "nicknames": ["Unknown"],
+        "quote": {
+            "text": "Unknown",
+            "char": "Unknown",
+            "from": "Unknown"
+        },
+        "otherQuotes": ["Unknown"],
+        "characterThemes": [
+            {
+                "index": "unknown",
+                "song": "Unknown",
+                "url": "/api/songs/unknown",
+                "note": "Unknown"
+            }
+        ],
+        "canon": "Unknown",
+        "firstAppearance": {
+            "index": "unknown",
+            "name": "Unknown",
+            "year": "Unknown",
+            "fromIDW": "Unknown",
+            "url": "/api/games/unknown",
+            "alt": {
+                "index": "unknown",
+                "name": "Unknown",
+                "year": "Unknown",
+                "fromIDW": "Unknown",
+                "url": "/api/games/unknown",
+                "note": "Unknown"
+            }
+        },
+        "gameAppearances": ["Unknown"],
+        "otherMedia": ["Unknown"],
+        "gender": "Unknown",
+        "height": "Unknown",
+        "weight": "Unknown",
+        "hair": "Unknown",
+        "fur": "Unknown",
+        "skin": {
+            "current": "Unknown", 
+            "original": "Unknown"
+        },
+        "colorScheme": "Unknown",
+        "eyeColor": "Unknown",
+        "attire": {
+            "current": ["Unknown"],
+            "original": ["Unknown"]
+        },
+        "alignment": {
+            "role": "Unknown",
+            "morality": "Unknown"
+        },
+        "affiliation": ["Unknown"],
+        "favoriteFood": ["Unknown"],
+        "likes": ["Unknown"],
+        "dislikes": ["Unknown"],
+        "weaknesses": ["Unknown"],
+        "abilities": {
+            "skills": ["Unknown"],
+            "moveTechniques": [
+                {
+                    "index": "unknown",
+                    "name": "Unknown",
+                    "url": "/api/special-abilities/unknown"
+                }
+            ],
+            "abilityType": [
+                {
+                    "index": "unknown",
+                    "name": "Unknown",
+                    "url": "/api/special-abilities/unknown"
+                }
+            ]
+        },
+        "transformations": [
+            {
+                "index": "unknown",
+                "name": "Unknown",
+                "url": "/api/transformations/unknown"
+            }
+        ],
+        "realWorldDesigners": {
+            "creators": [
+                {
+                    "name": "Unknown",
+                    "job": ["Unknown"], 
+                    "source": {
+                        wiki: "Unknown"
+                    }
+                }
+            ],
+            "artists": [
+                {
+                    "name": "Unknown",
+                    "job": ["Unknown"], 
+                    "source": {
+                        wiki: "Unknown" 
+                    }
+                }
+            ]
+        },
+        "portrayedBy": {
+            "japanese": {
+                "games": [
+                    {
+                        "name": "Unknown", 
+                        "years": "Unknown", 
+                        "media": "Unknown", 
+                        "source": {
+                            wiki: "Unknown", 
+                            btva: "Unknown",
+                            dubdb: "Unknown"
+                        }
+                    }
+                ],
+                "tvShows": [
+                    {
+                        "name": "Unknown", 
+                        "source": {
+                            wiki: "Unknown", 
+                            btva: "Unknown",
+                            dubdb: "Unknown"
+                        },
+                        "shows": [
+                            {
+                                "index": "Unknown",
+                                "name": "Unknown",
+                                "years": "Unknown",
+                                "media": "Unknown",
+                                "url": "unknown"
+                            }
+                        ]
+                    }
+                ],
+                "movies": [
+                    {
+                        "name": "Unknown", 
+                        "source": {
+                            wiki: "Unknown", 
+                            btva: "Unknown",
+                            dubdb: "Unknown"
+                        },
+                        "films": [
+                            {
+                                "index": "Unknown",
+                                "name": "Unknown",
+                                "years": "Unknown",
+                                "media": "Unknown",
+                                "url": "unknown"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "otherLanguages": {
+                "games": [
+                    {
+                        "name": "Unknown", 
+                        "years": "Unknown", 
+                        "media": "Unknown",
+                        "nationality": "Unknown", 
+                        "source": {
+                            wiki: "Unknown", 
+                            btva: "Unknown",
+                            dubdb: "Unknown"
+                        }
+                    }
+                ],
+                "tvShows": [
+                    {
+                        "name": "Unknown",
+                        "nationality": "Unknown", 
+                        "source": {
+                            wiki: "Unknown", 
+                            btva: "Unknown",
+                            dubdb: "Unknown"
+                        },
+                        "shows": [
+                            {
+                                "index": "Unknown",
+                                "name": "Unknown",
+                                "years": "Unknown",
+                                "media": "Unknown",
+                                "url": "unknown"
+                            }
+                        ]
+                    }
+                ],
+                "movies": [
+                    {
+                        "name": "Unknown",
+                        "nationality": "Unknown",  
+                        "source": {
+                            wiki: "Unknown", 
+                            btva: "Unknown",
+                            dubdb: "Unknown"
+                        },
+                        "films": [
+                            {
+                                "index": "Unknown",
+                                "name": "Unknown",
+                                "years": "Unknown",
+                                "media": "Unknown",
+                                "url": "unknown"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "learnMore": "Unknown",
+        "url": "/api/characters/unknown"
+    },
     'unknown': {
         "id": "Unknown",
         "images": {
