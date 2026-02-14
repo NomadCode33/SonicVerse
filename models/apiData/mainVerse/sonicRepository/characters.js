@@ -10389,25 +10389,6 @@ export const characters = {
                             }
                         ]
                     }
-                ],
-                "movies": [
-                    {
-                        "name": "Unknown", 
-                        "source": {
-                            wiki: "Unknown", 
-                            btva: "Unknown",
-                            dubdb: "Unknown"
-                        },
-                        "films": [
-                            {
-                                "index": "Unknown",
-                                "name": "Unknown",
-                                "years": "Unknown",
-                                "media": "Unknown",
-                                "url": "unknown"
-                            }
-                        ]
-                    }
                 ]
             },
             "otherLanguages": {
@@ -10422,46 +10403,6 @@ export const characters = {
                             btva: "Unknown",
                             dubdb: "Unknown"
                         }
-                    }
-                ],
-                "tvShows": [
-                    {
-                        "name": "Unknown",
-                        "nationality": "Unknown", 
-                        "source": {
-                            wiki: "Unknown", 
-                            btva: "Unknown",
-                            dubdb: "Unknown"
-                        },
-                        "shows": [
-                            {
-                                "index": "Unknown",
-                                "name": "Unknown",
-                                "years": "Unknown",
-                                "media": "Unknown",
-                                "url": "unknown"
-                            }
-                        ]
-                    }
-                ],
-                "movies": [
-                    {
-                        "name": "Unknown",
-                        "nationality": "Unknown",  
-                        "source": {
-                            wiki: "Unknown", 
-                            btva: "Unknown",
-                            dubdb: "Unknown"
-                        },
-                        "films": [
-                            {
-                                "index": "Unknown",
-                                "name": "Unknown",
-                                "years": "Unknown",
-                                "media": "Unknown",
-                                "url": "unknown"
-                            }
-                        ]
                     }
                 ]
             }

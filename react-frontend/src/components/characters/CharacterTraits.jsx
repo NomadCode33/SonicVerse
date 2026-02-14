@@ -5,7 +5,7 @@ const CharacterTraits = ({ character }) => {
 
   return (
     <section className="char-traits">
-          <section className="description-box group-1">
+          <section className="description-box desc-toggle group-1">
             <div className="text">
               <h2 className="uncial">Description:</h2>
               <span className="desc-text reg-font">
@@ -17,7 +17,7 @@ const CharacterTraits = ({ character }) => {
             </div>
           </section>
 
-          <section className="description-box quote-box group-2">
+          <section className="description-box quote-box quote-toggle group-2">
             <div className="text">
               <h2 className="uncial">Quote:</h2>
               <div className="desc-text quote-info">
@@ -28,7 +28,7 @@ const CharacterTraits = ({ character }) => {
           </section>
 
           <section className="card-container group-3">
-            <div className="card-content preferences">
+            <div className="card-content preferences likes-toggle">
                 <div className="text">
                   <h2 className="uncial">Likes:</h2>
 
@@ -44,7 +44,7 @@ const CharacterTraits = ({ character }) => {
                 </div>
             </div>
 
-            <div className="card-content preferences">
+            <div className="card-content preferences dislikes-toggle">
                 <div className="text">
                   <h2 className="uncial">Dislikes:</h2>
 
@@ -78,7 +78,7 @@ const CharacterTraits = ({ character }) => {
           </section>
 
           <section className="card-container group-5">
-            <div className="card-content">
+            <div className="card-content attire-toggle">
                 <div className="text">
                   <h2 className="uncial">Attire:</h2>
 
@@ -248,7 +248,7 @@ const CharacterTraits = ({ character }) => {
           </section>
 
           <section className="card-container group-8">
-            <div className="card-content">
+            <div className="card-content designer-toggle">
                 <div className="text">
                   <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
                   
