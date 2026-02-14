@@ -28,6 +28,7 @@ html {
   font-size: 62.5%; 
 }
 
+/* This is the replacement for the body {} selector */
 .characters-page {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
@@ -445,7 +446,7 @@ header {
 ========================= */
 
 .carousel-img {
-  width: 100%;
+  /*width: 100%;*/
   height: auto;
   object-fit: contain;
   transition: opacity 0.2s ease-in-out;
@@ -467,6 +468,7 @@ header {
   text-align: center;
   color: #fff; /* adjust to theme */
   opacity: 0.85;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
 }
 
 /* =========================
@@ -490,10 +492,12 @@ header {
 
 .arrow.left {
   left: -3rem; /* adjust spacing */
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.5));
 }
 
 .arrow.right {
   right: -3rem;
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.5));
 }
 
 /* =========================
@@ -504,6 +508,7 @@ header {
   display: flex;
   gap: 2rem;
   margin-bottom: 1.5rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
 }
 
 .tab {
@@ -515,11 +520,13 @@ header {
 
 .tab:hover {
   opacity: 0.7;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
 }
 
 .tab.active {
   font-weight: bold;
   border-bottom: 2px solid #fff;
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.2));
 }
 
 
@@ -532,21 +539,21 @@ header {
   margin: 3rem auto;
   margin-top: 5rem;
   padding-right: 1.8rem;
-  /*border: 0.2rem solid red;*/
   border-radius: 1rem;
   width: 63%;
   height: 120.2rem; /*101.2rem*/
   min-height: 0;
-  /*max-height: 101.2rem;*/
   overflow: visible;   /* 🔑 allow shadows to escape */
   position: relative;
   overflow-y: auto; /* allows scrolling to happen inside element*/
-  /*background: rgb(244, 187, 68);*/
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: stretch;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  /*border: 0.2rem solid red;*/
+  /*max-height: 101.2rem;*/
+  /*background: rgb(244, 187, 68);*/
+  /*justify-content: center;*/
 }
 /*1012px*/
 
@@ -598,6 +605,10 @@ header {
 
 .char-quote {
   margin-bottom: 1rem;
+}
+
+.quote-quip {
+  font-style: italic;
 }
 
 .quote-from {

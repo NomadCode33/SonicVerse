@@ -1,7 +1,23 @@
 import "../../css/characters.css"
+import TransformationsSection from "./char-components/char-traits/TransformationsSection";
+import EnglishVASection from "./char-components/char-traits/EnglishVASection";
 
 const CharacterTraits = ({ character }) => {
   if (!character) return null;
+  
+  // Japanese VAs
+  const japanese = character?.portrayedBy?.japanese;
+
+  const japaneseGames = japanese?.games ?? [];
+  const japaneseTV = japanese?.tvShows ?? [];
+  const japaneseMovies = japanese?.movies ?? [];
+
+  const hasJapaneseGames = japaneseGames.length > 0;
+  const hasJapaneseTV = japaneseTV.length > 0;
+  const hasJapaneseMovies = japaneseMovies.length > 0;
+
+  const hasAnyJapaneseVA = hasJapaneseGames || hasJapaneseTV || hasJapaneseMovies;
+
 
   return (
     <section className="char-traits">
@@ -21,7 +37,7 @@ const CharacterTraits = ({ character }) => {
             <div className="text">
               <h2 className="uncial">Quote:</h2>
               <div className="desc-text quote-info">
-                <p className="char-quote desc-text reg-font">&quot;{character?.quote?.text || character?.quoteS}&quot;</p>
+                <p className="char-quote desc-text reg-font"><span className="quote-quip">&quot;{character?.quote?.text}&quot;</span></p>
                 <p className="quote-source desc-text reg-font">- {character?.quote?.char}, <span className="quote-from">{character?.quote?.from}</span></p>
               </div>
             </div>
@@ -126,23 +142,9 @@ const CharacterTraits = ({ character }) => {
                   {/*<span className="desc-text reg-font">{character?.nicknames}</span>*/}
                 </div>
             </div>
-
-            <div className="card-content transform-toggle">
-                <div className="text">
-                  <h2 className="uncial">Transformations:</h2>
-
-                  <ul className="transformations-slot desc-text">
-                    {character?.transformations?.length > 0 ? (
-                      character.transformations.map((transformation) => (
-                        <li key={transformation.index}>{transformation.name}</li>
-                      ))
-                    ) : (
-                      <li>No Transformations</li>
-                    )}
-                  </ul>
-                  {/*<ul className="transformations-slot desc-text">{character?.transformations?.name}</ul>*/}
-                </div>
-            </div>
+            
+            {/* Render transformations card only if character has transformations */}
+            <TransformationsSection transformations={character?.transformations} />
           </section>
 
           <section className="card-container skills-toggle group-6">
@@ -440,126 +442,9 @@ const CharacterTraits = ({ character }) => {
                 </div>
             </div>
           </section>
-
-          <section className="card-container english-va-toggle group-9">
-            <div className="card-content egame-toggle">
-                <div className="text">
-                  <h2 className="uncial">English VAs (Games):</h2>
-
-                  <ul className="va-game-slot desc-text">
-                    {character?.portrayedBy?.english?.games?.length > 0 ? (
-                      character.portrayedBy.english.games.map((va, index) => (
-                        <li key={index}>{va.name} ({va.years})
-
-                          {Object.values(va.source).map((url, i) => (
-                            <sup key={i}>
-                              <a 
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="link-vas"
-                              >
-                                [{i + 1}]
-                              </a>
-                            </sup>
-                          ))}
-                        </li>
-                      ))
-                    ) : (  
-                      <li>No English Game VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content etv-toggle">
-                <div className="text">
-                  <h2 className="uncial">English VAs (TV Shows):</h2>
-
-                  <ul className="eng-va-tv-slot desc-text">
-                    {character?.portrayedBy?.english?.tvShows?.length > 0 ? (
-                      character.portrayedBy.english?.tvShows.map((va, index) => (
-                        <div key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a 
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Show(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.shows.map((show, i) => (
-                                <li key={i}>
-                                  {show.name} ({show.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      ))
-                    ) : (
-                      <li className="no-va-li">No English TV Show VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content emovie-toggle">
-                <div className="text">
-                  <h2 className="uncial">English VAs (Movies):</h2>
-                  
-                  <ul className="eng-va-movie-slot desc-text">
-                    {character?.portrayedBy?.english?.movies?.length > 0 ? (
-                      character.portrayedBy.english?.movies.map((va, index) => (
-                        <div key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a 
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Movie(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.films.map((film, i) => (
-                                <li key={i}>
-                                  {film.name} ({film.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      ))
-                    ) : (
-                      <li className="no-va-li">No English Movie VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-          </section>
+          
+          {/* Render the English voice actor section if English data exists */}
+          <EnglishVASection english={character?.portrayedBy?.english} />
 
           <section className="card-container japanese-va-toggle group-10">
             <div className="card-content jgame-toggle">
@@ -689,7 +574,7 @@ const CharacterTraits = ({ character }) => {
                   <ul className="other-va-game-slot desc-text">
                     {character?.portrayedBy?.otherLanguages?.games?.length > 0 ? (
                       character.portrayedBy.otherLanguages.games.map((va, index) => (
-                        <li key={index}>{va.name} ({va.years})
+                        <li key={index}>{va.name} ({va.nationality}, {va.years})
 
                           {Object.values(va.source).map((url, i) => (
                             <sup key={i}>

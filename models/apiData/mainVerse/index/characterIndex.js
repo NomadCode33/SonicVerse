@@ -100,7 +100,7 @@ export const charIndex = {
             "abilityType": "Flight",
             "firstAppearance": "Sonic Adventure 2",
             "url": "/api/characters/rouge-the-bat"
-        },
+        }, // 10th Character Placeholder
         {
             "id": "",
             "index": "tonic-the-zonic",
@@ -110,7 +110,12 @@ export const charIndex = {
             "abilityType": "Unknown",
             "firstAppearance": "Unknown",
             "url": "/api/characters/tonic-the-zonic"
-        },
+        }
+    ]
+};
+
+/*
+// Unknown Template
         {
             "id": "Unknown",
             "index": "Unknown",
@@ -121,5 +126,4 @@ export const charIndex = {
             "firstAppearance": "Unknown",
             "url": "Unknown"
         }
-    ]
-};
+*/
