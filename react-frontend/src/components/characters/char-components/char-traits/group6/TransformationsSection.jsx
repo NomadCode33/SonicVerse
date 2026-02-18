@@ -1,5 +1,7 @@
-import "../../../../css/characters.css";
+import "../../../../../css/characters.css";
 
+// Prepares and checks if the character has any transformations.
+// It either removes the card content if there are no transformations to display
 const TransformationsSection = ({ transformations }) => {
   // Don't render anything if there are no transformations
   // !transformation: if no transformations property exists at all, return undefined or null

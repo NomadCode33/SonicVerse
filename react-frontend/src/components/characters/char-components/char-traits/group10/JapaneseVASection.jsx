@@ -1,30 +1,42 @@
-import "../../../../css/characters.css";
+import "../../../../../css/characters.css";
 
-const EnglishVASection = ({ english }) => {
-  // English VAs
-  if (!english) return null;
+// Japanese VAs
+// Prepares and checks if the character has any Japanese voice acting roles.
+// It either removes the card container if no Japanese VAs exist in character 
+// or card content if games, TV, or movies don't exist
+const JapaneseVASection = ({ japanese }) => {
+  // Exits early if no Japanese VA data exists.
+  if (!japanese) return null;
+  
+  // Gets the character’s Japanese VA roles in games, defaulting to an empty array.
+  const japaneseGames = japanese?.games ?? [];
 
-  const englishGames = english?.games ?? [];
-  const englishTV = english?.tvShows ?? [];
-  const englishMovies = english?.movies ?? [];
+  // Gets the character’s Japanese VA roles in TV shows, defaulting to an empty array.
+  const japaneseTV = japanese?.tvShows ?? [];
 
-  const hasEnglishGames = englishGames.length > 0;
-  const hasEnglishTV = englishTV.length > 0;
-  const hasEnglishMovies = englishMovies.length > 0;
+  // Gets the character’s Japanese VA roles in movies, defaulting to an empty array.
+  const japaneseMovies = japanese?.movies ?? [];
 
-  const hasAnyEnglishVA = hasEnglishGames || hasEnglishTV || hasEnglishMovies;
+  // Checks if there are any Japanese VA roles in games, TV, or movies.
+  const hasJapaneseGames = japaneseGames.length > 0;
+  const hasJapaneseTV = japaneseTV.length > 0;
+  const hasJapaneseMovies = japaneseMovies.length > 0;
 
-  if (!hasAnyEnglishVA) return null;
+  // Determines if the character has any Japanese VA roles at all.
+  const hasAnyJapaneseVA = hasJapaneseGames || hasJapaneseTV || hasJapaneseMovies;
+
+  // Exits early if the character has no Japanese VA roles.
+  if (!hasAnyJapaneseVA) return null;
 
   return (
-    <section className="card-container english-va-toggle group-9">
-              {hasEnglishGames && (
-                <div className="card-content egame-toggle">
+    <section className="card-container japanese-va-toggle group-10">
+              {hasJapaneseGames && (
+                <div className="card-content jgame-toggle">
                   <div className="text">
-                    <h2 className="uncial">English VAs (Games):</h2>
+                    <h2 className="uncial">Japanese VAs (Games):</h2>
 
                     <ul className="va-game-slot desc-text">
-                      {englishGames.map((va, index) => (
+                      {japaneseGames.map((va, index) => (
                         <li key={index}>
                           {va.name} ({va.years})
 
@@ -47,13 +59,13 @@ const EnglishVASection = ({ english }) => {
                 </div>
               )}
 
-              {hasEnglishTV && (
-                <div className="card-content etv-toggle">
+              {hasJapaneseTV && (
+                <div className="card-content jtv-toggle">
                   <div className="text">
-                    <h2 className="uncial">English VAs (TV Shows):</h2>
+                    <h2 className="uncial">Japanese VAs (TV Shows):</h2>
 
-                    <ul className="eng-va-tv-slot desc-text">
-                      {englishTV.map((va, index) => (
+                    <ul className="jap-va-tv-slot desc-text">
+                      {japaneseTV.map((va, index) => (
                         <li key={index} className="va-entry">
                           <h3 className="uncial">
                             {va.name}
@@ -88,13 +100,13 @@ const EnglishVASection = ({ english }) => {
                 </div>
               )}
 
-              {hasEnglishMovies && (
-                <div className="card-content emovie-toggle">
+              {hasJapaneseMovies && (
+                <div className="card-content jmovie-toggle">
                   <div className="text">
-                    <h2 className="uncial">English VAs (Movies):</h2>
+                    <h2 className="uncial">Japanese VAs (Movies):</h2>
 
-                    <ul className="eng-va-movie-slot desc-text">
-                      {englishMovies.map((va, index) => (
+                    <ul className="jap-va-movie-slot desc-text">
+                      {japaneseMovies.map((va, index) => (
                         <li key={index}>
                           <h3 className="uncial">
                             {va.name}
@@ -132,136 +144,23 @@ const EnglishVASection = ({ english }) => {
   )
 }
 
-export default EnglishVASection
+export default JapaneseVASection
 
 /*
 // Old Version
-{hasAnyEnglishVA && (
-            <section className="card-container english-va-toggle group-9">
-              {hasEnglishGames && (
-                <div className="card-content egame-toggle">
-                  <div className="text">
-                    <h2 className="uncial">English VAs (Games):</h2>
 
-                    <ul className="va-game-slot desc-text">
-                      {englishGames.map((va, index) => (
-                        <li key={index}>
-                          {va.name} ({va.years})
-
-                          {Object.values(va.source).map((url, i) => (
-                            <sup key={i}>
-                              <a
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="link-vas"
-                              >
-                                [{i + 1}]
-                              </a>
-                            </sup>
-                          ))}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {hasEnglishTV && (
-                <div className="card-content etv-toggle">
-                  <div className="text">
-                    <h2 className="uncial">English VAs (TV Shows):</h2>
-
-                    <ul className="eng-va-tv-slot desc-text">
-                      {englishTV.map((va, index) => (
-                        <li key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Show(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.shows.map((show, i) => (
-                                <li key={i}>
-                                  {show.name} ({show.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {hasEnglishMovies && (
-                <div className="card-content emovie-toggle">
-                  <div className="text">
-                    <h2 className="uncial">English VAs (Movies):</h2>
-
-                    <ul className="eng-va-movie-slot desc-text">
-                      {englishMovies.map((va, index) => (
-                        <li key={index}>
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Movie(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.films.map((film, i) => (
-                                <li key={i}>
-                                  {film.name} ({film.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </section>
-          )}
 */
 
 /*
 // Older Version
-<section className="card-container english-va-toggle group-9">
-            <div className="card-content egame-toggle">
+<section className="card-container japanese-va-toggle group-10">
+            <div className="card-content jgame-toggle">
                 <div className="text">
-                  <h2 className="uncial">English VAs (Games):</h2>
+                  <h2 className="uncial">Japanese VAs (Games):</h2>
 
                   <ul className="va-game-slot desc-text">
-                    {character?.portrayedBy?.english?.games?.length > 0 ? (
-                      character.portrayedBy.english.games.map((va, index) => (
+                    {character?.portrayedBy?.japanese?.games?.length > 0 ? (
+                      character.portrayedBy.japanese.games.map((va, index) => (
                         <li key={index}>{va.name} ({va.years})
 
                           {Object.values(va.source).map((url, i) => (
@@ -279,19 +178,19 @@ export default EnglishVASection
                         </li>
                       ))
                     ) : (  
-                      <li>No English Game VAs</li>
+                      <li className="no-va-li">No Japanese Game VAs</li>
                     )}
                   </ul>
                 </div>
             </div>
 
-            <div className="card-content etv-toggle">
+            <div className="card-content jtv-toggle">
                 <div className="text">
-                  <h2 className="uncial">English VAs (TV Shows):</h2>
+                  <h2 className="uncial">Japanese VAs (TV Shows):</h2>
 
-                  <ul className="eng-va-tv-slot desc-text">
-                    {character?.portrayedBy?.english?.tvShows?.length > 0 ? (
-                      character.portrayedBy.english?.tvShows.map((va, index) => (
+                  <ul className="jap-va-tv-slot desc-text">
+                    {character?.portrayedBy?.japanese?.tvShows?.length > 0 ? (
+                      character.portrayedBy.japanese?.tvShows.map((va, index) => (
                         <div key={index} className="va-entry">
                           <h3 className="uncial">
                             {va.name}
@@ -323,19 +222,19 @@ export default EnglishVASection
                         </div>
                       ))
                     ) : (
-                      <li className="no-va-li">No English TV Show VAs</li>
+                      <li className="no-va-li">No Japanese TV Show VAs</li>
                     )}
                   </ul>
                 </div>
             </div>
 
-            <div className="card-content emovie-toggle">
+            <div className="card-content jmovie-toggle">
                 <div className="text">
-                  <h2 className="uncial">English VAs (Movies):</h2>
-                  
-                  <ul className="eng-va-movie-slot desc-text">
-                    {character?.portrayedBy?.english?.movies?.length > 0 ? (
-                      character.portrayedBy.english?.movies.map((va, index) => (
+                  <h2 className="uncial">Japanese VAs (Movies):</h2>
+
+                  <ul className="jap-va-movie-slot desc-text">
+                    {character?.portrayedBy?.japanese?.movies?.length > 0 ? (
+                      character.portrayedBy.japanese?.movies.map((va, index) => (
                         <div key={index} className="va-entry">
                           <h3 className="uncial">
                             {va.name}
@@ -367,7 +266,7 @@ export default EnglishVASection
                         </div>
                       ))
                     ) : (
-                      <li className="no-va-li">No English Movie VAs</li>
+                      <li className="no-va-li">No Japanese Movie VAs</li>
                     )}
                   </ul>
                 </div>

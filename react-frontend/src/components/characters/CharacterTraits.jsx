@@ -1,27 +1,43 @@
 import "../../css/characters.css"
-import TransformationsSection from "./char-components/char-traits/TransformationsSection";
-import EnglishVASection from "./char-components/char-traits/EnglishVASection";
+import TransformationsSection from "./char-components/char-traits/group6/TransformationsSection";
+import CreatorAppearance from "./char-components/char-traits/group8/CreatorAppearance";
+import EnglishVASection from "./char-components/char-traits/group9/EnglishVASection";
+import JapaneseVASection from "./char-components/char-traits/group10/JapaneseVASection";
+import OtherLangVASection from "./char-components/char-traits/group11/OtherLangVASection";
 
 const CharacterTraits = ({ character }) => {
   if (!character) return null;
-  
-  // Japanese VAs
-  const japanese = character?.portrayedBy?.japanese;
+  /*
+  // Creators, gameappearance, and other media 
+  const creators = character?.realWorldDesigners?.creators ?? [];
+  const artists = character?.realWorldDesigners?.artists ?? [];
 
-  const japaneseGames = japanese?.games ?? [];
-  const japaneseTV = japanese?.tvShows ?? [];
-  const japaneseMovies = japanese?.movies ?? [];
+  const hasCreators = creators.length > 0;
+  const hasArtists = artists.length > 0;
+  const hasRealWorldDesigners = hasCreators || hasArtists;
 
-  const hasJapaneseGames = japaneseGames.length > 0;
-  const hasJapaneseTV = japaneseTV.length > 0;
-  const hasJapaneseMovies = japaneseMovies.length > 0;
+  const gameAppearances = character?.gameAppearances ?? [];
+  const hasGameAppearances = gameAppearances.length > 0;
 
-  const hasAnyJapaneseVA = hasJapaneseGames || hasJapaneseTV || hasJapaneseMovies;
+  const otherMedia = character?.otherMedia ?? [];
+  const hasOtherMedia = otherMedia.length > 0;
 
+  // Only render the whole container if at least one section exists
+  const shouldRenderContainer = hasRealWorldDesigners || hasGameAppearances || hasOtherMedia;*/
 
   return (
     <section className="char-traits">
-          <section className="description-box desc-toggle group-1">
+          <section className="description-box quote-box quote-toggle group-1">
+            <div className="text">
+              <h2 className="uncial">Quote:</h2>
+              <div className="desc-text quote-info">
+                <p className="char-quote desc-text reg-font"><span className="quote-quip">&quot;{character?.quote?.text}&quot;</span></p>
+                <p className="quote-source desc-text reg-font">- {character?.quote?.char}, <span className="quote-from">{character?.quote?.from}</span></p>
+              </div>
+            </div>
+          </section>
+          
+          <section className="description-box desc-toggle group-2">
             <div className="text">
               <h2 className="uncial">Description:</h2>
               <span className="desc-text reg-font">
@@ -30,16 +46,6 @@ const CharacterTraits = ({ character }) => {
                 ))}
               </span>
               {/*<span className="desc-text reg-font">{character?.description}</span>*/}
-            </div>
-          </section>
-
-          <section className="description-box quote-box quote-toggle group-2">
-            <div className="text">
-              <h2 className="uncial">Quote:</h2>
-              <div className="desc-text quote-info">
-                <p className="char-quote desc-text reg-font"><span className="quote-quip">&quot;{character?.quote?.text}&quot;</span></p>
-                <p className="quote-source desc-text reg-font">- {character?.quote?.char}, <span className="quote-from">{character?.quote?.from}</span></p>
-              </div>
             </div>
           </section>
 
@@ -94,6 +100,39 @@ const CharacterTraits = ({ character }) => {
           </section>
 
           <section className="card-container group-5">
+            <div className="card-content char-theme-toggle">
+                <div className="text">
+                  <h2 className="uncial">Character Theme(s):</h2>
+
+                  <ul className="char-theme-slot desc-text">
+                    {character?.characterThemes ? (
+                      character.characterThemes.map((theme) => (
+                        <li key={theme.index}>{theme.song}</li>
+                      ))
+                    ) : (
+                      <li>No Known Character Themes</li>
+                    )}
+                  </ul>
+                </div>
+            </div>
+
+            <div className="card-content nicknames-toggle">
+                <div className="text">
+                  <h2 className="uncial">Nicknames:</h2>
+
+                  <ul className="nicknames-slot desc-text">
+                    {character?.nicknames ? (
+                      character.nicknames.map((nickname, index) => (
+                        <li key={index}>{nickname}</li>
+                      ))
+                    ) : (
+                      <li>No Nicknames</li>
+                    )}
+                  </ul>
+                  {/*<span className="desc-text reg-font">{character?.nicknames}</span>*/}
+                </div>
+            </div>
+
             <div className="card-content attire-toggle">
                 <div className="text">
                   <h2 className="uncial">Attire:</h2>
@@ -125,29 +164,47 @@ const CharacterTraits = ({ character }) => {
                   )}
                 </div>
             </div>
+          </section>
 
-            <div className="card-content nicknames-toggle">
+          <section className="card-container group-6">
+            <div className="card-content affiliation-toggle">
                 <div className="text">
-                  <h2 className="uncial">Nicknames:</h2>
+                  <h2 className="uncial">Affiliation(s):</h2>
 
-                  <ul className="nicknames-slot desc-text">
-                    {character?.nicknames ? (
-                      character.nicknames.map((nickname, index) => (
-                        <li key={index}>{nickname}</li>
+                  <ul className="affiliation-slot desc-text">
+                    {character?.affiliation ? (
+                      character.affiliation.map((association, index) => (
+                        <li key={index}>{association}</li>
                       ))
                     ) : (
-                      <li>No Nicknames</li>
+                      <li>No Known Affiliation(s)</li>
                     )}
                   </ul>
-                  {/*<span className="desc-text reg-font">{character?.nicknames}</span>*/}
+                  {/*<ul className="desc-text">{character?.affiliation}</ul>*/}
                 </div>
             </div>
-            
+
+            <div className="card-content relatives-toggle">
+                <div className="text">
+                  <h2 className="uncial">Relatives:</h2>
+
+                  <ul className="relatives-slot desc-text">
+                    {character?.relatives ? (
+                      character.relatives.map((relative) => (
+                        <li key={relative.index}>{relative.name} ({relative.relationship})</li>
+                      ))
+                    ) : (
+                      <li>No Known Relatives</li>
+                    )}
+                  </ul>
+                </div>
+            </div>
+
             {/* Render transformations card only if character has transformations */}
             <TransformationsSection transformations={character?.transformations} />
           </section>
 
-          <section className="card-container skills-toggle group-6">
+          <section className="card-container skills-toggle group-7">
             <div className="card-content skills-toggle">
                 <div className="text">
                   <h2 className="uncial">Skills:</h2>
@@ -198,501 +255,17 @@ const CharacterTraits = ({ character }) => {
             </div>
           </section>
 
-          <section className="card-container group-7">
-            <div className="card-content affiliation-toggle">
-                <div className="text">
-                  <h2 className="uncial">Affiliation(s):</h2>
-
-                  <ul className="affiliation-slot desc-text">
-                    {character?.affiliation ? (
-                      character.affiliation.map((association, index) => (
-                        <li key={index}>{association}</li>
-                      ))
-                    ) : (
-                      <li>No Known Affiliation(s)</li>
-                    )}
-                  </ul>
-                  {/*<ul className="desc-text">{character?.affiliation}</ul>*/}
-                </div>
-            </div>
-
-            <div className="card-content char-theme-toggle">
-                <div className="text">
-                  <h2 className="uncial">Character Theme(s):</h2>
-
-                  <ul className="char-theme-slot desc-text">
-                    {character?.characterThemes ? (
-                      character.characterThemes.map((theme) => (
-                        <li key={theme.index}>{theme.song}</li>
-                      ))
-                    ) : (
-                      <li>No Known Character Themes</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content relatives-toggle">
-                <div className="text">
-                  <h2 className="uncial">Relatives:</h2>
-
-                  <ul className="relatives-slot desc-text">
-                    {character?.relatives ? (
-                      character.relatives.map((relative) => (
-                        <li key={relative.index}>{relative.name} ({relative.relationship})</li>
-                      ))
-                    ) : (
-                      <li>No Known Relatives</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-          </section>
-
-          <section className="card-container group-8">
-            <div className="card-content designer-toggle">
-                <div className="text">
-                  <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
-                  
-                  {/* Only creators */}
-                  {character?.realWorldDesigners?.creators?.length && !character?.realWorldDesigners?.artists?.length && (
-                    <div className="creator-art-area desc-text">
-                      <h3 className="uncial">Creator(s):</h3>
-
-                      <ul className="creator-art-slot">
-                        {character.realWorldDesigners.creators.map((creator, index) => (
-                          <li key={index} className="creator-art-entry">
-                            <h3 className="uncial">
-                              {creator.name}{" "}
-                              {Object.values(creator.source).map((url, i) => (
-                                <sup key={i}>
-                                  <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="link-vas"
-                                  >
-                                    [{i + 1}]
-                                  </a>
-                                </sup>
-                              ))}
-                            </h3>
-                            <div className="creator-art-roles">
-                              <h3 className="uncial">Job(s):</h3>
-                              <ul className="creator-art-role-slot">
-                                {(creator.job)?.map((role, i) => (
-                                  <li key={i}>• {role}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Only artists */}
-                  {character?.realWorldDesigners?.artists?.length && !character?.realWorldDesigners?.creators?.length && (
-                    <div className="creator-art-area desc-text">
-                      <h3 className="uncial">Artist(s):</h3>
-
-                      <ul className="creator-art-slot">
-                        {character.realWorldDesigners.artists.map((artist, index) => (
-                          <li key={index} className="creator-art-entry">
-                            <h3 className="uncial">
-                              {artist.name}{" "}
-                              {Object.values(artist.source).map((url, i) => (
-                                <sup key={i}>
-                                  <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="link-vas"
-                                  >
-                                    [{i + 1}]
-                                  </a>
-                                </sup>
-                              ))}
-                            </h3>
-                            <div className="creator-art-roles">
-                              <h3 className="uncial">Job(s):</h3>
-                              <ul className="creator-art-role-slot">
-                                {(artist.job)?.map((role, i) => (
-                                  <li key={i}>• {role}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {/* Both creators and artists */}
-                  {character?.realWorldDesigners?.creators?.length && character?.realWorldDesigners?.artists?.length && (
-                    <div className="designer-area desc-text">
-
-                      {/* Creators */}
-                      <h3 className="uncial">Creator(s):</h3>
-
-                      <ul className="creator-slot">
-                        {character.realWorldDesigners.creators.map((creator, index) => (
-                          <li key={index} className="creator-entry">
-                            <h3 className="uncial">
-                              {creator.name}{" "}
-                              {Object.values(creator.source).map((url, i) => (
-                                <sup key={i}>
-                                  <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="link-vas"
-                                  >
-                                    [{i + 1}]
-                                  </a>
-                                </sup>
-                              ))}
-                            </h3>
-                            <div className="creator-roles">
-                              <h3 className="uncial">Job(s):</h3>
-                              <ul className="creator-slot">
-                                {(creator.job)?.map((role, i) => (
-                                  <li key={i}>• {role}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Artists */}
-                      <h3 className="uncial">Artist(s):</h3>
-                      
-                      <ul className="artist-slot">
-                        {character.realWorldDesigners.artists.map((artist, index) => (
-                          <li key={index} className="artist-entry">
-                            <h3 className="uncial">
-                              {artist.name}{" "}
-                              {Object.values(artist.source).map((url, i) => (
-                                <sup key={i}>
-                                  <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="link-vas"
-                                  >
-                                    [{i + 1}]
-                                  </a>
-                                </sup>
-                              ))}
-                            </h3>
-                            <div className="artist-roles">
-                              <h3 className="uncial">Job(s):</h3>
-                              <ul className="artist-slot">
-                                {(artist.job)?.map((role, i) => (
-                                  <li key={i}>• {role}</li>
-                                ))}
-                              </ul>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Fallback if neither exists */}
-                  {!character?.realWorldDesigners && (
-                    <ul className="creator-art-slot">
-                      <li className="no-va-li">No Creators or Artists Found</li>
-                    </ul>
-                  )}
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Game Appearances:</h2>
-
-                  <ul className="g-appearance-slot desc-text">
-                    {character?.gameAppearances ? (
-                      character.gameAppearances.map((game, index) => (
-                        <li key={index}>{game}</li>
-                      ))
-                    ) : (
-                      <li>No Known Game Appearances</li>
-                    )}
-
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content">
-                <div className="text">
-                  <h2 className="uncial">Appearances in other media:</h2>
-                  
-                  <ul className="other-media-slot desc-text">
-                    {character?.otherMedia ? (
-                      character.otherMedia.map((media, index) => (
-                        <li key={index}>{media}</li>
-                      ))
-                    ) : (
-                      <li>No Known Appearances in Other Media</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-          </section>
+          {/* // Renders character creators and media appearances. */}
+          <CreatorAppearance character={character} />
           
-          {/* Render the English voice actor section if English data exists */}
+          {/* Render the English VA section if English data exists */}
           <EnglishVASection english={character?.portrayedBy?.english} />
 
-          <section className="card-container japanese-va-toggle group-10">
-            <div className="card-content jgame-toggle">
-                <div className="text">
-                  <h2 className="uncial">Japanese VAs (Games):</h2>
+          {/* Render the Japanese VA section if any Japanese data exists */}
+          <JapaneseVASection japanese={character?.portrayedBy?.japanese} />
 
-                  <ul className="va-game-slot desc-text">
-                    {character?.portrayedBy?.japanese?.games?.length > 0 ? (
-                      character.portrayedBy.japanese.games.map((va, index) => (
-                        <li key={index}>{va.name} ({va.years})
-
-                          {Object.values(va.source).map((url, i) => (
-                            <sup key={i}>
-                              <a 
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="link-vas"
-                              >
-                                [{i + 1}]
-                              </a>
-                            </sup>
-                          ))}
-                        </li>
-                      ))
-                    ) : (  
-                      <li className="no-va-li">No Japanese Game VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content jtv-toggle">
-                <div className="text">
-                  <h2 className="uncial">Japanese VAs (TV Shows):</h2>
-
-                  <ul className="jap-va-tv-slot desc-text">
-                    {character?.portrayedBy?.japanese?.tvShows?.length > 0 ? (
-                      character.portrayedBy.japanese?.tvShows.map((va, index) => (
-                        <div key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a 
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Show(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.shows.map((show, i) => (
-                                <li key={i}>
-                                  {show.name} ({show.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      ))
-                    ) : (
-                      <li className="no-va-li">No Japanese TV Show VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content jmovie-toggle">
-                <div className="text">
-                  <h2 className="uncial">Japanese VAs (Movies):</h2>
-
-                  <ul className="jap-va-movie-slot desc-text">
-                    {character?.portrayedBy?.japanese?.movies?.length > 0 ? (
-                      character.portrayedBy.japanese?.movies.map((va, index) => (
-                        <div key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a 
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Movie(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.films.map((film, i) => (
-                                <li key={i}>
-                                  {film.name} ({film.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      ))
-                    ) : (
-                      <li className="no-va-li">No Japanese Movie VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-          </section>
-
-          <section className="card-container nationality-va-toggle group-11">
-            <div className="card-content lngame-toggle">
-                <div className="text">
-                  <h2 className="uncial">Other Language VAs (Games):</h2>
-
-                  <ul className="other-va-game-slot desc-text">
-                    {character?.portrayedBy?.otherLanguages?.games?.length > 0 ? (
-                      character.portrayedBy.otherLanguages.games.map((va, index) => (
-                        <li key={index}>{va.name} ({va.nationality}, {va.years})
-
-                          {Object.values(va.source).map((url, i) => (
-                            <sup key={i}>
-                              <a 
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="link-vas"
-                              >
-                                [{i + 1}]
-                              </a>
-                            </sup>
-                          ))}
-                        </li>
-                      ))
-                    ) : (  
-                      <li className="no-va-li">No Other Language Game VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content lntv-toggle">
-                <div className="text">
-                  <h2 className="uncial">Other Language VAs (TV Shows):</h2>
-
-                  <ul className="other-va-tv-slot desc-text">
-                    {character?.portrayedBy?.otherLanguages?.tvShows?.length > 0 ? (
-                      character.portrayedBy.otherLanguages.tvShows.map((va, index) => (
-                        <div key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a 
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <h3 className="uncial">
-                            Nat.:{" "}{va.nationality}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Show(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.shows.map((show, i) => (
-                                <li key={i}>
-                                  {show.name} ({show.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      ))
-                    ) : (
-                      <li className="no-va-li">No Other Language TV Show VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content lnmovie-toggle">
-                <div className="text">
-                  <h2 className="uncial">Other Language VAs (Movies):</h2>
-
-                  <ul className="other-va-movie-slot desc-text">
-                    {character?.portrayedBy?.otherLanguages?.movies?.length > 0 ? (
-                      character.portrayedBy.otherLanguages.movies.map((va, index) => (
-                        <div key={index} className="va-entry">
-                          <h3 className="uncial">
-                            {va.name}
-                            {Object.values(va.source).map((url, i) => (
-                              <sup key={i}>
-                                <a 
-                                  href={url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link-vas"
-                                >
-                                  [{i + 1}]
-                                </a>
-                              </sup>
-                            ))}
-                          </h3>
-
-                          <h3 className="uncial">
-                            Nat.:{" "}{va.nationality}
-                          </h3>
-
-                          <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Movie(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
-                              {va.films.map((film, i) => (
-                                <li key={i}>
-                                  {film.name} ({film.years})
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      ))
-                    ) : (
-                      <li className="no-va-li">No Other Language Movie VAs</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-          </section>
+          {/* Render the Other Language VA section if any Other Language data exists */}
+          <OtherLangVASection languages={character?.portrayedBy?.otherLanguages} />
 
           <section className="description-box learn-box group-12">
             <div className="text">
