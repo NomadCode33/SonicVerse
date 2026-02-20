@@ -173,7 +173,7 @@ export const characters = {
             "role": "Hero",
             "morality": "Good"
         },
-        "affiliation": ["Team Sonic", "Resistance (formerly)"],
+        "affiliations": ["Team Sonic", "Resistance (formerly)"],
         "favoriteFood": ["Chili dogs"],
         "likes": [
             "Fast moving things",
@@ -1982,7 +1982,7 @@ export const characters = {
             "role": "Villain",
             "morality": "Evil"
         },
-        "affiliation": ["Eggman Empire", "Team Eggman"],
+        "affiliations": ["Eggman Empire", "Team Eggman"],
         "favoriteFood": ["Fried chicken"],
         "likes": [
             "The Chaos Emeralds",
@@ -3251,7 +3251,7 @@ export const characters = {
             "role": "Hero",
             "morality": "Good"
         },
-        "affiliation": ["Team Sonic", "Resistance (formerly)", "Restoration"],
+        "affiliations": ["Team Sonic", "Resistance (formerly)", "Restoration"],
         "favoriteFood": ["Mint Candy"],
         "likes": [
             "Sonic",
@@ -4531,7 +4531,7 @@ export const characters = {
             "role": "Hero",
             "morality": "Good"
         },
-        "affiliation": ["Team Rose (leader)", "Resistance (formerly)", "Restoration (organizer; formerly)"],
+        "affiliations": ["Team Rose (leader)", "Resistance (formerly)", "Restoration (organizer; formerly)"],
         "favoriteFood": ["Soft-serve ice cream"],
         "likes": [
             "Sonic",
@@ -5404,7 +5404,7 @@ export const characters = {
             "role": "Villain",
             "morality": "Evil"
         },
-        "affiliation": [
+        "affiliations": [
             "Eggman Empire",
             "Badniks",
             "Metal Fighters",
@@ -6044,7 +6044,7 @@ export const characters = {
             "role": "Hero",
             "morality": "Good"
         },
-        "affiliation": ["Knuckles Clan", "Echidna Tribe", "Team Sonic", "Resistance (commander; formerly)"],
+        "affiliations": ["Knuckles Clan", "Echidna Tribe", "Team Sonic", "Resistance (commander; formerly)"],
         "favoriteFood": ["Grapes"],
         "likes": [
             "Treasure hunting",
@@ -7229,7 +7229,7 @@ export const characters = {
             "role": "Hero",
             "morality": "Good"
         },
-        "affiliation": [
+        "affiliations": [
             "Chaotix Detective Agency (leader)",
             "Team Chaotix",
             "Resistance (formerly)",
@@ -7869,7 +7869,7 @@ export const characters = {
             "role": "Hero",
             "morality": "Good"
         },
-        "affiliation": [
+        "affiliations": [
             "Chaotix Detective Agency",
             "Team Chaotix",
             "Resistance (formerly)"
@@ -8453,7 +8453,7 @@ export const characters = {
             "role": "Anti-Hero",
             "morality": "Neutral"
         },
-        "affiliation": [
+        "affiliations": [
             "Eggman Empire (formerly)",
             "United Federation",
             "Guardian Units of Nations (G.U.N.)",
@@ -9503,7 +9503,7 @@ export const characters = {
             "role": "Anti-Hero",
             "morality": "Neutral"
         },
-        "affiliation": [
+        "affiliations": [
             "United Federation",
             "Guardian Units of Nations (G.U.N.)",
             "Team Dark",
@@ -10308,7 +10308,7 @@ export const characters = {
             "role": "Unknown",
             "morality": "Unknown"
         },
-        "affiliation": ["Unknown"],
+        "affiliations": ["Unknown"],
         "favoriteFood": ["Unknown"],
         "likes": ["Unknown"],
         "dislikes": ["Unknown"],
@@ -10486,7 +10486,7 @@ export const characters = {
             "role": "Unknown",
             "morality": "Unknown"
         },
-        "affiliation": ["Unknown"],
+        "affiliations": ["Unknown"],
         "favoriteFood": ["Unknown"],
         "likes": ["Unknown"],
         "dislikes": ["Unknown"],
@@ -10779,7 +10779,7 @@ export const characters = {
             "role": "Unknown",
             "morality": "Unknown"
         },
-        "affiliation": ["Unknown"],
+        "affiliations": ["Unknown"],
         "favoriteFood": ["Unknown"],
         "likes": ["Unknown"],
         "dislikes": ["Unknown"],

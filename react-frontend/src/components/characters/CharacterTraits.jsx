@@ -1,29 +1,28 @@
 import "../../css/characters.css"
-import TransformationsSection from "./char-components/char-traits/group6/TransformationsSection";
+import AffiliationsThruForms from "./char-components/char-traits/group6/AffiliationsThruForms";
+import Powers from "./char-components/char-traits/group7/Powers";
 import CreatorAppearance from "./char-components/char-traits/group8/CreatorAppearance";
 import EnglishVASection from "./char-components/char-traits/group9/EnglishVASection";
 import JapaneseVASection from "./char-components/char-traits/group10/JapaneseVASection";
 import OtherLangVASection from "./char-components/char-traits/group11/OtherLangVASection";
+import LearnMoreSection from "./char-components/char-traits/group12/LearnMoreSection";
 
 const CharacterTraits = ({ character }) => {
   if (!character) return null;
-  /*
-  // Creators, gameappearance, and other media 
-  const creators = character?.realWorldDesigners?.creators ?? [];
-  const artists = character?.realWorldDesigners?.artists ?? [];
 
-  const hasCreators = creators.length > 0;
-  const hasArtists = artists.length > 0;
-  const hasRealWorldDesigners = hasCreators || hasArtists;
+  /*const affiliations = character?.affiliation ?? [];
+  const hasAffiliations = affiliations.length > 0;
 
-  const gameAppearances = character?.gameAppearances ?? [];
-  const hasGameAppearances = gameAppearances.length > 0;
+  const relatives = character?.relatives ?? [];
+  const hasRelatives = relatives.length > 0;
 
-  const otherMedia = character?.otherMedia ?? [];
-  const hasOtherMedia = otherMedia.length > 0;
+  const transformations = character?.transformations ?? [];
+  const hasTransformations = transformations.length > 0;
 
-  // Only render the whole container if at least one section exists
-  const shouldRenderContainer = hasRealWorldDesigners || hasGameAppearances || hasOtherMedia;*/
+  // Only render container if at least one section has content
+  const shouldRenderContainer = hasAffiliations || hasRelatives || hasTransformations;
+
+  if (!shouldRenderContainer) return null;*/
 
   return (
     <section className="char-traits">
@@ -165,95 +164,12 @@ const CharacterTraits = ({ character }) => {
                 </div>
             </div>
           </section>
+          
+          {/*  */}
+          <AffiliationsThruForms character={character} />
 
-          <section className="card-container group-6">
-            <div className="card-content affiliation-toggle">
-                <div className="text">
-                  <h2 className="uncial">Affiliation(s):</h2>
-
-                  <ul className="affiliation-slot desc-text">
-                    {character?.affiliation ? (
-                      character.affiliation.map((association, index) => (
-                        <li key={index}>{association}</li>
-                      ))
-                    ) : (
-                      <li>No Known Affiliation(s)</li>
-                    )}
-                  </ul>
-                  {/*<ul className="desc-text">{character?.affiliation}</ul>*/}
-                </div>
-            </div>
-
-            <div className="card-content relatives-toggle">
-                <div className="text">
-                  <h2 className="uncial">Relatives:</h2>
-
-                  <ul className="relatives-slot desc-text">
-                    {character?.relatives ? (
-                      character.relatives.map((relative) => (
-                        <li key={relative.index}>{relative.name} ({relative.relationship})</li>
-                      ))
-                    ) : (
-                      <li>No Known Relatives</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            {/* Render transformations card only if character has transformations */}
-            <TransformationsSection transformations={character?.transformations} />
-          </section>
-
-          <section className="card-container skills-toggle group-7">
-            <div className="card-content skills-toggle">
-                <div className="text">
-                  <h2 className="uncial">Skills:</h2>
-
-                  <ul className="skills-slot desc-text">
-                    {character?.abilities?.skills ? (
-                      character.abilities.skills.map((skill, index) => (
-                        <li key={index}>{skill}</li>
-                      ))
-                    ) : (
-                      <li>No Known Skills</li>
-                    )}
-                  </ul>
-                  {/*<span className="desc-text">{character?.abilities?.skills}</span>*/}
-                </div>
-            </div>
-
-            <div className="card-content techniques-toggle">
-                <div className="text">
-                  <h2 className="uncial">Techniques:</h2>
-
-                  <ul className="techniques-slot desc-text">
-                    {character?.abilities?.moveTechniques ? (
-                      character.abilities.moveTechniques.map((technique) => (
-                        <li key={technique.index}>{technique.name}</li>
-                      ))
-                    ) : (
-                      <li>No Known Techniques</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-
-            <div className="card-content ability-type-toggle">
-                <div className="text">
-                  <h2 className="uncial">Ability Type:</h2>
-
-                  <ul className="ability-type-slot desc-text">
-                    {character?.abilities?.abilityType ? (
-                      character.abilities.abilityType.map((type) => (
-                        <li key={type.index}>{type.name}</li>
-                      ))
-                    ) : (
-                      <li>No Known Ability Type(s)</li>
-                    )}
-                  </ul>
-                </div>
-            </div>
-          </section>
+          {/* */}
+          <Powers abilities={character?.abilities} />
 
           {/* // Renders character creators and media appearances. */}
           <CreatorAppearance character={character} />
@@ -267,22 +183,8 @@ const CharacterTraits = ({ character }) => {
           {/* Render the Other Language VA section if any Other Language data exists */}
           <OtherLangVASection languages={character?.portrayedBy?.otherLanguages} />
 
-          <section className="description-box learn-box group-12">
-            <div className="text">
-              <h2 className="uncial">
-                Learn More:{" "} 
-                <a 
-                  href={character?.learnMore}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="learn-more"
-                >
-                  {character?.learnMore}
-                </a>
-              </h2>
-              {/*<span className="desc-text"></span>*/}
-            </div>
-          </section>
+          {/* */}
+          <LearnMoreSection character={character} />
 	  </section>
   )
 }
