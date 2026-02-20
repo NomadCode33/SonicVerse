@@ -14,12 +14,12 @@ const AffiliationsThruForms = ({ character }) => {
 
   return (
     <section className="card-container group-6">
-      <AffiliationsSection affiliations={character?.affiliations} />
+      <AffiliationsSection affiliations={affiliations} />
 
-      <RelativesSection relatives={character?.relatives} />
+      <RelativesSection relatives={relatives} />
 
       {/* Render transformations card only if character has transformations */}
-      <TransformationsSection transformations={character?.transformations} />
+      <TransformationsSection transformations={transformations} />
     </section>
   )
 }

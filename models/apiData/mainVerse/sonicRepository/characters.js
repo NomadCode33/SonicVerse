@@ -7759,7 +7759,8 @@ export const characters = {
         "species": "Chameleon",
         "nicknames": [
             "Mr. Espio (by Cream)",
-            "Elite Ninja (by Rouge)"
+            "Elite Ninja (by Rouge)",
+            "Ninja Boy (by Rouge)"
         ],
         "quote": {
             "text": "Timeless techniques will endure any trial! Your evil will never succeed!",
