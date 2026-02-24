@@ -4,7 +4,7 @@ import "../../../../../css/characters.css";
 // Prepares and checks if the character has any Japanese voice acting roles.
 // It either removes the card container if no Japanese VAs exist in character 
 // or card content if games, TV, or movies don't exist
-const JapaneseVASection = ({ japanese }) => {
+const JapaneseVA = ({ japanese }) => {
   // Exits early if no Japanese VA data exists.
   if (!japanese) return null;
   
@@ -144,7 +144,7 @@ const JapaneseVASection = ({ japanese }) => {
   )
 }
 
-export default JapaneseVASection
+export default JapaneseVA
 
 /*
 // Old Version

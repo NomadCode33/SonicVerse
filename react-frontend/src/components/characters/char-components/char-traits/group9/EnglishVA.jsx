@@ -4,7 +4,7 @@ import "../../../../../css/characters.css";
 // Prepares and checks if the character has any English voice acting roles.
 // It either removes the card container if no English VAs exist in character 
 // or card content if games, TV, or movies don't exist
-const EnglishVASection = ({ english }) => {
+const EnglishVA = ({ english }) => {
   // Returns nothing if no English VAs exist.
   // Exits early if no English VA data exists.
   if (!english) return null;
@@ -145,7 +145,7 @@ const EnglishVASection = ({ english }) => {
   )
 }
 
-export default EnglishVASection
+export default EnglishVA
 
 /*
 // Old Version

@@ -1,6 +1,6 @@
 import "../../../../../css/characters.css";
 
-const LearnMoreSection = ({ character }) => {
+const LearnMore = ({ character }) => {
   return (
     <section className="description-box learn-box group-12">
         <div className="text">
@@ -21,4 +21,4 @@ const LearnMoreSection = ({ character }) => {
   )
 }
 
-export default LearnMoreSection
+export default LearnMore

@@ -3,7 +3,7 @@ import AffiliationsSection from "./AffiliationsSection";
 import RelativesSection from "./RelativesSection";
 import TransformationsSection from "./TransformationsSection";
 
-const AffiliationsThruForms = ({ character }) => {
+const CharacterConnections = ({ character }) => {
   const affiliations = character?.affiliations ?? [];
   const relatives = character?.relatives ?? [];
   const transformations = character?.transformations ?? [];
@@ -24,7 +24,7 @@ const AffiliationsThruForms = ({ character }) => {
   )
 }
 
-export default AffiliationsThruForms
+export default CharacterConnections
 
 /*
 const affiliations = character?.affiliation ?? [];

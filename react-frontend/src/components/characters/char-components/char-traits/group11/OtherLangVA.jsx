@@ -4,7 +4,7 @@ import "../../../../../css/characters.css";
 // Prepares and checks if the character has any other language voice acting roles.
 // It either removes the card container if no other language VAs exist in character 
 // or card content if games, TV, or movies don't exist
-const OtherLangVASection = ({ languages }) => {
+const OtherLangVA = ({ languages }) => {
   // Exits early if no other language VA data exists.
   if (!languages) return null;
   
@@ -38,7 +38,7 @@ const OtherLangVASection = ({ languages }) => {
                     <ul className="other-va-game-slot desc-text">
                       {otherLangGames.map((va, index) => (
                         <li key={index}>
-                          {va.name} ({va.years})
+                          {va.name} ({va.nationality}, {va.years})
 
                           {Object.values(va.source).map((url, i) => (
                             <sup key={i}>
@@ -152,7 +152,7 @@ const OtherLangVASection = ({ languages }) => {
   )
 }
 
-export default OtherLangVASection
+export default OtherLangVA
 
 /*
 // Old Way

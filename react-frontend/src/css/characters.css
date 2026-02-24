@@ -692,6 +692,14 @@ header {
 }
 
 /******************************************
+/* TRAITS: MODIFIED CARD CLASSES
+/******************************************/
+.card-container.group-5.three-cards .card-content {
+  height: 80rem !important;
+}
+
+
+/******************************************
 /* TRAITS: UL SLOTS
 /******************************************/
 .likes-slot,

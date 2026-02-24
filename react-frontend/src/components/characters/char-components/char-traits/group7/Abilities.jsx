@@ -3,7 +3,7 @@ import SkillsSection from "./SkillsSection";
 import TechniquesSection from "./TechniquesSection";
 import AbilityTypeSection from "./AbilityTypeSection";
 
-const Powers = ({ abilities }) => {
+const Abilities = ({ abilities }) => {
   const skills = abilities?.skills ?? [];
   const techniques = abilities?.moveTechniques ?? [];
   const abilityTypes = abilities?.abilityType ?? [];
@@ -28,7 +28,7 @@ const Powers = ({ abilities }) => {
   )
 }
 
-export default Powers
+export default Abilities
 
 /*
   const skills = character?.abilities?.skills ?? [];
