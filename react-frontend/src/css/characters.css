@@ -763,36 +763,63 @@ header {
 .weaknesses-slot {
   margin-left: 3.2rem;
   list-style-type: disc;
-  list-style-position: inside;
+  list-style-position: outside;
+  padding-left: 2.5rem;
 }
 
 .attire-slot,
 .attire-current-slot,
 .attire-original-slot,
 .nicknames-slot,
-.skills-slot,
-.affiliation-slot,
-.g-appearance-slot,
-.other-media-slot,
-.transformations-slot,
-.techniques-slot,
-.ability-type-slot,
-.relatives-slot,
-.char-theme-slot,
-.va-game-slot,
-.other-va-game-slot,
-.shows-movies-slot,
-.no-va-li {
+.char-theme-slot {
   margin-left: 1rem;
   list-style-type: disc;
-  list-style-position: inside;
+  list-style-position: outside;
+  padding-left: 2.5rem;
+}
+
+.affiliation-slot,
+.relatives-slot,
+.transformations-slot {
+  margin-left: 1rem;
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 2.5rem;
+}
+
+.skills-slot,
+.techniques-slot,
+.ability-type-slot,
+.g-appearance-slot,
+.other-media-slot,
+.va-game-slot,
+.other-va-game-slot,
+.shows-movies-slot {
+  margin-left: 1rem;
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 2.5rem;
 }
 
 .creator-art-role-slot,
 .creator-slot,
 .artist-slot {
   margin-left: 1rem;
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 2.5rem;
 }
+
+.creator,
+.artist {
+  margin-left: 1rem;
+}
+
+/*.no-va-li {
+  margin-left: 1rem;
+  list-style-type: disc;
+  list-style-position: inside;
+}*/
 
 .likes-slot li,
 .dislikes-slot li,
@@ -810,6 +837,7 @@ header {
 .ability-type-slot li,
 .char-theme-slot li {
   margin-bottom: 0.4rem;
+  line-height: 1.5;
 }
 
 .g-appearance-slot li,
@@ -819,15 +847,18 @@ header {
 .other-va-game-slot li,
 .shows-movies-slot li {
   margin-bottom: 0.8rem;
+  line-height: 1.5;
 }
 
 .attire-current-slot {
   margin-bottom: 1.3rem;
+  line-height: 1.5;
 }
 
 .attire-current-slot,
 .attire-original-slot {
-  margin-left: 3rem;
+  margin-left: 2.3rem;
+  line-height: 1.5;
 }
 
 /******************************************

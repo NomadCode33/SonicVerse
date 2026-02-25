@@ -42,7 +42,7 @@ const RealWorldDesignersSection = ({ designers }) => {
                       <h3 className="inter-500">Job(s):</h3>
                       <ul className="creator-art-role-slot exo-2">
                         {creator.job?.map((role, i) => (
-                          <li key={i}>• {role}</li>
+                          <li key={i}>{role}</li>
                         ))}
                       </ul>
                     </div>
@@ -80,7 +80,7 @@ const RealWorldDesignersSection = ({ designers }) => {
                       <h3 className="inter-500">Job(s):</h3>
                       <ul className="creator-art-role-slot exo-2">
                         {artist.job?.map((role, i) => (
-                          <li key={i}>• {role}</li>
+                          <li key={i}>{role}</li>
                         ))}
                       </ul>
                     </div>
@@ -97,7 +97,7 @@ const RealWorldDesignersSection = ({ designers }) => {
               {/* Creators */}
               <h3 className="inter">Creator(s):</h3>
 
-              <ul className="creator-slot">
+              <ul className="creator">
                 {creators.map((creator, index) => (
                   <li key={index} className="creator-entry">
                     <h3 className="inter-600">
@@ -120,7 +120,7 @@ const RealWorldDesignersSection = ({ designers }) => {
                       <h3 className="inter-500">Job(s):</h3>
                       <ul className="creator-slot exo-2">
                         {creator.job?.map((role, i) => (
-                          <li key={i}>• {role}</li>
+                          <li key={i}>{role}</li>
                         ))}
                       </ul>
                     </div>
@@ -131,7 +131,7 @@ const RealWorldDesignersSection = ({ designers }) => {
               {/* Artists */}
               <h3 className="inter">Artist(s):</h3>
                           
-              <ul className="artist-slot">
+              <ul className="artist">
                 {artists.map((artist, index) => (
                   <li key={index} className="artist-entry">
                     <h3 className="inter-600">
@@ -154,7 +154,7 @@ const RealWorldDesignersSection = ({ designers }) => {
                       <h3 className="inter-500">Job(s):</h3>
                       <ul className="artist-slot exo-2">
                         {artist.job?.map((role, i) => (
-                          <li key={i}>• {role}</li>
+                          <li key={i}>{role}</li>
                         ))}
                       </ul>
                     </div>
