@@ -10,8 +10,8 @@ const TransformationsSection = ({ transformations }) => {
   return (
     <div className="card-content transform-toggle">
         <div className="text">
-            <h2 className="uncial">Transformations:</h2>
-            <ul className="transformations-slot desc-text">
+            <h2 className="russo-one">Transformations:</h2>
+            <ul className="transformations-slot desc-text exo-2">
                 {transformations.map((transformation) => (
                 <li key={transformation.index}>{transformation.name}</li>
                 ))}

@@ -41,6 +41,45 @@ html {
   min-height: 100vh; /* makes sure it fills screen */
 }
 
+.luckiest-guy {
+  font-family: "Luckiest Guy", "Arial Black", sans-serif;
+}
+
+.russo-one {
+  font-family: "Russo One", "Helvetica Neue", sans-serif;
+}
+
+.basic-info .text .russo-one-binfo {
+  font-family: "Russo One", "Helvetica Neue", sans-serif;
+  font-size: 2.1rem;
+}
+
+.exo-2 {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-weight: 400;
+}
+
+.basic-info .text .exo-2-binfo {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.inter {
+  font-family: "Inter", "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.inter-500 {
+  font-family: "Inter", "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.inter-600 {
+  font-family: "Inter", "Roboto", sans-serif;
+  font-weight: 600;
+}
+
 .bangers {
   font-family: "Bangers", "Rubik", sans-serif;
 }
@@ -175,7 +214,7 @@ header {
 /**************************************************************
 /* PIC REST & DISCLAIMER
 /**************************************************************/
-.pic-rest {
+.characters-page .pic-rest {
   margin: 0 auto;
   height: 60rem;
   width: 90%;
@@ -186,33 +225,36 @@ header {
   min-height: 30vh; /* makes sure it fills screen */
 }
 
-.disclaimer {
+.characters-page .disclaimer {
   margin: 0 auto;
-  height: 15rem;
+  margin-top: 3rem;
   width: 90%;
   color: rgb(245, 193, 66);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(63, 113, 48)); /*rgb(63, 113, 48)*/
   /*background-color: rgb(0, 36, 173);*/
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2)
 }
 
-.disclaimer-content {
+.characters-page .disclaimer-content {
   padding: 0 5rem 0 5rem;
 }
 
-.disclaimer-content h2 {
+.characters-page .disclaimer-content h2 {
   margin: 0;
   margin-bottom: 1rem;
   font-size: 2.4rem;
 }
 
-.disclaimer-content p {
+.characters-page .disclaimer-content p {
   margin: 0;
   font-size: 1.6rem;
 }
 
-.d-content {
-  padding-top: 3.5rem;
+.characters-page .d-content {
+  padding: 3rem 0 3rem 0;
 }
 
 /*************************************************************
@@ -467,6 +509,7 @@ header {
   font-size: 1.4rem;
   text-align: center;
   color: #fff; /* adjust to theme */
+  font-style: italic;
   opacity: 0.85;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
 }
@@ -599,8 +642,21 @@ header {
 }
 
 .quote-box {
-  height: 16rem; /*14rem originally*/
-  display: block;
+  /*height: 16rem;
+  display: block;*/
+  /*16rem, 14rem originally*/
+
+  height: auto;
+  max-height: none;              /* remove fixed max-height */
+  overflow: visible;             /* allow content to expand naturally */
+  display: flex;                 /* use flex to manage content */
+  flex-direction: column;        /* stack children vertically */
+  align-items: flex-start;       /* align text to left; use center if you want center */
+  justify-content: flex-start;
+}
+
+.description-box .desc-text .quote-source {
+  margin: 0;
 }
 
 .char-quote {
@@ -694,8 +750,8 @@ header {
 /******************************************
 /* TRAITS: MODIFIED CARD CLASSES
 /******************************************/
-.card-container.group-5.three-cards .card-content {
-  height: 80rem !important;
+.group-5.three-cards .card-content {
+  height: 100rem !important;
 }
 
 

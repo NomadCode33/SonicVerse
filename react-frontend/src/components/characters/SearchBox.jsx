@@ -31,12 +31,12 @@ const SearchBox = ({ setCharacter }) => { // <-- receive setCharacter as prop
     <>
 	   <section id="search-box">
            <div className="text-content">
-               <h1 className="uncial title">Spell Directory</h1>
-               <p>Type in a spell</p>
+               <h1 className="russo-one title">Character Directory</h1>
+               <p className="exo-2">Type in a character</p>
                <input 
                  type="text" 
                  id="search-input"
-                 className="bar"
+                 className="exo-2 bar"
                  value={search}
                  onChange={(e) => {
 					setSearch(e.target.value);
@@ -49,7 +49,7 @@ const SearchBox = ({ setCharacter }) => { // <-- receive setCharacter as prop
                    }
                  }}
                />
-               <button type="button" className="src-btn" onClick={handleClick}>Get Character</button>
+               <button type="button" className="exo-2 src-btn" onClick={handleClick}>Get Character</button>
            </div>
        </section>
 

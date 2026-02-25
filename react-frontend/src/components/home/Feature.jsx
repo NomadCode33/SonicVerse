@@ -5,10 +5,10 @@ const Feature = ({ title, link, img, altDesc, description, buttonText }) => {
   return (
     <div className="feature">
         <div className="feature-content">
-            <h2 className="bangers comp-item">{title}</h2>
+            <h2 className="comp-item russo-one">{title}</h2>
             <Link to={link}><img src={img} alt={altDesc} /></Link>
-            <p className="page-describe">{description}</p>
-            <Link className="main-button" to={link}>{buttonText}</Link>
+            <p className="page-describe exo-2">{description}</p>
+            <Link className="main-button exo-2-600" to={link}>{buttonText}</Link>
         </div>
     </div>
   )

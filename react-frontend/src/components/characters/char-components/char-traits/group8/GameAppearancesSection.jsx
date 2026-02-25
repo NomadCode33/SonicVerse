@@ -6,9 +6,9 @@ const GameAppearancesSection = ({ games }) => {
   return (
     <div className="card-content">
         <div className="text">
-          <h2 className="uncial">Game Appearances:</h2>
+          <h2 className="russo-one">Game Appearances:</h2>
 
-          <ul className="g-appearance-slot desc-text">
+          <ul className="g-appearance-slot desc-text exo-2">
             {games.map((game, index) => (
               <li key={index}>{game}</li>
             ))}

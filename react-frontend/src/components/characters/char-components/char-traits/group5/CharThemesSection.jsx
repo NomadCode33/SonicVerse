@@ -6,9 +6,9 @@ const CharThemesSection = ({ themes }) => {
   return (
     <div className="card-content char-theme-toggle">
         <div className="text">
-            <h2 className="uncial">Character Theme(s):</h2>
+            <h2 className="russo-one">Character Theme(s):</h2>
 
-            <ul className="char-theme-slot desc-text">
+            <ul className="char-theme-slot desc-text exo-2">
             {themes.map((theme) => (
                 <li key={theme.index}>{theme.song}</li>
             ))}

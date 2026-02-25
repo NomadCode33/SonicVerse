@@ -7,15 +7,15 @@ const Navbar = () => {
 			<section className="header-box">
 				<div className="head-title">
 					  <Link to="/"><img className="icon" src="/img/dndicon.png" alt="D&D Logo"/></Link>
-            <h1 className="bangers">SonicVerse</h1>
+            <h1 className="exo-2">SonicVerse</h1>
 				</div>
 				
 				<div className="nav-bar">
 					<nav>
 						<ul className="nav-box">
-							<li><Link className="nav-button" to="/characters">Characters</Link></li>
-							<li><Link className="nav-button" to="">Schools</Link></li>
-							<li><Link className="nav-button" to="">Menu</Link></li>
+							<li><Link className="nav-button exo-2" to="/characters">Characters</Link></li>
+							<li><Link className="nav-button exo-2" to="">Songs</Link></li>
+							<li><Link className="nav-button exo-2" to="">Menu</Link></li>
 						</ul>
 					</nav>
 				</div>

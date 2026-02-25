@@ -59,6 +59,14 @@ const CharacterTraits = ({ character }) => {
 export default CharacterTraits
 
 /*
+ // Determine the modifier class
+  const cardClass = 
+    cardCount === 1 ? "one-card" : 
+    cardCount === 2 ? "two-cards" : 
+    cardCount === 3 ? "three-cards": ""; // default (no modifier) if 0 or more than 3
+*/
+
+/*
 <section className="text">
           <h2 className="uncial">Level: <span className="level reg-font"></span></h2>
           <h2 className="uncial">School: <span className="school reg-font"></span></h2>

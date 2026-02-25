@@ -6,9 +6,9 @@ const Weaknesses = ({ weaknesses }) => {
   return (
     <section className="description-box weakness-box weakness-toggle group-4">
         <div className="text">
-            <h2 className="uncial">Weaknesses:</h2>
+            <h2 className="russo-one">Weaknesses:</h2>
 
-            <ul className="weaknesses-slot desc-text">
+            <ul className="weaknesses-slot desc-text exo-2">
               {weaknesses.map((weakness, index) => (
                 <li key={index}>{weakness}</li>
               ))}

@@ -6,9 +6,9 @@ const SkillsSection = ({ skills }) => {
   return (
     <div className="card-content skills-toggle">
         <div className="text">
-        <h2 className="uncial">Skills:</h2>
+        <h2 className="russo-one">Skills:</h2>
 
-        <ul className="skills-slot desc-text">
+        <ul className="skills-slot desc-text exo-2">
             {skills.map((skill, index) => (
             <li key={index}>{skill}</li>
             ))}

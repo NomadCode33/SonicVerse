@@ -6,9 +6,9 @@ const LikesSection = ({ likes }) => {
   return (
     <div className="card-content preferences likes-toggle">
         <div className="text">
-            <h2 className="uncial">Likes:</h2>
+            <h2 className="russo-one">Likes:</h2>
 
-            <ul className="likes-slot desc-text reg-font">
+            <ul className="likes-slot desc-text exo-2">
               {likes.map((interest, index) => (
                 <li key={index}>{interest}</li>
               ))}

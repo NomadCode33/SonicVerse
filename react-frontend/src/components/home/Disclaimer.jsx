@@ -5,10 +5,14 @@ const Disclaimer = () => {
     <section className="disclaimer">
 			<div className="disclaimer-content">
 				<div className="d-content">
-					<h2 className="bangers">Welcome to SonicVerse</h2>
-					<p>
-						D&D Compendium is a place where you can know all about D&D. You can learn
-						spells, school, etc. for you to plan out your next session.
+					<h2 className="russo-one">Welcome to SonicVerse</h2>
+					<p className="exo-2">
+						SonicVerse is the one stop shop on learning everything about Sonic. Discover the 
+						characters, see the transformations, know the games that captured the hearts of many,
+						and so much more. This is a fan-made project and is not affiliated with SEGA in any way. 
+						All media used is for educational purposes and belongs to their respective owners. 
+						SonicVerse is a tribute to the rich history and vibrant community of Sonic the Hedgehog fans around the world. 
+						I hope you enjoy exploring the SonicVerse as much as I enjoyed creating it!
 					</p>
 				</div>
 			</div>

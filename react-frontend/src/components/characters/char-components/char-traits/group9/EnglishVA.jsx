@@ -34,9 +34,9 @@ const EnglishVA = ({ english }) => {
               {hasEnglishGames && (
                 <div className="card-content egame-toggle">
                   <div className="text">
-                    <h2 className="uncial">English VAs (Games):</h2>
+                    <h2 className="russo-one">English VAs (Games):</h2>
 
-                    <ul className="va-game-slot desc-text">
+                    <ul className="va-game-slot desc-text exo-2">
                       {englishGames.map((va, index) => (
                         <li key={index}>
                           {va.name} ({va.years})
@@ -63,12 +63,12 @@ const EnglishVA = ({ english }) => {
               {hasEnglishTV && (
                 <div className="card-content etv-toggle">
                   <div className="text">
-                    <h2 className="uncial">English VAs (TV Shows):</h2>
+                    <h2 className="russo-one">English VAs (TV Shows):</h2>
 
                     <ul className="eng-va-tv-slot desc-text">
                       {englishTV.map((va, index) => (
                         <li key={index} className="va-entry">
-                          <h3 className="uncial">
+                          <h3 className="inter">
                             {va.name}
                             {Object.values(va.source).map((url, i) => (
                               <sup key={i}>
@@ -85,8 +85,8 @@ const EnglishVA = ({ english }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Show(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
+                            <h3 className="inter-500">Show(s):</h3>
+                            <ul className="shows-movies-slot exo-2">
                               {va.shows.map((show, i) => (
                                 <li key={i}>
                                   {show.name} ({show.years})
@@ -104,12 +104,12 @@ const EnglishVA = ({ english }) => {
               {hasEnglishMovies && (
                 <div className="card-content emovie-toggle">
                   <div className="text">
-                    <h2 className="uncial">English VAs (Movies):</h2>
+                    <h2 className="russo-one">English VAs (Movies):</h2>
 
                     <ul className="eng-va-movie-slot desc-text">
                       {englishMovies.map((va, index) => (
                         <li key={index}>
-                          <h3 className="uncial">
+                          <h3 className="inter">
                             {va.name}
                             {Object.values(va.source).map((url, i) => (
                               <sup key={i}>
@@ -126,8 +126,8 @@ const EnglishVA = ({ english }) => {
                           </h3>
 
                           <div className="va-shows-movies desc-text">
-                            <h3 className="uncial">Movie(s):</h3>
-                            <ul className="shows-movies-slot reg-font">
+                            <h3 className="inter-500">Movie(s):</h3>
+                            <ul className="shows-movies-slot exo-2">
                               {va.films.map((film, i) => (
                                 <li key={i}>
                                   {film.name} ({film.years})

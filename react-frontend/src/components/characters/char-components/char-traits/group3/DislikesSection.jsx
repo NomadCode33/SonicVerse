@@ -6,9 +6,9 @@ const DislikesSection = ({ dislikes }) => {
   return (
     <div className="card-content preferences dislikes-toggle">
         <div className="text">
-            <h2 className="uncial">Dislikes:</h2>
+            <h2 className="russo-one">Dislikes:</h2>
 
-            <ul className="dislikes-slot desc-text">
+            <ul className="dislikes-slot desc-text exo-2">
               {dislikes.map((aversion, index) => (
                 <li key={index}>{aversion}</li>
               ))}

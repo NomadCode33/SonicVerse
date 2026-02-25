@@ -6,11 +6,11 @@ const AttireSection = ({ current = [], original = []}) => {
   return (
     <div className="card-content attire-toggle">
         <div className="text">
-            <h2 className="uncial">Attire:</h2>
+            <h2 className="russo-one">Attire:</h2>
 
             {/* If ONLY current exists */}
             {(current.length > 0 && original.length === 0) && (
-                <ul className="attire-slot desc-text">
+                <ul className="attire-slot desc-text exo-2">
                   {current.map((attireItem, index) => (
                     <li key={index}>{attireItem}</li>
                   ))}
@@ -20,15 +20,15 @@ const AttireSection = ({ current = [], original = []}) => {
             {/* If BOTH current and original exist */}
             {(current.length > 0 && original.length > 0) && (
               <div className="attire-area desc-text">
-                  <h3 className="uncial">Current:</h3>
-                  <ul className="attire-current-slot">
+                  <h3 className="inter">Current:</h3>
+                  <ul className="attire-current-slot exo-2">
                     {current.map((attireItem, index) => (
                       <li key={index}>{attireItem}</li>
                     ))}
                   </ul>
 
-                  <h3 className="uncial">Original:</h3>
-                  <ul className="attire-original-slot">
+                  <h3 className="inter">Original:</h3>
+                  <ul className="attire-original-slot exo-2">
                     {original.map((attireItem, index) => (
                       <li key={index}>{attireItem}</li>
                     ))}

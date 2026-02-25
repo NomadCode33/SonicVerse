@@ -6,9 +6,9 @@ const AbilityTypeSection = ({ abilityTypes }) => {
   return (
     <div className="card-content ability-type-toggle">
         <div className="text">
-          <h2 className="uncial">Ability Type:</h2>
+          <h2 className="russo-one">Ability Type:</h2>
 
-          <ul className="ability-type-slot desc-text">
+          <ul className="ability-type-slot desc-text exo-2">
             {abilityTypes.map((type) => (
               <li key={type.index}>{type.name}</li>
             ))}

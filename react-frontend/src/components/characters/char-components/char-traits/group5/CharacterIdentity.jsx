@@ -13,21 +13,7 @@ const CharacterIdentity = ({ character }) => {
   const hasNicknames = nicknames.length > 0;
   const hasAttire = attireCurrent.length > 0 || attireOriginal.length > 0;
 
-  const shouldRenderContainer = hasThemes || hasNicknames || hasAttire;
-
-  // Count the number of card sections that will render
-  const cardCount = [hasThemes, hasNicknames, hasAttire].filter(Boolean).length;
-
-  // Determine the modifier class
-  const cardClass = 
-    cardCount === 1
-      ? "one-card"
-      : cardCount === 2
-      ? "two-cards"
-      : cardCount === 3
-      ? "three-cards"
-      : ""; // default (no modifier) if 0 or more than 3
-      
+  const shouldRenderContainer = hasThemes || hasNicknames || hasAttire;      
 
   if (!shouldRenderContainer) return null;
 

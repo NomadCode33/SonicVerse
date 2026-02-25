@@ -7,7 +7,7 @@ const BasicCharacterInfo = ({ character }) => {
   return (
     <section className="basic-info">
 		<section className="text">
-            <h2 className="char-name bangers">{character?.name || "Name"}</h2>
+            <h2 className="char-name russo-one">{character?.name || "Name"}</h2>
 
 			<div className="text info-text">
 				{/* or {character?.images?.modern[0]?.img} */}
@@ -15,22 +15,22 @@ const BasicCharacterInfo = ({ character }) => {
 				<CharacterCarousel character={character} />
 				{/*Picture captions*/}
 
-				<h2 className="uncial">First Appearance: <span className="first-appearance reg-font">{character?.firstAppearance?.alt?.name || character?.firstAppearance?.name}</span></h2>
-				<h2 className="uncial">Age: <span className="age reg-font">{character?.age}</span></h2>
-				<h2 className="uncial">Birthplace: <span className="birthplace reg-font">{character?.birthplace}</span></h2>
-				<h2 className="uncial">Species: <span className="species reg-font">{character?.species}</span></h2>
+				<h2 className="russo-one-binfo">First Appearance: <span className="first-appearance exo-2-binfo">{character?.firstAppearance?.alt?.name || character?.firstAppearance?.name}</span></h2>
+				<h2 className="russo-one-binfo">Age: <span className="age exo-2-binfo">{character?.age}</span></h2>
+				<h2 className="russo-one-binfo">Birthplace: <span className="birthplace exo-2-binfo">{character?.birthplace}</span></h2>
+				<h2 className="russo-one-binfo">Species: <span className="species exo-2-binfo">{character?.species}</span></h2>
 
 				<div className="food-area">
 					{/* If only current exists OR both exist */}
-					<h2 className="uncial">Favorite Food:{" "} 
+					<h2 className="russo-one-binfo">Favorite Food:{" "} 
 						{(character?.favoriteFood?.length === 1) && (
-							<span className="favorite-food reg-font">{character?.favoriteFood[0]}</span>
+							<span className="favorite-food exo-2-binfo">{character?.favoriteFood[0]}</span>
 						)}
 					</h2>
 
 					{/* Only show toggle section if both current and original exist */}
 					{(character?.favoriteFood?.length > 1) && (
-						<ul className="fav-food-slot reg-font">
+						<ul className="fav-food-slot exo-2-binfo">
 							{character?.favoriteFood.map((food, index) => (
 								<li key={index}>{food}</li>
 							))}
@@ -41,13 +41,13 @@ const BasicCharacterInfo = ({ character }) => {
 				{/*<ul className="fav-food-slot reg-font">{character?.favoriteFood}</ul>*/}
 
 
-				<h2 className="uncial">Gender: <span className="gender reg-font">{character?.gender}</span></h2>
+				<h2 className="russo-one-binfo">Gender: <span className="gender exo-2-binfo">{character?.gender}</span></h2>
 
 
 				{/* Code that says that if this property exists in the character searched, then show it.
 				 Otherwise, if property not found then it doesn't show anything */}
 				{character?.fur && (
-					<h2 className="uncial fur-toggle">Fur: <span className="fur reg-font">{character?.fur}</span></h2>
+					<h2 className="fur-toggle russo-one-binfo">Fur: <span className="fur exo-2-binfo">{character?.fur}</span></h2>
 				)}
 
 				{/*<h2 className="uncial fur-toggle">Fur: <span className="fur reg-font">{character?.fur || "Unknown"}</span></h2>*/}
@@ -55,46 +55,46 @@ const BasicCharacterInfo = ({ character }) => {
 				{character?.skin && (
 					<div className="skin-area">
 						{/* If only current exists OR both exist */}
-						<h2 className="uncial sk-togg">Skin:{" "} 
+						<h2 className="russo-one-binfo sk-togg">Skin:{" "} 
 							{!character?.skin?.original && (
-								<span className="skin reg-font">{character?.skin?.current}</span>
+								<span className="skin exo-2-binfo">{character?.skin?.current}</span>
 							)}
 						</h2>
 
 						{/* Only show toggle section if both current and original exist */}
 						{(character?.skin?.current && character?.skin?.original) && (
 							<div className="skin-toggle">
-								<h4 className="uncial">Current: <span className="skin-current">{character?.skin?.current}</span></h4>
-								<h4 className="uncial">Original: <span className="skin-original">{character?.skin?.original}</span></h4>
+								<h4 className="russo-one">Current: <span className="skin-current exo-2-binfo">{character?.skin?.current}</span></h4>
+								<h4 className="russo-one">Original: <span className="skin-original exo-2-binfo">{character?.skin?.original}</span></h4>
 							</div>
 						)}
 					</div>
 				)}
 
-				<h2 className="uncial">Eye Color: <span className="eyes reg-font">{character?.eyeColor}</span></h2>
+				<h2 className="russo-one-binfo">Eye Color: <span className="eyes exo-2-binfo">{character?.eyeColor}</span></h2>
 
 				{character?.hair && (
-					<h2 className="uncial hair-toggle">Hair: <span className="hair reg-font">{character?.hair}</span></h2>
+					<h2 className="russo-one-binfo hair-toggle">Hair: <span className="hair exo-2-binfo">{character?.hair}</span></h2>
 				)}
 
 				{character?.colorScheme && (
-					<h2 className="uncial c-scheme-toggle">Color Scheme: <span className="c-scheme reg-font">{character?.colorScheme}</span></h2>
+					<h2 className="russo-one-binfo c-scheme-toggle">Color Scheme: <span className="c-scheme exo-2-binfo">{character?.colorScheme}</span></h2>
 				)}
 
-				<h2 className="uncial">Height: <span className="height reg-font">{character?.height}</span></h2>
-				<h2 className="uncial">Weight: <span className="weight reg-font">{character?.weight}</span></h2>
-				<h2 className="uncial">Canon?: <span className="canon reg-font">{character?.canon}</span></h2>
+				<h2 className="russo-one-binfo">Height: <span className="height exo-2-binfo">{character?.height}</span></h2>
+				<h2 className="russo-one-binfo">Weight: <span className="weight exo-2-binfo">{character?.weight}</span></h2>
+				<h2 className="russo-one-binfo">Canon?: <span className="canon exo-2-binfo">{character?.canon}</span></h2>
 
 			
-				<h2 className="uncial">Alignment:{" "}
+				<h2 className="russo-one-binfo">Alignment:{" "}
 					{(character?.alignment?.morality && character?.alignment?.role) && (
-						<span className="alignment reg-font">{`${character?.alignment?.morality} (${character?.alignment?.role})`}</span>
+						<span className="alignment exo-2-binfo">{`${character?.alignment?.morality} (${character?.alignment?.role})`}</span>
 					)}
 				</h2>
 				{/*<h2 className="uncial">Alignment: <span className="canon reg-font">{`${character?.alignment?.role}, ${character?.alignment?.morality}`}</span></h2>*/}
 
 				{character?.fromIDW && (
-					<h2 className="uncial idw-toggle">From IDW Comics?: <span className="from-idw reg-font">{character?.fromIDW}</span></h2>
+					<h2 className="russo-one-binfo idw-toggle">From IDW Comics?: <span className="from-idw exo-2-binfo">{character?.fromIDW}</span></h2>
 				)}
 
 				<ul className="empty-slot reg-font"></ul>

@@ -39,6 +39,24 @@ html {
   min-height: 100vh; /* makes sure it fills screen */
 }
 
+.luckiest-guy {
+  font-family: "Luckiest Guy", "Arial Black", sans-serif;
+}
+
+.russo-one {
+  font-family: "Russo One", "Helvetica Neue", sans-serif;
+}
+
+.exo-2 {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-weight: 400;
+}
+
+.exo-2-600 {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
 .bangers {
   font-family: "Bangers", "Rubik", sans-serif;
 }
@@ -160,9 +178,10 @@ header {
 /**************************************************************
 /* PIC REST & DISCLAIMER
 /**************************************************************/
-.pic-rest {
+.home-page .pic-rest {
   height: 60rem;
   margin: 0 auto;
+  margin-top: 3rem;
   width: 90%;
   background-image: url('/img/blackbackground.png'); /*background-image: url('./public/img/blackbackground.png')*/
   background-size: cover;
@@ -171,33 +190,38 @@ header {
   min-height: 30vh; /* makes sure it fills screen */
 }
 
-.disclaimer {
-  height: 15rem;
+.home-page .disclaimer {
   margin: 0 auto;
+  margin-top: 3rem;
+  /*height: 21.5rem;*/
   width: 90%;
   color: rgb(245, 193, 66);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(63, 113, 48)); /*rgb(63, 113, 48)*/
   /*background-color: rgb(0, 36, 173);*/
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2)
 }
 
-.disclaimer-content {
+.home-page .disclaimer-content {
   padding: 0 5rem 0 5rem;
 }
 
-.disclaimer-content h2 {
+.home-page .disclaimer-content h2 {
   margin: 0;
   margin-bottom: 1rem;
   font-size: 2.4rem;
 }
 
-.disclaimer-content p {
+.home-page .disclaimer-content p {
   margin: 0;
   font-size: 1.6rem;
 }
 
-.d-content {
-  padding-top: 3.5rem;
+.home-page .d-content {
+  padding: 3rem 0 3rem 0;
 }
 
 /******************************************

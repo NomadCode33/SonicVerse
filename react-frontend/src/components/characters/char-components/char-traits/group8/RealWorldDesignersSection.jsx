@@ -12,17 +12,17 @@ const RealWorldDesignersSection = ({ designers }) => {
   return (
     <div className="card-content designer-toggle">
         <div className="text">
-          <h2 className="uncial">Real World Creators: <span className="description"></span></h2>
+          <h2 className="russo-one">Real World Creators: <span className="description"></span></h2>
                       
           {/* Only creators */}
           {hasCreators && !hasArtists && (
             <div className="creator-art-area desc-text">
-              <h3 className="uncial">Creator(s):</h3>
+              <h3 className="inter">Creator(s):</h3>
 
               <ul className="creator-art-slot">
                 {creators.map((creator, index) => (
                   <li key={index} className="creator-art-entry">
-                    <h3 className="uncial">
+                    <h3 className="inter-600">
                       {creator.name}{" "}
                       {Object.values(creator.source).map((url, i) => (
                         <sup key={i}>
@@ -39,8 +39,8 @@ const RealWorldDesignersSection = ({ designers }) => {
                     </h3>
 
                     <div className="creator-art-roles">
-                      <h3 className="uncial">Job(s):</h3>
-                      <ul className="creator-art-role-slot">
+                      <h3 className="inter-500">Job(s):</h3>
+                      <ul className="creator-art-role-slot exo-2">
                         {creator.job?.map((role, i) => (
                           <li key={i}>• {role}</li>
                         ))}
@@ -55,12 +55,12 @@ const RealWorldDesignersSection = ({ designers }) => {
           {/* Only artists */}
           {hasArtists && !hasCreators && (
             <div className="creator-art-area desc-text">
-              <h3 className="uncial">Artist(s):</h3>
+              <h3 className="inter">Artist(s):</h3>
 
               <ul className="creator-art-slot">
                 {artists.map((artist, index) => (
                   <li key={index} className="creator-art-entry">
-                    <h3 className="uncial">
+                    <h3 className="inter-600">
                       {artist.name}{" "}
                       {Object.values(artist.source).map((url, i) => (
                         <sup key={i}>
@@ -77,8 +77,8 @@ const RealWorldDesignersSection = ({ designers }) => {
                     </h3>
 
                     <div className="creator-art-roles">
-                      <h3 className="uncial">Job(s):</h3>
-                      <ul className="creator-art-role-slot">
+                      <h3 className="inter-500">Job(s):</h3>
+                      <ul className="creator-art-role-slot exo-2">
                         {artist.job?.map((role, i) => (
                           <li key={i}>• {role}</li>
                         ))}
@@ -95,12 +95,12 @@ const RealWorldDesignersSection = ({ designers }) => {
             <div className="designer-area desc-text">
 
               {/* Creators */}
-              <h3 className="uncial">Creator(s):</h3>
+              <h3 className="inter">Creator(s):</h3>
 
               <ul className="creator-slot">
                 {creators.map((creator, index) => (
                   <li key={index} className="creator-entry">
-                    <h3 className="uncial">
+                    <h3 className="inter-600">
                       {creator.name}{" "}
                       {Object.values(creator.source).map((url, i) => (
                         <sup key={i}>
@@ -117,8 +117,8 @@ const RealWorldDesignersSection = ({ designers }) => {
                     </h3>
 
                     <div className="creator-roles">
-                      <h3 className="uncial">Job(s):</h3>
-                      <ul className="creator-slot">
+                      <h3 className="inter-500">Job(s):</h3>
+                      <ul className="creator-slot exo-2">
                         {creator.job?.map((role, i) => (
                           <li key={i}>• {role}</li>
                         ))}
@@ -129,12 +129,12 @@ const RealWorldDesignersSection = ({ designers }) => {
               </ul>
 
               {/* Artists */}
-              <h3 className="uncial">Artist(s):</h3>
+              <h3 className="inter">Artist(s):</h3>
                           
               <ul className="artist-slot">
                 {artists.map((artist, index) => (
                   <li key={index} className="artist-entry">
-                    <h3 className="uncial">
+                    <h3 className="inter-600">
                       {artist.name}{" "}
                       {Object.values(artist.source).map((url, i) => (
                         <sup key={i}>
@@ -151,8 +151,8 @@ const RealWorldDesignersSection = ({ designers }) => {
                     </h3>
 
                     <div className="artist-roles">
-                      <h3 className="uncial">Job(s):</h3>
-                      <ul className="artist-slot">
+                      <h3 className="inter-500">Job(s):</h3>
+                      <ul className="artist-slot exo-2">
                         {artist.job?.map((role, i) => (
                           <li key={i}>• {role}</li>
                         ))}

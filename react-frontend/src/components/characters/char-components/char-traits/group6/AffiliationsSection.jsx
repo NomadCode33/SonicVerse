@@ -6,9 +6,9 @@ const AffiliationsSection = ({ affiliations }) => {
   return (
     <div className="card-content affiliation-toggle">
         <div className="text">
-          <h2 className="uncial">Affiliation(s):</h2>
+          <h2 className="russo-one">Affiliation(s):</h2>
 
-          <ul className="affiliation-slot desc-text">
+          <ul className="affiliation-slot desc-text exo-2">
             {affiliations.map((association, index) => (
               <li key={index}>{association}</li>
             ))}

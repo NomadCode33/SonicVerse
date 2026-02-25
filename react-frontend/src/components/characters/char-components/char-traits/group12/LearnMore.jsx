@@ -4,13 +4,13 @@ const LearnMore = ({ character }) => {
   return (
     <section className="description-box learn-box group-12">
         <div className="text">
-          <h2 className="uncial">
+          <h2 className="russo-one">
             Learn More:{" "} 
             <a 
               href={character?.learnMore}
               target="_blank"
               rel="noopener noreferrer"
-              className="learn-more"
+              className="learn-more exo-2"
             >
               {character?.learnMore}
             </a>

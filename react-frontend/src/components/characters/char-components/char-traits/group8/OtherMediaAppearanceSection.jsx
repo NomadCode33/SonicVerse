@@ -6,9 +6,9 @@ const OtherMediaAppearanceSection = ({ media }) => {
   return (
     <div className="card-content">
         <div className="text">
-          <h2 className="uncial">Appearances in other media:</h2>
+          <h2 className="russo-one">Appearances in other media:</h2>
                       
-          <ul className="other-media-slot desc-text">
+          <ul className="other-media-slot desc-text exo-2">
             {media.map((item, index) => (
               <li key={index}>{item}</li>
             ))}

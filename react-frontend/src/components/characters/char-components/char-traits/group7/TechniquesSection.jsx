@@ -6,9 +6,9 @@ const TechniquesSection = ({ techniques }) => {
   return (
     <div className="card-content techniques-toggle">
         <div className="text">
-          <h2 className="uncial">Techniques:</h2>
+          <h2 className="russo-one">Techniques:</h2>
 
-          <ul className="techniques-slot desc-text">
+          <ul className="techniques-slot desc-text exo-2">
             {techniques.map((technique) => (
               <li key={technique.index}>{technique.name}</li>
             ))}

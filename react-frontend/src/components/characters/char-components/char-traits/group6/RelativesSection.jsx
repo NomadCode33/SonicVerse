@@ -6,9 +6,9 @@ const RelativesSection = ({ relatives }) => {
   return (
     <div className="card-content relatives-toggle">
         <div className="text">
-          <h2 className="uncial">Relatives:</h2>
+          <h2 className="russo-one">Relatives:</h2>
 
-          <ul className="relatives-slot desc-text">
+          <ul className="relatives-slot desc-text exo-2">
             {relatives.map((relative) => (
               <li key={relative.index}>{relative.name} ({relative.relationship})</li>
             ))}

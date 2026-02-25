@@ -7206,7 +7206,7 @@ export const characters = {
         "weight": "440 lb (200 kg)",
         "skin": {
             "current": "Green, light green, vermilion", 
-            "original": "green, yellow, red"
+            "original": "Green, yellow, red"
         },
         "eyeColor": "Goldenrod (originally black)",
         "attire": {

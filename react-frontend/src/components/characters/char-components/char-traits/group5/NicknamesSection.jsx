@@ -6,9 +6,9 @@ const NicknamesSection = ({ nicknames }) => {
   return (
     <div className="card-content nicknames-toggle">
         <div className="text">
-            <h2 className="uncial">Nicknames:</h2>
+            <h2 className="russo-one">Nicknames:</h2>
 
-            <ul className="nicknames-slot desc-text">
+            <ul className="nicknames-slot desc-text exo-2">
             {nicknames.map((nickname, index) => (
                 <li key={index}>{nickname}</li>
             ))}
