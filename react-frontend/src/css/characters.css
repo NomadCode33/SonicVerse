@@ -175,11 +175,11 @@ header {
 .nav-box {
   margin: 1.3rem auto;
   padding: 0;
-  width: 30rem;
+  width: 18rem;
   color: white;
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .nav-box li {
@@ -222,7 +222,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #001833;
   border-radius: 1rem;
   background-image: url('/img/SADX_Cast.webp'); /*background-image: url('./public/img/blackbackground.png')*/
   background-size: cover;
@@ -238,12 +238,12 @@ header {
   text-align: center;
   text-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.75);
 
-  color: #e0e6f8; /* pale silvery blue */
+  color: #e0e6f8; /* pale silvery white */
   text-shadow:
     0 0 0.5rem #ffffff,
-    0 0 1rem #a8c0ff,
-    0 0 2rem #91a7ff,
-    0 0 4rem #7c8cff;
+    0 0 1rem #5b8fff,
+    0 0 2rem #2d5fff,
+    0 0 4rem #0024ad;
   animation: ui-glow 1.5s infinite alternate ease-in-out;
 }
 
@@ -251,25 +251,59 @@ header {
   from {
     text-shadow:
       0 0 0.3rem #ffffff,
-      0 0 0.6rem #a8c0ff,
-      0 0 1.2rem #91a7ff,
-      0 0 2.4rem #7c8cff;
+      0 0 0.6rem #5b8fff,
+      0 0 1.2rem #2d5fff,
+      0 0 2.4rem #0024ad;
   }
   to {
     text-shadow:
       0 0 0.8rem #ffffff,
-      0 0 1.6rem #a8c0ff,
-      0 0 3.2rem #91a7ff,
-      0 0 6.4rem #7c8cff;
+      0 0 1.6rem #5b8fff,
+      0 0 3.2rem #2d5fff,
+      0 0 6.4rem #0024ad;
   }
 }
+
+/*
+Old ui glow:
+.characters-page .pop-title {
+  font-size: 12rem;
+  text-align: center;
+  text-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.75);
+
+  color: #e0e6f8; 
+  text-shadow:
+    0 0 0.5rem #ffffff,
+    0 0 1rem #4a7aad,
+    0 0 2rem #2a5c8a,
+    0 0 4rem #1a3a6b;
+  animation: ui-glow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes ui-glow {
+  from {
+    text-shadow:
+      0 0 0.3rem #ffffff,
+      0 0 0.6rem #4a7aad,
+      0 0 1.2rem #3a6b4a,
+      0 0 2.4rem #1a3a6b;
+  }
+  to {
+    text-shadow:
+      0 0 0.8rem #ffffff,
+      0 0 1.6rem #4a7aad,
+      0 0 3.2rem #3a6b4a,
+      0 0 6.4rem #1a3a6b;
+  }
+}
+*/ /* pale silvery white, unchanged */
 
 .characters-page .disclaimer {
   margin: 0 auto;
   margin-top: 3rem;
-  width: 90%;
+  width: 80%;
   color: rgb(245, 193, 66);
-  border: 0.1rem solid black;
+  border: 0.1rem solid #001833;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -305,11 +339,12 @@ header {
 /*************************************************************/
 #search-box {
   margin: 4rem auto;
-  border: 0.2rem solid red;
+  border: 0.2rem solid rgb(29, 78, 216);
   border-radius: 1rem;
-  width: 30%;
-  height: 20rem;
-  background: rgb(244, 187, 68);
+  width: 37%;
+  height: 23rem;
+  /*background: rgb(96, 165, 250);*/ /* previous blue rgb(96, 165, 250) */
+  background: linear-gradient(180deg, rgb(96, 165, 250), rgb(52, 211, 153)); /*rgb(63, 113, 48)*/
   text-align: center;
   display: flex;
   justify-content: center;
@@ -371,41 +406,90 @@ header {
   font-size: 3.2rem;
 }
 
-/**************************************************************
-/* MAIN
-/**************************************************************/
-#main-area {
-  margin-top: 8rem;
+/*************************************************************
+/* SEARCH BOX: BROWSE CHARACTER LIST
+/*************************************************************/
+/* 1. Flex wrapper that holds the search box and the list panel side by side */
+.search-section {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  margin: 4rem auto;
+  width: 90%;
 }
 
-/*********************************************************
-/* NAME & PICTURE
-/*********************************************************/
-.char-name {
-  margin: 2rem 0 0 2rem;
-  margin: 3rem auto;
-  border: 0.2rem solid red;
-  border-radius: 1rem;
-  width: auto;
-  font-size: clamp(1.8rem, 5vw, 3.5rem);
-  /*font-size: 2.4rem;*/
-  text-align: center;
-  background: rgb(244, 187, 68);
-  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
-  /*box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);*/
-  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));*/
+/* 2. Prevents the search box from stretching inside the flex row */
+.search-section #search-box {
+  flex: 0 0 auto;
+  margin: 0;
 }
 
-.char-pic {
-  margin: 3rem auto;
-  /*width: 50%;*/
+.search-row {
+  display: inline-flex;  /* shrinks to exactly the width of input + button */
+}
+
+/* 3. The toggle button stacks below the existing buttons inside the search box */
+.list-toggle-btn {
+  margin-top: 1.2rem;
+  margin-left: 0 !important;
   display: block;
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+  width: 100%;
 }
+
+/* 4. The scrollable panel that appears to the right of the search box */
+.char-list-panel {
+  /*flex: 1;*/
+  width: 30%;
+  /*max-width: 70rem;*/
+  height: 23rem;
+  overflow-y: auto;
+  border: 0.2rem solid rgb(29, 78, 216);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgb(37, 99, 235), rgb(52, 211, 153));
+  /*background: rgb(30, 41, 59);*/
+  padding: 1.5rem;
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);
+}
+
+/* 5. The wrapping flex grid inside the panel */
+.char-tile-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* 6. Individual character tiles */
+.char-tile {
+  padding: 0.8rem 1.2rem;
+  min-width: 12rem;
+  text-align: center;
+  background: rgb(0, 36, 173);
+  color: rgb(245, 193, 66);
+  border: 0.15rem solid rgb(245, 193, 66);
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.5);
+  /*cursor: pointer;*/
+  /*transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;*/
+}
+
+/*.char-tile:hover {
+  background: rgb(63, 113, 48);
+  color: rgb(245, 193, 66);
+  border-color: rgb(245, 193, 66);
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.8);
+  transform: translateY(-0.2rem);
+}
+
+.char-tile:active {
+  transform: translateY(0);
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+}*/
+
 
 /*********************************************************
 /* CHARACTER NOT FOUND
@@ -438,18 +522,37 @@ header {
   display: block;
 }
 
+
+/**************************************************************
+/* MAIN
+/**************************************************************/
+#main-area {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*********************************************************
+/* NAME & PICTURE
+/*********************************************************/
+
+
+
 /************************************************************
 /* BASIC INFO
 /************************************************************/
 .basic-info {
   margin: 3rem auto;
   margin-top: 5rem;
-  border: 0.2rem solid red;
+  border: 0.2rem solid rgb(29, 78, 216);
   border-radius: 1rem;
   width: 33%;
   height: auto;
   min-height: auto;
-  background: rgb(244, 187, 68);
+  /*background: rgb(244, 187, 68);*/
+  background: linear-gradient(180deg, rgb(96, 165, 250), rgb(52, 211, 153)); /*rgb(63, 113, 48)*/
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -470,6 +573,27 @@ header {
 .basic-info .info-text {
   padding: 0;
   gap: 1rem;
+}
+
+.char-name {
+  margin: 2rem 0 0 2rem;
+  margin: 3rem auto;
+  /*border: 0.2rem solid red;*/
+  border-radius: 1rem;
+  width: auto;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  /*font-size: 2.4rem;*/
+  text-align: center;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+  /*box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);*/
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));*/
+}
+
+.char-pic {
+  margin: 3rem auto;
+  /*width: 50%;*/
+  display: block;
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
 }
 
 .char-name,
@@ -672,14 +796,15 @@ header {
 
 .description-box {
   margin-bottom: 1.5rem;
-  border: 0.2rem solid red;
+  border: 0.2rem solid rgb(29, 78, 216);
   border-radius: 1rem;
   width: 100%;
   height: 30rem;
   max-height: 30rem;
   /*overflow-y: auto;*/ /* allows scrolling to happen inside element*/
   overflow: hidden;
-  background: rgb(244, 187, 68);
+  background: linear-gradient(135deg, rgb(96, 165, 250), rgb(52, 211, 153));
+  /*background: rgb(96, 165, 250);*/
   display: flex;
   flex: 0 0 auto; 
   align-items: flex-start;
@@ -748,13 +873,14 @@ header {
 .card-content {
   margin-bottom: 1.5rem;
   /*padding-right: 2.5rem;*/
-  border: 0.2rem solid red;
+  border: 0.2rem solid rgb(29, 78, 216);
   border-radius: 1rem;
   /*width: 31%;*/ /*Replace with min-width and flex: 1 if they don't work*/
   height: 30rem;
   max-height: 30rem;
   overflow-y: auto; /* allows scrolling to happen inside element*/
-  background: rgb(244, 187, 68);
+  background: linear-gradient(135deg, rgb(96, 165, 250), rgb(52, 211, 153));
+  /*background: rgb(96, 165, 250);*/
   display: flex;
   min-width: 0;
   flex: 1;
@@ -797,7 +923,7 @@ header {
 
 .learn-more:hover,
 .link-vas:hover {
-  color: rgb(63, 113, 48); /* your green */
+  color: rgb(245, 158, 11); /* your amber */
 }
 
 /******************************************

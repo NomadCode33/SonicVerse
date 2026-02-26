@@ -1,5 +1,5 @@
 import "../css/characters.css"
-import Navbar from "../components/home/Navbar";
+import Navbar from "../components/characters/Navbar";
 import Hero from "../components/characters/Hero";
 import Disclaimer from "../components/characters/Disclaimer";
 import SearchBox from "../components/characters/SearchBox";

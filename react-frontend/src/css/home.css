@@ -202,12 +202,12 @@ header {
   text-align: center;
   text-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.75);
 
-  color: #e0e6f8; /* pale silvery blue */
+  color: #e0e6f8; /* pale silvery white */
   text-shadow:
     0 0 0.5rem #ffffff,
-    0 0 1rem #a8c0ff,
-    0 0 2rem #91a7ff,
-    0 0 4rem #7c8cff;
+    0 0 1rem #5b8fff,
+    0 0 2rem #2d5fff,
+    0 0 4rem #0024ad;
   animation: ui-glow 1.5s infinite alternate ease-in-out;
 }
 
@@ -215,18 +215,52 @@ header {
   from {
     text-shadow:
       0 0 0.3rem #ffffff,
-      0 0 0.6rem #a8c0ff,
-      0 0 1.2rem #91a7ff,
-      0 0 2.4rem #7c8cff;
+      0 0 0.6rem #5b8fff,
+      0 0 1.2rem #2d5fff,
+      0 0 2.4rem #0024ad;
   }
   to {
     text-shadow:
       0 0 0.8rem #ffffff,
-      0 0 1.6rem #a8c0ff,
-      0 0 3.2rem #91a7ff,
-      0 0 6.4rem #7c8cff;
+      0 0 1.6rem #5b8fff,
+      0 0 3.2rem #2d5fff,
+      0 0 6.4rem #0024ad;
   }
 }
+
+/*
+Old ui glow:
+.characters-page .pop-title {
+  font-size: 12rem;
+  text-align: center;
+  text-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.75);
+
+  color: #e0e6f8; 
+  text-shadow:
+    0 0 0.5rem #ffffff,
+    0 0 1rem #4a7aad,
+    0 0 2rem #2a5c8a,
+    0 0 4rem #1a3a6b;
+  animation: ui-glow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes ui-glow {
+  from {
+    text-shadow:
+      0 0 0.3rem #ffffff,
+      0 0 0.6rem #4a7aad,
+      0 0 1.2rem #3a6b4a,
+      0 0 2.4rem #1a3a6b;
+  }
+  to {
+    text-shadow:
+      0 0 0.8rem #ffffff,
+      0 0 1.6rem #4a7aad,
+      0 0 3.2rem #3a6b4a,
+      0 0 6.4rem #1a3a6b;
+  }
+}
+*/ /* pale silvery white, unchanged */
 
 .home-page .disclaimer {
   color: rgb(245, 193, 66);
