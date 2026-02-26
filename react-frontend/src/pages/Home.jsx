@@ -1,8 +1,7 @@
 import "../css/home.css"
 import Navbar from "../components/home/Navbar";
 import Hero from "../components/home/Hero";
-import Disclaimer from "../components/home/Disclaimer";
-import DemoArea from "../components/home/DemoArea";
+import DemoWrapper from "../components/home/DemoWrapper";
 import Footer from "../components/home/Footer";
 
 const Home = () => {
@@ -10,8 +9,7 @@ const Home = () => {
     <main className="home-page">
       <Navbar />
       <Hero />
-      <Disclaimer />
-      <DemoArea />
+      <DemoWrapper />
       <Footer />
     </main>
   )

@@ -1,4 +1,4 @@
-import "../../css/home.css"
+import "../../../../css/home.css"
 import Feature from './Feature'
 
 const BoxContainer = ({ features }) => {

@@ -1,10 +1,11 @@
 import "../css/characters.css"
 import Navbar from "../components/home/Navbar";
-import Hero from "../components/home/Hero";
+import Hero from "../components/characters/Hero";
 import Disclaimer from "../components/characters/Disclaimer";
 import SearchBox from "../components/characters/SearchBox";
 import CharacterNotFound from "../components/characters/CharacterNotFound";
 import MainAreaInfo from "../components/characters/MainAreaInfo";
+import Footer from "../components/home/Footer";
 import { useState } from "react";
 
 const Characters = () => {
@@ -22,6 +23,7 @@ const Characters = () => {
 
       {/* Pass character down so MainAreaInfo can display it */}
       <MainAreaInfo character={character} />
+      <Footer />
     </main>
   )
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import "../../css/home.css"
+import "../../../../css/home.css"
 
 const Feature = ({ title, link, img, altDesc, description, buttonText }) => {
   return (

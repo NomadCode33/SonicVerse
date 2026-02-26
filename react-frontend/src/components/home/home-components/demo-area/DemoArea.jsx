@@ -1,4 +1,4 @@
-import "../../css/home.css"
+import "../../../../css/home.css"
 import BoxContainer from './BoxContainer';
 
 const DemoArea = () => {
@@ -9,7 +9,7 @@ const DemoArea = () => {
         {
           title: "Characters",
           link: "/characters",
-          img: "img/blackbackground.png",
+          img: "img/websitepages/characters-page.png",
           description: "Explore the colorful cast of heroes and villains across the Sonic universe.",
           buttonText: "Explore Characters",
         },

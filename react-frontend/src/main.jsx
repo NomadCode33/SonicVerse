@@ -8,8 +8,8 @@ import '@fontsource/inter/600.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/exo-2/400.css' // Body paragraph
 import '@fontsource/exo-2/600.css'
-import '@fontsource/exo-2/700.css'
-import '@fontsource/exo-2/800.css'
+//import '@fontsource/exo-2/700.css'
+//import '@fontsource/exo-2/800.css'
 // Teko for body? weight 400
 // Anton ? weight 400
 // Orbiton? weight 400, 500, 600

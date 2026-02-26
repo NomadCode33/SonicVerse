@@ -1,10 +1,10 @@
-import "../../css/home.css"
+import "../../css/characters.css"
 //import "../css/hero.css"
 
 const Hero = () => {
   return (
     <section className="pic-rest">
-      <h1 className="pop-title luckiest-guy">SonicVerse</h1>
+      <h1 className="pop-title luckiest-guy">Characters</h1>
     </section>
 
   )

@@ -200,7 +200,7 @@ header {
   text-transform: uppercase;
   transition: background-color 0.3s, color 0.3s;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
 }
 
 .nav-button:hover {
@@ -208,21 +208,60 @@ header {
   border: 0.1rem solid rgb(63, 113, 48);
   color: rgb(245, 193, 66); /* or the header background color for contrast */
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  box-shadow: 0.5rem 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0.5rem 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.8);
 }
 
 /**************************************************************
 /* PIC REST & DISCLAIMER
 /**************************************************************/
 .characters-page .pic-rest {
+  height: 82rem;
   margin: 0 auto;
-  height: 60rem;
+  margin-top: 3rem;
   width: 90%;
-  background-image: url('/img/blackbackground.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  background-image: url('/img/SADX_Cast.webp'); /*background-image: url('./public/img/blackbackground.png')*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   min-height: 30vh; /* makes sure it fills screen */
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));*/
+}
+
+.characters-page .pop-title {
+  font-size: 12rem;
+  text-align: center;
+  text-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.75);
+
+  color: #e0e6f8; /* pale silvery blue */
+  text-shadow:
+    0 0 0.5rem #ffffff,
+    0 0 1rem #a8c0ff,
+    0 0 2rem #91a7ff,
+    0 0 4rem #7c8cff;
+  animation: ui-glow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes ui-glow {
+  from {
+    text-shadow:
+      0 0 0.3rem #ffffff,
+      0 0 0.6rem #a8c0ff,
+      0 0 1.2rem #91a7ff,
+      0 0 2.4rem #7c8cff;
+  }
+  to {
+    text-shadow:
+      0 0 0.8rem #ffffff,
+      0 0 1.6rem #a8c0ff,
+      0 0 3.2rem #91a7ff,
+      0 0 6.4rem #7c8cff;
+  }
 }
 
 .characters-page .disclaimer {
@@ -230,12 +269,16 @@ header {
   margin-top: 3rem;
   width: 90%;
   color: rgb(245, 193, 66);
+  border: 0.1rem solid black;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(63, 113, 48)); /*rgb(63, 113, 48)*/
   /*background-color: rgb(0, 36, 173);*/
-  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2)
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));*/
 }
 
 .characters-page .disclaimer-content {
@@ -273,7 +316,8 @@ header {
   align-items: center;
   flex-direction: column;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));*/
 }
 
 .target-box {
@@ -289,7 +333,8 @@ header {
   border-radius: 0.4rem;
   color: black;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.2);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));*/
 }
 
 .src-btn {
@@ -302,12 +347,14 @@ header {
   color: #000;
   cursor: pointer;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.2);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));*/
   /*cursor: pointer;*/
 }
 
 .src-btn:hover {
   background-color: #e0e0e0;
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.3);
 }
 
 .text-content {
@@ -348,8 +395,9 @@ header {
   /*font-size: 2.4rem;*/
   text-align: center;
   background: rgb(244, 187, 68);
-  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+  /*box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);*/
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));*/
 }
 
 .char-pic {
@@ -376,7 +424,8 @@ header {
   display: none;
   font-weight: bold;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));*/
 
   /* essential to keep text inside the box */
   box-sizing: border-box;
@@ -405,7 +454,8 @@ header {
   justify-content: center;
   align-items: stretch;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));*/
 }
 
 .basic-info .text {
@@ -494,6 +544,7 @@ header {
   transition: opacity 0.2s ease-in-out;
   border-radius: 0.8rem;
   opacity: 1;
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.5));
 }
 
 .carousel-img.fade-out {
@@ -633,7 +684,8 @@ header {
   flex: 0 0 auto; 
   align-items: flex-start;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));*/
 }
 
 .description-box .desc-text p {
@@ -708,7 +760,8 @@ header {
   flex: 1;
   align-items: flex-start;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
+  box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7);
+  /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));*/
 }
 
 .preferences {
@@ -896,8 +949,11 @@ header {
 /***************************************************************
 /* FOOTER
 /***************************************************************/
-footer {
-  margin-top: 9%;
+.characters-page .footer {
+  margin-top: 5rem;
+  height: 5rem; /*It was at 75 before*/
+  background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
+  /*background-color: rgb(0, 36, 173);*/
 }
 
 #footer-img {
