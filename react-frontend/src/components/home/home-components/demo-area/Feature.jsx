@@ -6,7 +6,7 @@ const Feature = ({ title, link, img, altDesc, description, buttonText }) => {
     <div className="feature">
         <div className="feature-content">
             <h2 className="comp-item russo-one">{title}</h2>
-            <Link to={link}><img src={img} alt={altDesc} /></Link>
+            <Link to={link} className="feature-img-link"><img src={img} alt={altDesc} /></Link>
             <p className="page-describe exo-2">{description}</p>
             <Link className="main-button exo-2-600" to={link}>{buttonText}</Link>
         </div>

@@ -1,20 +1,28 @@
 import { Link } from 'react-router-dom';
 import "../../css/characters.css"
 
-const Navbar = () => {
+const Navbar = ({ showText, setShowText, showContent, setShowContent }) => {
   return (
     <header className="clearfix">
 			<section className="header-box">
 				<div className="head-title">
-					  <Link to="/"><img className="icon" src="/img/dndicon.png" alt="D&D Logo"/></Link>
-            <h1 className="exo-2">SonicVerse</h1>
+					  <Link to="/"><img className="icon" src="/img/icons/Adv3_sonic_run.webp" alt="SAdv3 Sonic Running"/></Link>
+            <h1 className="site-blurb exo-2">SonicVerse</h1>
 				</div>
 				
 				<div className="nav-bar">
 					<nav>
 						<ul className="nav-box">
-							<li><Link className="nav-button exo-2" to="">Text</Link></li>
-							<li><Link className="nav-button exo-2" to="">Backdrop</Link></li>
+              <li>
+                <button className="nav-button exo-2" onClick={() => {setShowText(prev => !prev)}}>
+                  {showText ? "Hide Text" : "Show Text"}
+                </button>
+              </li>
+							<li>
+                <button className="nav-button exo-2" onClick={() => {setShowContent(prev => !prev)}}>
+                  {showContent ? "Hide All" : "Show All"}
+                </button>
+              </li>
 						</ul>
 					</nav>
 				</div>

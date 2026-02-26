@@ -11,18 +11,29 @@ import { useState } from "react";
 const Characters = () => {
   // Lift state here so both SearchBox and MainAreaInfo can access it
   const [character, setCharacter] = useState(null);
+  const [showText, setShowText] = useState(true);
+  const [showContent, setShowContent] = useState(true);
 
   return (
-    <main className="characters-page">
-      <Navbar />
-      <Hero />
-      <Disclaimer />
+    <main className="characters-page" style={{ minHeight: showContent ? "150vh" : "300vh" }}>
+      <Navbar 
+        showText={showText}
+        setShowText={setShowText}
+        showContent={showContent}
+        setShowContent={setShowContent}
+      />
 
-      {/* Pass setCharacter down so SearchBox can update it */}
-      <SearchBox setCharacter={setCharacter} />
+      {/* Hidden via CSS so state is preserved inside SearchBox/MainAreaInfo */}
+      <div style={{ display: showContent ? "contents" : "none" }}>
+        <Hero showText={showText} />
+        <Disclaimer />
 
-      {/* Pass character down so MainAreaInfo can display it */}
-      <MainAreaInfo character={character} />
+        {/* Pass setCharacter down so SearchBox can update it */}
+        <SearchBox setCharacter={setCharacter} />
+
+        {/* Pass character down so MainAreaInfo can display it */}
+        <MainAreaInfo character={character} />
+      </div>
       <Footer />
     </main>
   )

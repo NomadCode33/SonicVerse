@@ -32,13 +32,15 @@ html {
 .characters-page {
   font-family: "Rubik", sans-serif;
   /*background-color: black;*/
-  background-image: url('/img/IDW75CharsCover.webp');
+  background-image: url('/img/backgrounds/IDW75CharsCover.webp');
   /*background-image: url('./img/classic_sonic.jpg');*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  min-height: 100vh; /* makes sure it fills screen */
+  display: flex;
+  flex-direction: column;
+  min-height: 150vh; /* makes sure it fills screen. orginally 100vh */
 }
 
 .luckiest-guy {
@@ -106,13 +108,16 @@ html {
 /**************************************************************
 /* HEADER SECTION
 /**************************************************************/
-header {
+.characters-page header {
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: linear-gradient(90deg, rgb(0, 36, 173), rgb(50, 100, 230)); 
   /*background-color: rgb(0, 36, 173);*/
-  height: 5rem;
 }
 
-.head-title {
+.characters-page .head-title {
   margin: 0;
   width: 20rem;
   color: white;
@@ -122,11 +127,11 @@ header {
 }
 /*width: 15rem*/
 
-.head-title h1 {
+.characters-page .head-title h1 {
   font-size: 1.5rem;
 }
 
-.head-title a {
+.characters-page .head-title a {
   margin: 0;             /* remove extra margin */
   padding: 0;            /* remove extra padding */
   width: auto;           /* remove any inherited width */
@@ -152,7 +157,7 @@ header {
   width: 2rem;
 }*/
 
-.icon {
+.characters-page .icon {
   margin: 0.85rem 0 0.85rem 0.9rem;
   width: 3rem;
   height: 3rem;
@@ -162,31 +167,35 @@ header {
 /*width: 22%*/
 /*width: 70%;*/
 
-.header-box {
+.characters-page .site-blurb {
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
+}
+
+.characters-page .header-box {
   height: 5rem;
   display: flex;
   justify-content: space-between;
 }
 
-.nav-bar nav {
+.characters-page .nav-bar nav {
   line-height: 1.0;
 }
 
-.nav-box {
+.characters-page .nav-box {
   margin: 1.3rem auto;
   padding: 0;
-  width: 18rem;
+  width: 22rem;
   color: white;
   list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-.nav-box li {
+.characters-page .nav-box li {
   margin-right: 1rem;
 }
 
-.nav-button {
+.characters-page .nav-button {
   padding: 0.5rem 1rem;
   border: 0.1rem solid rgb(249, 246, 238);
   border-radius: 0.3rem;
@@ -198,12 +207,13 @@ header {
   vertical-align: middle;
   color: rgb(249, 246, 238);
   text-transform: uppercase;
+  cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
 }
 
-.nav-button:hover {
+.characters-page .nav-button:hover {
   background-color: rgb(63, 113, 48);
   border: 0.1rem solid rgb(63, 113, 48);
   color: rgb(245, 193, 66); /* or the header background color for contrast */
@@ -224,7 +234,7 @@ header {
   align-items: center;
   border: 0.1rem solid #001833;
   border-radius: 1rem;
-  background-image: url('/img/SADX_Cast.webp'); /*background-image: url('./public/img/blackbackground.png')*/
+  background-image: url('/img/hero-images/SADX_Cast.webp'); /*background-image: url('./public/img/blackbackground.png')*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1076,7 +1086,7 @@ Old ui glow:
 /* FOOTER
 /***************************************************************/
 .characters-page .footer {
-  margin-top: 5rem;
+  margin-top: auto;
   height: 5rem; /*It was at 75 before*/
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
   /*background-color: rgb(0, 36, 173);*/

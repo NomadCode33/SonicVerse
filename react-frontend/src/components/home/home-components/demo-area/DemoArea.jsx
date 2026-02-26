@@ -9,21 +9,21 @@ const DemoArea = () => {
         {
           title: "Characters",
           link: "/characters",
-          img: "img/websitepages/characters-page.png",
+          img: "img/website-pages/characters-page.png",
           description: "Explore the colorful cast of heroes and villains across the Sonic universe.",
           buttonText: "Explore Characters",
         },
         {
           title: "Transformations",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View _____",
         },
         {
           title: "Zones",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View _____",
         },
@@ -35,21 +35,21 @@ const DemoArea = () => {
         {
           title: "Songs",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
         {
           title: "Lore",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
         {
           title: "Comics",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
@@ -61,21 +61,21 @@ const DemoArea = () => {
         {
           title: "Placeholder",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
         {
           title: "Placeholder",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
         {
           title: "Placeholder",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
@@ -87,29 +87,27 @@ const DemoArea = () => {
         {
           title: "Placeholder",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
         {
           title: "Placeholder",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
         {
           title: "Placeholder",
           link: "",
-          img: "img/coming-soon-background.jpg",
+          img: "img/props/coming-soon-background.jpg",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam tempora sunt qui eveniet, est nisi.",
           buttonText: "View ____",
         },
       ],
     },
   ];
-
-
 
   return (
     <main className="demo-area clearfix">
