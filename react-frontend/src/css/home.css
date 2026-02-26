@@ -38,7 +38,7 @@ html {
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* makes sure it fills screen */
+  min-height: 150vh; /* makes sure it fills screen */
 }
 
 .luckiest-guy {

@@ -12,6 +12,12 @@ const SearchBox = ({ setCharacter }) => { // <-- receive setCharacter as prop
   const [characterList, setCharacterList] = useState([]);
   const [listLoading, setListLoading] = useState(false);
 
+  // Warm up Render server
+  useEffect(() => {
+    fetch("https://sonicverse-y2s6.onrender.com/api/characters/")
+      .catch(() => {});
+  }, []);
+
   // Fetch the character list when the panel is opened for the first time
   useEffect(() => {
     if (showList && characterList.length === 0) {

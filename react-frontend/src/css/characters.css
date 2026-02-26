@@ -507,14 +507,15 @@ Old ui glow:
 #characterNotFound {
   margin: 0 auto;
   padding: 0.7rem;
-  border: 0.2rem solid red;
+  border: 0.2rem solid rgb(29, 78, 216);
   border-radius: 1rem;
-  width: 30%;
+  width: 33%;
   height: auto;
   min-height: auto;
   font-size: 2.08rem;
   text-align: center;
-  background: rgb(244, 187, 68);
+  background: linear-gradient(135deg, rgb(96, 165, 250), rgb(52, 211, 153));
+  /*background: rgb(244, 187, 68);*/
   display: none;
   font-weight: bold;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);

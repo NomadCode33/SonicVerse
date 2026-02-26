@@ -1,24 +1,24 @@
-// Imported async function mapping all values from index to new search parameters
-import { targetTypeMap } from './config.js';
+import { targetCharacterMap as staticMap } from './charMap.js';
 
 const searchURL = `https://sonicverse-y2s6.onrender.com/api/characters/`;
-let targetCharacterMap;
+
+let targetCharacterMap = staticMap;
 
 export async function initInitialize() {
-  targetCharacterMap = await targetTypeMap(searchURL);
+  if (!targetCharacterMap || Object.keys(targetCharacterMap).length === 0) {
+    const { targetTypeMap } = await import('./config.js');
+    targetCharacterMap = await targetTypeMap(searchURL);
+  }
   return targetCharacterMap;
 }
 
 export async function searchCharacter(choice) {
-  if (!targetCharacterMap) await initInitialize();
-
-  const mapChoice = targetCharacterMap[choice.toLowerCase()] || choice.toLowerCase();
-  const url = `https://sonicverse-y2s6.onrender.com/api/characters/${mapChoice}`;
+  const mapChoice = targetCharacterMap[choice.toLowerCase()] ?? choice.toLowerCase();
+  const url = `${searchURL}${mapChoice}`;
   const res = await fetch(url);
 
   if (!res.ok) throw new Error(`Fetch failed with status ${res.status}`);
   const data = await res.json();
-  console.log(data);
   return data;
 }
 

@@ -10,7 +10,7 @@ const Home = () => {
   const [showContent, setShowContent] = useState(true);
 
   return (
-    <main className="home-page">
+    <main className="home-page" style={{ minHeight: showContent ? "150vh" : "300vh" }}>
       <Navbar
         showText={showText}
         setShowText={setShowText}
