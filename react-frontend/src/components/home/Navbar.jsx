@@ -6,7 +6,7 @@ const Navbar = ({ showText, setShowText, showContent, setShowContent }) => {
     <header className="clearfix">
 			<section className="header-box">
 				<div className="head-title">
-					  <Link to="/"><img className="icon" src="/img/icons/Adv3_sonic_idle.webp" alt="SAdv3 Sonic Idle"/></Link>
+					  <Link to="/sonic-hub"><img className="icon" src="/img/icons/Adv3_sonic_idle.webp" alt="SAdv3 Sonic Idle"/></Link>
             <h1 className="site-blurb exo-2">SonicVerse</h1>
 				</div>
 				

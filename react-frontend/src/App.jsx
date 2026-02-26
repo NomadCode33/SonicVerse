@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
 /*import Navbar from "./components/home/Navbar";
@@ -14,8 +14,18 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/characters" element={<Characters />} />
+        {/* The <Navigate> just automatically redirects anyone hitting / over to /sonic-hub */}
+        <Route path="/" element={<Navigate to="/sonic-hub" replace />} />
+
+        <Route path="/sonic-hub">
+          <Route index element={<Home />} />
+          <Route path="characters" element={<Characters />} />
+        </Route>
+
+        {/*<Route path="/sonic-hub">
+          <Route index element={<Home />} />
+          <Route path="characters" element={<Characters />} />
+        </Route>*/}
       </Routes>
     </Router>
   );
