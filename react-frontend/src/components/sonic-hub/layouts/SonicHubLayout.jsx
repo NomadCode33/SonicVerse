@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import Navbar from '../shared-templates/Navbar';
 import Footer from '../shared-templates/Footer';
 
@@ -22,14 +23,19 @@ const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
   const variant = getVariant(pathname);
   const pageClass = PAGE_CLASSES[variant] ?? 'home-page';
 
+  // darkMode lives here so both Sidebar and the page can react to it
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className={pageClass}>
+    <div className={`${pageClass}${darkMode ? ' dark-mode' : ''}`}>
       <Navbar
         variant={variant}
         showText={showText}
         setShowText={setShowText}
         showContent={showContent}
         setShowContent={setShowContent}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
       <Outlet context={{ variant }} />
       <Footer variant={variant} />

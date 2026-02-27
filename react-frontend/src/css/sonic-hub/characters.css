@@ -123,7 +123,7 @@ html {
   color: white;
   display: flex;
   align-items: center;  /* vertically align text with logo */
-  gap: 1.0rem;
+  /*gap: 1.0rem;*/
 }
 /*width: 15rem*/
 
@@ -167,14 +167,19 @@ html {
 /*width: 22%*/
 /*width: 70%;*/
 
-.characters-page .site-blurb {
-  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
-}
-
 .characters-page .header-box {
   height: 5rem;
   display: flex;
   justify-content: space-between;
+}
+
+.characters-page .small-webtext-title {
+  font-size: 1.5rem;
+  color: white;
+  align-content: center;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
+  /*justify-content: center;*/
+  /*align-items: center;*/
 }
 
 .characters-page .nav-bar nav {

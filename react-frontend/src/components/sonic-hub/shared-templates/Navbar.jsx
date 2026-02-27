@@ -24,16 +24,21 @@ const VARIANTS = {
   // },
 };
 
-const Navbar = ({ variant = 'home', showText, setShowText, showContent, setShowContent }) => {
+const Navbar = ({ variant = 'home', showText, setShowText, showContent, setShowContent, darkMode, setDarkMode }) => {
   const { pageClass, icon, iconAlt } = VARIANTS[variant] ?? VARIANTS.home;
 
   return (
     <header className="clearfix">
       <section className="header-box">
         <div className="head-title">
-          <Link to="/sonic-hub">
-            <img className="icon" src={icon} alt={iconAlt} />
-          </Link>
+          {/* Sidebar hamburger — sits before the logo link */}
+          <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+          
+          <Link to="/sonic-hub"><img className="icon" src={icon} alt={iconAlt} /></Link>
+          {/*<h1 className="site-blurb exo-2">SonicVerse</h1>*/}
+        </div>
+
+        <div className="small-webtext-title">
           <h1 className="site-blurb exo-2">SonicVerse</h1>
         </div>
 

@@ -83,10 +83,10 @@ html {
 .home-page .head-title {
   margin: 0;
   width: 20rem;
+  color: white;
   display: flex;
   align-items: center;  /* vertically align text with logo */
-  gap: 1.0rem;
-  color: white;
+  /*gap: 1.0rem;*/
 }
 /*width: 15rem*/
 
@@ -130,14 +130,19 @@ html {
 /*width: 22%*/
 /*width: 70%;*/
 
-.home-page .site-blurb {
-  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
-}
-
 .home-page .header-box {
   height: 5rem;
   display: flex;
   justify-content: space-between;
+}
+
+.home-page .small-webtext-title {
+  font-size: 1.5rem;
+  color: white;
+  align-content: center;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
+  /*justify-content: center;*/
+  /*align-items: center;*/
 }
 
 .home-page .nav-bar nav {
