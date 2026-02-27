@@ -17,8 +17,15 @@ const Abilities = ({ abilities }) => {
 
   if (!shouldRenderContainer) return null; // hide entire container if nothing exists
 
+  // Count and assign class
+  const cardCount = [hasSkills, hasTechniques, hasAbilityTypes].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container skills-toggle group-7">
+    <section className={`card-container skills-toggle group-7 ${countClass}`}>
         <SkillsSection skills={skills} />
 
         <TechniquesSection techniques={techniques} />

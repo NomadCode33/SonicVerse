@@ -8,12 +8,24 @@ const CharacterConnections = ({ character }) => {
   const relatives = character?.relatives ?? [];
   const transformations = character?.transformations ?? [];
 
-  const shouldRenderContainer = affiliations.length > 0 || relatives.length > 0 || transformations.length > 0;
+  // Add these — derive booleans from the arrays
+  const hasAffiliations = affiliations.length > 0;
+  const hasRelatives = relatives.length > 0;
+  const hasTransformations = transformations.length > 0;
+
+  const shouldRenderContainer = hasAffiliations || hasRelatives || hasTransformations;
 
   if (!shouldRenderContainer) return null;
 
+  // Count and assign class
+  const cardCount = [hasAffiliations, hasRelatives, hasTransformations].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container group-6">
+    <section className={`card-container group-6 ${countClass}`}>
       <AffiliationsSection affiliations={affiliations} />
 
       <RelativesSection relatives={relatives} />

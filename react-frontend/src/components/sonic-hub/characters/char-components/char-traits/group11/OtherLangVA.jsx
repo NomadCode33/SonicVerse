@@ -28,8 +28,15 @@ const OtherLangVA = ({ languages }) => {
   // Exits early if the character has no other language VA roles.
   if (!hasAnyOtherLangVA) return null;
 
+  // Count and assign class
+  const cardCount = [hasOtherLangGames, hasOtherLangTV, hasOtherLangMovies].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container nationality-va-toggle group-11">
+    <section className={`card-container nationality-va-toggle group-11 ${countClass}`}>
               {hasOtherLangGames && (
                 <div className="card-content lngame-toggle">
                   <div className="text">
@@ -37,7 +44,7 @@ const OtherLangVA = ({ languages }) => {
 
                     <ul className="other-va-game-slot desc-text exo-2">
                       {otherLangGames.map((va, index) => (
-                        <li key={index}>
+                        <li key={index} className="va-game-entry">
                           {va.name} ({va.nationality}, {va.years})
 
                           {Object.values(va.source).map((url, i) => (
@@ -111,7 +118,7 @@ const OtherLangVA = ({ languages }) => {
 
                     <ul className="other-va-movie-slot desc-text">
                       {otherLangMovies.map((va, index) => (
-                        <li key={index}>
+                        <li key={index} className="va-entry">
                           <h3 className="inter">
                             {va.name}
                             {Object.values(va.source).map((url, i) => (

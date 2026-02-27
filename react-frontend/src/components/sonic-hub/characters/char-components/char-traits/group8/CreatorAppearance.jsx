@@ -23,9 +23,16 @@ const CreatorAppearance = ({ character }) => {
 
   // Exits early if the character has no designers, game appearances, or other media.
   if (!shouldRenderContainer) return null;
+
+  // Count and assign class
+  const cardCount = [hasRealWorldDesigners, hasGameAppearances, hasOtherMedia].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
   
   return (
-    <section className="card-container group-8">
+    <section className={`card-container group-8 ${countClass}`}>
         {/* ================= Real World Designers ================= */}
         {/* // Renders a section listing the real-world creators and artists for the character.
         // Pulls data from `character.realWorldDesigners` and handles creators, artists, or both. */}

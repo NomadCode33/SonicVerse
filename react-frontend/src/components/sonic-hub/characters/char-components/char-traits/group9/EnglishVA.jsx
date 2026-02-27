@@ -29,8 +29,15 @@ const EnglishVA = ({ english }) => {
   // Exits early if the character has no English VA roles.
   if (!hasAnyEnglishVA) return null;
 
+  // Count and assign class
+  const cardCount = [hasEnglishGames, hasEnglishTV, hasEnglishMovies].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container english-va-toggle group-9">
+    <section className={`card-container english-va-toggle group-9 ${countClass}`}>
               {hasEnglishGames && (
                 <div className="card-content egame-toggle">
                   <div className="text">
@@ -38,7 +45,7 @@ const EnglishVA = ({ english }) => {
 
                     <ul className="va-game-slot desc-text exo-2">
                       {englishGames.map((va, index) => (
-                        <li key={index}>
+                        <li key={index} className="va-game-entry">
                           {va.name} ({va.years})
 
                           {Object.values(va.source).map((url, i) => (
@@ -108,7 +115,7 @@ const EnglishVA = ({ english }) => {
 
                     <ul className="eng-va-movie-slot desc-text">
                       {englishMovies.map((va, index) => (
-                        <li key={index}>
+                        <li key={index} className="va-entry">
                           <h3 className="inter">
                             {va.name}
                             {Object.values(va.source).map((url, i) => (

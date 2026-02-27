@@ -28,8 +28,15 @@ const JapaneseVA = ({ japanese }) => {
   // Exits early if the character has no Japanese VA roles.
   if (!hasAnyJapaneseVA) return null;
 
+  // Count and assign class
+  const cardCount = [hasJapaneseGames, hasJapaneseTV, hasJapaneseMovies].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container japanese-va-toggle group-10">
+    <section className={`card-container japanese-va-toggle group-10 ${countClass}`}>
               {hasJapaneseGames && (
                 <div className="card-content jgame-toggle">
                   <div className="text">
@@ -37,7 +44,7 @@ const JapaneseVA = ({ japanese }) => {
 
                     <ul className="va-game-slot desc-text exo-2">
                       {japaneseGames.map((va, index) => (
-                        <li key={index}>
+                        <li key={index} className="va-game-entry">
                           {va.name} ({va.years})
 
                           {Object.values(va.source).map((url, i) => (
@@ -107,7 +114,7 @@ const JapaneseVA = ({ japanese }) => {
 
                     <ul className="jap-va-movie-slot desc-text">
                       {japaneseMovies.map((va, index) => (
-                        <li key={index}>
+                        <li key={index} className="va-entry">
                           <h3 className="inter">
                             {va.name}
                             {Object.values(va.source).map((url, i) => (

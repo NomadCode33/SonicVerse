@@ -13,8 +13,15 @@ const Preferences = ({ character }) => {
 
   if (!shouldRenderContainer) return null;
 
+  // Count and assign class
+  const cardCount = [hasLikes, hasDislikes].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container group-3">
+    <section className={`card-container group-3 ${countClass}`}>
       <LikesSection likes={likes} />
 
       <DislikesSection dislikes={dislikes} />

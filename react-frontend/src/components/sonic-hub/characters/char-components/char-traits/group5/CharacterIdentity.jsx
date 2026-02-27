@@ -17,8 +17,15 @@ const CharacterIdentity = ({ character }) => {
 
   if (!shouldRenderContainer) return null;
 
+  // Count and assign class
+  const cardCount = [hasThemes, hasNicknames, hasAttire].filter(Boolean).length;
+  const countClass =
+    cardCount === 1 ? "one-card" :
+    cardCount === 2 ? "two-cards" :
+    cardCount === 3 ? "three-cards" : "";
+
   return (
-    <section className="card-container group-5">
+    <section className={`card-container group-5 ${countClass}`}>
       <CharThemesSection themes={themes} />
 
       <NicknamesSection nicknames={nicknames} />

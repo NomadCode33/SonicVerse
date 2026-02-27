@@ -861,12 +861,14 @@ Old ui glow:
 }
 
 .weakness-box {
-  height: 21rem;
+  height: 25rem;
   display: block;
 }
 
 .learn-box {
   height: 7rem;
+  align-items: center;
+  /*justify-content: center;*/
 }
 
 /******************************************
@@ -888,7 +890,7 @@ Old ui glow:
   border-radius: 1rem;
   /*width: 31%;*/ /*Replace with min-width and flex: 1 if they don't work*/
   height: 30rem;
-  max-height: 30rem;
+  /*max-height: 30rem;*/
   overflow-y: auto; /* allows scrolling to happen inside element*/
   background: linear-gradient(135deg, rgb(96, 165, 250), rgb(52, 211, 153));
   /*background: rgb(96, 165, 250);*/
@@ -924,6 +926,7 @@ Old ui glow:
 .learn-more,
 .link-vas {
   color: rgb(0, 36, 173);
+  cursor: pointer;
   text-decoration: underline;
   transition: color 0.2s ease;
 }
@@ -935,14 +938,67 @@ Old ui glow:
 .learn-more:hover,
 .link-vas:hover {
   color: rgb(245, 158, 11); /* your amber */
+  cursor: pointer;
 }
 
 /******************************************
-/* TRAITS: MODIFIED CARD CLASSES
+/* TRAITS: MODIFIED CARD CLASSES (BASE MEASUREMENTS)
 /******************************************/
-.group-5.three-cards .card-content {
-  height: 100rem !important;
+
+/* Base count rules — must come FIRST */
+.card-container.one-card .card-content {
+  height: 30rem;
 }
+
+.card-container.two-cards .card-content {
+  height: 30rem;
+}
+
+.card-container.three-cards .card-content {
+  height: 30rem;
+}
+
+/******************************************
+/* TRAITS: MODIFIED CARD CLASSES (SPECIALIZED MEASUREMENTS)
+/******************************************/
+/* 21rem to match weakness box in affiliations? */
+
+.card-container.group-5.three-cards .card-content {
+  height: 32rem;
+}
+
+.card-container.group-6.one-card .card-content {
+  height: 25rem;
+}
+
+.card-container.group-6.three-cards .card-content {
+  height: 32rem;
+}
+
+.card-container.group-7.two-cards .card-content {
+  height: 35rem;
+}
+
+.card-container.group-7.three-cards .card-content {
+  height: 35rem;
+}
+
+.card-container.group-8.three-cards .card-content {
+  height: 38rem;
+}
+
+.card-container.group-9.three-cards .card-content {
+  height: 40rem;
+}
+
+.card-container.group-10.three-cards .card-content {
+  height: 35rem;
+}
+
+.card-container.group-11.three-cards .card-content {
+  height: 40rem;
+}
+
 
 
 /******************************************
@@ -1033,8 +1089,6 @@ Old ui glow:
 .g-appearance-slot li,
 .other-media-slot li,
 .relatives-slot li,
-.va-game-slot li,
-.other-va-game-slot li,
 .shows-movies-slot li {
   margin-bottom: 0.8rem;
   line-height: 1.5;
@@ -1060,8 +1114,8 @@ Old ui glow:
 }
 
 .creator-art-entry {
-  margin-left: 0.7rem;
-  margin-bottom: 1.8rem;
+  margin-left: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 /*.creator-art-roles {
@@ -1070,11 +1124,15 @@ Old ui glow:
 
 .creator-entry,
 .artist-entry {
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.va-game-entry {
+  margin-bottom: 2rem;
 }
 
 .va-entry {
-  margin-bottom: 0.8rem;
+  margin-bottom: 2.5rem;
 }
 
 .va-shows-movies {
