@@ -31,7 +31,7 @@ const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
         showContent={showContent}
         setShowContent={setShowContent}
       />
-      <Outlet />
+      <Outlet context={{ variant }} />
       <Footer variant={variant} />
     </div>
   );
