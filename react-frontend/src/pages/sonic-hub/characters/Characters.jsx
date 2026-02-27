@@ -1,13 +1,9 @@
-import "../css/characters.css";
+import "../../../css/characters.css";
 import { useOutletContext } from 'react-router-dom';
-/*
-import Hero from "../components/characters/Hero";
-import Disclaimer from "../components/characters/Disclaimer";
-*/
-import Hero from "../components/sonic-hub/shared-templates/Hero";
-import Disclaimer from "../components/sonic-hub/shared-templates/Disclaimer";
-import SearchBox from "../components/sonic-hub/characters/SearchBox";
-import MainAreaInfo from "../components/sonic-hub/characters/MainAreaInfo";
+import Hero from "../../../components/sonic-hub/shared-templates/Hero";
+import Disclaimer from "../../../components/sonic-hub/shared-templates/Disclaimer";
+import SearchBox from "../../../components/sonic-hub/shared-templates/SearchBox";
+import MainAreaInfo from "../../../components/sonic-hub/characters/MainAreaInfo";
 import { useState } from "react";
 
 const Characters = ({ showText, showContent }) => {
@@ -24,7 +20,7 @@ const Characters = ({ showText, showContent }) => {
         <Disclaimer variant={variant} />
 
         {/* Pass setCharacter down so SearchBox can update it */}
-        <SearchBox setCharacter={setCharacter} />
+        <SearchBox variant={variant} setCharacter={setCharacter} />
 
         {/* Pass character down so MainAreaInfo can display it */}
         <MainAreaInfo character={character} />

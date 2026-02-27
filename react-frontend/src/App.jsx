@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import SonicHubLayout from './components/sonic-hub/layouts/SonicHubLayout';
-import Home from './pages/Home';
-import Characters from './pages/Characters';
+import Home from './pages/sonic-hub/home/Home';
+import Characters from './pages/sonic-hub/characters/Characters';
 
 const App = () => {
   const [showText, setShowText] = useState(true);

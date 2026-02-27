@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../../css/characters.css";
-import { targetTypeMap } from "../../../utils/characters/config.js";
-import { searchCharacter, initInitialize } from "../../../utils/characters/charApi.js";
+import { targetTypeMap } from "../../../utils/sonic-hub/characters/config.js";
+import { searchCharacter, initInitialize } from "../../../utils/sonic-hub/characters/charApi.js";
 import BasicCharacterInfo from "./BasicCharacterInfo.jsx";
 
 

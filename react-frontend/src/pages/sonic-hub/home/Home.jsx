@@ -1,7 +1,7 @@
-import "../css/home.css";
+import "../../../css/home.css";
 import { useOutletContext } from 'react-router-dom';
-import Hero from "../components/sonic-hub/shared-templates/Hero";
-import DemoWrapper from "../components/sonic-hub/home/DemoWrapper";
+import Hero from "../../../components/sonic-hub/shared-templates/Hero";
+import DemoWrapper from "../../../components/sonic-hub/home/DemoWrapper";
 
 /*import Hero from "../components/sonic-hub/home/Hero";
 import DemoWrapper from "../components/sonic-hub/home/DemoWrapper";*/
