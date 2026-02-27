@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 // Japanese VAs
 // Prepares and checks if the character has any Japanese voice acting roles.

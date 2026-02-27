@@ -1,4 +1,4 @@
-import "../../../css/characters.css"
+import "../../../css/sonic-hub/characters.css"
 import CharacterCarousel from "./char-components/basic-char-info/CharacterCarousel";
 
 const BasicCharacterInfo = ({ character }) => {

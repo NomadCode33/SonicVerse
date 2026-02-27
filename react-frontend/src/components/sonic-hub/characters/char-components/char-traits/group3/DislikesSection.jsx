@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const DislikesSection = ({ dislikes }) => {
   if (!dislikes || dislikes.length === 0) return null;

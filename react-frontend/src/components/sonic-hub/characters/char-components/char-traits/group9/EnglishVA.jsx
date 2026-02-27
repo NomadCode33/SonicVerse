@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 // English VAs
 // Prepares and checks if the character has any English voice acting roles.

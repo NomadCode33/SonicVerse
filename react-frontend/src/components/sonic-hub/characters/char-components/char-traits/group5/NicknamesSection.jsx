@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const NicknamesSection = ({ nicknames }) => {
   if (!nicknames || nicknames.length === 0) return null;

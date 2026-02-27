@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 // Prepares and checks if the character has any transformations.
 // It either removes the card content if there are no transformations to display

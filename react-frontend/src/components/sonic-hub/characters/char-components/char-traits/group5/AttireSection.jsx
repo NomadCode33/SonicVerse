@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const AttireSection = ({ current = [], original = []}) => {
   const hasAttire = current.length > 0 || original.length > 0;

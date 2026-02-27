@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const GameAppearancesSection = ({ games }) => {
   if (!games || games.length === 0) return null;

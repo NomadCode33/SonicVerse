@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 import RealWorldDesignersSection from "./RealWorldDesignersSection";
 import GameAppearancesSection from "./GameAppearancesSection";
 import OtherMediaAppearanceSection from "./OtherMediaAppearanceSection";

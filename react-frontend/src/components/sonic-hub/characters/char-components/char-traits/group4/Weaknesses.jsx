@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const Weaknesses = ({ weaknesses }) => {
   if (!weaknesses || weaknesses.length === 0) return null;

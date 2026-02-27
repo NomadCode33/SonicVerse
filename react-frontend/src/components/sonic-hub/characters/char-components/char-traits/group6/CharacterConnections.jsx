@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 import AffiliationsSection from "./AffiliationsSection";
 import RelativesSection from "./RelativesSection";
 import TransformationsSection from "./TransformationsSection";

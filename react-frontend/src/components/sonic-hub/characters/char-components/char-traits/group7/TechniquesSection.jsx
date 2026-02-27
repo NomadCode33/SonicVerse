@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const TechniquesSection = ({ techniques }) => {
   if (!techniques || techniques.length === 0) return null; // hides entire section if no techniques

@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 import SkillsSection from "./SkillsSection";
 import TechniquesSection from "./TechniquesSection";
 import AbilityTypeSection from "./AbilityTypeSection";

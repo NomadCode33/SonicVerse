@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 import CharThemesSection from "./CharThemesSection";
 import NicknamesSection from "./NicknamesSection";
 import AttireSection from "./AttireSection";

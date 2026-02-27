@@ -1,4 +1,4 @@
-import "../../../css/home.css";
+import "../../../css/sonic-hub/home.css";
 import { useOutletContext } from 'react-router-dom';
 import Hero from "../../../components/sonic-hub/shared-templates/Hero";
 import DemoWrapper from "../../../components/sonic-hub/home/DemoWrapper";

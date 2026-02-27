@@ -1,4 +1,4 @@
-import "../../../../../css/home.css"
+import "../../../../../css/sonic-hub/home.css"
 import Feature from './Feature'
 
 const BoxContainer = ({ features }) => {

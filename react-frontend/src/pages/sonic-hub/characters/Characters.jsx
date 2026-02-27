@@ -1,4 +1,4 @@
-import "../../../css/characters.css";
+import "../../../css/sonic-hub/characters.css";
 import { useOutletContext } from 'react-router-dom';
 import Hero from "../../../components/sonic-hub/shared-templates/Hero";
 import Disclaimer from "../../../components/sonic-hub/shared-templates/Disclaimer";

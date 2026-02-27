@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const AbilityTypeSection = ({ abilityTypes }) => {
   if (!abilityTypes || abilityTypes.length === 0) return null; // hide if none

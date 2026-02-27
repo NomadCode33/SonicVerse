@@ -1,4 +1,4 @@
-import "../../../../../css/home.css"
+import "../../../../../css/sonic-hub/home.css"
 import BoxContainer from './BoxContainer';
 
 const DemoArea = () => {

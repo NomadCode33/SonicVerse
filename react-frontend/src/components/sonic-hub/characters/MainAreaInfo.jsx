@@ -1,4 +1,4 @@
-import "../../../css/characters.css"
+import "../../../css/sonic-hub/characters.css"
 import BasicCharacterInfo from "./BasicCharacterInfo";
 import CharacterTraits from "./CharacterTraits";
 

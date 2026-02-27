@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import "../../../../../css/characters.css";
+import "../../../../../css/sonic-hub/characters.css";
 
 const CharacterCarousel = ({ character }) => {
   if (!character?.images) return null;

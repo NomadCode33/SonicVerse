@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 
 const OtherMediaAppearanceSection = ({ media }) => {
   if (!media || media.length === 0) return null;

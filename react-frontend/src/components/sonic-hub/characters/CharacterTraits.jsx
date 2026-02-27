@@ -1,4 +1,4 @@
-import "../../../css/characters.css"
+import "../../../css/sonic-hub/characters.css"
 import Quote from "./char-components/char-traits/group1/Quote";
 import Description from "./char-components/char-traits/group2/Description";
 import Preferences from "./char-components/char-traits/group3/Preferences";

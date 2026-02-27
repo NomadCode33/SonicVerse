@@ -1,4 +1,4 @@
-import "../../../../../../css/characters.css";
+import "../../../../../../css/sonic-hub/characters.css";
 import LikesSection from "./LikesSection";
 import DislikesSection from "./DislikesSection";
 
