@@ -32,7 +32,7 @@ const Navbar = ({ variant = 'home', showText, setShowText, showContent, setShowC
       <section className="header-box">
         <div className="head-title">
           {/* Sidebar hamburger — sits before the logo link */}
-          <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} icon={icon} iconAlt={iconAlt} />
           
           <Link to="/sonic-hub"><img className="icon" src={icon} alt={iconAlt} /></Link>
           {/*<h1 className="site-blurb exo-2">SonicVerse</h1>*/}

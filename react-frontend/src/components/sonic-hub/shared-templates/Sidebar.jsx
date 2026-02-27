@@ -39,7 +39,7 @@ const NAV_SECTIONS = [
   },
 ];
 
-const Sidebar = ({ darkMode, setDarkMode }) => {
+const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.webp', iconAlt = 'SonicVerse' }) => {
   const [open, setOpen]         = useState(false);
   const [expanded, setExpanded] = useState({ SonicHub: true });
   const { pathname }            = useLocation();
@@ -72,11 +72,19 @@ const Sidebar = ({ darkMode, setDarkMode }) => {
           <XMarkIcon style={{ width: '2.4rem', height: '2.4rem' }} />
         </button>
 
-        {/* Brand */}
+        {/* Brand — icon prop comes from Navbar, matching the current page's sprite */}
+        {/* To disable per-page sprites, simply stop passing icon/iconAlt from Navbar and remove props from Sidebar.jsx */}
+        <div className="sidebar-brand">
+          <img src={icon} alt={iconAlt} className="sidebar-brand-icon" />
+          <span className="sidebar-brand-name exo-2">SonicVerse</span>
+        </div>
+
+        {/*
         <div className="sidebar-brand">
           <img src="/img/icons/Adv3_sonic_idle.webp" alt="SonicVerse" className="sidebar-brand-icon" />
           <span className="sidebar-brand-name exo-2">SonicVerse</span>
         </div>
+        */}
 
         {/* Nav sections */}
         <nav className="sidebar-nav">
