@@ -1,0 +1,308 @@
+/* ── Hamburger button ──────────────────────────────────────── */
+.sidebar-hamburger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+}
+
+.sidebar-hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-hamburger-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  color: #fff;
+  filter: drop-shadow(0.1rem 0.1rem 0.3rem rgba(0,0,0,0.5));
+}
+
+/* ── Overlay ───────────────────────────────────────────────── */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.sidebar-overlay--visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Drawer ────────────────────────────────────────────────── */
+.sidebar-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 27rem;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s ease,
+              color 0.3s ease;
+  scrollbar-width: thin;
+}
+
+.sidebar-drawer--open {
+  transform: translateX(0);
+  box-shadow: 0.5rem 0 2rem rgba(0, 0, 0, 0.6);
+}
+
+/* ── Theme: Dark ───────────────────────────────────────────── */
+.sidebar-dark {
+  background-color: #0f1923;
+  color: #e2e8f0;
+  border-right: 0.1rem solid rgba(255, 255, 255, 0.07);
+}
+
+.sidebar-dark .sidebar-section-header:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-dark .sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: rgb(245, 193, 66);
+}
+
+.sidebar-dark .sidebar-link--active {
+  background-color: rgba(50, 100, 230, 0.3);
+  color: rgb(245, 193, 66);
+  border-left: 0.3rem solid rgb(245, 193, 66);
+}
+
+.sidebar-dark .sidebar-logout:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Theme: Light ──────────────────────────────────────────── */
+.sidebar-light {
+  background-color: #f0f4ff;
+  color: #1e2a4a;
+  border-right: 0.1rem solid rgba(0, 36, 173, 0.15);
+}
+
+.sidebar-light .sidebar-section-header:hover {
+  background-color: rgba(0, 36, 173, 0.07);
+}
+
+.sidebar-light .sidebar-link:hover {
+  background-color: rgba(0, 36, 173, 0.1);
+  color: rgb(0, 36, 173);
+}
+
+.sidebar-light .sidebar-link--active {
+  background-color: rgba(0, 36, 173, 0.12);
+  color: rgb(0, 36, 173);
+  border-left: 0.3rem solid rgb(0, 36, 173);
+}
+
+.sidebar-light .sidebar-logout:hover {
+  background-color: rgba(0, 36, 173, 0.07);
+}
+
+/* ── Close button ──────────────────────────────────────────── */
+.sidebar-close {
+  align-self: flex-end;
+  margin: 1.2rem 1.2rem 0 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  transition: opacity 0.2s, background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.sidebar-close:hover {
+  opacity: 1;
+  background-color: rgba(128, 128, 128, 0.15);
+}
+
+/* ── Brand ─────────────────────────────────────────────────── */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem 2rem 2rem;
+  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.2);
+}
+
+.sidebar-brand-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.4));
+}
+
+.sidebar-brand-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ── Nav ───────────────────────────────────────────────────── */
+.sidebar-nav {
+  flex: 1;
+  padding: 1.2rem 0;
+}
+
+/* ── Section ───────────────────────────────────────────────── */
+.sidebar-section {
+  margin-bottom: 0.2rem;
+}
+
+.sidebar-section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  transition: background-color 0.2s;
+}
+
+.sidebar-section-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar-section-icon {
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.sidebar-section-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Chevron ───────────────────────────────────────────────── */
+.sidebar-chevron {
+  width: 1.6rem;
+  height: 1.6rem;
+  opacity: 0.6;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-chevron--open {
+  transform: rotate(180deg);
+}
+
+/* ── Collapsible links ─────────────────────────────────────── */
+.sidebar-links {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.sidebar-links--open {
+  max-height: 40rem;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 0.85rem 2rem 0.85rem 4.8rem;
+  font-size: 1.45rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+  border-left: 0.3rem solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* ── Bottom controls ───────────────────────────────────────── */
+.sidebar-bottom {
+  padding: 1.5rem 2rem;
+  border-top: 0.1rem solid rgba(128, 128, 128, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sidebar-theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-theme-label {
+  font-size: 1.4rem;
+  opacity: 0.85;
+}
+
+/* ── Toggle pill ───────────────────────────────────────────── */
+.sidebar-toggle-pill {
+  position: relative;
+  width: 4.8rem;
+  height: 2.4rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.35);
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle-pill--on {
+  background-color: rgb(50, 100, 230);
+}
+
+.sidebar-toggle-knob {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.3);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-toggle-pill--on .sidebar-toggle-knob {
+  transform: translateX(2.4rem);
+}
+
+/* ── Logout button ─────────────────────────────────────────── */
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background-color: rgba(128, 128, 128, 0.12);
+  border: 0.1rem solid rgba(128, 128, 128, 0.2);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}

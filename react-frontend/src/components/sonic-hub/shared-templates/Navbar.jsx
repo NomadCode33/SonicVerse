@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import '../../../css/sonic-hub/home.css';
 import '../../../css/sonic-hub/characters.css';
+import '../../../css/sidebar.css';
+import Sidebar from './Sidebar';
 // import '../../css/transformations.css';  👈 add as you grow
 // import '../../css/games.css';
 

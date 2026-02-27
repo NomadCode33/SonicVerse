@@ -114,7 +114,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
         {showList && (
           <div className="char-list-panel">
             {listLoading ? (
-              <p className="exo-2 list-loading">Loading…</p>
+              <p className="exo-2 list-loading">Loading Characters…</p>
             ) : (
               <div className="char-tile-grid">
                 {characterList.map((item) => (
