@@ -1,37 +1,62 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/Home";
-import Characters from "./pages/Characters";
-/*import Navbar from "./components/home/Navbar";
-import Hero from "./components/home/Hero";
-import Disclaimer from "./components/home/Disclaimer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Characters from "./pages/Characters";*/
-//
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useState } from 'react';
+import SonicHubLayout from './components/sonic-hub/layouts/SonicHubLayout';
+import Home from './pages/Home';
+import Characters from './pages/Characters';
 
 const App = () => {
+  const [showText, setShowText] = useState(true);
+  const [showContent, setShowContent] = useState(true);
+
   return (
     <Router>
       <Routes>
         {/* The <Navigate> just automatically redirects anyone hitting / over to /sonic-hub */}
         <Route path="/" element={<Navigate to="/sonic-hub" replace />} />
 
-        <Route path="/sonic-hub">
-          <Route index element={<Home />} />
-          <Route path="characters" element={<Characters />} />
+        <Route
+          path="/sonic-hub"
+          element={
+            <SonicHubLayout
+              showText={showText}
+              setShowText={setShowText}
+              showContent={showContent}
+              setShowContent={setShowContent}
+            />
+          }
+        >
+          <Route index element={<Home showText={showText} showContent={showContent} />} />
+          <Route path="characters" element={<Characters showText={showText} showContent={showContent} />} />
+          {/* Add new sonic-hub pages here: */}
+          {/* <Route path="quiz" element={<Quiz />} /> */}
+          {/* <Route path="transformations" element={<Transformations />} /> */}
         </Route>
 
-        {/*<Route path="/sonic-hub">
-          <Route index element={<Home />} />
-          <Route path="characters" element={<Characters />} />
-        </Route>*/}
+        {/* 
+          <Route
+            path="/sonic-hub"
+            element={
+              <SonicHubLayout
+                showText={showText}
+                setShowText={setShowText}
+                showContent={showContent}
+                setShowContent={setShowContent}
+              />
+            }
+          >
+            <Route index element={<Home showText={showText} showContent={showContent} />} />
+            <Route path="characters" element={<Characters />} />
+            {// Add new sonic-hub pages here: }
+            {// <Route path="quiz" element={<Quiz />} /> }
+            {// <Route path="transformations" element={<Transformations />} />} 
+          </Route> 
+        */}
       </Routes>
     </Router>
   );
-}
+};
 
-export default App
+export default App;
 /*
 Old way of showing my pages on App.jsx
 return (

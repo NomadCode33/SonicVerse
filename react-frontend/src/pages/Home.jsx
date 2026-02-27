@@ -1,30 +1,15 @@
 import "../css/home.css"
-import Navbar from "../components/home/Navbar";
-import Hero from "../components/home/Hero";
-import DemoWrapper from "../components/home/DemoWrapper";
-import Footer from "../components/home/Footer";
-import { useState } from "react";
+import Hero from "../components/sonic-hub/home/Hero";
+import DemoWrapper from "../components/sonic-hub/home/DemoWrapper";
 
-const Home = () => {
-  const [showText, setShowText] = useState(true);
-  const [showContent, setShowContent] = useState(true);
-
+const Home = ({ showText, showContent }) => {
   return (
-    <main className="home-page" style={{ minHeight: showContent ? "150vh" : "300vh" }}>
-      <Navbar
-        showText={showText}
-        setShowText={setShowText}
-        showContent={showContent}
-        setShowContent={setShowContent}
-      />
-
+    <main style={{ minHeight: showContent ? "150vh" : "300vh" }}>
       {/* Hidden via CSS so state is preserved */}
       <div style={{ display: showContent ? "contents" : "none" }}>
         <Hero showText={showText} />
         <DemoWrapper />
       </div>
-
-      <Footer />
     </main>
   )
 }
