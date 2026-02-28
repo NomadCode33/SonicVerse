@@ -91,7 +91,8 @@
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
 }
 
-.site-blurb-left {
+.home-page .site-blurb-left,
+.characters-page .site-blurb-left {
   display: none; /* Hide the left-aligned site blurb on smaller screens */
 }
 
