@@ -32,7 +32,7 @@ const VARIANTS = {
             - It may take a little bit to load the character information, so please be patient.
         </p>
         <p className="exo-2">
-            - Search the character list to find specific characters and type them exactly as they appear.
+            - Search the character list to find specific characters and type them EXACTLY as they appear.
         </p>
       </>
     ),

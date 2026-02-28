@@ -9,5 +9,5 @@ const output = `// Auto-generated — do not edit by hand
 export const targetCharacterMap = ${JSON.stringify(map, null, 2)};
 `;
 
-writeFileSync('./src/utils/characters/charMap.js', output);
+writeFileSync('./src/utils/sonic-hub/charMap.js', output);
 console.log('charMap.js written!');

@@ -52,7 +52,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
     }
 
     try {
-      const { searchCharacter } = await import("../../../utils/characters/charApi.js");
+      const { searchCharacter } = await import("../../../utils/sonic-hub/charApi.js");
       const charData = await searchCharacter(search);
       setCharacter(charData);
       setNotFound("");

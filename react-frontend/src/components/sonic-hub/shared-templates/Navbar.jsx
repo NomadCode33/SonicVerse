@@ -35,11 +35,12 @@ const Navbar = ({ variant = 'home', showText, setShowText, showContent, setShowC
           {/* Sidebar hamburger — sits before the logo link */}
           <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} icon={icon} iconAlt={iconAlt} />
           
-          <Link to="/sonic-hub"><img className="icon" src={icon} alt={iconAlt} /></Link>
-          {/*<h1 className="site-blurb exo-2">SonicVerse</h1>*/}
+          <Link to="/sonic-hub"><img className="icon-left" src={icon} alt={iconAlt} /></Link>
+          <h1 className="site-blurb-left exo-2">SonicVerse</h1>
         </div>
 
-        <div className="small-webtext-title">
+        <div className="webtext-middle">
+          <Link to="/sonic-hub"><img className="icon" src={icon} alt={iconAlt} /></Link>
           <h1 className="site-blurb exo-2">SonicVerse</h1>
         </div>
 

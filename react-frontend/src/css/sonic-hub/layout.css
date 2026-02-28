@@ -35,6 +35,7 @@
 .home-page .head-title,
 .characters-page .head-title {
   margin: 0;
+  font-size: 1.5rem;
   width: 20rem;
   color: white;
   display: flex;
@@ -43,10 +44,7 @@
 }
 /*width: 15rem*/
 
-.home-page .head-title h1,
-.characters-page .head-title h1 {
-  font-size: 1.5rem;
-}
+
 
 .home-page .head-title a,
 .characters-page .head-title a {
@@ -83,6 +81,20 @@
   display: block;
   filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
 }
+
+.home-page .icon-left,
+.characters-page .icon-left {
+  margin: 0.85rem 0 0.85rem 0.9rem;
+  width: 3rem;
+  height: 3rem;
+  display: none; /* Hide the left-aligned icon on smaller screens */
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+}
+
+.site-blurb-left {
+  display: none; /* Hide the left-aligned site blurb on smaller screens */
+}
+
 /*width: 22%*/
 /*width: 70%;*/
 
@@ -93,11 +105,15 @@
   justify-content: space-between;
 }
 
-.home-page .small-webtext-title,
-.characters-page .small-webtext-title {
+.home-page .webtext-middle,
+.characters-page .webtext-middle {
   font-size: 2rem;
+  width: 22rem;
   color: white;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
   /*justify-content: center;*/
   /*align-items: center;*/
