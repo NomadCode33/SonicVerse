@@ -47,11 +47,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 27rem;
   z-index: 300;
   display: flex;
   flex-direction: column;
+  /*justify-content: space-between;*/
   overflow-y: auto;
   overflow-x: hidden;
   transform: translateX(-100%);
@@ -163,7 +164,9 @@
 /* ── Nav ───────────────────────────────────────────────────── */
 .sidebar-nav {
   flex: 1;
+  min-height: 0;
   padding: 1.2rem 0;
+  overflow-y: auto;
 }
 
 /* ── Section ───────────────────────────────────────────────── */
@@ -312,3 +315,35 @@
   font-weight: 600;
   transition: background-color 0.2s;
 }
+
+/******************************************
+/* SMALL PHONE PORTRAIT (≤ 480px)
+/*******************************************/
+/*@media only screen and (max-width: 480px) and (orientation: portrait) {
+
+  .sidebar-drawer {
+    width: 22rem;
+  }
+
+  .sidebar-brand-name {
+    font-size: 1.5rem;
+  }
+
+  .sidebar-section-label {
+    font-size: 1.3rem;
+  }
+
+  .sidebar-link {
+    font-size: 1.3rem;
+    padding: 0.75rem 2rem 0.75rem 3rem !important;
+  }
+
+  .sidebar-theme-label {
+    font-size: 1.2rem;
+  }
+
+  .sidebar-logout {
+    font-size: 1.2rem;
+  }
+
+}*/

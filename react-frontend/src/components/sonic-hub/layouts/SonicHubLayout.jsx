@@ -28,9 +28,10 @@ const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
 
   return (
     <div className={`${pageClass}${darkMode ? ' dark-mode' : ''}`}>
-      {/*<div className="rotate-message">
+      <div className="rotate-message">
         <p>Please rotate your device to portrait mode.</p>
-      </div>*/}
+      </div>
+      
       <Navbar
         variant={variant}
         showText={showText}

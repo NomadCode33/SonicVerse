@@ -28,6 +28,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  /*overflow: hidden;*/
   background: linear-gradient(90deg, rgb(0, 36, 173), rgb(50, 100, 230)); 
   /*background-color: rgb(0, 36, 173);*/
 }
@@ -176,7 +177,7 @@
 .home-page .footer,
 .characters-page .footer {
   margin-top: auto;
-  height: 5rem; /*It was at 75 before*/
+  height: 5.7rem; /*It was at 75 before*/
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
   /*background-color: rgb(0, 36, 173);*/
 }
@@ -185,3 +186,212 @@
 .characters-page .footer {
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
 }
+
+/******************************************
+/* BLOCK PHONE LANDSCAPE
+/*******************************************/
+.rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #0d0d1a);
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 3rem;
+  text-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.75);
+}
+
+
+/******************************************************************
+/* MEDIA QUERIES
+/******************************************************************/
+/******************************************
+/* PHONE PORTRAIT MEDIA QUERY
+/*******************************************/
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+
+  /* ── Header ──────────────────────────────── */
+  .home-page header,
+  .characters-page header {
+    height: auto;
+    min-height: 5rem;
+  }
+
+  .home-page .header-box,
+  .characters-page .header-box {
+    padding: 0.5rem 0;
+    height: auto;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    align-items: center;
+  }
+
+  /* Hide the centered icon/title on phones — sidebar handles branding */
+  .home-page .webtext-middle,
+  .characters-page .webtext-middle {
+    display: none;
+  }
+
+  /* Make head-title take up remaining space */
+  .home-page .head-title,
+  .characters-page .head-title {
+    width: auto;
+    flex: 1;
+  }
+
+  .home-page .sidebar-hamburger,
+  .characters-page .sidebar-hamburger {
+    margin-right: 0;
+  }
+
+  /* Show the left-aligned icon on phones */
+  .home-page .icon-left,
+  .characters-page .icon-left {
+    display: block;
+  }
+
+  /* Show the left-aligned site blurb on phones */
+  .home-page .site-blurb-left,
+  .characters-page .site-blurb-left {
+    display: inline;
+    font-size: 1.6rem;
+    color: white;
+    margin-left: 0.8rem;
+    text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+  }
+
+  /* Shrink nav buttons */
+  .home-page .nav-bar,
+  .characters-page .nav-bar {
+    width: 38%;
+  }
+
+  .home-page .nav-box,
+  .characters-page .nav-box {
+    width: 100%;
+    margin: 0.5rem 0;
+    justify-content: space-around;
+  }
+
+  .home-page .nav-button,
+  .characters-page .nav-button {
+    font-size: 1.1rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .home-page .footer,
+  .characters-page .footer {
+    height: auto;
+    min-height: 5.7rem;
+  }
+
+}
+
+/******************************************
+/* LARGE PHONE PORTRAIT (481px – 768px)
+/*******************************************/
+@media only screen and (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+
+  /* ── Header ──────────────────────────────── */
+  .home-page header,
+  .characters-page header {
+    height: auto;
+    min-height: 5rem;
+  }
+
+  .home-page .header-box,
+  .characters-page .header-box {
+    padding: 0.5rem 0;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Still hide the centered branding — sidebar handles it */
+  .home-page .webtext-middle,
+  .characters-page .webtext-middle {
+    display: none;
+  }
+
+  .home-page .head-title,
+  .characters-page .head-title {
+    width: auto;
+    flex: 1;
+  }
+
+  .home-page .sidebar-hamburger,
+  .characters-page .sidebar-hamburger {
+    margin-right: 0;
+  }
+
+  .home-page .icon-left,
+  .characters-page .icon-left {
+    display: block;
+  }
+
+  .home-page .site-blurb-left,
+  .characters-page .site-blurb-left {
+    display: inline;
+    font-size: 1.6rem;
+    color: white;
+    margin-left: 0.8rem;
+    text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+  }
+
+  .home-page .nav-bar,
+  .characters-page .nav-bar {
+    width: 40%;
+  }
+
+  .home-page .nav-box,
+  .characters-page .nav-box {
+    width: 100%;
+    margin: 0.5rem 0;
+    justify-content: space-around;
+  }
+
+  .home-page .nav-button,
+  .characters-page .nav-button {
+    font-size: 1.25rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .home-page .footer,
+  .characters-page .footer {
+    height: auto;
+    min-height: 5.7rem;
+  }
+
+}
+
+/******************************************
+/* PHONE LANDSCAPE — BLOCK IT
+/*******************************************/
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+
+  .home-page > *:not(.rotate-message),
+  .characters-page > *:not(.rotate-message) {
+    display: none !important;
+  }
+
+  .rotate-message {
+    display: flex !important;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

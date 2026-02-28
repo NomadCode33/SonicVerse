@@ -13,7 +13,7 @@ const Characters = ({ showText, showContent }) => {
   const [character, setCharacter] = useState(null);
 
   return (
-    <main style={{ minHeight: showContent ? "150vh" : "300vh" }}>
+    <main className={showContent ? "home-main" : "home-main--hidden"}>
       {/* Hidden via CSS so state is preserved inside SearchBox/MainAreaInfo */}
       <div style={{ display: showContent ? "contents" : "none" }}>
         <Hero variant={variant} showText={showText} />

@@ -10,7 +10,7 @@ const Home = ({ showText, showContent }) => {
   const { variant } = useOutletContext();
 
   return (
-    <main style={{ minHeight: showContent ? "150vh" : "300vh" }}>
+    <main className={showContent ? "home-main" : "home-main--hidden"}>
       {/* Hidden via CSS so state is preserved */}
       <div style={{ display: showContent ? "contents" : "none" }}>
         <Hero variant={variant} showText={showText} />
