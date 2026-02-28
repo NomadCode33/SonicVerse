@@ -9,8 +9,10 @@
   justify-content: center;
   border-radius: 0.4rem;
   transition: background-color 0.2s;
-  margin-right: 0.4rem;
+  margin: 0 0.4rem 0 0.5rem;
   flex-shrink: 0;
+  /*margin-left: 0.4rem;*/
+  /*margin-right: 0.4rem;*/
 }
 
 .sidebar-hamburger:hover {
@@ -149,7 +151,7 @@
   width: 3.5rem;
   height: 3.5rem;
   object-fit: contain;
-  filter: drop-shadow(0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.5));
 }
 
 .sidebar-brand-name {

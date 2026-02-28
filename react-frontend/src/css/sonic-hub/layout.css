@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* HEADER SECTION
+/*******************************************/
+.home-page header,
+.characters-page header {
+  height: 5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(90deg, rgb(0, 36, 173), rgb(50, 100, 230)); 
+  /*background-color: rgb(0, 36, 173);*/
+}
+
+.home-page .head-title,
+.characters-page .head-title {
+  margin: 0;
+  width: 20rem;
+  color: white;
+  display: flex;
+  align-items: center;  /* vertically align text with logo */
+  /*gap: 1.0rem;*/
+}
+/*width: 15rem*/
+
+.home-page .head-title h1,
+.characters-page .head-title h1 {
+  font-size: 1.5rem;
+}
+
+.home-page .head-title a,
+.characters-page .head-title a {
+  margin: 0;             /* remove extra margin */
+  padding: 0;            /* remove extra padding */
+  width: auto;           /* remove any inherited width */
+  height: auto;          /* remove any inherited height */
+  display: inline-block; /* shrink to content size */
+}
+
+/*.logo-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.logo-title h1 {
+  display: inline;
+  line-height: 4.0;
+  margin-top: 0.6rem;
+  font-size: 1.1rem;
+}*/
+
+/*.head-title a {
+  width: 2rem;
+}*/
+
+.home-page .icon,
+.characters-page .icon {
+  margin: 0.85rem 0 0.85rem 0.9rem;
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+}
+/*width: 22%*/
+/*width: 70%;*/
+
+.home-page .header-box,
+.characters-page .header-box {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-page .small-webtext-title,
+.characters-page .small-webtext-title {
+  font-size: 2rem;
+  color: white;
+  align-content: center;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
+  /*justify-content: center;*/
+  /*align-items: center;*/
+}
+
+.home-page .nav-bar nav,
+.characters-page .nav-bar nav {
+  line-height: 1.0;
+  /*width: 50rem;*/
+}
+
+.home-page .nav-box,
+.characters-page .nav-box {
+  margin: 1.3rem auto;
+  padding: 0;
+  width: 22rem;
+  color: white;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-page .nav-box li,
+.characters-page .nav-box li {
+  margin-right: 1rem;
+}
+
+.home-page .nav-button,
+.characters-page .nav-button {
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid rgb(249, 246, 238);
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  background-color: transparent;
+  vertical-align: middle;
+  color: rgb(249, 246, 238);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+}
+
+.home-page .nav-button:hover,
+.characters-page .nav-button:hover {
+  background-color: rgb(63, 113, 48);
+  border: 0.1rem solid rgb(63, 113, 48);
+  color: rgb(245, 193, 66); /* or the header background color for contrast */
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0.5rem 0.5rem 1rem 0.2rem rgba(0, 0, 0, 0.8);
+}
+
+/******************************************
+/* FOOTER
+/*******************************************/
+.home-page .footer,
+.characters-page .footer {
+  margin-top: auto;
+  height: 5rem; /*It was at 75 before*/
+  background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
+  /*background-color: rgb(0, 36, 173);*/
+}
+
+/* colors will be different for other pages eventually */
+.characters-page .footer {
+  background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
+}
