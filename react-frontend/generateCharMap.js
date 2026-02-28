@@ -1,4 +1,4 @@
-import { targetTypeMap } from './src/utils/characters/config.js';
+import { targetTypeMap } from './src/utils/sonic-hub/config.js';
 import { writeFileSync } from 'fs';
 
 const searchURL = 'https://sonicverse-y2s6.onrender.com/api/characters/';
