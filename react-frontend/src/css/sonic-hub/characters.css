@@ -261,6 +261,8 @@ Old ui glow:
 }
 
 .bar {
+  flex: 1; /* added */
+  width: auto; /* added */
   font-size: 1.6rem;
   padding: 0.3rem 0.5rem;
   background-color: white;
@@ -281,6 +283,7 @@ Old ui glow:
   border: 0.1rem solid #888;
   color: #000;
   cursor: pointer;
+  white-space: nowrap; /* added */
   text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
   box-shadow: 0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.2);
   /*filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.15));*/
@@ -327,7 +330,10 @@ Old ui glow:
 }
 
 .search-row {
-  display: inline-flex;  /* shrinks to exactly the width of input + button */
+  /*display: inline-flex;*/
+  display: flex; /* added */
+  width: 100%; /* added */
+  gap: 0.01rem;  /* was at 0.5rem */ /* shrinks to exactly the width of input + button */
 }
 
 /* 3. The toggle button stacks below the existing buttons inside the search box */
@@ -1120,7 +1126,7 @@ Normal width for phones
   }
 
   .characters-page .pop-title {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 
   /* ── Disclaimer ──────────────────────────── */
@@ -1148,6 +1154,12 @@ Normal width for phones
     padding: 1.5rem 1rem;
   }
 
+  .search-row {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
   .title {
     font-size: 2.4rem;
     margin: 1rem 0;
@@ -1160,17 +1172,27 @@ Normal width for phones
 
   .bar {
     font-size: 1.4rem;
-    width: 60%;
+    flex: 1;        /* replaces the 60% width */
+    width: auto;    /* overrides the 60% */
   }
 
   .src-btn {
     font-size: 1.4rem;
+    white-space: nowrap;  /* stops "Get Character" from wrapping */
+    margin-left: 0;
   }
 
   .char-list-panel {
     width: 85%;
     height: 20rem;
   }
+
+  /*.char-tile {
+    padding: 0.7rem 0.8rem;
+    min-width: 8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }*/
 
   /* ── Character not found ─────────────────── */
   #characterNotFound {
