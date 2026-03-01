@@ -1182,6 +1182,17 @@ Normal width for phones
     margin-left: 0;
   }
 
+  /*
+  .bar {
+    font-size: 1.4rem;
+    width: 60%;
+  }
+
+  .src-btn {
+    font-size: 1.4rem;
+  }
+  */
+
   .char-list-panel {
     width: 85%;
     height: 20rem;
