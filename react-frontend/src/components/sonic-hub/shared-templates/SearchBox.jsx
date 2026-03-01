@@ -105,7 +105,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
               className="exo-2 src-btn list-toggle-btn"
               onClick={() => setShowList((prev) => !prev)}
             >
-              {showList ? "«« Hide Character List" : "Browse Character List »»"}
+              {showList ? "Hide Character List" : "Browse Character List"}
             </button>
           </div>
         </section>

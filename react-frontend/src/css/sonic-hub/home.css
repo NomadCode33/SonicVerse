@@ -347,12 +347,16 @@ Old ui glow:
     height: 22rem;
     margin-top: 1.5rem;
     min-height: 10vh;
-    background-size: contain;       /* shows the full image without cropping */
+    background-size: cover;       /* shows the full image without cropping */
     background-position: center;
   }
 
   .home-page .pop-title {
     font-size: 6rem;
+  }
+
+  .home-page .disclaimer-content {
+    padding: 0 3rem;
   }
 
   .demo-area {
@@ -436,12 +440,16 @@ Old ui glow:
     height: 30rem;
     margin-top: 2rem;
     min-height: 10vh;
-    background-size: contain;       /* shows the full image without cropping */
+    background-size: cover;       /* shows the full image without cropping */
     background-position: center;
   }
 
   .home-page .pop-title {
     font-size: 6rem;
+  }
+
+  .home-page .disclaimer-content {
+    padding: 0 3rem;
   }
 
   .demo-area {

@@ -80,7 +80,7 @@
   width: 3rem;
   height: 3rem;
   display: block;
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
 .home-page .icon-left,
@@ -89,7 +89,7 @@
   width: 3rem;
   height: 3rem;
   display: none; /* Hide the left-aligned icon on smaller screens */
-  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(0.8rem 0.8rem 1rem rgba(0, 0, 0, 0.7));
 }
 
 .home-page .site-blurb-left,
@@ -365,7 +365,6 @@
     height: auto;
     min-height: 5.7rem;
   }
-
 }
 
 /******************************************

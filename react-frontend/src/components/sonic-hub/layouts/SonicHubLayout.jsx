@@ -42,7 +42,7 @@ const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
         setDarkMode={setDarkMode}
       />
       <Outlet context={{ variant }} />
-      <Footer variant={variant} />
+      <Footer variant={variant} showContent={showContent} />
     </div>
   );
 };

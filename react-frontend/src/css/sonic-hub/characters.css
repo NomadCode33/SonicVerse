@@ -1075,6 +1075,18 @@ Old ui glow:
   margin: 0 auto;
 }
 
+/*
+Normal width for phones
+.characters-page .home-main {
+    min-height: 100vh;
+  };
+
+  .characters-page .home-main--hidden {
+    min-height: 200vh;
+  };
+*/
+
+
 
 /******************************************************************
 /* MEDIA QUERIES
@@ -1083,8 +1095,10 @@ Old ui glow:
 /* PHONE PORTRAIT MEDIA QUERY
 /*******************************************/
 @media only screen and (max-width: 480px) and (orientation: portrait) {
+  /* fixed causes bugs on mobile browsers */
   .characters-page {
-    background-attachment: scroll; /* fixed causes bugs on mobile browsers */
+    background-size: cover;
+    background-position: top center;  /* shows top of image first */
   };
 
   .characters-page .home-main {
@@ -1095,14 +1109,415 @@ Old ui glow:
     min-height: 200vh;
   };
   
-  /*.characters-page .pic-rest {
-    
-  };*/
+  /* ── Hero banner ─────────────────────────── */
+  .characters-page .pic-rest {
+    width: 95%;
+    height: 22rem;
+    margin-top: 2rem;
+    min-height: 10vh;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .characters-page .pop-title {
+    font-size: 6rem;
+  }
+
+  /* ── Disclaimer ──────────────────────────── */
+  .characters-page .disclaimer {
+    width: 80%;
+    /*margin-top: 1.5rem;*/
+  }
+
+  .characters-page .disclaimer-content {
+    padding: 0 3rem;
+  }
+
+  /* ── Search box ──────────────────────────── */
+  .search-section {
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    gap: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .search-section #search-box {
+    width: 85%;
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    margin: 1rem 0;
+  }
+
+  .text-content p {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+
+  .bar {
+    font-size: 1.4rem;
+    width: 60%;
+  }
+
+  .src-btn {
+    font-size: 1.4rem;
+  }
+
+  .char-list-panel {
+    width: 85%;
+    height: 20rem;
+  }
+
+  /* ── Character not found ─────────────────── */
+  #characterNotFound {
+    width: 81.5%;
+    font-size: 1.8rem;
+  }
 
 
+  /* ── Main area: stack vertically ─────────── */
+  #main-area {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6rem;
+    gap: 2rem;
+  }
+
+  /* ── Basic info ──────────────────────────── */
+  .basic-info {
+    width: 92%;
+    margin: 1.5rem auto;
+    order: 1;
+  }
+
+  .basic-info .text .russo-one-binfo {
+    font-size: 1.8rem;
+  }
+
+  .basic-info .text .exo-2-binfo {
+    font-size: 1.4rem;
+  }
+
+  /* ── Carousel ────────────────────────────── */
+  .carousel-wrapper {
+    max-width: 28rem;
+  }
+
+  .arrow.left {
+    left: -2rem;
+  }
+
+  .arrow.right {
+    right: -2rem;
+  }
+
+  /* ── Char traits: full width, auto height ── */
+  .char-traits {
+    width: 83%;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    margin: 1.5rem auto;
+    padding: 0;
+    /* remove the mask on mobile since it's not scrolling */
+    -webkit-mask-image: none;
+    mask-image: none;
+    order: 2;
+  }
+
+  .char-traits .text {
+    padding: 1rem 1.5rem;
+    height: auto;
+  }
+
+  /* ── Description & quote boxes ───────────── */
+  .description-box {
+    width: 100%;
+    height: 30rem;
+    max-height: 30rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .weakness-box {
+    height: 25rem;
+    max-height: 25rem;
+  }
+
+  .description-box .text {
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Quote & Learn: expand freely ────────── */
+  .quote-box {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .quote-box .text {
+    height: auto;
+    overflow: visible;
+  }
+
+  .learn-box {
+    height: auto;
+  }
+
+  .learn-more {
+    /*word-break: break-all;*/
+    font-size: 1.5rem; /* May have to change to 1.3-1.4rem if it doesn't wrap properly */
+  }
+
+  /* ── Card containers: stack vertically ───── */
+  .card-container {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  /* ── Card content: fixed height + scroll ──── */
+  .card-content {
+    width: 100%;
+    height: 30rem;
+    max-height: 30rem;
+    overflow: hidden;
+    /*overflow-y: scroll !important;*/
+    /*-webkit-overflow-scrolling: touch !important;*/
+    align-items: stretch;
+    margin-bottom: 0;
+  }
+
+  .card-content .text {
+    height: auto;
+    min-height: 100%;
+  }
+
+  .desc-text {
+    font-size: 1.6rem;
+    overflow-y: scroll;  /* 👈 scroll happens here instead */
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+    flex: 1;
+  }
 }
 
+/******************************************
+/* LARGE PHONE PORTRAIT (481px – 768px)
+/*******************************************/
+@media only screen and (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
 
+  .characters-page .home-main {
+    min-height: 100vh;
+  }
+
+  .characters-page .home-main--hidden {
+    min-height: 30vh;
+  }
+
+  /* ── Hero banner ─────────────────────────── */
+  .characters-page .pic-rest {
+    width: 90%;
+    height: 65rem;
+    margin-top: 3rem;
+    min-height: 10vh;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .characters-page .pop-title {
+    font-size: 6rem;
+  }
+
+  /* ── Disclaimer ──────────────────────────── */
+  .characters-page .disclaimer {
+    width: 85%;
+  }
+
+  .characters-page .disclaimer-content {
+    padding: 0 3rem;
+  }
+
+  /* ── Search box ──────────────────────────── */
+  .search-section {
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    gap: 2rem;
+    margin: 2.5rem auto;
+  }
+
+  .search-section #search-box {
+    width: 90%;
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    margin: 1rem 0;
+  }
+
+  .text-content p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .bar {
+    font-size: 1.5rem;
+    width: 60%;
+  }
+
+  .src-btn {
+    font-size: 1.5rem;
+  }
+
+  .char-list-panel {
+    width: 90%;
+    height: 22rem;
+  }
+
+  /* ── Character not found ─────────────────── */
+  #characterNotFound {
+    width: 86%;
+    font-size: 1.9rem;
+  }
+
+  /* ── Main area: stack vertically ─────────── */
+  #main-area {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6rem;
+    gap: 2.5rem;
+  }
+
+  /* ── Basic info ──────────────────────────── */
+  .basic-info {
+    width: 92%;
+    margin: 2rem auto;
+    order: 1;
+  }
+
+  .basic-info .text .russo-one-binfo {
+    font-size: 1.9rem;
+  }
+
+  .basic-info .text .exo-2-binfo {
+    font-size: 1.5rem;
+  }
+
+  /* ── Carousel ────────────────────────────── */
+  .carousel-wrapper {
+    max-width: 34rem;
+  }
+
+  .arrow.left {
+    left: -2rem;
+  }
+
+  .arrow.right {
+    right: -2rem;
+  }
+
+  /* ── Char traits ─────────────────────────── */
+  .char-traits {
+    width: 83%;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    margin: 2rem auto;
+    padding: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+    order: 2;
+  }
+
+  .char-traits .text {
+    padding: 1rem 2rem;
+    height: auto;
+  }
+
+  /* ── Description & quote boxes ───────────── */
+  .description-box {
+    width: 100%;
+    height: 30rem;
+    max-height: 30rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .weakness-box {
+    height: 25rem;
+    max-height: 25rem;
+  }
+
+  .description-box .text {
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Quote & Learn: expand freely ────────── */
+  .quote-box {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .quote-box .text {
+    height: auto;
+    overflow: visible;
+  }
+
+  .learn-box {
+    height: auto;
+  }
+
+  .learn-more {
+    font-size: 1.4rem;
+  }
+
+  /* ── Card containers: stack vertically ───── */
+  .card-container {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  /* ── Card content: fixed height + scroll ──── */
+  .card-content {
+    width: 100%;
+    height: 30rem;
+    max-height: 30rem;
+    overflow: hidden;
+    align-items: stretch;
+    margin-bottom: 0;
+  }
+
+  .card-content .text {
+    height: auto;
+    min-height: 100%;
+  }
+
+  .desc-text {
+    font-size: 1.7rem;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+    flex: 1;
+  }
+
+}
 
 
 
