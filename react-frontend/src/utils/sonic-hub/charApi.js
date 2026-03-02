@@ -1,22 +1,36 @@
-import { targetCharacterMap as staticMap } from './charMap.js';
+import { targetCharacterMap as staticCharacterMap } from './charMap.js';
+// NEW: import additional static maps here as you add new endpoints
+// import { targetTransformationsMap as staticTransformationsMap } from './transformationMap.js';
 
-const searchURL = `https://sonicverse-y2s6.onrender.com/api/characters/`;
+// NEW: STATIC_MAPS holds the pre-generated maps from generateCharMap.js
+// these are baked into the app at build time so no API call is needed on startup
+// add new entries here as you add new endpoints
+const STATIC_MAPS = {
+  "/api/characters/": staticCharacterMap,
+  // "/api/transformations/": staticTransformationsMap,
+};
 
-let targetCharacterMap = staticMap;
+// NEW: loadedMaps starts as a copy of STATIC_MAPS
+// if a map is missing or empty, initInitialize will fetch and populate it on the fly
+const loadedMaps = { ...STATIC_MAPS };
 
-export async function initInitialize() {
-  if (!targetCharacterMap || Object.keys(targetCharacterMap).length === 0) {
+// NEW: initInitialize is a safety net — only runs if static map is missing or empty
+// uses relative /api/... path which works locally via Vite proxy and on Render via Express directly
+export async function initInitialize(apiPath = "/api/characters/") {
+  if (!loadedMaps[apiPath] || Object.keys(loadedMaps[apiPath]).length === 0) {
     const { targetTypeMap } = await import('./config.js');
-    targetCharacterMap = await targetTypeMap(searchURL);
+    loadedMaps[apiPath] = await targetTypeMap(apiPath);
   }
-  return targetCharacterMap;
+  return loadedMaps[apiPath];
 }
 
-export async function searchCharacter(choice) {
-  const mapChoice = targetCharacterMap[choice.toLowerCase()] ?? choice.toLowerCase();
-  const url = `${searchURL}${mapChoice}`;
-  const res = await fetch(url);
-
+// CHANGED: now accepts apiPath so it works for any endpoint, not just characters
+// uses relative /api/... path — Vite proxy handles it locally, Express handles it on Render
+export async function searchCharacter(choice, apiPath = "/api/characters/") {
+  const map = loadedMaps[apiPath] ?? {};
+  const mapChoice = map[choice.toLowerCase()] ?? choice.toLowerCase();
+  // CHANGED: was hardcoded Render URL, now relative path works everywhere
+  const res = await fetch(apiPath + mapChoice);
   if (!res.ok) throw new Error(`Fetch failed with status ${res.status}`);
   const data = await res.json();
   return data;

@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 
+// No fallback or RENDER_BASE needed here anymore
+// relative /api/... path works in both environments:
+// - locally: Vite proxy forwards to localhost:8000
+// - on Render: Express serves frontend and API on the same port directly
+
 const VARIANTS = {
   characters: {
-    apiUrl: "https://sonicverse-y2s6.onrender.com/api/characters/",
+    // CHANGED: was hardcoded Render URL, now relative path works everywhere
+    apiUrl: "/api/characters/",
     title: "Character Directory",
     placeholder: "Type in a character",
     label: "Character"
   },
+  // add new endpoints here as you build them out
+  // apiUrl is all that needs to change per variant
   // transformations: {
-  //   apiUrl: "https://sonicverse-y2s6.onrender.com/api/transformations/",
+  //   apiUrl: "/api/transformations/",
   //   title: "Transformation Directory",
   //   placeholder: "Type in a transformation",
   //   label: "Transformation"
@@ -24,12 +32,14 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
   const [characterList, setCharacterList] = useState([]);
   const [listLoading, setListLoading] = useState(false);
 
-  // Warm up Render server
+  // CHANGED: plain fetch with relative path replaces the old fetchWithFallback
+  // warms up the Express server on component mount
   useEffect(() => {
     fetch(apiUrl).catch(() => {});
   }, [apiUrl]);
 
-  // Fetch the list when the panel is opened for the first time
+  // CHANGED: plain fetch with relative path replaces the old fetchWithFallback
+  // fetches the full list when the browse panel is opened for the first time
   useEffect(() => {
     if (showList && characterList.length === 0) {
       setListLoading(true);
@@ -45,7 +55,6 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
     }
   }, [showList, apiUrl]);
 
-  // Does the logic for errors and fetching character data
   const handleClick = async () => {
     if (search.length < 2) {
       setNotFound("Please enter at least 2 characters.");
@@ -55,7 +64,8 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
 
     try {
       const { searchCharacter } = await import("../../../utils/sonic-hub/charApi.js");
-      const charData = await searchCharacter(search);
+      // CHANGED: now passes apiUrl so charApi knows which endpoint to hit
+      const charData = await searchCharacter(search, apiUrl);
       setCharacter(charData);
       setNotFound("");
     } catch (err) {
@@ -64,7 +74,6 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
     }
   };
 
-  // Pretty-print the index for tile labels
   const formatName = (index) =>
     index
       .split("-")
@@ -91,7 +100,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
-                    handleClick(); // calls your searchCharacter logic
+                    handleClick();
                   }
                 }}
               />
@@ -100,20 +109,16 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
               </button>
             </div>
 
-            {/* 👇 NEW toggle button */}
-            {/* Toggle button lives inside the search box for proximity */}
             <button
               type="button"
               className="exo-2 src-btn list-toggle-btn"
               onClick={() => setShowList((prev) => !prev)}
             >
               {showList ? `Hide ${label} List` : `Browse ${label} List`}
-              {/* {showList ? "Hide Character List" : "Browse Character List"} */}
             </button>
           </div>
         </section>
 
-        {/* 👇 NEW panel — only renders when showList is true */}
         {showList && (
           <div className="char-list-panel">
             {listLoading ? (
@@ -127,10 +132,10 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
                     className="exo-2 char-tile"
                     onClick={async () => {
                       setSearch(formatName(item.index));
-                      {/*setShowList(false); */} // optional: close list after selecting a tile
                       try {
                         const { searchCharacter } = await import("../../../utils/sonic-hub/charApi.js");
-                        const charData = await searchCharacter(item.index);
+                        // CHANGED: now passes apiUrl so charApi knows which endpoint to hit
+                        const charData = await searchCharacter(item.index, apiUrl);
                         setCharacter(charData);
                         setNotFound("");
                       } catch (err) {
