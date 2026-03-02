@@ -6,7 +6,7 @@
   "scripts": {
     "generate-map": "node generateCharMap.js",
     "dev": "vite",
-    "build": "npm run generate-map && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
