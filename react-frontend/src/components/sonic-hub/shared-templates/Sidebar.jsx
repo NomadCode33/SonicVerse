@@ -13,7 +13,7 @@ const NAV_SECTIONS = [
       //{ label: 'Transformations', to: '/sonic-hub/transformations' }, // 👈 new page
     ],
   },
-  {
+  /*{
     label: 'Quiz',
     icon: QuestionMarkCircleIcon,
     links: [
@@ -36,7 +36,7 @@ const NAV_SECTIONS = [
       { label: 'Soundtracks', to: '/music/soundtracks' },
       { label: 'Themes',      to: '/music/themes' },
     ],
-  },
+  },*/
 ];
 
 const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.webp', iconAlt = 'SonicVerse' }) => {

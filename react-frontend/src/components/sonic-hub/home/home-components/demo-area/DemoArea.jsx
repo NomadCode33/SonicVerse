@@ -2,15 +2,15 @@ import "../../../../../css/sonic-hub/home.css"
 import BoxContainer from './BoxContainer';
 
 const DemoArea = () => {
-    const columns = [
-        {
+  const columns = [
+    {
       id: 1,
       features: [
         {
           title: "Characters",
           link: "/sonic-hub/characters",
           img: "img/website-pages/characters-page.png",
-          description: "Explore the colorful cast of heroes and villains across the Sonic universe.",
+          description: "Discover the colorful cast of heroes and villains that have shaped the Sonic universe for over 30 years.",
           buttonText: "Explore Characters",
         },
         {

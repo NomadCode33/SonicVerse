@@ -101,7 +101,7 @@ export const charIndex = {
             "firstAppearance": "Sonic Adventure 2",
             "url": "/api/characters/rouge-the-bat"
         }, // 10th Character Placeholder
-        {
+        /*{
             "id": "",
             "index": "tonic-the-zonic",
             "name": "Tonic the Zonic",
@@ -110,7 +110,7 @@ export const charIndex = {
             "abilityType": "Unknown",
             "firstAppearance": "Unknown",
             "url": "/api/characters/tonic-the-zonic"
-        }
+        }*/
     ]
 };
 

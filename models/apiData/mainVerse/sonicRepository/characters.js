@@ -10236,7 +10236,7 @@ export const characters = {
         "learnMore": "https://sonic.fandom.com/wiki/Rouge_the_Bat",
         "url": "/api/characters/rouge-the-bat"
     },
-    'tonic-the-zonic': {
+    /*'tonic-the-zonic': {
         "id": "Unknown",
         "images": {
             "modern": [
@@ -10699,7 +10699,7 @@ export const characters = {
         },
         "learnMore": "Unknown",
         "url": "/api/characters/unknown"
-    }
+    }*/
 };
 
 /*

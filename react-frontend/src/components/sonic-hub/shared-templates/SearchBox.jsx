@@ -5,16 +5,18 @@ const VARIANTS = {
     apiUrl: "https://sonicverse-y2s6.onrender.com/api/characters/",
     title: "Character Directory",
     placeholder: "Type in a character",
+    label: "Character"
   },
   // transformations: {
   //   apiUrl: "https://sonicverse-y2s6.onrender.com/api/transformations/",
   //   title: "Transformation Directory",
   //   placeholder: "Type in a transformation",
+  //   label: "Transformation"
   // },
 };
 
 const SearchBox = ({ variant = "characters", setCharacter }) => {
-  const { apiUrl, title, placeholder } = VARIANTS[variant] ?? VARIANTS.characters;
+  const { apiUrl, title, placeholder, label } = VARIANTS[variant] ?? VARIANTS.characters;
 
   const [search, setSearch] = useState("");
   const [notFound, setNotFound] = useState("");
@@ -105,12 +107,56 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
               className="exo-2 src-btn list-toggle-btn"
               onClick={() => setShowList((prev) => !prev)}
             >
-              {showList ? "Hide Character List" : "Browse Character List"}
+              {showList ? `Hide ${label} List` : `Browse ${label} List`}
+              {/* {showList ? "Hide Character List" : "Browse Character List"} */}
             </button>
           </div>
         </section>
 
         {/* 👇 NEW panel — only renders when showList is true */}
+        {showList && (
+          <div className="char-list-panel">
+            {listLoading ? (
+              <p className="exo-2 list-loading">Loading Characters…</p>
+            ) : (
+              <div className="char-tile-grid">
+                {characterList.map((item) => (
+                  <button
+                    key={item.index}
+                    type="button"
+                    className="exo-2 char-tile"
+                    onClick={async () => {
+                      setSearch(formatName(item.index));
+                      {/*setShowList(false); */} // optional: close list after selecting a tile
+                      try {
+                        const { searchCharacter } = await import("../../../utils/sonic-hub/charApi.js");
+                        const charData = await searchCharacter(item.index);
+                        setCharacter(charData);
+                        setNotFound("");
+                      } catch (err) {
+                        setCharacter(null);
+                        setNotFound(`'${item.index}' not found`);
+                      }
+                    }}
+                  >
+                    {formatName(item.index)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </section>
+
+      <h3 id="characterNotFound" className={`uncial ${notFound ? "show" : ""}`}>{notFound}</h3>
+    </>
+  );
+};
+
+export default SearchBox;
+
+/*
+Old Way: // If only want the tiles to not be clickable
         {showList && (
           <div className="char-list-panel">
             {listLoading ? (
@@ -126,11 +172,4 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
             )}
           </div>
         )}
-      </section>
-
-      <h3 id="characterNotFound" className={`uncial ${notFound ? "show" : ""}`}>{notFound}</h3>
-    </>
-  );
-};
-
-export default SearchBox;
+*/

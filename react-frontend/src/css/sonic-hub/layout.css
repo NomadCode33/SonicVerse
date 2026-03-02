@@ -174,10 +174,22 @@
 /******************************************
 /* FOOTER
 /*******************************************/
+.footer {
+  height: 5.7rem; /*It was at 75 before*/
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.8);
+}
+
+.citation {
+  font-size: 1.4rem;
+}
+
 .home-page .footer,
 .characters-page .footer {
   margin-top: auto;
-  height: 5.7rem; /*It was at 75 before*/
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
   /*background-color: rgb(0, 36, 173);*/
 }
@@ -283,11 +295,22 @@
     padding: 0.4rem 0.7rem;
   }
 
-  .home-page .footer,
+  .footer {
+    height: auto;
+    padding: 1.5rem 0;
+    /*height: 10rem;*/
+  }
+
+  .citation {
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  /*.home-page .footer,
   .characters-page .footer {
     height: auto;
     min-height: 5.7rem;
-  }
+  }*/
 
 }
 
@@ -360,11 +383,22 @@
     padding: 0.45rem 0.9rem;
   }
 
-  .home-page .footer,
+  .footer {
+    height: auto;
+    padding: 1.5rem 0;
+    /*height: 10rem;*/
+  }
+
+  .citation {
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  /*.home-page .footer,
   .characters-page .footer {
     height: auto;
     min-height: 5.7rem;
-  }
+  }*/
 }
 
 /******************************************

@@ -379,11 +379,11 @@ Old ui glow:
   font-weight: 600;
   text-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
   box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.5);
-  /*cursor: pointer;*/
-  /*transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;*/
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
 }
 
-/*.char-tile:hover {
+.char-tile:hover {
   background: rgb(63, 113, 48);
   color: rgb(245, 193, 66);
   border-color: rgb(245, 193, 66);
@@ -394,7 +394,7 @@ Old ui glow:
 .char-tile:active {
   transform: translateY(0);
   box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
-}*/
+}
 
 
 /*********************************************************
@@ -868,6 +868,7 @@ Old ui glow:
 .learn-more:hover,
 .link-vas:hover {
   color: rgb(245, 158, 11); /* your amber */
+  /* color: rgb(63, 113, 48);*/ /* your green */
   cursor: pointer;
 }
 
