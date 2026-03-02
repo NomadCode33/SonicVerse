@@ -63,7 +63,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
     }
 
     try {
-      const { searchCharacter } = await import("../../../utils/sonic-hub/charApi.js");
+      const { searchCharacter } = await import("../../../utils/verse-hub/verseApi.js");
       // CHANGED: now passes apiUrl so charApi knows which endpoint to hit
       const charData = await searchCharacter(search, apiUrl);
       setCharacter(charData);
@@ -133,7 +133,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
                     onClick={async () => {
                       setSearch(formatName(item.index));
                       try {
-                        const { searchCharacter } = await import("../../../utils/sonic-hub/charApi.js");
+                        const { searchCharacter } = await import("../../../utils/verse-hub/verseApi.js");
                         // CHANGED: now passes apiUrl so charApi knows which endpoint to hit
                         const charData = await searchCharacter(item.index, apiUrl);
                         setCharacter(charData);

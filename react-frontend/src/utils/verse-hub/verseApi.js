@@ -1,6 +1,6 @@
-import { targetCharacterMap as staticCharacterMap } from './charMap.js';
+import { targetCharacterMap as staticCharacterMap } from './maps/charMap.js';
 // NEW: import additional static maps here as you add new endpoints
-// import { targetTransformationsMap as staticTransformationsMap } from './transformationMap.js';
+// import { targetTransformationsMap as staticTransformationsMap } from './maps/transformationMap.js';
 
 // NEW: STATIC_MAPS holds the pre-generated maps from generateCharMap.js
 // these are baked into the app at build time so no API call is needed on startup

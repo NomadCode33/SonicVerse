@@ -1,4 +1,4 @@
-import { targetTypeMap } from './src/utils/sonic-hub/config.js';
+import { targetTypeMap } from './src/utils/verse-hub/config.js';
 import { writeFileSync } from 'fs';
 
 // NEW: define all endpoints here — add new ones as you build them out
@@ -24,7 +24,7 @@ export const target${capitalize(endpoint.name.slice(0, -1))}Map = ${JSON.stringi
 `;
 
   // NEW: each endpoint gets its own map file (e.g. charMap.js, transformationMap.js)
-  const fileName = `./src/utils/sonic-hub/${endpoint.name.slice(0, -1)}Map.js`;
+  const fileName = `./src/utils/verse-hub/maps/${endpoint.name.slice(0, -1)}Map.js`;
   writeFileSync(fileName, output);
   console.log(`📝 ${fileName} written!`);
 }
