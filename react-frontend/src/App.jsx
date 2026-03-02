@@ -11,11 +11,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* The <Navigate> just automatically redirects anyone hitting / over to /sonic-hub */}
-        <Route path="/" element={<Navigate to="/sonic-hub" replace />} />
+        {/* The <Navigate> just automatically redirects anyone hitting / over to /verse-hub */}
+        <Route path="/" element={<Navigate to="/verse-hub" replace />} />
 
         <Route
-          path="/sonic-hub"
+          path="/verse-hub"
           element={
             <SonicHubLayout
               showText={showText}

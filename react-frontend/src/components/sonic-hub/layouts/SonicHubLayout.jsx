@@ -1,10 +1,10 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../shared-templates/Navbar';
 import Footer from '../shared-templates/Footer';
 
 const getVariant = (pathname) => {
-  if (pathname.includes('/sonic-hub/characters')) return 'characters';
+  if (pathname.includes('/verse-hub/characters')) return 'characters';
   // add more routes here as your project grows:
   // if (pathname.includes('/transformations')) return 'transformations';
   // if (pathname.includes('/games')) return 'games';
@@ -24,7 +24,17 @@ const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
   const pageClass = PAGE_CLASSES[variant] ?? 'home-page';
 
   // darkMode lives here so both Sidebar and the page can react to it
-  const [darkMode, setDarkMode] = useState(false);
+  //const [darkMode, setDarkMode] = useState(false);
+
+  // now reads saved preference from localStorage on first load
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('darkMode') === 'true';
+  });
+
+  // saves preference to localStorage whenever darkMode changes
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   return (
     <div className={`${pageClass}${darkMode ? ' dark-mode' : ''}`}>

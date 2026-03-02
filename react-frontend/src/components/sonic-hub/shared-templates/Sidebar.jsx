@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, HomeIcon, UserGroupIcon, SparklesIcon, QuestionMarkCircleIcon, FilmIcon, MusicalNoteIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, 
+  XMarkIcon, 
+  ChevronDownIcon, 
+  HomeIcon, 
+  UserGroupIcon, 
+  SparklesIcon, 
+  QuestionMarkCircleIcon, 
+  FilmIcon, 
+  MusicalNoteIcon, 
+  ArrowRightOnRectangleIcon 
+} from '@heroicons/react/24/outline';
 
 // ─── NAV STRUCTURE ────────────────────────────────────────────────────────────
 const NAV_SECTIONS = [
   {
-    label: 'SonicHub',
+    label: 'VerseHub',
     icon: HomeIcon,
     links: [
-      { label: 'Home',       to: '/sonic-hub' },
-      { label: 'Characters', to: '/sonic-hub/characters' },
-      //{ label: 'Transformations', to: '/sonic-hub/transformations' }, // 👈 new page
+      { label: 'Home',       to: '/verse-hub' },
+      { label: 'Characters', to: '/verse-hub/characters' },
+      //{ label: 'Transformations', to: '/verse-hub/transformations' }, // 👈 new page
     ],
   },
   /*{
