@@ -1,37 +1,51 @@
+// Now handles 3 different response shapes instead of just { results: [...] }
 export async function targetTypeMap(url) {
   const res = await fetch(url);
   const data = await res.json();
-  const results = data.results;
-  //console.log(results);
+
+  // Detect the response shape and extract the results accordingly
+  let results;
+
+  if (Array.isArray(data)) {
+    // Shape 1: plain array []
+    results = data;
+  } else if (data.results && Array.isArray(data.results)) {
+    // Shape 2: { results: [...] } or { count, results: [...] }
+    results = data.results;
+  } else if (typeof data === 'object' && !Array.isArray(data)) {
+    // Shape 3: merged object {} — convert keys to array of { index } objects
+    results = Object.keys(data).map(key => ({ index: key }));
+  } else {
+    throw new Error(`Unrecognized response shape from ${url}`);
+  }
 
   // Have the object here to hold all the search parameters
   const targetMap = {};
 
   // We need to loop through the data
   // From there, we have to grab the names and indexes of the items we're searching for
-  results.forEach((item, index) => {
+  results.forEach((item) => {
     const rawIndex = item.index;
-    console.log(rawIndex);
+    if (!rawIndex) return; // NEW: skip if no index exists
 
     // Variant 1: original (e.g. "sonic-the-hedgehog")
     const original = rawIndex;
 
     // Variant 2: space version (e.g. "sonic the hedgehog")
     const withSpaces = rawIndex.split('-').join(' ');
-    //console.log(withSpaces);
 
     // Variant 3: first name version (e.g. "sonic")
     const firstName = rawIndex.split('-')[0];
 
     // Variant 4: no-space version (e.g. "sonicthehedgehog")
     //const noDashSpaces = rawIndex.split('-').join('');
-    //console.log(noDashSpaces);
 
     // Add all variants pointing to the same index
     targetMap[firstName] = rawIndex;
     targetMap[withSpaces] = rawIndex;
     targetMap[original] = rawIndex;
-  })
+  });
+
   console.log("export const targetMap =", JSON.stringify(targetMap, null, 2));
   return targetMap;
 }

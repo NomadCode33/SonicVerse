@@ -1,21 +1,26 @@
 import { targetCharacterMap as staticCharacterMap } from './maps/charMap.js';
-// NEW: import additional static maps here as you add new endpoints
-// import { targetTransformationsMap as staticTransformationsMap } from './maps/transformationMap.js';
+// import additional static maps here as you add new endpoints
+// import { targetTransformationMap as staticTransformationMap } from './maps/transformationMap.js';
+// import { targetGameplayFeatureMap as staticGameplayFeatureMap } from './maps/gameplayFeatureMap.js';
 
-// NEW: STATIC_MAPS holds the pre-generated maps from generateCharMap.js
-// these are baked into the app at build time so no API call is needed on startup
+// STATIC_MAPS holds the pre-generated maps from generateMap.js
+// These are baked into the app at build time so no API call is needed on startup
 // add new entries here as you add new endpoints
 const STATIC_MAPS = {
   "/api/characters/": staticCharacterMap,
-  // "/api/transformations/": staticTransformationsMap,
+  // "/api/transformations/": staticTransformationMap,
+
+  // Subcategory endpoints use /all path to match generateMap.js
+  // "/api/gameplay-features/all": staticGameplayFeatureMap,
 };
 
-// NEW: loadedMaps starts as a copy of STATIC_MAPS
-// if a map is missing or empty, initInitialize will fetch and populate it on the fly
+// loadedMaps starts as a copy of STATIC_MAPS
+// If a map is missing or empty, initInitialize will fetch and populate it on the fly
 const loadedMaps = { ...STATIC_MAPS };
 
-// NEW: initInitialize is a safety net — only runs if static map is missing or empty
+// initInitialize is a safety net — only runs if static map is missing or empty
 // uses relative /api/... path which works locally via Vite proxy and on Render via Express directly
+// config.js now handles all response shapes so this works for any endpoint
 export async function initInitialize(apiPath = "/api/characters/") {
   if (!loadedMaps[apiPath] || Object.keys(loadedMaps[apiPath]).length === 0) {
     const { targetTypeMap } = await import('./config.js');
@@ -24,12 +29,12 @@ export async function initInitialize(apiPath = "/api/characters/") {
   return loadedMaps[apiPath];
 }
 
-// CHANGED: now accepts apiPath so it works for any endpoint, not just characters
-// uses relative /api/... path — Vite proxy handles it locally, Express handles it on Render
+// Now accepts apiPath so it works for any endpoint, not just characters
+// Uses relative /api/... path — Vite proxy handles it locally, Express handles it on Render
 export async function searchCharacter(choice, apiPath = "/api/characters/") {
   const map = loadedMaps[apiPath] ?? {};
   const mapChoice = map[choice.toLowerCase()] ?? choice.toLowerCase();
-  // CHANGED: was hardcoded Render URL, now relative path works everywhere
+  // Was hardcoded Render URL, now relative path works everywhere
   const res = await fetch(apiPath + mapChoice);
   if (!res.ok) throw new Error(`Fetch failed with status ${res.status}`);
   const data = await res.json();

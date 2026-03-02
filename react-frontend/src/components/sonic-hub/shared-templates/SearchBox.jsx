@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 
 const VARIANTS = {
   characters: {
-    // CHANGED: was hardcoded Render URL, now relative path works everywhere
+    // Was hardcoded Render URL, now relative path works everywhere
     apiUrl: "/api/characters/",
     title: "Character Directory",
     placeholder: "Type in a character",
@@ -32,13 +32,13 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
   const [characterList, setCharacterList] = useState([]);
   const [listLoading, setListLoading] = useState(false);
 
-  // CHANGED: plain fetch with relative path replaces the old fetchWithFallback
+  // Plain fetch with relative path replaces the old fetchWithFallback
   // warms up the Express server on component mount
   useEffect(() => {
     fetch(apiUrl).catch(() => {});
   }, [apiUrl]);
 
-  // CHANGED: plain fetch with relative path replaces the old fetchWithFallback
+  // Plain fetch with relative path replaces the old fetchWithFallback
   // fetches the full list when the browse panel is opened for the first time
   useEffect(() => {
     if (showList && characterList.length === 0) {
@@ -64,7 +64,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
 
     try {
       const { searchCharacter } = await import("../../../utils/verse-hub/verseApi.js");
-      // CHANGED: now passes apiUrl so charApi knows which endpoint to hit
+      // Now passes apiUrl so charApi knows which endpoint to hit
       const charData = await searchCharacter(search, apiUrl);
       setCharacter(charData);
       setNotFound("");
@@ -134,7 +134,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
                       setSearch(formatName(item.index));
                       try {
                         const { searchCharacter } = await import("../../../utils/verse-hub/verseApi.js");
-                        // CHANGED: now passes apiUrl so charApi knows which endpoint to hit
+                        // Now passes apiUrl so verseApi (charApi) knows which endpoint to hit
                         const charData = await searchCharacter(item.index, apiUrl);
                         setCharacter(charData);
                         setNotFound("");
