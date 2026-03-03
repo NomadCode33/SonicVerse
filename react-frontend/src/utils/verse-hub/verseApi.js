@@ -3,6 +3,9 @@ import { targetCharacterMap as staticCharacterMap } from './maps/characterMap.js
 // import { targetTransformationMap as staticTransformationMap } from './maps/transformationMap.js';
 // import { targetGameplayFeatureMap as staticGameplayFeatureMap } from './maps/gameplayFeatureMap.js';
 
+// REMOVED: SYNONYMS import — "did you mean?" now searches directly against
+// the loaded maps so it works for characters, transformations, and any future endpoint
+
 // STATIC_MAPS holds the pre-generated maps from generateMap.js
 // These are baked into the app at build time so no API call is needed on startup
 // add new entries here as you add new endpoints
@@ -19,7 +22,7 @@ const STATIC_MAPS = {
 const loadedMaps = { ...STATIC_MAPS };
 
 // Normalizes user input to a consistent lowercase string for map lookup
-// Handles all the following cases:
+// handles all the following cases:
 // - trailing/leading spaces ("sonic   " → "sonic")
 // - mixed capitals ("tAIls" → "tails")
 // - title case ("Sonic The Hedgehog" → "sonic the hedgehog")
@@ -27,10 +30,61 @@ const loadedMaps = { ...STATIC_MAPS };
 // - punctuation that could interfere ("sonic!" → "sonic")
 function normalizeInput(input) {
   return input
-    .trim()                        // removes leading and trailing spaces
-    .replace(/\s+/g, ' ')          // collapses multiple spaces into one
-    .replace(/[^a-zA-Z0-9\s]/g, '') // removes punctuation/special characters
-    .toLowerCase();                // already existed — ensures case insensitivity
+    .trim()                          // removes leading and trailing spaces
+    .replace(/\s+/g, ' ')            // collapses multiple spaces into one
+    // CHANGED: added - to allowed characters so index lookups like
+    // "sonic-the-hedgehog" pass through correctly from tile clicks
+    .replace(/[^a-zA-Z0-9\s-]/g, '') // removes punctuation/special characters but keeps dashes
+    .toLowerCase();                  // ensures case insensitivity
+}
+
+// Calculates Levenshtein distance between two strings
+// this is the standard algorithm used by spell checkers to measure
+// how many single-character edits are needed to change one string into another
+// e.g. "sonik" → "sonic" = 1 edit (change 'k' to 'c')
+function levenshteinDistance(a, b) {
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, // substitution
+          matrix[i][j - 1] + 1,     // insertion
+          matrix[i - 1][j] + 1      // deletion
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
+// Finds the closest matching key in the map using Levenshtein distance
+// only returns a suggestion if it's within 1-2 edits (small typos only)
+// e.g. "sonik" → suggests "sonic", "knukles" → suggests "knuckles"
+// searches the loaded map for the given apiPath so it works
+// for characters, transformations, and any future endpoint automatically
+function findClosestMatch(input, map) {
+  const MAX_DISTANCE = 2; // only catch small typos (1-2 letters off)
+  let bestMatch = null;
+  let bestDistance = Infinity;
+
+  for (const key of Object.keys(map)) {
+    const distance = levenshteinDistance(input, key);
+    if (distance < bestDistance && distance <= MAX_DISTANCE) {
+      bestDistance = distance;
+      bestMatch = key;
+    }
+  }
+
+  return bestMatch;
 }
 
 // initInitialize is a safety net — only runs if static map is missing or empty
@@ -48,12 +102,34 @@ export async function initInitialize(apiPath = "/api/characters/") {
 // Uses relative /api/... path — Vite proxy handles it locally, Express handles it on Render
 export async function searchCharacter(choice, apiPath = "/api/characters/") {
   const map = loadedMaps[apiPath] ?? {};
+
   // Was just choice.toLowerCase(), now uses normalizeInput for smarter search
   const normalized = normalizeInput(choice);
+
+  // REMOVED: separate SYNONYMS check — the loaded map already contains
+  // all variants from config.js (original, spaces, firstName) plus NICKNAME_ALIASES
+  // so a standard map lookup covers everything
   const mapChoice = map[normalized] ?? normalized;
-  // Was hardcoded Render URL, now relative path works everywhere
   const res = await fetch(apiPath + mapChoice);
-  if (!res.ok) throw new Error(`Fetch failed with status ${res.status}`);
+
+  // if exact match fails, try fuzzy matching against the loaded map
+  // returns a suggestion object instead of throwing so SearchBox can show "did you mean?"
+  if (!res.ok) {
+    // passes the loaded map for the current apiPath so fuzzy matching
+    // works for characters, transformations, and any future endpoint automatically
+    const closestKey = findClosestMatch(normalized, map);
+    if (closestKey) {
+      // return suggestion object — SearchBox.jsx checks for this
+      // to show "did you mean?" instead of "not found"
+      return {
+        __suggestion: true,
+        suggestedKey: closestKey,
+        suggestedIndex: map[closestKey],
+      };
+    }
+    throw new Error(`Fetch failed with status ${res.status}`);
+  }
+
   const data = await res.json();
   return data;
 }

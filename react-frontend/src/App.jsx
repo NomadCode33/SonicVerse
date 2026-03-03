@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
-import SonicHubLayout from './components/sonic-hub/layouts/SonicHubLayout';
-import Home from './pages/sonic-hub/home/Home';
-import Characters from './pages/sonic-hub/characters/Characters';
+import SonicHubLayout from './components/verse-hub/layouts/SonicHubLayout';
+import Home from './pages/verse-hub/home/Home';
+import Characters from './pages/verse-hub/characters/Characters';
 
 const App = () => {
   const [showText, setShowText] = useState(true);
@@ -27,14 +27,14 @@ const App = () => {
         >
           <Route index element={<Home showText={showText} showContent={showContent} />} />
           <Route path="characters" element={<Characters showText={showText} showContent={showContent} />} />
-          {/* Add new sonic-hub pages here: */}
+          {/* Add new verse-hub pages here: */}
           {/* <Route path="quiz" element={<Quiz />} /> */}
           {/* <Route path="transformations" element={<Transformations />} /> */}
         </Route>
 
         {/* 
           <Route
-            path="/sonic-hub"
+            path="/verse-hub"
             element={
               <SonicHubLayout
                 showText={showText}
@@ -46,7 +46,7 @@ const App = () => {
           >
             <Route index element={<Home showText={showText} showContent={showContent} />} />
             <Route path="characters" element={<Characters />} />
-            {// Add new sonic-hub pages here: }
+            {// Add new verse-hub pages here: }
             {// <Route path="quiz" element={<Quiz />} /> }
             {// <Route path="transformations" element={<Transformations />} />} 
           </Route> 
