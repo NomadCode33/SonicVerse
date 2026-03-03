@@ -5,6 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 
+dotenv.config({ path: './config/.env' });
+
 // Import routes
 //import homeRoutes from './routes/home.js';
 //import dashboardRoutes from './routes/dashboard.js';
@@ -12,8 +14,6 @@ import sonicHubRoutes from './routes/sonicHub.js';
 import apiRoutes from './routes/api.js';
 
 const app = express();
-
-dotenv.config({ path: './config/.env' });
 
 // Fix for __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -47,8 +47,10 @@ app.get(/.*/, (req, res) => {
 //app.use('/dashboard', dashboardRoutes);
 //app.use('/sonic-hub', sonicHubRoutes);
 
+const PORT = process.env.PORT || 8000; // ← added this
+
 // This listens for the PORT of the server we host it on
 // If that PORT doesn't exist, then we use the PORT that we set prior
-app.listen(process.env.PORT, () => {
-    console.log('Server is running, you better catch it!')
+app.listen(PORT, () => {
+    console.log(`Server is running! You better catch it on port ${PORT}!`)
 });
