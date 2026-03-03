@@ -1,4 +1,4 @@
-import { targetCharacterMap as staticCharacterMap } from './maps/charMap.js';
+import { targetCharacterMap as staticCharacterMap } from './maps/characterMap.js';
 // import additional static maps here as you add new endpoints
 // import { targetTransformationMap as staticTransformationMap } from './maps/transformationMap.js';
 // import { targetGameplayFeatureMap as staticGameplayFeatureMap } from './maps/gameplayFeatureMap.js';
@@ -18,6 +18,21 @@ const STATIC_MAPS = {
 // If a map is missing or empty, initInitialize will fetch and populate it on the fly
 const loadedMaps = { ...STATIC_MAPS };
 
+// Normalizes user input to a consistent lowercase string for map lookup
+// Handles all the following cases:
+// - trailing/leading spaces ("sonic   " → "sonic")
+// - mixed capitals ("tAIls" → "tails")
+// - title case ("Sonic The Hedgehog" → "sonic the hedgehog")
+// - extra spaces between words ("sonic  the  hedgehog" → "sonic the hedgehog")
+// - punctuation that could interfere ("sonic!" → "sonic")
+function normalizeInput(input) {
+  return input
+    .trim()                        // removes leading and trailing spaces
+    .replace(/\s+/g, ' ')          // collapses multiple spaces into one
+    .replace(/[^a-zA-Z0-9\s]/g, '') // removes punctuation/special characters
+    .toLowerCase();                // already existed — ensures case insensitivity
+}
+
 // initInitialize is a safety net — only runs if static map is missing or empty
 // uses relative /api/... path which works locally via Vite proxy and on Render via Express directly
 // config.js now handles all response shapes so this works for any endpoint
@@ -33,7 +48,9 @@ export async function initInitialize(apiPath = "/api/characters/") {
 // Uses relative /api/... path — Vite proxy handles it locally, Express handles it on Render
 export async function searchCharacter(choice, apiPath = "/api/characters/") {
   const map = loadedMaps[apiPath] ?? {};
-  const mapChoice = map[choice.toLowerCase()] ?? choice.toLowerCase();
+  // Was just choice.toLowerCase(), now uses normalizeInput for smarter search
+  const normalized = normalizeInput(choice);
+  const mapChoice = map[normalized] ?? normalized;
   // Was hardcoded Render URL, now relative path works everywhere
   const res = await fetch(apiPath + mapChoice);
   if (!res.ok) throw new Error(`Fetch failed with status ${res.status}`);

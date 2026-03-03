@@ -1,3 +1,35 @@
+// Explicit nickname mappings for characters with unpredictable real names
+// key = index, value = array of nickname variants to add to the map
+const NICKNAME_ALIASES = {
+  "doctor-eggman": ["eggman", 
+    "robotnik", 
+    "ivo", 
+    "doctor robotnik", 
+    "dr eggman", 
+    "dr. eggman",
+    "dr robotnik",
+    "dr. robotnik"
+  ],
+  "miles-tails-prower": ["tails"],
+  "amy-rose": ["rose", 
+    "rosy the rascal", 
+    "princess sally", 
+    "sally"
+  ],
+  "shadow-the-hedgehog": ["ultimate life form", "the ultimate life form"],
+  // add more here as needed e.g:
+  // "some-character": ["nickname1", "nickname2"],
+};
+
+// Helper that adds nickname aliases for a given index to the targetMap
+function applyNicknameAliases(rawIndex, targetMap) {
+  const aliases = NICKNAME_ALIASES[rawIndex];
+  if (!aliases) return; // no nicknames for this character, skip
+  aliases.forEach(alias => {
+    targetMap[alias] = rawIndex;
+  });
+}
+
 // Now handles 3 different response shapes instead of just { results: [...] }
 export async function targetTypeMap(url) {
   const res = await fetch(url);
@@ -26,16 +58,16 @@ export async function targetTypeMap(url) {
   // From there, we have to grab the names and indexes of the items we're searching for
   results.forEach((item) => {
     const rawIndex = item.index;
-    if (!rawIndex) return; // NEW: skip if no index exists
+    if (!rawIndex) return; // skip if no index exists
 
-    // Variant 1: original (e.g. "sonic-the-hedgehog")
-    const original = rawIndex;
-
+    // Variant 1: first name version (e.g. "sonic")
+    const firstName = rawIndex.split('-')[0];
+    
     // Variant 2: space version (e.g. "sonic the hedgehog")
     const withSpaces = rawIndex.split('-').join(' ');
 
-    // Variant 3: first name version (e.g. "sonic")
-    const firstName = rawIndex.split('-')[0];
+    // Variant 3: original (e.g. "sonic-the-hedgehog")
+    //const original = rawIndex;
 
     // Variant 4: no-space version (e.g. "sonicthehedgehog")
     //const noDashSpaces = rawIndex.split('-').join('');
@@ -43,7 +75,11 @@ export async function targetTypeMap(url) {
     // Add all variants pointing to the same index
     targetMap[firstName] = rawIndex;
     targetMap[withSpaces] = rawIndex;
-    targetMap[original] = rawIndex;
+    //targetMap[original] = rawIndex;
+
+    // Apply nickname aliases for characters with unpredictable real names
+    // e.g. "eggman" → "doctor-eggman", "tails" → "miles-tails-prower"
+    applyNicknameAliases(rawIndex, targetMap);
   });
 
   console.log("export const targetMap =", JSON.stringify(targetMap, null, 2));
