@@ -254,7 +254,7 @@
 }
 
 .verse-navbar-pic {
-  width: 15rem;
+  width: 18rem;
   height: 13rem;
   filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(255, 255, 255, 0.4)); /* rgba(255, 255, 255, 0.15) 0.15 */ 
   /*object-fit: cover; /* replaces background-size: cover */
@@ -380,7 +380,62 @@
 /******************************************
 /* SCROLL TO TOP BUTTON
 /*******************************************/
+/* ── SCROLL TO TOP ───────────────────────────── */
+.scroll-to-top {
+  position: fixed;
+  bottom: 4rem;
+  right: 4.5rem;
+  z-index: 999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
 
+.scroll-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top-img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(0, 0, 0, 0.6));
+}
+
+/* ── Pulsing rings ───────────────────────────── */
+.scroll-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 0.2rem solid rgb(245, 193, 66);
+  opacity: 0;
+  animation: ring-pulse 2s ease-out infinite;
+}
+
+.ring-1 { width: 6rem; height: 6rem; animation-delay: 0s; }
+.ring-2 { width: 6rem; height: 6rem; animation-delay: 0.6s; }
+.ring-3 { width: 6rem; height: 6rem; animation-delay: 1.2s; }
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
 
 
 /******************************************
@@ -509,6 +564,23 @@
     min-height: 5.7rem;
   }*/
 
+  /* ── Scroll to top ───────────────────────── */
+  .scroll-to-top {
+    bottom: 3.2rem;
+    right: 3rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .scroll-top-img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .ring-1 { width: 4rem; height: 4rem; }
+  .ring-2 { width: 4rem; height: 4rem; }
+  .ring-3 { width: 4rem; height: 4rem; }
+
 }
 
 /******************************************
@@ -607,6 +679,23 @@
     height: auto;
     min-height: 5.7rem;
   }*/
+
+  /* ── Scroll to top ───────────────────────── */
+  .scroll-to-top {
+    bottom: 3.5rem;
+    right: 3.7rem;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .scroll-top-img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .ring-1 { width: 5rem; height: 5rem; }
+  .ring-2 { width: 5rem; height: 5rem; }
+  .ring-3 { width: 5rem; height: 5rem; }
 }
 
 /******************************************

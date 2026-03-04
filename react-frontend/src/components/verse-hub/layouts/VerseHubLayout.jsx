@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import VerseNavbar from '../shared-templates/VerseNavbar';
 /*import VerseNavbar from '../shared-templates/VerseNavbar';*/
 import Footer from '../shared-templates/Footer';
+import ScrolltoTop from '../shared-templates/ScrolltoTop';
 
 const getVariant = (pathname) => {
   if (pathname.includes('/verse-hub/characters')) return 'characters';
@@ -54,6 +55,7 @@ const VerseHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
       />
       <Outlet context={{ variant }} />
       <Footer variant={variant} showContent={showContent} />
+      <ScrolltoTop />
     </div>
   );
 };
