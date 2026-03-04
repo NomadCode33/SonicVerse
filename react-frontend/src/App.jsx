@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
-import SonicHubLayout from './components/verse-hub/layouts/SonicHubLayout';
+import VerseHubLayout from './components/verse-hub/layouts/VerseHubLayout';
 import Home from './pages/verse-hub/home/Home';
 import Characters from './pages/verse-hub/characters/Characters';
 
@@ -17,7 +17,7 @@ const App = () => {
         <Route
           path="/verse-hub"
           element={
-            <SonicHubLayout
+            <VerseHubLayout
               showText={showText}
               setShowText={setShowText}
               showContent={showContent}
@@ -36,7 +36,7 @@ const App = () => {
           <Route
             path="/verse-hub"
             element={
-              <SonicHubLayout
+              <VerseHubLayout
                 showText={showText}
                 setShowText={setShowText}
                 showContent={showContent}

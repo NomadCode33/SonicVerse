@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navbar from '../shared-templates/Navbar';
+import VerseNavbar from '../shared-templates/VerseNavbar';
 import Footer from '../shared-templates/Footer';
 
 const getVariant = (pathname) => {
@@ -18,7 +19,7 @@ const PAGE_CLASSES = {
   // quiz: 'quiz-page',
 };
 
-const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) => {
+const VerseHubLayout = ({ showText, setShowText, showContent, setShowContent }) => {
   const { pathname } = useLocation();
   const variant = getVariant(pathname);
   const pageClass = PAGE_CLASSES[variant] ?? 'home-page';
@@ -51,10 +52,11 @@ const SonicHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
+      <VerseNavbar />
       <Outlet context={{ variant }} />
       <Footer variant={variant} showContent={showContent} />
     </div>
   );
 };
 
-export default SonicHubLayout;
+export default VerseHubLayout;

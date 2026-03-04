@@ -172,6 +172,50 @@
 }
 
 /******************************************
+/* VERSE NAVBAR
+/*******************************************/
+.verse-navbar {
+  width: 70%;
+  height: 7rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  /*padding: 0 3rem;*/
+  border-radius: 0.5rem;
+  border: 0.1rem solid #001833;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background: linear-gradient(90deg, rgb(10, 10, 10), rgb(0, 36, 173));
+  /*background: linear-gradient(90deg, rgb(0, 180, 180), rgb(0, 36, 173));*/ /* secondary color */
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.9);
+  overflow: visible; /* ← allows image to break out */
+}
+
+.verse-navbar-pic {
+  width: 14rem;
+  height: 12rem;
+  filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(255, 255, 255, 0.4)); /* rgba(255, 255, 255, 0.15) 0.15 */ 
+  /*object-fit: cover; /* replaces background-size: cover */
+  /*border-radius: 50%; /* optional, makes it a circle */
+}
+
+.verse-nav-link {
+  font-size: 1.6rem;
+  padding: 0 3rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s; /* ← smooth hover */
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+}
+
+.verse-nav-link:hover {
+  color: rgb(245, 193, 66); /* ← yellow, matches your nav-button hover */
+  text-decoration: underline;
+}
+
+/******************************************
 /* FOOTER
 /*******************************************/
 .footer {
@@ -198,6 +242,12 @@
 .characters-page .footer {
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
 }
+
+/******************************************
+/* SCROLL TO TOP BUTTON
+/*******************************************/
+
+
 
 /******************************************
 /* BLOCK PHONE LANDSCAPE
@@ -295,6 +345,12 @@
     padding: 0.4rem 0.7rem;
   }
 
+  .verse-navbar {
+    display: none !important;
+    margin: 0 !important;
+    height: 0 !important;
+  }
+
   .footer {
     height: auto;
     padding: 1.5rem 0;
@@ -381,6 +437,12 @@
   .characters-page .nav-button {
     font-size: 1.25rem;
     padding: 0.45rem 0.9rem;
+  }
+
+  .verse-navbar {
+    display: none !important;
+    margin: 0 !important;
+    height: 0 !important;
   }
 
   .footer {
