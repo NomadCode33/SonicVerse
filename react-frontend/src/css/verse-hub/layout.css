@@ -353,6 +353,7 @@
 /*******************************************/
 .footer {
   height: 5.7rem; /*It was at 75 before*/
+  margin-top: 2rem;
   color: white;
   display: flex;
   justify-content: center;
@@ -366,7 +367,7 @@
 
 .home-page .footer,
 .characters-page .footer {
-  margin-top: auto;
+  /*margin-top: auto;*/
   background: linear-gradient(45deg, rgb(0, 36, 173), rgb(50, 100, 230));
   /*background-color: rgb(0, 36, 173);*/
 }

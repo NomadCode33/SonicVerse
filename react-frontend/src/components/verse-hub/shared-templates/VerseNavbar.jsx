@@ -56,6 +56,18 @@ const VerseNavbar = ({ variant = 'home', showText, setShowText, showContent, set
     };
   }, [showContent, variant]);
 
+  // ← close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.verse-nav-dropdown')) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
     <>
       <header className="clearfix">
