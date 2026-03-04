@@ -3,7 +3,6 @@ import { targetCharacterMap as staticCharacterMap } from './maps/characterMap.js
 // import { targetTransformationMap as staticTransformationMap } from './maps/transformationMap.js';
 // import { targetGameplayFeatureMap as staticGameplayFeatureMap } from './maps/gameplayFeatureMap.js';
 
-// REMOVED: SYNONYMS import — "did you mean?" now searches directly against
 // the loaded maps so it works for characters, transformations, and any future endpoint
 
 // STATIC_MAPS holds the pre-generated maps from generateMap.js
@@ -32,7 +31,7 @@ function normalizeInput(input) {
   return input
     .trim()                          // removes leading and trailing spaces
     .replace(/\s+/g, ' ')            // collapses multiple spaces into one
-    // CHANGED: added - to allowed characters so index lookups like
+    // added '-' to allowed characters so index lookups like
     // "sonic-the-hedgehog" pass through correctly from tile clicks
     .replace(/[^a-zA-Z0-9\s-]/g, '') // removes punctuation/special characters but keeps dashes
     .toLowerCase();                  // ensures case insensitivity
@@ -106,11 +105,13 @@ export async function searchCharacter(choice, apiPath = "/api/characters/") {
   // Was just choice.toLowerCase(), now uses normalizeInput for smarter search
   const normalized = normalizeInput(choice);
 
-  // REMOVED: separate SYNONYMS check — the loaded map already contains
   // all variants from config.js (original, spaces, firstName) plus NICKNAME_ALIASES
   // so a standard map lookup covers everything
   const mapChoice = map[normalized] ?? normalized;
+  //console.log("normalized:", normalized, "→ mapChoice:", mapChoice);
+
   const res = await fetch(apiPath + mapChoice);
+  //console.log(`fetching ${apiPath + mapChoice}...`, res);
 
   // if exact match fails, try fuzzy matching against the loaded map
   // returns a suggestion object instead of throwing so SearchBox can show "did you mean?"

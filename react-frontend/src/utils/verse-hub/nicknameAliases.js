@@ -1,7 +1,7 @@
 // Explicit nickname mappings scoped by API endpoint
 // key = endpoint path, value = { index: [aliases] }
 // scoped so aliases only apply to the correct endpoint's map
-const NICKNAME_ALIASES = {
+export const NICKNAME_ALIASES = {
   "/api/characters/": {
     "doctor-eggman": ["eggman", 
       "robotnik", 
