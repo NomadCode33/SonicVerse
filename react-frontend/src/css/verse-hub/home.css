@@ -47,7 +47,7 @@ html {
   min-height: 300vh;
 }
 
-.luckiest-guy {
+/*.luckiest-guy {
   font-family: "Luckiest Guy", "Arial Black", sans-serif;
 }
 
@@ -65,22 +65,15 @@ html {
   font-weight: 600;
 }
 
-.bangers {
-  font-family: "Bangers", "Rubik", sans-serif;
-}
-
-.comp-item {
-  color: rgb(245, 193, 66);
-  font-size: 2.4rem;
-}
+*/
 
 /**************************************************************
 /* PIC REST & DISCLAIMER
 /**************************************************************/
 .home-page .pic-rest {
   height: 60rem;
-  margin: 0 auto;
-  margin-top: 5rem;
+  margin: 5rem auto;
+  /*margin-top: 3rem;*/
   width: 90%;
   display: flex;
   justify-content: center;
@@ -357,7 +350,7 @@ Old ui glow:
   .home-page .pic-rest {
     width: 95%;
     height: 22rem;
-    margin-top: 1.5rem !important;
+    /*margin: 1.5rem auto;*/ /* refer to layout.css */
     min-height: 10vh;
     background-size: cover;       /* shows the full image without cropping */
     background-position: center;
@@ -407,6 +400,15 @@ Old ui glow:
     padding: 0.7rem 1.4rem;
   }
 
+  /*.home-page .pic-rest {
+    width: 95%;
+    height: 22rem;
+    margin: 1.5rem auto !important;
+    min-height: 10vh;
+    background-size: cover;       
+    background-position: center;
+  }*/
+
   /* ── Disclaimer ──────────────────────────── */
   /*.home-page .disclaimer-content {
     padding: 0 2rem;
@@ -450,7 +452,7 @@ Old ui glow:
   .home-page .pic-rest {
     width: 95%;
     height: 30rem;
-    margin-top: 2rem;
+    /*margin-top: 2rem;*/ /* refer to layout.css */
     min-height: 10vh;
     background-size: cover;       /* shows the full image without cropping */
     background-position: center;

@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Navbar from '../shared-templates/Navbar';
 import VerseNavbar from '../shared-templates/VerseNavbar';
+/*import VerseNavbar from '../shared-templates/VerseNavbar';*/
 import Footer from '../shared-templates/Footer';
 
 const getVariant = (pathname) => {
@@ -43,7 +43,7 @@ const VerseHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
         <p>Please rotate your device to portrait mode.</p>
       </div>
       
-      <Navbar
+      <VerseNavbar
         variant={variant}
         showText={showText}
         setShowText={setShowText}
@@ -52,7 +52,6 @@ const VerseHubLayout = ({ showText, setShowText, showContent, setShowContent }) 
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
-      <VerseNavbar />
       <Outlet context={{ variant }} />
       <Footer variant={variant} showContent={showContent} />
     </div>

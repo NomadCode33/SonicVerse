@@ -1,8 +1,5 @@
 import '../../../css/verse-hub/layout.css';
-import '../../../css/verse-hub/home.css';
-import '../../../css/verse-hub/characters.css';
-// import '../../css/transformations.css';  👈 add as you grow
-// import '../../css/games.css';
+
 
 const Footer = ({ showContent }) => {
   if (!showContent) return null;

@@ -49,7 +49,7 @@ html {
   min-height: 300vh;
 }
 
-.luckiest-guy {
+/*.luckiest-guy {
   font-family: "Luckiest Guy", "Arial Black", sans-serif;
 }
 
@@ -87,29 +87,7 @@ html {
   font-family: "Inter", "Roboto", sans-serif;
   font-weight: 600;
 }
-
-.bangers {
-  font-family: "Bangers", "Rubik", sans-serif;
-}
-
-.uncial {
-  font-family: "Uncial Antiqua", "MedievalSharp", sans-serif;
-}
-
-.medieval {
-  font-family: "MedievalSharp", "Uncial Antiqua", sans-serif;
-}
-
-.reg-font {
-  font-family: "Rosarivo","IM Fell English", sans-serif;
-  font-weight: normal;
-  font-size: 1.8rem; /*16.5px*/
-}
-
-.comp-item {
-  color: rgb(245, 193, 66);
-  font-size: 2.4rem;
-}
+}*/
 
 /**************************************************************
 /* PIC REST & DISCLAIMER
@@ -1180,10 +1158,10 @@ Normal width for phones
   };
   
   /* ── Hero banner ─────────────────────────── */
-  .characters-page .pic-rest {
+  .characters-page #nav-select {
     width: 95%;
     height: 22rem;
-    margin-top: 2rem;
+    /*margin: 1.5rem auto !important;*/ /* refer to layout.css */
     min-height: 10vh;
     background-size: cover;
     background-position: center;
@@ -1447,7 +1425,7 @@ Normal width for phones
   .characters-page .pic-rest {
     width: 90%;
     height: 65rem;
-    margin-top: 3rem;
+    /*margin-top: 3rem;*/ /* refer to layout.css */
     min-height: 10vh;
     background-size: cover;
     background-position: center;

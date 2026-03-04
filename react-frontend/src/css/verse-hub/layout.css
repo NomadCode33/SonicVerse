@@ -19,6 +19,67 @@
 	clear: both;
 }
 
+
+/******************************************
+/* BASE STYLES + LAYOUT
+/*******************************************/
+
+
+.luckiest-guy {
+  font-family: "Luckiest Guy", "Arial Black", sans-serif;
+}
+
+.russo-one {
+  font-family: "Russo One", "Helvetica Neue", sans-serif;
+}
+
+.basic-info .text .russo-one-binfo {
+  font-family: "Russo One", "Helvetica Neue", sans-serif;
+  font-size: 2.1rem;
+}
+
+.exo-2 {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-weight: 400;
+}
+
+.exo-2-600 {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
+.basic-info .text .exo-2-binfo {
+  font-family: "Exo 2", "Inter","Segoe UI", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.inter {
+  font-family: "Inter", "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.inter-500 {
+  font-family: "Inter", "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.inter-600 {
+  font-family: "Inter", "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+.reg-font {
+  font-family: "Rosarivo","IM Fell English", sans-serif;
+  font-weight: normal;
+  font-size: 1.8rem; /*16.5px*/
+}
+
+.comp-item {
+  color: rgb(245, 193, 66);
+  font-size: 2.4rem;
+}
+
 /******************************************
 /* HEADER SECTION
 /*******************************************/
@@ -193,8 +254,8 @@
 }
 
 .verse-navbar-pic {
-  width: 14rem;
-  height: 12rem;
+  width: 15rem;
+  height: 13rem;
   filter: drop-shadow(0.2rem 0.4rem 0.6rem rgba(255, 255, 255, 0.4)); /* rgba(255, 255, 255, 0.15) 0.15 */ 
   /*object-fit: cover; /* replaces background-size: cover */
   /*border-radius: 50%; /* optional, makes it a circle */
@@ -207,12 +268,84 @@
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s; /* ← smooth hover */
-  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+  text-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.8);
+  /*text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.4);*/
+  position: relative;
+}
+
+.verse-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -0.2rem;
+  left: 50%;
+  width: 0;
+  height: 0.2rem;
+  background-color: rgb(245, 193, 66);
+  transition: width 0.2s ease, left 0.2s ease, transform 0.2s ease;
+  transform: translateX(-50%);
+  border-radius: 1rem;
+}
+
+.verse-nav-link:hover::after {
+  width: calc(100% - 6rem); /* subtracts the padding on both sides */
+  left: 50%;
 }
 
 .verse-nav-link:hover {
-  color: rgb(245, 193, 66); /* ← yellow, matches your nav-button hover */
-  text-decoration: underline;
+  color: rgb(245, 193, 66);
+  text-decoration: none; /* ← remove the old underline */
+}
+
+/******************************************
+/* MENU DROPDOWN
+/*******************************************/
+/* ── Verse Navbar: Dropdown Menu ─────────────── */
+.verse-nav-dropdown {
+  position: relative;
+}
+
+.verse-nav-dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.verse-dropdown-panel {
+  position: absolute;
+  top: 3rem;
+  right: 50%; /* ← change from right: 0 */
+  transform: translateX(50%); /* ← add this to center it */
+  min-width: 16rem;
+  background: linear-gradient(180deg, rgb(10, 10, 10), rgb(0, 36, 173));
+  border: 0.1rem solid #001833;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.verse-dropdown-panel.open {
+  max-height: 20rem; /* ← tall enough to show all items */
+  opacity: 1;
+}
+
+.verse-dropdown-item {
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+}
+
+.verse-dropdown-item:hover {
+  background-color: rgb(0, 36, 173);
+  color: rgb(245, 193, 66);
 }
 
 /******************************************
@@ -345,10 +478,17 @@
     padding: 0.4rem 0.7rem;
   }
 
-  .verse-navbar {
+  .home-page .verse-navbar,
+  .characters-page .verse-navbar {
     display: none !important;
     margin: 0 !important;
     height: 0 !important;
+  }
+
+  /* ← ADD THIS */
+  .home-page .pic-rest,
+  .characters-page .pic-rest {
+    margin: 2rem auto !important;
   }
 
   .footer {
@@ -443,6 +583,11 @@
     display: none !important;
     margin: 0 !important;
     height: 0 !important;
+  }
+
+  .home-page .pic-rest,
+  .characters-page .pic-rest {
+    margin: 3rem auto !important;
   }
 
   .footer {
