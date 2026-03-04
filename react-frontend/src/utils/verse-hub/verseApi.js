@@ -131,6 +131,7 @@ export async function searchCharacter(choice, apiPath = "/api/characters/") {
   }
 
   const data = await res.json();
+  //console.log(data);
   return data;
 }
 

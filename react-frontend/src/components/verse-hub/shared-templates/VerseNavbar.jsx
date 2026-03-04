@@ -36,7 +36,7 @@ const VerseNavbar = ({ variant = 'home', showText, setShowText, showContent, set
       const navWidth = navRef.current.offsetWidth;
       const navLeft = navRef.current.getBoundingClientRect().left;
 
-      console.log('navWidth:', navWidth, 'navLeft:', navLeft);
+      //console.log('navWidth:', navWidth, 'navLeft:', navLeft);
 
       linkRefs.current.forEach((link, i) => {
         if (!link) return;
@@ -128,10 +128,10 @@ const VerseNavbar = ({ variant = 'home', showText, setShowText, showContent, set
 
             {/* ← animated dropdown panel */}
             <div className={`verse-dropdown-panel ${menuOpen ? 'open' : ''}`}>
-              <Link to="/verse-hub" className="verse-dropdown-item exo-2">Home</Link>
-              <Link to="/verse-hub/characters" className="verse-dropdown-item exo-2">Characters</Link>
-              <Link to="" className="verse-dropdown-item exo-2">Games</Link>
-              <Link to="" className="verse-dropdown-item exo-2">Transformations</Link>
+              <Link to="" className="verse-dropdown-item exo-2">Zones</Link>
+              <Link to="" className="verse-dropdown-item exo-2">Gameplay Effects</Link>
+              <Link to="" className="verse-dropdown-item exo-2">Songs</Link>
+              <Link to="" className="verse-dropdown-item exo-2">Inventions</Link>
             </div>
           </div>
 

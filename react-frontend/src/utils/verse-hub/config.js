@@ -1,30 +1,14 @@
-// Explicit nickname mappings for characters with unpredictable real names
-// key = index, value = array of nickname variants to add to the map
-const NICKNAME_ALIASES = {
-  "doctor-eggman": ["eggman", 
-    "robotnik", 
-    "ivo", 
-    "doctor robotnik", 
-    "dr eggman", 
-    "dr. eggman",
-    "dr robotnik",
-    "dr. robotnik"
-  ],
-  "miles-tails-prower": ["tails"],
-  "amy-rose": ["rose", 
-    "rosy the rascal", 
-    "princess sally", 
-    "sally"
-  ],
-  "shadow-the-hedgehog": ["ultimate life form", "the ultimate life form"],
-  // add more here as needed e.g:
-  // "some-character": ["nickname1", "nickname2"],
-};
+// NICKNAME_ALIASES moved to its own file for easier management
+import { NICKNAME_ALIASES } from './nicknameAliases.js';
 
 // Helper that adds nickname aliases for a given index to the targetMap
-function applyNicknameAliases(rawIndex, targetMap) {
-  const aliases = NICKNAME_ALIASES[rawIndex];
-  if (!aliases) return; // no nicknames for this character, skip
+// takes url so it only applies aliases for the correct endpoint
+function applyNicknameAliases(rawIndex, targetMap, url) {
+  // look up aliases scoped to this endpoint only
+  const endpointAliases = NICKNAME_ALIASES[url];
+  if (!endpointAliases) return; // no aliases defined for this endpoint, skip
+  const aliases = endpointAliases[rawIndex];
+  if (!aliases) return; // no nicknames for this index, skip
   aliases.forEach(alias => {
     targetMap[alias] = rawIndex;
   });
@@ -79,10 +63,11 @@ export async function targetTypeMap(url) {
 
     // Apply nickname aliases for characters with unpredictable real names
     // e.g. "eggman" → "doctor-eggman", "tails" → "miles-tails-prower"
-    applyNicknameAliases(rawIndex, targetMap);
+    // now passes url so aliases are scoped to the correct endpoint
+    applyNicknameAliases(rawIndex, targetMap, url);
   });
 
-  console.log("export const targetMap =", JSON.stringify(targetMap, null, 2));
+  //console.log("export const targetMap =", JSON.stringify(targetMap, null, 2));
   return targetMap;
 }
 
