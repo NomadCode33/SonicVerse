@@ -715,7 +715,185 @@
 }
 
 
+/******************************************
+/* SMALL TABLET (769px – 1024px)
+/*******************************************/
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
 
+  /* ── Header ──────────────────────────────── */
+  .home-page header,
+  .characters-page header {
+    height: auto;
+    min-height: 5rem;
+  }
+
+  .home-page .header-box,
+  .characters-page .header-box {
+    padding: 0.5rem 0;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .home-page .webtext-middle,
+  .characters-page .webtext-middle {
+    display: none;
+  }
+
+  .home-page .head-title,
+  .characters-page .head-title {
+    width: auto;
+    flex: 1;
+  }
+
+  .home-page .icon-left,
+  .characters-page .icon-left {
+    display: block;
+  }
+
+  .home-page .site-blurb-left,
+  .characters-page .site-blurb-left {
+    display: inline;
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 0.8rem;
+    text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.6);
+  }
+
+  .home-page .nav-bar,
+  .characters-page .nav-bar {
+    width: 35%;
+  }
+
+  .home-page .nav-box,
+  .characters-page .nav-box {
+    width: 100%;
+    margin: 0.5rem 0;
+    justify-content: space-around;
+  }
+
+  .home-page .nav-button,
+  .characters-page .nav-button {
+    font-size: 1.35rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .home-page .verse-navbar,
+  .characters-page .verse-navbar {
+    display: none !important;
+    margin: 0 !important;
+    height: 0 !important;
+  }
+
+  .home-page .pic-rest,
+  .characters-page .pic-rest {
+    margin: 3rem auto !important;
+  }
+
+  .footer {
+    height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .citation {
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  /* ── Scroll to top ───────────────────────── */
+  .scroll-to-top {
+    bottom: 3.5rem;
+    right: 4rem;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .scroll-top-img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .ring-1 { width: 5.5rem; height: 5.5rem; }
+  .ring-2 { width: 5.5rem; height: 5.5rem; }
+  .ring-3 { width: 5.5rem; height: 5.5rem; }
+}
+
+/******************************************
+/* LARGE TABLET (1025px – 1279px)
+/*******************************************/
+@media only screen and (min-width: 1025px) and (max-width: 1279px) {
+
+  /* ── Header ──────────────────────────────── */
+  .home-page header,
+  .characters-page header {
+    height: auto;
+    min-height: 5rem;
+  }
+
+  .home-page .header-box,
+  .characters-page .header-box {
+    padding: 0.5rem 0;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .home-page .webtext-middle,
+  .characters-page .webtext-middle {
+    display: flex;
+  }
+
+  .home-page .head-title,
+  .characters-page .head-title {
+    width: auto;
+    flex: 1;
+  }
+
+  .home-page .nav-bar,
+  .characters-page .nav-bar {
+    width: auto;
+  }
+
+  .home-page .nav-box,
+  .characters-page .nav-box {
+    margin: 0.5rem 0;
+  }
+
+  .home-page .nav-button,
+  .characters-page .nav-button {
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .home-page .verse-navbar,
+  .characters-page .verse-navbar {
+    width: 85%;
+    height: 6rem;
+    margin-top: 3rem;
+    gap: 2rem;
+  }
+
+  .verse-nav-link {
+    font-size: 1.4rem;
+    padding: 0 2rem;
+  }
+
+  .footer {
+    height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .citation {
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  /* ── Scroll to top ───────────────────────── */
+  .scroll-to-top {
+    bottom: 4rem;
+    right: 4.5rem;
+  }
+}
 
 
 
