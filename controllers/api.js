@@ -102,6 +102,27 @@ export const getAllSubcategoryItemSearch = (req, res) => {
   res.json(result);
 };
 
+export const getCharacterSummary = (req, res) => {
+  const { slug } = req.params;
+  const character = characters[slug];
+  
+  if (!character) {
+    return res.status(404).json({ error: 'Character not found' });
+  }
+
+  // Return only a summary (name, first game, and image)
+  const summary = {
+    index: character.index,
+    name: character.name,
+    quote: character.quote,
+    image: character.image,
+    description: character.description,
+    url: character.url,
+  };
+
+  res.json(summary);
+};
+
 // /api/:category/:item  (FLAT ONLY)
 // Dynamically handles both flat categories and categories with subcategories
 export const resolveCategoryOrSubcategory = (req, res) => {

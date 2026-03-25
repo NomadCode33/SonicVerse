@@ -4,6 +4,7 @@ import express from 'express';
 import {
   getCategories,
   getCategoryIndex,
+  getCharacterSummary,
   getSubcategories,
   getSubcategoryIndex,
   getSubcategoryItem,
@@ -45,6 +46,7 @@ router.get('/:category/all/:item', getAllSubcategoryItemSearch);
 // Handles cases like /api/characters/sonic-the-hedgehog
 // Works for flat categories or for subcategory names that weren’t handled by the more specific routes.
 // It must come after /all and subcategory routes; otherwise /all or /subcategories would be treated as a slug.
+//router.get('/characters/:slug', getCharacterSummary);
 router.get('/:category/:slug', resolveCategoryOrSubcategory);
 
 // DIRECT SUBCATEGORY ITEM (NO "subcategories" IN URL)
