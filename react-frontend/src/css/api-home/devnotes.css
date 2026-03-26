@@ -30,35 +30,67 @@
   --font-display: "Russo One", sans-serif;
   --font-body:    "Exo 2", sans-serif;
  
-  /* ── Layout tokens (laptop 1024–1439px base) ── */
-  --dn-topbar-h:      76px;
-  --dn-sidebar-w:     300px;
-  --dn-main-pad:      3rem 3.5rem;
-  --dn-gap:           2rem;
+  /* ─── Base tokens: laptop 1024–1439px ─────────────────── */
  
-  /* ── Type tokens ── */
-  --dn-title-size:    2.4rem;
-  --dn-desc-size:     1rem;
-  --dn-count-size:    0.88rem;
-  --dn-tab-font:      1rem;
-  --dn-tab-sub-font:  0.75rem;
-  --dn-tab-pad:       0.85rem 1.6rem;
-  --dn-section-font:  0.75rem;
+  /* Layout */
+  --dn-topbar-h:   88px;
+  --dn-sidebar-w:  340px;
+  --dn-main-pad:   3.5rem 4rem;
+  --dn-gap:        2.25rem;
  
-  /* ── Card tokens ── */
-  --dn-card-pad:      1.5rem 1.75rem;
-  --dn-card-radius:   14px;
-  --dn-card-title:    1.15rem;
-  --dn-card-body:     1rem;
+  /* Topbar text */
+  --dn-topbar-title-size: 1.4rem;
+  --dn-topbar-date-size:  1rem;
+  --dn-live-font:         0.82rem;
  
-  /* ── Stack ── */
-  --dn-stack-min:     210px;
-  --dn-stack-icon:    1.8rem;
-  --dn-stack-name:    1rem;
-  --dn-stack-role:    0.9rem;
+  /* Sidebar */
+  --dn-section-font:   0.8rem;
+  --dn-section-pad:    1.2rem 2rem 0.5rem;
+  --dn-tab-font:       1.1rem;
+  --dn-tab-sub-font:   0.8rem;
+  --dn-tab-pad:        1rem 2rem;
+  --dn-tab-icon-size:  1.3rem;
+  --dn-tab-icon-w:     28px;
+  --dn-tab-badge-font: 0.82rem;
+  --dn-tab-badge-min:  28px;
  
-  /* ── Code ── */
-  --dn-code-size:     0.92rem;
+  /* Content header */
+  --dn-title-size:   3rem;
+  --dn-desc-size:    1.1rem;
+  --dn-count-size:   0.95rem;
+ 
+  /* Cards */
+  --dn-cards-gap:    1.25rem;
+  --dn-card-pad:     1.85rem 2.25rem;
+  --dn-card-radius:  16px;
+  --dn-card-title:   1.3rem;
+  --dn-card-body:    1.05rem;
+  --dn-card-body-lh: 1.85;
+ 
+  /* Tags / badges */
+  --dn-tag-font:  0.82rem;
+  --dn-tag-pad:   0.28rem 0.8rem;
+  --dn-date-font: 0.9rem;
+ 
+  /* Stack */
+  --dn-stack-min:    230px;
+  --dn-stack-pad:    1.5rem 1.75rem;
+  --dn-stack-icon:   2rem;
+  --dn-stack-name:   1.05rem;
+  --dn-stack-ver:    0.88rem;
+  --dn-stack-role:   0.95rem;
+ 
+  /* Code */
+  --dn-code-size: 0.95rem;
+  --dn-code-pad:  1.25rem 1.5rem;
+ 
+  /* Priority / bug */
+  --dn-priority-font: 0.82rem;
+  --dn-bug-font:      0.82rem;
+ 
+  /* Resource / snippet */
+  --dn-cat-font:      0.82rem;
+  --dn-snippet-font:  0.82rem;
 }
  
 /* ─── Reset ──────────────────────────────────────────────── */
@@ -84,11 +116,9 @@
 .dn-page::before {
   content: "";
   position: fixed;
-  top: -20%;
-  left: -10%;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(ellipse, rgba(0, 100, 220, 0.07) 0%, transparent 70%);
+  top: -20%; left: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(ellipse, rgba(0,100,220,0.07) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -96,11 +126,9 @@
 .dn-page::after {
   content: "";
   position: fixed;
-  bottom: -20%;
-  right: -10%;
-  width: 50%;
-  height: 50%;
-  background: radial-gradient(ellipse, rgba(0, 180, 255, 0.05) 0%, transparent 70%);
+  bottom: -20%; right: -10%;
+  width: 50%; height: 50%;
+  background: radial-gradient(ellipse, rgba(0,180,255,0.05) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -114,9 +142,9 @@
   align-items: center;
   justify-content: space-between;
   height: var(--dn-topbar-h);
-  padding: 0 3rem;
+  padding: 0 3.5rem;
   border-bottom: 1px solid var(--dn-border);
-  background: rgba(5, 5, 8, 0.92);
+  background: rgba(5,5,8,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   flex-shrink: 0;
@@ -125,15 +153,14 @@
 .dn-topbar-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
 }
  
 .dn-logo-dot {
-  width: 12px;
-  height: 12px;
+  width: 13px; height: 13px;
   border-radius: 50%;
   background: var(--dn-cyan);
-  box-shadow: 0 0 12px rgba(0, 180, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0,180,255,0.6);
   animation: pulse-dot 2.5s ease-in-out infinite;
   flex-shrink: 0;
 }
@@ -145,36 +172,34 @@
  
 .dn-topbar-title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: var(--dn-topbar-title-size);
   letter-spacing: 0.14em;
   color: var(--dn-text);
   text-transform: uppercase;
 }
  
-.dn-topbar-title span {
-  color: var(--dn-cyan);
-}
+.dn-topbar-title span { color: var(--dn-cyan); }
  
 .dn-topbar-right {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1.25rem;
 }
  
 .dn-live-badge {
-  font-size: 0.78rem;
+  font-size: var(--dn-live-font);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   background: var(--dn-green-dim);
   color: var(--dn-green);
-  border: 1px solid rgba(0, 229, 160, 0.3);
-  padding: 0.32rem 0.9rem;
+  border: 1px solid rgba(0,229,160,0.3);
+  padding: 0.35rem 1rem;
   border-radius: 20px;
 }
  
 .dn-topbar-date {
-  font-size: 0.92rem;
+  font-size: var(--dn-topbar-date-size);
   color: var(--dn-text-muted);
   letter-spacing: 0.06em;
 }
@@ -193,10 +218,10 @@
   width: var(--dn-sidebar-w);
   flex-shrink: 0;
   border-right: 1px solid var(--dn-border);
-  background: rgba(10, 10, 16, 0.7);
+  background: rgba(10,10,16,0.7);
   display: flex;
   flex-direction: column;
-  padding: 1.75rem 0;
+  padding: 2rem 0;
   position: sticky;
   top: var(--dn-topbar-h);
   height: calc(100vh - var(--dn-topbar-h));
@@ -208,13 +233,13 @@
   letter-spacing: 0.18em;
   color: var(--dn-text-muted);
   text-transform: uppercase;
-  padding: 1.1rem 1.75rem 0.45rem;
+  padding: var(--dn-section-pad);
 }
  
 .dn-tab {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
   padding: var(--dn-tab-pad);
   cursor: pointer;
   border: none;
@@ -225,11 +250,11 @@
   text-align: left;
   width: 100%;
   transition: all 0.18s ease;
-  border-left: 2px solid transparent;
+  border-left: 3px solid transparent;
 }
  
 .dn-tab:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255,255,255,0.03);
   color: var(--dn-text);
 }
  
@@ -240,8 +265,8 @@
 }
  
 .dn-tab-icon {
-  font-size: 1.15rem;
-  width: 24px;
+  font-size: var(--dn-tab-icon-size);
+  width: var(--dn-tab-icon-w);
   text-align: center;
   flex-shrink: 0;
 }
@@ -249,7 +274,7 @@
 .dn-tab-text {
   display: flex;
   flex-direction: column;
-  gap: 0.12rem;
+  gap: 0.15rem;
   flex: 1;
   min-width: 0;
 }
@@ -266,9 +291,7 @@
   font-style: italic;
 }
  
-.dn-tab.active .dn-tab-sub {
-  color: rgba(0, 180, 255, 0.5);
-}
+.dn-tab.active .dn-tab-sub { color: rgba(0,180,255,0.5); }
  
 .dn-tab-badge {
   margin-left: auto;
@@ -276,10 +299,10 @@
   color: var(--dn-cyan);
   border: 1px solid var(--dn-border-active);
   border-radius: 20px;
-  font-size: 0.75rem;
-  padding: 0.12rem 0.6rem;
+  font-size: var(--dn-tab-badge-font);
+  padding: 0.14rem 0.65rem;
   font-weight: 700;
-  min-width: 26px;
+  min-width: var(--dn-tab-badge-min);
   text-align: center;
   flex-shrink: 0;
 }
@@ -298,7 +321,7 @@
 .dn-pane {
   display: none;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 2rem;
 }
  
 .dn-pane.active {
@@ -313,7 +336,7 @@
  
 /* ─── Content Header ─────────────────────────────────────── */
 .dn-content-header {
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.75rem;
   border-bottom: 1px solid var(--dn-border);
 }
  
@@ -326,23 +349,21 @@
   line-height: 1;
 }
  
-.dn-content-title span {
-  color: var(--dn-cyan);
-}
+.dn-content-title span { color: var(--dn-cyan); }
  
 .dn-content-desc {
   font-size: var(--dn-desc-size);
   color: var(--dn-text-muted);
-  margin-top: 0.5rem;
+  margin-top: 0.55rem;
   font-style: italic;
 }
  
 .dn-count-line {
   font-size: var(--dn-count-size);
   color: var(--dn-text-muted);
-  margin-top: 0.65rem;
+  margin-top: 0.7rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
  
 .dn-count-line span {
@@ -354,7 +375,7 @@
 .dn-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: var(--dn-cards-gap);
 }
  
 .dn-card {
@@ -365,16 +386,14 @@
   transition: border-color 0.2s ease;
 }
  
-.dn-card:hover {
-  border-color: var(--dn-border-hover);
-}
+.dn-card:hover { border-color: var(--dn-border-hover); }
  
 .dn-card-meta {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
 }
  
 .dn-card-title {
@@ -388,34 +407,26 @@
 .dn-card-body {
   font-size: var(--dn-card-body);
   color: var(--dn-text-dim);
-  line-height: 1.8;
-  margin-top: 0.6rem;
+  line-height: var(--dn-card-body-lh);
+  margin-top: 0.65rem;
 }
  
-.dn-card-body a {
-  color: var(--dn-cyan);
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
- 
-.dn-card-body a:hover {
-  color: #33c9ff;
-  text-decoration: underline;
-}
+.dn-card-body a { color: var(--dn-cyan); text-decoration: none; transition: color 0.15s ease; }
+.dn-card-body a:hover { color: #33c9ff; text-decoration: underline; }
  
 /* ─── Tags ───────────────────────────────────────────────── */
 .dn-tag {
-  font-size: 0.75rem;
+  font-size: var(--dn-tag-font);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.25rem 0.7rem;
+  padding: var(--dn-tag-pad);
   border-radius: 4px;
   border: 1px solid transparent;
 }
  
 .dn-date {
-  font-size: 0.85rem;
+  font-size: var(--dn-date-font);
   color: var(--dn-text-muted);
   font-style: italic;
 }
@@ -424,64 +435,61 @@
 .dn-priority-group {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1rem;
 }
  
 .dn-priority-label {
-  font-size: 0.75rem;
+  font-size: var(--dn-priority-font);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.35rem;
 }
  
 /* ─── Bug Status ─────────────────────────────────────────── */
 .dn-bug-status {
-  font-size: 0.75rem;
+  font-size: var(--dn-bug-font);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  padding: 0.25rem 0.7rem;
+  padding: var(--dn-tag-pad);
   border-radius: 4px;
   border: 1px solid transparent;
 }
  
-.dn-bug-open          { background: var(--dn-red-dim);    color: var(--dn-red);    border-color: rgba(255, 77, 106, 0.25); }
-.dn-bug-investigating { background: var(--dn-yellow-dim); color: var(--dn-yellow); border-color: rgba(255, 201, 60, 0.25); }
-.dn-bug-fixed         { background: var(--dn-green-dim);  color: var(--dn-green);  border-color: rgba(0, 229, 160, 0.25); }
+.dn-bug-open          { background: var(--dn-red-dim);    color: var(--dn-red);    border-color: rgba(255,77,106,0.25); }
+.dn-bug-investigating { background: var(--dn-yellow-dim); color: var(--dn-yellow); border-color: rgba(255,201,60,0.25); }
+.dn-bug-fixed         { background: var(--dn-green-dim);  color: var(--dn-green);  border-color: rgba(0,229,160,0.25); }
  
 /* ─── Stack Grid ─────────────────────────────────────────── */
 .dn-stack-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--dn-stack-min), 1fr));
-  gap: 1.1rem;
+  gap: 1.25rem;
 }
  
 .dn-stack-card {
   background: var(--dn-surface);
   border: 1px solid var(--dn-border);
   border-radius: var(--dn-card-radius);
-  padding: 1.4rem 1.6rem;
+  padding: var(--dn-stack-pad);
   transition: all 0.2s ease;
 }
  
-.dn-stack-card:hover {
-  border-color: var(--dn-border-hover);
-  transform: translateY(-2px);
-}
+.dn-stack-card:hover { border-color: var(--dn-border-hover); transform: translateY(-2px); }
  
-.dn-stack-icon    { font-size: var(--dn-stack-icon); margin-bottom: 0.65rem; }
+.dn-stack-icon    { font-size: var(--dn-stack-icon); margin-bottom: 0.7rem; }
 .dn-stack-name    { font-family: var(--font-display); font-size: var(--dn-stack-name); letter-spacing: 0.06em; color: var(--dn-text); }
-.dn-stack-version { font-size: 0.82rem; color: var(--dn-text-muted); margin-top: 0.25rem; font-style: italic; }
-.dn-stack-role    { font-size: var(--dn-stack-role); color: var(--dn-text-dim); margin-top: 0.45rem; line-height: 1.55; }
+.dn-stack-version { font-size: var(--dn-stack-ver); color: var(--dn-text-muted); margin-top: 0.25rem; font-style: italic; }
+.dn-stack-role    { font-size: var(--dn-stack-role); color: var(--dn-text-dim); margin-top: 0.5rem; line-height: 1.55; }
  
 /* ─── Code Snippets ──────────────────────────────────────── */
 .dn-snippet-lang {
-  font-size: 0.75rem;
+  font-size: var(--dn-snippet-font);
   color: var(--dn-purple);
   background: var(--dn-purple-dim);
-  border: 1px solid rgba(167, 139, 250, 0.2);
-  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(167,139,250,0.2);
+  padding: var(--dn-tag-pad);
   border-radius: 4px;
   font-weight: 700;
   text-transform: uppercase;
@@ -491,15 +499,15 @@
 .dn-code-block {
   background: var(--dn-bg);
   border: 1px solid var(--dn-border);
-  border-radius: 8px;
-  padding: 1.2rem 1.4rem;
-  margin-top: 0.8rem;
+  border-radius: 10px;
+  padding: var(--dn-code-pad);
+  margin-top: 0.9rem;
   font-family: "Courier New", monospace;
   font-size: var(--dn-code-size);
   color: #7dd3fc;
   white-space: pre-wrap;
   overflow-x: auto;
-  line-height: 1.75;
+  line-height: 1.8;
 }
  
 /* ─── Resources ──────────────────────────────────────────── */
@@ -512,17 +520,14 @@
   transition: color 0.15s ease;
 }
  
-.dn-resource-link:hover {
-  color: #33c9ff;
-  text-decoration: underline;
-}
+.dn-resource-link:hover { color: #33c9ff; text-decoration: underline; }
  
 .dn-resource-category {
-  font-size: 0.75rem;
+  font-size: var(--dn-cat-font);
   color: var(--dn-blue);
-  background: rgba(26, 111, 255, 0.1);
-  border: 1px solid rgba(26, 111, 255, 0.2);
-  padding: 0.25rem 0.7rem;
+  background: rgba(26,111,255,0.1);
+  border: 1px solid rgba(26,111,255,0.2);
+  padding: var(--dn-tag-pad);
   border-radius: 4px;
   font-weight: 700;
   text-transform: uppercase;
@@ -532,148 +537,212 @@
 /* ─── Scrollbars ─────────────────────────────────────────── */
 .dn-sidebar::-webkit-scrollbar { width: 4px; }
 .dn-sidebar::-webkit-scrollbar-track { background: transparent; }
-.dn-sidebar::-webkit-scrollbar-thumb { background: rgba(0, 180, 255, 0.18); border-radius: 2px; }
+.dn-sidebar::-webkit-scrollbar-thumb { background: rgba(0,180,255,0.18); border-radius: 2px; }
  
 /* ═══════════════════════════════════════════════════════════
    MEDIA QUERIES
-   xs   < 480px          phones portrait
-   sm   480px – 767px    phones landscape
-   md   768px – 1023px   tablets
-   lg   1024px – 1439px  laptops  ← base above
-   xl   1440px – 1919px  large monitors
-   2xl  1920px+          ultrawide / 4K
+   xs   < 480px           phones portrait
+   sm   480–767px         phones landscape
+   md   768–1023px        tablets
+   lg   1024–1439px       laptops  ← base above
+   xl   1440–1919px       large monitors
+   2xl  1920px+           ultrawide / 4K
 ═══════════════════════════════════════════════════════════ */
  
 /* ── 2XL: 1920px+ ────────────────────────────────────────── */
 @media (min-width: 1920px) {
   :root {
-    --dn-topbar-h:    88px;
-    --dn-sidebar-w:   360px;
-    --dn-main-pad:    4rem 5rem;
-    --dn-gap:         2.5rem;
-    --dn-title-size:  3rem;
-    --dn-desc-size:   1.15rem;
-    --dn-count-size:  1rem;
-    --dn-tab-font:    1.15rem;
-    --dn-tab-sub-font:0.85rem;
-    --dn-tab-pad:     1rem 2rem;
-    --dn-section-font:0.82rem;
-    --dn-card-pad:    1.85rem 2.25rem;
-    --dn-card-radius: 16px;
-    --dn-card-title:  1.35rem;
-    --dn-card-body:   1.1rem;
-    --dn-stack-min:   250px;
-    --dn-stack-icon:  2.2rem;
-    --dn-stack-name:  1.15rem;
-    --dn-stack-role:  1rem;
-    --dn-code-size:   1rem;
-  }
+    --dn-topbar-h:          100px;
+    --dn-sidebar-w:         420px;
+    --dn-main-pad:          5rem 6rem;
+    --dn-gap:               3rem;
  
-  .dn-topbar-title { font-size: 1.5rem; }
-  .dn-topbar-date  { font-size: 1rem; }
-  .dn-live-badge   { font-size: 0.88rem; padding: 0.35rem 1rem; }
-  .dn-logo-dot     { width: 14px; height: 14px; }
-  .dn-tab-badge    { font-size: 0.85rem; min-width: 30px; }
-  .dn-tag          { font-size: 0.85rem; padding: 0.28rem 0.8rem; }
-  .dn-date         { font-size: 0.95rem; }
-  .dn-code-block   { padding: 1.4rem 1.75rem; }
+    --dn-topbar-title-size: 1.75rem;
+    --dn-topbar-date-size:  1.1rem;
+    --dn-live-font:         0.95rem;
+ 
+    --dn-section-font:      0.92rem;
+    --dn-section-pad:       1.5rem 2.5rem 0.6rem;
+    --dn-tab-font:          1.3rem;
+    --dn-tab-sub-font:      0.95rem;
+    --dn-tab-pad:           1.2rem 2.5rem;
+    --dn-tab-icon-size:     1.55rem;
+    --dn-tab-icon-w:        34px;
+    --dn-tab-badge-font:    0.95rem;
+    --dn-tab-badge-min:     34px;
+ 
+    --dn-title-size:        3.75rem;
+    --dn-desc-size:         1.25rem;
+    --dn-count-size:        1.08rem;
+ 
+    --dn-cards-gap:         1.5rem;
+    --dn-card-pad:          2.25rem 2.75rem;
+    --dn-card-radius:       18px;
+    --dn-card-title:        1.55rem;
+    --dn-card-body:         1.2rem;
+    --dn-card-body-lh:      1.9;
+ 
+    --dn-tag-font:          0.95rem;
+    --dn-tag-pad:           0.32rem 0.95rem;
+    --dn-date-font:         1.05rem;
+ 
+    --dn-stack-min:         280px;
+    --dn-stack-pad:         1.85rem 2.1rem;
+    --dn-stack-icon:        2.5rem;
+    --dn-stack-name:        1.25rem;
+    --dn-stack-ver:         1rem;
+    --dn-stack-role:        1.1rem;
+ 
+    --dn-code-size:         1.05rem;
+    --dn-code-pad:          1.5rem 1.85rem;
+ 
+    --dn-priority-font:     0.95rem;
+    --dn-bug-font:          0.95rem;
+    --dn-cat-font:          0.95rem;
+    --dn-snippet-font:      0.95rem;
+  }
 }
  
 /* ── XL: 1440–1919px ─────────────────────────────────────── */
 @media (min-width: 1440px) and (max-width: 1919px) {
   :root {
-    --dn-topbar-h:    82px;
-    --dn-sidebar-w:   330px;
-    --dn-main-pad:    3.5rem 4.25rem;
-    --dn-gap:         2.25rem;
-    --dn-title-size:  2.7rem;
-    --dn-desc-size:   1.08rem;
-    --dn-count-size:  0.94rem;
-    --dn-tab-font:    1.08rem;
-    --dn-tab-sub-font:0.8rem;
-    --dn-tab-pad:     0.92rem 1.85rem;
-    --dn-section-font:0.78rem;
-    --dn-card-pad:    1.65rem 2rem;
-    --dn-card-radius: 15px;
-    --dn-card-title:  1.25rem;
-    --dn-card-body:   1.05rem;
-    --dn-stack-min:   230px;
-    --dn-stack-icon:  2rem;
-    --dn-stack-name:  1.08rem;
-    --dn-stack-role:  0.95rem;
-    --dn-code-size:   0.96rem;
-  }
+    --dn-topbar-h:          94px;
+    --dn-sidebar-w:         380px;
+    --dn-main-pad:          4rem 5rem;
+    --dn-gap:               2.6rem;
  
-  .dn-topbar-title { font-size: 1.38rem; }
-  .dn-topbar-date  { font-size: 0.96rem; }
-  .dn-tab-badge    { font-size: 0.8rem; }
-  .dn-tag          { font-size: 0.8rem; }
-  .dn-date         { font-size: 0.9rem; }
+    --dn-topbar-title-size: 1.6rem;
+    --dn-topbar-date-size:  1.05rem;
+    --dn-live-font:         0.88rem;
+ 
+    --dn-section-font:      0.86rem;
+    --dn-section-pad:       1.35rem 2.25rem 0.55rem;
+    --dn-tab-font:          1.2rem;
+    --dn-tab-sub-font:      0.88rem;
+    --dn-tab-pad:           1.1rem 2.25rem;
+    --dn-tab-icon-size:     1.45rem;
+    --dn-tab-icon-w:        32px;
+    --dn-tab-badge-font:    0.88rem;
+    --dn-tab-badge-min:     30px;
+ 
+    --dn-title-size:        3.4rem;
+    --dn-desc-size:         1.18rem;
+    --dn-count-size:        1.02rem;
+ 
+    --dn-cards-gap:         1.4rem;
+    --dn-card-pad:          2rem 2.5rem;
+    --dn-card-radius:       17px;
+    --dn-card-title:        1.42rem;
+    --dn-card-body:         1.12rem;
+ 
+    --dn-tag-font:          0.88rem;
+    --dn-tag-pad:           0.3rem 0.88rem;
+    --dn-date-font:         0.98rem;
+ 
+    --dn-stack-min:         255px;
+    --dn-stack-pad:         1.65rem 1.9rem;
+    --dn-stack-icon:        2.25rem;
+    --dn-stack-name:        1.15rem;
+    --dn-stack-ver:         0.95rem;
+    --dn-stack-role:        1.02rem;
+ 
+    --dn-code-size:         1rem;
+    --dn-code-pad:          1.4rem 1.65rem;
+ 
+    --dn-priority-font:     0.88rem;
+    --dn-bug-font:          0.88rem;
+    --dn-cat-font:          0.88rem;
+    --dn-snippet-font:      0.88rem;
+  }
 }
  
 /* ── MD: tablets 768–1023px ──────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
-    --dn-topbar-h:    64px;
-    --dn-sidebar-w:   230px;
-    --dn-main-pad:    2rem 2.25rem;
-    --dn-gap:         1.6rem;
-    --dn-title-size:  1.85rem;
-    --dn-desc-size:   0.92rem;
-    --dn-count-size:  0.82rem;
-    --dn-tab-font:    0.9rem;
-    --dn-tab-sub-font:0.7rem;
-    --dn-tab-pad:     0.72rem 1.2rem;
-    --dn-section-font:0.68rem;
-    --dn-card-pad:    1.2rem 1.4rem;
-    --dn-card-radius: 10px;
-    --dn-card-title:  1rem;
-    --dn-card-body:   0.9rem;
-    --dn-stack-min:   165px;
-    --dn-stack-icon:  1.5rem;
-    --dn-stack-name:  0.9rem;
-    --dn-stack-role:  0.82rem;
-    --dn-code-size:   0.82rem;
+    --dn-topbar-h:          68px;
+    --dn-sidebar-w:         250px;
+    --dn-main-pad:          2.25rem 2.5rem;
+    --dn-gap:               1.75rem;
+ 
+    --dn-topbar-title-size: 1.1rem;
+    --dn-topbar-date-size:  0.88rem;
+    --dn-live-font:         0.72rem;
+ 
+    --dn-section-font:      0.7rem;
+    --dn-section-pad:       1rem 1.4rem 0.4rem;
+    --dn-tab-font:          0.95rem;
+    --dn-tab-sub-font:      0.72rem;
+    --dn-tab-pad:           0.8rem 1.4rem;
+    --dn-tab-icon-size:     1.1rem;
+    --dn-tab-icon-w:        22px;
+    --dn-tab-badge-font:    0.72rem;
+    --dn-tab-badge-min:     24px;
+ 
+    --dn-title-size:        2rem;
+    --dn-desc-size:         0.95rem;
+    --dn-count-size:        0.85rem;
+ 
+    --dn-cards-gap:         1rem;
+    --dn-card-pad:          1.35rem 1.6rem;
+    --dn-card-radius:       12px;
+    --dn-card-title:        1.08rem;
+    --dn-card-body:         0.92rem;
+ 
+    --dn-tag-font:          0.72rem;
+    --dn-tag-pad:           0.22rem 0.65rem;
+    --dn-date-font:         0.8rem;
+ 
+    --dn-stack-min:         175px;
+    --dn-stack-pad:         1.2rem 1.35rem;
+    --dn-stack-icon:        1.6rem;
+    --dn-stack-name:        0.92rem;
+    --dn-stack-ver:         0.8rem;
+    --dn-stack-role:        0.85rem;
+ 
+    --dn-code-size:         0.82rem;
+    --dn-code-pad:          1rem 1.2rem;
+ 
+    --dn-priority-font:     0.72rem;
+    --dn-bug-font:          0.72rem;
+    --dn-cat-font:          0.72rem;
+    --dn-snippet-font:      0.72rem;
   }
  
-  .dn-topbar        { padding: 0 1.75rem; }
-  .dn-topbar-title  { font-size: 1rem; letter-spacing: 0.1em; }
-  .dn-topbar-date   { display: none; }
-  .dn-tab-icon      { font-size: 1rem; width: 20px; }
-  .dn-tab-badge     { font-size: 0.7rem; }
-  .dn-tag           { font-size: 0.7rem; }
-  .dn-date          { font-size: 0.78rem; }
+  .dn-topbar      { padding: 0 2rem; }
+  .dn-topbar-date { display: none; }
 }
  
 /* ── SM: phones landscape 480–767px ─────────────────────── */
 @media (min-width: 480px) and (max-width: 767px) {
   :root {
-    --dn-topbar-h:    58px;
-    --dn-main-pad:    1.5rem;
-    --dn-gap:         1.25rem;
-    --dn-title-size:  1.5rem;
-    --dn-desc-size:   0.85rem;
-    --dn-count-size:  0.78rem;
-    --dn-card-pad:    1rem 1.15rem;
-    --dn-card-radius: 9px;
-    --dn-card-title:  0.92rem;
-    --dn-card-body:   0.84rem;
-    --dn-stack-min:   145px;
-    --dn-stack-icon:  1.3rem;
-    --dn-stack-name:  0.85rem;
-    --dn-stack-role:  0.78rem;
+    --dn-topbar-h:    60px;
+    --dn-main-pad:    1.5rem 1.5rem;
+    --dn-gap:         1.4rem;
+    --dn-title-size:  1.65rem;
+    --dn-desc-size:   0.88rem;
+    --dn-count-size:  0.8rem;
+    --dn-cards-gap:   0.9rem;
+    --dn-card-pad:    1.1rem 1.25rem;
+    --dn-card-radius: 10px;
+    --dn-card-title:  0.98rem;
+    --dn-card-body:   0.86rem;
+    --dn-tag-font:    0.7rem;
+    --dn-tag-pad:     0.2rem 0.6rem;
+    --dn-date-font:   0.76rem;
+    --dn-stack-min:   150px;
+    --dn-stack-icon:  1.4rem;
+    --dn-stack-name:  0.88rem;
+    --dn-stack-role:  0.8rem;
     --dn-code-size:   0.76rem;
+    --dn-code-pad:    0.9rem 1.1rem;
   }
  
   .dn-body    { flex-direction: column; min-height: unset; }
  
   .dn-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
+    width: 100%; height: auto; position: static;
     flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: auto; overflow-y: hidden;
     padding: 0 0.5rem;
     border-right: none;
     border-bottom: 1px solid var(--dn-border);
@@ -682,62 +751,54 @@
   .dn-sidebar-section-label { display: none; }
  
   .dn-tab {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.6rem 0.9rem;
-    border-left: none;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    min-width: 82px;
-    gap: 0.2rem;
-    font-size: 0.75rem;
+    flex-direction: column; align-items: center;
+    padding: 0.65rem 1rem;
+    border-left: none; border-bottom: 2px solid transparent;
+    white-space: nowrap; min-width: 85px; gap: 0.2rem;
+    font-size: 0.78rem;
   }
  
-  .dn-tab.active {
-    border-left-color: transparent;
-    border-bottom-color: var(--dn-cyan);
-  }
- 
-  .dn-tab-sub   { display: none; }
-  .dn-tab-badge { margin-left: 0; }
-  .dn-tab-icon  { font-size: 1.05rem; width: 20px; }
+  .dn-tab.active { border-left-color: transparent; border-bottom-color: var(--dn-cyan); }
+  .dn-tab-sub    { display: none; }
+  .dn-tab-badge  { margin-left: 0; font-size: 0.7rem; }
+  .dn-tab-icon   { font-size: 1.1rem; width: 22px; }
  
   .dn-topbar       { padding: 0 1.25rem; }
-  .dn-topbar-title { font-size: 0.88rem; letter-spacing: 0.08em; }
+  .dn-topbar-title { font-size: 0.92rem; letter-spacing: 0.08em; }
   .dn-topbar-date  { display: none; }
-  .dn-tag          { font-size: 0.68rem; }
-  .dn-date         { font-size: 0.74rem; }
 }
  
 /* ── XS: phones portrait < 480px ────────────────────────── */
 @media (max-width: 479px) {
   :root {
-    --dn-topbar-h:    54px;
+    --dn-topbar-h:    56px;
     --dn-main-pad:    1rem;
     --dn-gap:         1rem;
-    --dn-title-size:  1.3rem;
-    --dn-desc-size:   0.8rem;
-    --dn-count-size:  0.74rem;
-    --dn-card-pad:    0.9rem 1rem;
-    --dn-card-radius: 8px;
-    --dn-card-title:  0.88rem;
-    --dn-card-body:   0.8rem;
-    --dn-stack-min:   130px;
-    --dn-stack-icon:  1.2rem;
-    --dn-stack-name:  0.82rem;
-    --dn-stack-role:  0.75rem;
+    --dn-title-size:  1.4rem;
+    --dn-desc-size:   0.82rem;
+    --dn-count-size:  0.76rem;
+    --dn-cards-gap:   0.8rem;
+    --dn-card-pad:    0.95rem 1.1rem;
+    --dn-card-radius: 9px;
+    --dn-card-title:  0.92rem;
+    --dn-card-body:   0.82rem;
+    --dn-tag-font:    0.66rem;
+    --dn-tag-pad:     0.18rem 0.55rem;
+    --dn-date-font:   0.72rem;
+    --dn-stack-min:   135px;
+    --dn-stack-icon:  1.25rem;
+    --dn-stack-name:  0.84rem;
+    --dn-stack-role:  0.76rem;
     --dn-code-size:   0.72rem;
+    --dn-code-pad:    0.8rem 0.95rem;
   }
  
   .dn-body    { flex-direction: column; min-height: unset; }
  
   .dn-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
+    width: 100%; height: auto; position: static;
     flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: auto; overflow-y: hidden;
     padding: 0 0.4rem;
     border-right: none;
     border-bottom: 1px solid var(--dn-border);
@@ -746,33 +807,23 @@
   .dn-sidebar-section-label { display: none; }
  
   .dn-tab {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0.7rem;
-    border-left: none;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    min-width: 68px;
-    gap: 0.15rem;
-    font-size: 0.7rem;
+    flex-direction: column; align-items: center;
+    padding: 0.55rem 0.75rem;
+    border-left: none; border-bottom: 2px solid transparent;
+    white-space: nowrap; min-width: 70px; gap: 0.15rem;
+    font-size: 0.72rem;
   }
  
-  .dn-tab.active {
-    border-left-color: transparent;
-    border-bottom-color: var(--dn-cyan);
-  }
- 
+  .dn-tab.active { border-left-color: transparent; border-bottom-color: var(--dn-cyan); }
   .dn-tab-sub    { display: none; }
   .dn-tab-badge  { display: none; }
-  .dn-tab-icon   { font-size: 1rem; width: 18px; }
+  .dn-tab-icon   { font-size: 1.05rem; width: 20px; }
  
   .dn-topbar        { padding: 0 1rem; }
-  .dn-topbar-title  { font-size: 0.78rem; letter-spacing: 0.06em; }
+  .dn-topbar-title  { font-size: 0.82rem; letter-spacing: 0.06em; }
   .dn-topbar-date   { display: none; }
   .dn-live-badge    { display: none; }
  
-  .dn-stack-grid    { grid-template-columns: repeat(2, 1fr); }
-  .dn-tag           { font-size: 0.65rem; }
-  .dn-date          { font-size: 0.7rem; }
-  .dn-code-block    { padding: 0.85rem 1rem; }
+  .dn-stack-grid { grid-template-columns: repeat(2, 1fr); }
 }
+ 
