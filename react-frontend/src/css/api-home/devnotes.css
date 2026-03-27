@@ -34,7 +34,7 @@
  
   /* Layout */
   --dn-topbar-h:   88px;
-  --dn-sidebar-w:  340px;
+  --dn-sidebar-w:  240px;       /* was 340px — trimmed */
   --dn-main-pad:   3.5rem 4rem;
   --dn-gap:        2.25rem;
  
@@ -45,10 +45,10 @@
  
   /* Sidebar */
   --dn-section-font:   0.8rem;
-  --dn-section-pad:    1.2rem 2rem 0.5rem;
+  --dn-section-pad:    1.2rem 1.25rem 0.5rem;  /* was 2rem — trimmed */
   --dn-tab-font:       1.1rem;
   --dn-tab-sub-font:   0.8rem;
-  --dn-tab-pad:        1rem 2rem;
+  --dn-tab-pad:        1rem 1.25rem;            /* was 2rem — trimmed */
   --dn-tab-icon-size:  1.3rem;
   --dn-tab-icon-w:     28px;
   --dn-tab-badge-font: 0.82rem;
@@ -553,7 +553,7 @@
 @media (min-width: 1920px) {
   :root {
     --dn-topbar-h:          100px;
-    --dn-sidebar-w:         420px;
+    --dn-sidebar-w:         300px;       /* was 420px — trimmed */
     --dn-main-pad:          5rem 6rem;
     --dn-gap:               3rem;
  
@@ -562,10 +562,10 @@
     --dn-live-font:         0.95rem;
  
     --dn-section-font:      0.92rem;
-    --dn-section-pad:       1.5rem 2.5rem 0.6rem;
+    --dn-section-pad:       1.5rem 1.5rem 0.6rem;   /* trimmed */
     --dn-tab-font:          1.3rem;
     --dn-tab-sub-font:      0.95rem;
-    --dn-tab-pad:           1.2rem 2.5rem;
+    --dn-tab-pad:           1.2rem 1.5rem;           /* trimmed */
     --dn-tab-icon-size:     1.55rem;
     --dn-tab-icon-w:        34px;
     --dn-tab-badge-font:    0.95rem;
@@ -607,7 +607,7 @@
 @media (min-width: 1440px) and (max-width: 1919px) {
   :root {
     --dn-topbar-h:          94px;
-    --dn-sidebar-w:         380px;
+    --dn-sidebar-w:         270px;       /* was 380px — trimmed */
     --dn-main-pad:          4rem 5rem;
     --dn-gap:               2.6rem;
  
@@ -616,10 +616,10 @@
     --dn-live-font:         0.88rem;
  
     --dn-section-font:      0.86rem;
-    --dn-section-pad:       1.35rem 2.25rem 0.55rem;
+    --dn-section-pad:       1.35rem 1.35rem 0.55rem;  /* trimmed */
     --dn-tab-font:          1.2rem;
     --dn-tab-sub-font:      0.88rem;
-    --dn-tab-pad:           1.1rem 2.25rem;
+    --dn-tab-pad:           1.1rem 1.35rem;            /* trimmed */
     --dn-tab-icon-size:     1.45rem;
     --dn-tab-icon-w:        32px;
     --dn-tab-badge-font:    0.88rem;
@@ -660,7 +660,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
     --dn-topbar-h:          68px;
-    --dn-sidebar-w:         250px;
+    --dn-sidebar-w:         200px;       /* was 250px — trimmed */
     --dn-main-pad:          2.25rem 2.5rem;
     --dn-gap:               1.75rem;
  
@@ -669,10 +669,10 @@
     --dn-live-font:         0.72rem;
  
     --dn-section-font:      0.7rem;
-    --dn-section-pad:       1rem 1.4rem 0.4rem;
+    --dn-section-pad:       1rem 1rem 0.4rem;  /* trimmed */
     --dn-tab-font:          0.95rem;
     --dn-tab-sub-font:      0.72rem;
-    --dn-tab-pad:           0.8rem 1.4rem;
+    --dn-tab-pad:           0.8rem 1rem;        /* trimmed */
     --dn-tab-icon-size:     1.1rem;
     --dn-tab-icon-w:        22px;
     --dn-tab-badge-font:    0.72rem;
@@ -826,4 +826,3 @@
  
   .dn-stack-grid { grid-template-columns: repeat(2, 1fr); }
 }
- 
