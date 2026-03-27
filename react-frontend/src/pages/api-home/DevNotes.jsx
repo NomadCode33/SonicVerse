@@ -14,18 +14,35 @@ const TABS = [
 
 // ─── Content Data ─────────────────────────────────────────────────────────────
 // HOW TO ADD MEDIA TO A CARD:
-// Add a `media` object to any card entry. Fields:
-//   type: "image" | "video" | "youtube"
-//   src:  URL or path to the file (for image/video)
-//   id:   YouTube video ID, e.g. "dQw4w9WgXcQ" (for youtube type only)
-//   caption: optional caption shown below the media (any type)
+// Add a `mediaItems` array to any card entry. Each item in the array is one
+// piece of media. They stack vertically in the order you list them, with
+// spacing between each one. You can mix types freely — images, videos, iframes.
+//
+// CHANGED: was `media` (single object). Now `mediaItems` (array of objects).
+// This lets you add as many media items as you need per card.
+//
+// Each media item has:
+//   type:    "image" | "video" | "youtube"
+//   src:     URL or path (for image/video)
+//   id:      YouTube video ID e.g. "dQw4w9WgXcQ" (for youtube only)
+//   caption: optional text shown below that specific item
 //
 // Examples:
-//   media: { type: "image",   src: "/images/deploy-error.png", caption: "The MIME error in DevTools" }
-//   media: { type: "video",   src: "/videos/demo.mp4",         caption: "Feature walkthrough" }
-//   media: { type: "youtube", id: "dQw4w9WgXcQ",               caption: "Optional caption" }
 //
-// Leave out the `media` field entirely if you don't want media on that card.
+// Single image:
+//   mediaItems: [
+//     { type: "image", src: "/images/screenshot.png", caption: "DevTools error" }
+//   ]
+//
+// Multiple mixed media:
+//   mediaItems: [
+//     { type: "image",   src: "/images/before.png",  caption: "Before the fix" },
+//     { type: "image",   src: "/images/after.png",   caption: "After the fix" },
+//     { type: "youtube", id: "dQw4w9WgXcQ",          caption: "Video walkthrough" },
+//     { type: "video",   src: "/videos/demo.mp4",    caption: "Local recording" },
+//   ]
+//
+// Leave out `mediaItems` entirely if you don't want any media on that card.
 
 const DATA = {
   progression: [
@@ -35,10 +52,15 @@ const DATA = {
       title: "Fixed Render deployment — stale Vite cache",
       body: "Root-level npm install was missing from the Render build command, causing stale hashed filenames to break production. Fixed by clearing cache and updating the build command to: npm install && cd react-frontend && npm install && npm run build.",
       tag: "deployment",
+      /*mediaItems: [
+        { type: "image",   src: "/img/hero-images/SA2_Cast_Japan.webp", caption: "The MIME error in DevTools" },
+        { type: "image",   src: "/img/hero-images/SADX_Cast.webp", caption: "The MIME error in DevTools" }
+      ]*/
       // Example — uncomment and fill in to add media to this card:
-      // media: { type: "image", src: "/images/your-screenshot.png", caption: "Optional caption" }
-      //media: { type: "image",   src: "/img/hero-images/SA2_Cast_Japan.webp", caption: "The MIME error in DevTools" }
-      //media: { type: "image",   src: "/img/hero-images/SADX_Cast.webp", caption: "The MIME error in DevTools" }
+      // mediaItems: [
+      //   { type: "image", src: "/images/your-screenshot.png", caption: "Optional caption" },
+      //   { type: "image", src: "/images/another.png" },
+      // ]
     },
     {
       id: 2,
@@ -70,7 +92,7 @@ const DATA = {
   ],
 
   bugs: [
-    { id: 1, title: "MIME type error in production",            status: "fixed", date: "Mar 25, 2026", body: "JS files served with the wrong MIME type. Root cause: stale Vite build cache on Render serving outdated hashed filenames. Fixed by clearing cache and correcting the build command." },
+    { id: 1, title: "MIME type error in production",                status: "fixed", date: "Mar 25, 2026", body: "JS files served with the wrong MIME type. Root cause: stale Vite build cache on Render serving outdated hashed filenames. Fixed by clearing cache and correcting the build command." },
     { id: 2, title: "nodemon/node scripts swapped in package.json", status: "fixed", date: "Mar 25, 2026", body: "The start script had nodemon and dev had node — completely backwards. Corrected so start uses node for Render and dev uses nodemon." },
   ],
 
@@ -135,38 +157,48 @@ const Tag = ({ type }) => {
 };
 
 // ─── CardMedia helper ─────────────────────────────────────────────────────────
-// Renders optional media at the bottom of any card.
-// Usage in DATA: media: { type: "image" | "video" | "youtube", src, id, caption }
-const CardMedia = ({ media }) => {
-  if (!media) return null;
+// CHANGED: was CardMedia({ media }) accepting a single object.
+// Now accepts `mediaItems` — an array of media objects.
+// Renders each item stacked vertically with spacing via .dn-card-media-item.
+// Each item can be image, video, or youtube independently.
+// If mediaItems is missing or empty, renders nothing.
+const CardMedia = ({ mediaItems }) => {
+  if (!mediaItems || mediaItems.length === 0) return null;
 
   return (
+    // CHANGED: outer wrapper now contains multiple .dn-card-media-item children
     <div className="dn-card-media">
-      <div style={{ width: "100%" }}>
-        {media.type === "image" && (
-          <img src={media.src} alt={media.caption || ""} loading="lazy" />
-        )}
+      {mediaItems.map((media, index) => (
+        // CHANGED: each media item gets its own .dn-card-media-item wrapper
+        // which handles the spacing between stacked items
+        <div className="dn-card-media-item" key={index}>
 
-        {media.type === "video" && (
-          <video controls preload="metadata">
-            <source src={media.src} />
-            Your browser does not support the video tag.
-          </video>
-        )}
+          {media.type === "image" && (
+            <img src={media.src} alt={media.caption || ""} loading="lazy" />
+          )}
 
-        {media.type === "youtube" && (
-          <iframe
-            src={`https://www.youtube.com/embed/${media.id}`}
-            title={media.caption || "YouTube video"}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        )}
+          {media.type === "video" && (
+            <video controls preload="metadata">
+              <source src={media.src} />
+              Your browser does not support the video tag.
+            </video>
+          )}
 
-        {media.caption && (
-          <div className="dn-card-media-caption">{media.caption}</div>
-        )}
-      </div>
+          {media.type === "youtube" && (
+            <iframe
+              src={`https://www.youtube.com/embed/${media.id}`}
+              title={media.caption || "YouTube video"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          )}
+
+          {media.caption && (
+            <div className="dn-card-media-caption">{media.caption}</div>
+          )}
+
+        </div>
+      ))}
     </div>
   );
 };
@@ -191,7 +223,8 @@ function ProgressionPane() {
             </div>
             <div className="dn-card-title">{item.title}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
-            <CardMedia media={item.media} />
+            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
       </div>
@@ -220,7 +253,8 @@ function FuturePane() {
                 <div className="dn-card" key={item.id}>
                   <div className="dn-card-title">{item.title}</div>
                   {item.body && <div className="dn-card-body">{item.body}</div>}
-                  <CardMedia media={item.media} />
+                  {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+                  <CardMedia mediaItems={item.mediaItems} />
                 </div>
               ))}
             </div>
@@ -250,7 +284,8 @@ function LearnedPane() {
             </div>
             <div className="dn-card-title">{item.topic}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
-            <CardMedia media={item.media} />
+            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
       </div>
@@ -283,7 +318,8 @@ function BugsPane() {
             </div>
             <div className="dn-card-title">{item.title}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
-            <CardMedia media={item.media} />
+            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
       </div>
@@ -328,7 +364,8 @@ function SnippetsPane() {
             <div className="dn-card-title">{item.title}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
             {item.code  && <pre className="dn-code-block">{item.code}</pre>}
-            <CardMedia media={item.media} />
+            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
       </div>
@@ -356,7 +393,8 @@ function ResourcesPane() {
               }
             </div>
             {item.note && <div className="dn-card-body">{item.note}</div>}
-            <CardMedia media={item.media} />
+            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
       </div>
