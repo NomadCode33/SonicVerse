@@ -38,6 +38,7 @@ const DATA = {
       // Example — uncomment and fill in to add media to this card:
       // media: { type: "image", src: "/images/your-screenshot.png", caption: "Optional caption" }
       //media: { type: "image",   src: "/img/hero-images/SA2_Cast_Japan.webp", caption: "The MIME error in DevTools" }
+      //media: { type: "image",   src: "/img/hero-images/SADX_Cast.webp", caption: "The MIME error in DevTools" }
     },
     {
       id: 2,

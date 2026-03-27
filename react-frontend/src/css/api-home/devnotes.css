@@ -55,22 +55,22 @@
   --dn-tab-badge-min:  28px;
  
   /* Content header */
-  --dn-title-size:   3rem;
-  --dn-desc-size:    1.1rem;
-  --dn-count-size:   0.95rem;
+  --dn-title-size:   3rem;    /* big PROGRESSION heading */
+  --dn-desc-size:    1.1rem;  /* "Every milestone, fix..." subtitle */
+  --dn-count-size:   0.95rem; /* "3 updates logged" */
  
   /* Cards */
   --dn-cards-gap:    1.25rem;
   --dn-card-pad:     1.85rem 2.25rem;
   --dn-card-radius:  16px;
-  --dn-card-title:   1.3rem;
-  --dn-card-body:    1.05rem;
+  --dn-card-title:   1.3rem;  /* card heading */
+  --dn-card-body:    1.05rem; /* paragraph text */
   --dn-card-body-lh: 1.85;
  
   /* Tags / badges */
-  --dn-tag-font:  0.82rem;
+  --dn-tag-font:  0.82rem; /* DEPLOYMENT / FEATURE badges */
   --dn-tag-pad:   0.28rem 0.8rem;
-  --dn-date-font: 0.9rem;
+  --dn-date-font: 0.9rem;  /* Mar 25, 2026 */
  
   /* Stack */
   --dn-stack-min:    230px;
@@ -415,29 +415,59 @@
 .dn-card-body a:hover { color: #33c9ff; text-decoration: underline; }
 
 /* ─── Card Media ─────────────────────────────────────────── */
-/* Wraps image or video inside a card. Always centered. */
+/* CHANGED: added flex-direction: column so caption sits below media cleanly */
 .dn-card-media {
   margin-top: 1.25rem;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* CHANGED: was not set before — needed for caption alignment */
   align-items: center;
 }
 
-/* Image inside a card */
+/* CHANGED (image): was width:100% / object-fit:cover / no margin / no max-height.
+   Now: max-width:75% keeps it from bleeding edge-to-edge (centered look),
+   max-height:420px prevents tall images from blowing up the card,
+   object-fit:contain ensures nothing is cropped,
+   margin:0 auto centers it inside the flex container. */
 .dn-card-media img {
+  max-width: 75%;        /* CHANGED: was 100% — now contained and centered */
+  width: 100%;
+  max-height: 500px; /* 420px */    /* CHANGED: added — caps runaway tall images */
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--dn-border);
+  display: block;
+  object-fit: cover; /* contain */   /* CHANGED: was cover — now shows full image without cropping */
+  margin: 0 auto;        /* CHANGED: was commented out — now active for centering */
+}
+
+/*.dn-card-media img {
   max-width: 100%;
   width: 100%;
-  /*margin: 0 auto;*/ /* You may have to take this out */
+  margin: 0 auto; /* You may have to take this out 
   height: auto;
   border-radius: 10px;
   border: 1px solid var(--dn-border);
   display: block;
   object-fit: cover;
+}*/
+
+/* CHANGED (video): same centering treatment as image.
+   max-width:85% (slightly wider than image since videos suit a wider frame),
+   max-height:480px caps height, margin:0 auto centers it. */
+.dn-card-media video {
+  max-width: 85%;        /* CHANGED: was 100% — now centered with breathing room */
+  max-height: 480px;     /* CHANGED: added — caps video height */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--dn-border);
+  display: block;
+  background: #000;
+  margin: 0 auto;        /* CHANGED: added — centers video */
 }
 
-/* Video inside a card */
-.dn-card-media video {
+/*.dn-card-media video {
   max-width: 100%;
   width: 100%;
   height: auto;
@@ -445,9 +475,9 @@
   border: 1px solid var(--dn-border);
   display: block;
   background: #000;
-}
+}*/
 
-/* iframe embeds (YouTube etc.) */
+/* UNCHANGED: iframe stays full width — aspect-ratio:16/9 already controls height */
 .dn-card-media iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -456,7 +486,7 @@
   display: block;
 }
 
-/* Optional caption below media */
+/* Optional caption */
 .dn-card-media-caption {
   margin-top: 0.5rem;
   font-size: 0.78rem;
@@ -600,7 +630,7 @@
    xl   1440–1919px       large monitors
    2xl  1920px+           ultrawide / 4K
 ═══════════════════════════════════════════════════════════ */
- 
+
 /* ── 2XL: 1920px+ ────────────────────────────────────────── */
 @media (min-width: 1920px) {
   :root {
@@ -645,12 +675,13 @@
     --dn-cat-font:          0.95rem;
     --dn-snippet-font:      0.95rem;
   }
-
-  .dn-card-media img,
-  .dn-card-media video { border-radius: 12px; }
-  .dn-card-media-caption { font-size: 0.88rem; }
+  /* CHANGED: max-height scaled up for large screens, border-radius bumped to 12px */
+  .dn-card-media img        { max-height: 520px; border-radius: 12px; }
+  .dn-card-media video      { max-height: 580px; border-radius: 12px; }
+  .dn-card-media iframe     { border-radius: 12px; } /* CHANGED: border-radius bumped to match */
+  .dn-card-media-caption    { font-size: 0.88rem; } /* CHANGED: scaled up for large screen */
 }
- 
+
 /* ── XL: 1440–1919px ─────────────────────────────────────── */
 @media (min-width: 1440px) and (max-width: 1919px) {
   :root {
@@ -694,8 +725,12 @@
     --dn-cat-font:          0.88rem;
     --dn-snippet-font:      0.88rem;
   }
+  /* CHANGED: max-height scaled for xl screens, border-radius 11px */
+  .dn-card-media img    { max-height: 460px; border-radius: 11px; }
+  .dn-card-media video  { max-height: 520px; border-radius: 11px; }
+  .dn-card-media-caption { font-size: 0.82rem; } /* CHANGED: scaled for xl */
 }
- 
+
 /* ── MD: tablets 768–1023px ──────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
@@ -739,12 +774,15 @@
     --dn-cat-font:          0.72rem;
     --dn-snippet-font:      0.72rem;
   }
-  .dn-topbar      { padding: 0 2rem; }
-  .dn-topbar-date { display: none; }
-  .dn-card-media { margin-top: 1rem; }
-  .dn-card-media-caption { font-size: 0.72rem; }
+  .dn-topbar            { padding: 0 2rem; }
+  .dn-topbar-date       { display: none; }
+  /* CHANGED: max-height reduced for tablet, border-radius 8px, margin-top tightened */
+  .dn-card-media        { margin-top: 1rem; }
+  .dn-card-media img    { max-height: 340px; border-radius: 8px; }
+  .dn-card-media video  { max-height: 380px; border-radius: 8px; }
+  .dn-card-media-caption { font-size: 0.72rem; } /* CHANGED: scaled down for tablet */
 }
- 
+
 /* ── SM: phones landscape 480–767px ─────────────────────── */
 @media (min-width: 480px) and (max-width: 767px) {
   :root {
@@ -786,19 +824,21 @@
     white-space: nowrap; min-width: 85px; gap: 0.2rem;
     font-size: 0.78rem;
   }
-  .dn-tab.active { border-left-color: transparent; border-bottom-color: var(--dn-cyan); }
-  .dn-tab-sub    { display: none; }
-  .dn-tab-badge  { margin-left: 0; font-size: 0.7rem; }
-  .dn-tab-icon   { font-size: 1.1rem; width: 22px; }
-  .dn-topbar       { padding: 0 1.25rem; }
-  .dn-topbar-title { font-size: 0.92rem; letter-spacing: 0.08em; }
-  .dn-topbar-date  { display: none; }
-  .dn-card-media { margin-top: 0.85rem; }
-  .dn-card-media img,
-  .dn-card-media video { border-radius: 8px; }
-  .dn-card-media-caption { font-size: 0.68rem; }
+  .dn-tab.active         { border-left-color: transparent; border-bottom-color: var(--dn-cyan); }
+  .dn-tab-sub            { display: none; }
+  .dn-tab-badge          { margin-left: 0; font-size: 0.7rem; }
+  .dn-tab-icon           { font-size: 1.1rem; width: 22px; }
+  .dn-topbar             { padding: 0 1.25rem; }
+  .dn-topbar-title       { font-size: 0.92rem; letter-spacing: 0.08em; }
+  .dn-topbar-date        { display: none; }
+  /* CHANGED: on phones, max-width widens slightly (90–95%) since screen space is limited,
+     max-height shrinks, border-radius tightened, margin-top reduced */
+  .dn-card-media         { margin-top: 0.85rem; }
+  .dn-card-media img     { max-width: 90%; max-height: 280px; border-radius: 7px; } /* CHANGED: max-width 90% for phones */
+  .dn-card-media video   { max-width: 95%; max-height: 320px; border-radius: 7px; } /* CHANGED: max-width 95% for phones */
+  .dn-card-media-caption { font-size: 0.68rem; } /* CHANGED: scaled down for phone landscape */
 }
- 
+
 /* ── XS: phones portrait < 480px ────────────────────────── */
 @media (max-width: 479px) {
   :root {
@@ -840,17 +880,20 @@
     white-space: nowrap; min-width: 70px; gap: 0.15rem;
     font-size: 0.72rem;
   }
-  .dn-tab.active { border-left-color: transparent; border-bottom-color: var(--dn-cyan); }
-  .dn-tab-sub    { display: none; }
-  .dn-tab-badge  { display: none; }
-  .dn-tab-icon   { font-size: 1.05rem; width: 20px; }
-  .dn-topbar        { padding: 0 1rem; }
-  .dn-topbar-title  { font-size: 0.82rem; letter-spacing: 0.06em; }
-  .dn-topbar-date   { display: none; }
-  .dn-live-badge    { display: none; }
-  .dn-stack-grid { grid-template-columns: repeat(2, 1fr); }
-  .dn-card-media { margin-top: 0.75rem; }
-  .dn-card-media img,
-  .dn-card-media video { border-radius: 7px; }
-  .dn-card-media-caption { font-size: 0.64rem; }
+  .dn-tab.active         { border-left-color: transparent; border-bottom-color: var(--dn-cyan); }
+  .dn-tab-sub            { display: none; }
+  .dn-tab-badge          { display: none; }
+  .dn-tab-icon           { font-size: 1.05rem; width: 20px; }
+  .dn-topbar             { padding: 0 1rem; }
+  .dn-topbar-title       { font-size: 0.82rem; letter-spacing: 0.06em; }
+  .dn-topbar-date        { display: none; }
+  .dn-live-badge         { display: none; }
+  .dn-stack-grid         { grid-template-columns: repeat(2, 1fr); }
+  /* CHANGED: portrait phones get the smallest heights and tightest radius.
+     Image max-width 95%, video goes full width since portrait screens are narrow. */
+  .dn-card-media         { margin-top: 0.75rem; }
+  .dn-card-media img     { max-width: 95%; max-height: 220px; border-radius: 6px; }  /* CHANGED: smallest max-height */
+  .dn-card-media video   { max-width: 100%; max-height: 260px; border-radius: 6px; } /* CHANGED: full width on portrait */
+  .dn-card-media-caption { font-size: 0.64rem; } /* CHANGED: smallest caption size */
 }
+
