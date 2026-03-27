@@ -3,61 +3,29 @@ import "../../css/api-home/devnotes.css";
 
 // ─── Tab Config ───────────────────────────────────────────────────────────────
 const TABS = [
-  {
-    id: "progression",
-    icon: "🚀",
-    label: "Progression",
-    sublabel: "Updates & milestones",
-    section: "PROGRESS",
-  },
-  {
-    id: "future",
-    icon: "🔮",
-    label: "Future Updates",
-    sublabel: "Planned features",
-    section: "PROGRESS",
-  },
-  {
-    id: "learned",
-    icon: "🧠",
-    label: "What I Learned",
-    sublabel: "Lessons & insights",
-    section: "PROGRESS",
-  },
-  {
-    id: "bugs",
-    icon: "🐛",
-    label: "Bug Log",
-    sublabel: "Issues & fixes",
-    section: "PROGRESS",
-  },
-  {
-    id: "stack",
-    icon: "⚙️",
-    label: "Tech Stack",
-    sublabel: "Tools & deps",
-    section: "REFERENCE",
-  },
-  {
-    id: "snippets",
-    icon: "📎",
-    label: "Code Snippets",
-    sublabel: "Reusable refs",
-    section: "REFERENCE",
-  },
-  {
-    id: "resources",
-    icon: "🔗",
-    label: "Resources",
-    sublabel: "Docs & links",
-    section: "REFERENCE",
-  },
+  { id: "progression", icon: "🚀", label: "Progression",    sublabel: "Updates & milestones", section: "PROGRESS" },
+  { id: "future",      icon: "🔮", label: "Future Updates", sublabel: "Planned features",     section: "PROGRESS" },
+  { id: "learned",     icon: "🧠", label: "What I Learned", sublabel: "Lessons & insights",   section: "PROGRESS" },
+  { id: "bugs",        icon: "🐛", label: "Bug Log",         sublabel: "Issues & fixes",       section: "PROGRESS" },
+  { id: "stack",       icon: "⚙️", label: "Tech Stack",     sublabel: "Tools & deps",         section: "REFERENCE" },
+  { id: "snippets",    icon: "📎", label: "Code Snippets",  sublabel: "Reusable refs",        section: "REFERENCE" },
+  { id: "resources",   icon: "🔗", label: "Resources",      sublabel: "Docs & links",         section: "REFERENCE" },
 ];
 
-// ─── Content Data — Edit this to update the page ──────────────────────────────
-// To add a new progression update, add an object to the top of the progression array.
-// To add a future feature, add to the future array with priority: "high" | "medium" | "low".
-// Same pattern for all other tabs.
+// ─── Content Data ─────────────────────────────────────────────────────────────
+// HOW TO ADD MEDIA TO A CARD:
+// Add a `media` object to any card entry. Fields:
+//   type: "image" | "video" | "youtube"
+//   src:  URL or path to the file (for image/video)
+//   id:   YouTube video ID, e.g. "dQw4w9WgXcQ" (for youtube type only)
+//   caption: optional caption shown below the media (any type)
+//
+// Examples:
+//   media: { type: "image",   src: "/images/deploy-error.png", caption: "The MIME error in DevTools" }
+//   media: { type: "video",   src: "/videos/demo.mp4",         caption: "Feature walkthrough" }
+//   media: { type: "youtube", id: "dQw4w9WgXcQ",               caption: "Optional caption" }
+//
+// Leave out the `media` field entirely if you don't want media on that card.
 
 const DATA = {
   progression: [
@@ -67,6 +35,9 @@ const DATA = {
       title: "Fixed Render deployment — stale Vite cache",
       body: "Root-level npm install was missing from the Render build command, causing stale hashed filenames to break production. Fixed by clearing cache and updating the build command to: npm install && cd react-frontend && npm install && npm run build.",
       tag: "deployment",
+      // Example — uncomment and fill in to add media to this card:
+      // media: { type: "image", src: "/images/your-screenshot.png", caption: "Optional caption" }
+      //media: { type: "image",   src: "/img/hero-images/SA2_Cast_Japan.webp", caption: "The MIME error in DevTools" }
     },
     {
       id: 2,
@@ -85,76 +56,32 @@ const DATA = {
   ],
 
   future: [
-    {
-      id: 1,
-      title: "Quiz Page",
-      priority: "high",
-      body: "Route is already set up in the codebase. A full Sonic trivia quiz with score tracking and a leaderboard.",
-    },
-    {
-      id: 2,
-      title: "Transformations Page",
-      priority: "medium",
-      body: "Document all Sonic transformations — Super, Hyper, Dark Sonic, and more — with stats and lore entries.",
-    },
-    {
-      id: 3,
-      title: "Admin / API Home",
-      priority: "medium",
-      body: "A dedicated admin panel route for managing content and monitoring the Express API.",
-    },
-    {
-      id: 4,
-      title: "User Auth",
-      priority: "low",
-      body: "Allow users to create accounts, save favourite characters, and track quiz scores.",
-    },
+    { id: 1, title: "Quiz Page",            priority: "high",   body: "Route is already set up in the codebase. A full Sonic trivia quiz with score tracking and a leaderboard." },
+    { id: 2, title: "Transformations Page", priority: "medium", body: "Document all Sonic transformations — Super, Hyper, Dark Sonic, and more — with stats and lore entries." },
+    { id: 3, title: "Admin / API Home",     priority: "medium", body: "A dedicated admin panel route for managing content and monitoring the Express API." },
+    { id: 4, title: "User Auth",            priority: "low",    body: "Allow users to create accounts, save favourite characters, and track quiz scores." },
   ],
 
   learned: [
-    {
-      id: 1,
-      topic: "Render Build Cache",
-      body: "Render caches the build directory between deploys. Vite hashes output filenames on every build — if old dist/ artifacts are served from cache, the HTML references filenames that no longer exist. Always clear cache when production diverges from local.",
-    },
-    {
-      id: 2,
-      topic: "nodemon is dev-only",
-      body: "nodemon restarts the server on every file change — useful in development, wrong in production. Render's start script must use node server.js. nodemon belongs only in the dev script.",
-    },
-    {
-      id: 3,
-      topic: "React Router Nested Routes",
-      body: "Layout routes wrap child routes via Outlet. The parent renders the layout and children render inside it. Index routes handle the default child when no sub-path is matched.",
-    },
+    { id: 1, topic: "Render Build Cache",         body: "Render caches the build directory between deploys. Vite hashes output filenames on every build — if old dist/ artifacts are served from cache, the HTML references filenames that no longer exist. Always clear cache when production diverges from local." },
+    { id: 2, topic: "nodemon is dev-only",         body: "nodemon restarts the server on every file change — useful in development, wrong in production. Render's start script must use node server.js. nodemon belongs only in the dev script." },
+    { id: 3, topic: "React Router Nested Routes", body: "Layout routes wrap child routes via Outlet. The parent renders the layout and children render inside it. Index routes handle the default child when no sub-path is matched." },
   ],
 
   bugs: [
-    {
-      id: 1,
-      title: "MIME type error in production",
-      status: "fixed",
-      date: "Mar 25, 2026",
-      body: "JS files served with the wrong MIME type. Root cause: stale Vite build cache on Render serving outdated hashed filenames. Fixed by clearing cache and correcting the build command.",
-    },
-    {
-      id: 2,
-      title: "nodemon/node scripts swapped in package.json",
-      status: "fixed",
-      date: "Mar 25, 2026",
-      body: "The start script had nodemon and dev had node — completely backwards. Corrected so start uses node for Render and dev uses nodemon.",
-    },
+    { id: 1, title: "MIME type error in production",            status: "fixed", date: "Mar 25, 2026", body: "JS files served with the wrong MIME type. Root cause: stale Vite build cache on Render serving outdated hashed filenames. Fixed by clearing cache and correcting the build command." },
+    { id: 2, title: "nodemon/node scripts swapped in package.json", status: "fixed", date: "Mar 25, 2026", body: "The start script had nodemon and dev had node — completely backwards. Corrected so start uses node for Render and dev uses nodemon." },
   ],
 
   stack: [
-    { id: 1, name: "React 19",      icon: "⚛️", version: "^19.2.0",  role: "Frontend UI library" },
-    { id: 2, name: "Vite 7",        icon: "⚡", version: "^7.2.4",   role: "Build tool & dev server" },
-    { id: 3, name: "React Router",  icon: "🧭", version: "^7.12.0",  role: "Client-side routing" },
-    { id: 4, name: "Tailwind v4",   icon: "🎨", version: "^4.1.18",  role: "Utility-first styling" },
-    { id: 5, name: "Express",       icon: "🖥️", version: "backend",  role: "Node.js web server" },
-    { id: 6, name: "MongoDB",       icon: "🍃", version: "Atlas",    role: "NoSQL database" },
-    { id: 7, name: "EJS",           icon: "📄", version: "backend",  role: "Server-side templates" },
-    { id: 8, name: "Render",        icon: "☁️", version: "hosting",  role: "Deployment platform" },
+    { id: 1, name: "React 19",     icon: "⚛️", version: "^19.2.0",  role: "Frontend UI library" },
+    { id: 2, name: "Vite 7",       icon: "⚡", version: "^7.2.4",   role: "Build tool & dev server" },
+    { id: 3, name: "React Router", icon: "🧭", version: "^7.12.0",  role: "Client-side routing" },
+    { id: 4, name: "Tailwind v4",  icon: "🎨", version: "^4.1.18",  role: "Utility-first styling" },
+    { id: 5, name: "Express",      icon: "🖥️", version: "backend",  role: "Node.js web server" },
+    { id: 6, name: "MongoDB",      icon: "🍃", version: "Atlas",    role: "NoSQL database" },
+    { id: 7, name: "EJS",          icon: "📄", version: "backend",  role: "Server-side templates" },
+    { id: 8, name: "Render",       icon: "☁️", version: "hosting",  role: "Deployment platform" },
   ],
 
   snippets: [
@@ -175,38 +102,14 @@ const DATA = {
   ],
 
   resources: [
-    {
-      id: 1,
-      title: "Vite Docs",
-      url: "https://vite.dev",
-      category: "build",
-      note: "Official Vite documentation — config, plugins, and deployment guides.",
-    },
-    {
-      id: 2,
-      title: "React Router v7 Docs",
-      url: "https://reactrouter.com",
-      category: "routing",
-      note: "Full API reference for nested routes, loaders, and actions.",
-    },
-    {
-      id: 3,
-      title: "Render Docs",
-      url: "https://render.com/docs",
-      category: "deployment",
-      note: "Build settings, environment variables, and cache management.",
-    },
-    {
-      id: 4,
-      title: "Tailwind CSS v4 Docs",
-      url: "https://tailwindcss.com/docs",
-      category: "styling",
-      note: "v4 uses @theme in CSS instead of tailwind.config.js.",
-    },
+    { id: 1, title: "Vite Docs",            url: "https://vite.dev",             category: "build",      note: "Official Vite documentation — config, plugins, and deployment guides." },
+    { id: 2, title: "React Router v7 Docs", url: "https://reactrouter.com",      category: "routing",    note: "Full API reference for nested routes, loaders, and actions." },
+    { id: 3, title: "Render Docs",          url: "https://render.com/docs",      category: "deployment", note: "Build settings, environment variables, and cache management." },
+    { id: 4, title: "Tailwind CSS v4 Docs", url: "https://tailwindcss.com/docs", category: "styling",    note: "v4 uses @theme in CSS instead of tailwind.config.js." },
   ],
 };
 
-// ─── Tag Styles ───────────────────────────────────────────────────────────────
+// ─── Style maps ───────────────────────────────────────────────────────────────
 const TAG_STYLES = {
   deployment: { bg: "rgba(0,180,255,0.1)",   color: "#00b4ff", border: "rgba(0,180,255,0.25)" },
   feature:    { bg: "rgba(0,229,160,0.1)",   color: "#00e5a0", border: "rgba(0,229,160,0.25)" },
@@ -220,16 +123,50 @@ const PRIORITY_STYLES = {
   low:    { color: "#00e5a0", label: "● Low priority" },
 };
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── Tag helper ───────────────────────────────────────────────────────────────
 const Tag = ({ type }) => {
   const s = TAG_STYLES[type] || TAG_STYLES.feature;
   return (
-    <span
-      className="dn-tag"
-      style={{ background: s.bg, color: s.color, borderColor: s.border }}
-    >
+    <span className="dn-tag" style={{ background: s.bg, color: s.color, borderColor: s.border }}>
       {type}
     </span>
+  );
+};
+
+// ─── CardMedia helper ─────────────────────────────────────────────────────────
+// Renders optional media at the bottom of any card.
+// Usage in DATA: media: { type: "image" | "video" | "youtube", src, id, caption }
+const CardMedia = ({ media }) => {
+  if (!media) return null;
+
+  return (
+    <div className="dn-card-media">
+      <div style={{ width: "100%" }}>
+        {media.type === "image" && (
+          <img src={media.src} alt={media.caption || ""} loading="lazy" />
+        )}
+
+        {media.type === "video" && (
+          <video controls preload="metadata">
+            <source src={media.src} />
+            Your browser does not support the video tag.
+          </video>
+        )}
+
+        {media.type === "youtube" && (
+          <iframe
+            src={`https://www.youtube.com/embed/${media.id}`}
+            title={media.caption || "YouTube video"}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+
+        {media.caption && (
+          <div className="dn-card-media-caption">{media.caption}</div>
+        )}
+      </div>
+    </div>
   );
 };
 
@@ -253,6 +190,7 @@ function ProgressionPane() {
             </div>
             <div className="dn-card-title">{item.title}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
+            <CardMedia media={item.media} />
           </div>
         ))}
       </div>
@@ -263,7 +201,6 @@ function ProgressionPane() {
 function FuturePane() {
   const items = DATA.future;
   const byPriority = (p) => items.filter((i) => i.priority === p);
-
   return (
     <>
       <div className="dn-content-header">
@@ -271,14 +208,10 @@ function FuturePane() {
         <div className="dn-content-desc">What's coming next for SonicVerse.</div>
         <div className="dn-count-line"><span>{items.length}</span> features planned</div>
       </div>
-
       {["high", "medium", "low"].map((p) =>
         byPriority(p).length > 0 ? (
           <div className="dn-priority-group" key={p}>
-            <div
-              className="dn-priority-label"
-              style={{ color: PRIORITY_STYLES[p].color }}
-            >
+            <div className="dn-priority-label" style={{ color: PRIORITY_STYLES[p].color }}>
               {PRIORITY_STYLES[p].label}
             </div>
             <div className="dn-cards">
@@ -286,6 +219,7 @@ function FuturePane() {
                 <div className="dn-card" key={item.id}>
                   <div className="dn-card-title">{item.title}</div>
                   {item.body && <div className="dn-card-body">{item.body}</div>}
+                  <CardMedia media={item.media} />
                 </div>
               ))}
             </div>
@@ -315,6 +249,7 @@ function LearnedPane() {
             </div>
             <div className="dn-card-title">{item.topic}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
+            <CardMedia media={item.media} />
           </div>
         ))}
       </div>
@@ -326,13 +261,8 @@ function BugsPane() {
   const items = DATA.bugs;
   const open  = items.filter((i) => i.status === "open").length;
   const fixed = items.filter((i) => i.status === "fixed").length;
-
-  const statusClass = (s) =>
-    s === "fixed" ? "dn-bug-fixed" : s === "open" ? "dn-bug-open" : "dn-bug-investigating";
-
-  const statusLabel = (s) =>
-    s === "fixed" ? "✓ fixed" : s === "open" ? "● open" : "◌ investigating";
-
+  const statusClass = (s) => s === "fixed" ? "dn-bug-fixed" : s === "open" ? "dn-bug-open" : "dn-bug-investigating";
+  const statusLabel = (s) => s === "fixed" ? "✓ fixed" : s === "open" ? "● open" : "◌ investigating";
   return (
     <>
       <div className="dn-content-header">
@@ -347,13 +277,12 @@ function BugsPane() {
         {items.map((item) => (
           <div className="dn-card" key={item.id}>
             <div className="dn-card-meta">
-              <span className={`dn-bug-status ${statusClass(item.status)}`}>
-                {statusLabel(item.status)}
-              </span>
+              <span className={`dn-bug-status ${statusClass(item.status)}`}>{statusLabel(item.status)}</span>
               {item.date && <span className="dn-date">{item.date}</span>}
             </div>
             <div className="dn-card-title">{item.title}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
+            <CardMedia media={item.media} />
           </div>
         ))}
       </div>
@@ -374,7 +303,7 @@ function StackPane() {
             <div className="dn-stack-icon">{item.icon}</div>
             <div className="dn-stack-name">{item.name}</div>
             {item.version && <div className="dn-stack-version">{item.version}</div>}
-            {item.role && <div className="dn-stack-role">{item.role}</div>}
+            {item.role    && <div className="dn-stack-role">{item.role}</div>}
           </div>
         ))}
       </div>
@@ -397,7 +326,8 @@ function SnippetsPane() {
             </div>
             <div className="dn-card-title">{item.title}</div>
             {item.body && <div className="dn-card-body">{item.body}</div>}
-            {item.code && <pre className="dn-code-block">{item.code}</pre>}
+            {item.code  && <pre className="dn-code-block">{item.code}</pre>}
+            <CardMedia media={item.media} />
           </div>
         ))}
       </div>
@@ -419,20 +349,13 @@ function ResourcesPane() {
               <span className="dn-resource-category">{item.category}</span>
             </div>
             <div className="dn-card-title" style={{ marginTop: "0.25rem" }}>
-              {item.url ? (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="dn-resource-link"
-                >
-                  {item.title} ↗
-                </a>
-              ) : (
-                item.title
-              )}
+              {item.url
+                ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="dn-resource-link">{item.title} ↗</a>
+                : item.title
+              }
             </div>
             {item.note && <div className="dn-card-body">{item.note}</div>}
+            <CardMedia media={item.media} />
           </div>
         ))}
       </div>
@@ -454,30 +377,18 @@ const PANES = {
 // ─── Main Component ───────────────────────────────────────────────────────────
 const DevNotes = () => {
   const [activeTab, setActiveTab] = useState("progression");
-
   const sections = [...new Set(TABS.map((t) => t.section))];
-
-  const getCount = (id) => {
-    const d = DATA[id];
-    return Array.isArray(d) ? d.length : 0;
-  };
-
+  const getCount = (id) => { const d = DATA[id]; return Array.isArray(d) ? d.length : 0; };
   const formattedDate = new Date().toLocaleDateString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+    weekday: "short", year: "numeric", month: "short", day: "numeric",
   });
 
   return (
     <div className="dn-page">
-      {/* ── Top Bar ── */}
       <header className="dn-topbar">
         <div className="dn-topbar-left">
           <div className="dn-logo-dot" />
-          <span className="dn-topbar-title">
-            Sonic<span>Verse</span> — Dev Notes
-          </span>
+          <span className="dn-topbar-title">Sonic<span>Verse</span> — Dev Notes</span>
         </div>
         <div className="dn-topbar-right">
           <span className="dn-live-badge">● live</span>
@@ -485,9 +396,7 @@ const DevNotes = () => {
         </div>
       </header>
 
-      {/* ── Body ── */}
       <div className="dn-body">
-        {/* Sidebar */}
         <nav className="dn-sidebar">
           {sections.map((section) => (
             <div key={section}>
@@ -512,13 +421,9 @@ const DevNotes = () => {
           ))}
         </nav>
 
-        {/* Main */}
         <main className="dn-main">
           {TABS.map((tab) => (
-            <div
-              key={tab.id}
-              className={`dn-pane${activeTab === tab.id ? " active" : ""}`}
-            >
+            <div key={tab.id} className={`dn-pane${activeTab === tab.id ? " active" : ""}`}>
               {activeTab === tab.id && PANES[tab.id]}
             </div>
           ))}
