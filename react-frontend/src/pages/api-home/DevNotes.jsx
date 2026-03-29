@@ -18,7 +18,7 @@ const TABS = [
 // piece of media. They stack vertically in the order you list them, with
 // spacing between each one. You can mix types freely — images, videos, iframes.
 //
-// CHANGED: was `media` (single object). Now `mediaItems` (array of objects).
+// Was `media` (single object). Now `mediaItems` (array of objects).
 // This lets you add as many media items as you need per card.
 //
 // Each media item has:
@@ -43,6 +43,24 @@ const TABS = [
 //   ]
 //
 // Leave out `mediaItems` entirely if you don't want any media on that card.
+//
+// ─────────────────────────────────────────────────────────────────────────────
+// HOW TO USE MULTIPLE PARAGRAPHS IN `body`:
+// `body` now accepts either a plain string (single paragraph, same as before)
+// OR an array of strings (one string = one paragraph, rendered with spacing between them).
+//
+// Single paragraph (unchanged from before):
+//   body: "This is one paragraph of text."
+//
+// Multiple paragraphs:
+//   body: [
+//     "This is the first paragraph.",
+//     "This is the second paragraph, separated by space above.",
+//     "And a third if you need it.",
+//   ]
+//
+// Both formats work everywhere — progression, future, learned, bugs, snippets, resources.
+// ─────────────────────────────────────────────────────────────────────────────
 
 const DATA = {
   progression: [
@@ -50,7 +68,11 @@ const DATA = {
       id: 1,
       date: "Mar 25, 2026",
       title: "Fixed Render deployment — stale Vite cache",
-      body: "Root-level npm install was missing from the Render build command, causing stale hashed filenames to break production. Fixed by clearing cache and updating the build command to: npm install && cd react-frontend && npm install && npm run build.",
+      // multi-paragraph body example — array of strings
+      body: [
+        "Root-level npm install was missing from the Render build command, causing stale hashed filenames to break production. Fixed by clearing cache and updating the build command to: npm install && cd react-frontend && npm install && npm run build.",
+        "It then was pretty cool to add multiple pictures.",
+      ],
       tag: "deployment",
       /*mediaItems: [
         { type: "image",   src: "/img/hero-images/SA2_Cast_Japan.webp", caption: "The MIME error in DevTools" },
@@ -156,8 +178,33 @@ const Tag = ({ type }) => {
   );
 };
 
+// ─── CardBody helper ──────────────────────────────────────────────────────────
+// New helper that handles both single-string and array-of-strings body.
+// If body is a string → renders one .dn-card-body paragraph (same as before).
+// If body is an array → renders each string as its own .dn-card-body paragraph
+// with natural spacing between them (handled by the gap on .dn-card-body + margin-top).
+const CardBody = ({ body }) => {
+  if (!body) return null;
+
+  // Array: render each string as its own paragraph
+  if (Array.isArray(body)) {
+    return (
+      <>
+        {body.map((paragraph, i) => (
+          <div className="dn-card-body" key={i}>
+            {paragraph}
+          </div>
+        ))}
+      </>
+    );
+  }
+
+  // String (original behaviour): single paragraph
+  return <div className="dn-card-body">{body}</div>;
+};
+
 // ─── CardMedia helper ─────────────────────────────────────────────────────────
-// CHANGED: was CardMedia({ media }) accepting a single object.
+// Was CardMedia({ media }) accepting a single object.
 // Now accepts `mediaItems` — an array of media objects.
 // Renders each item stacked vertically with spacing via .dn-card-media-item.
 // Each item can be image, video, or youtube independently.
@@ -166,10 +213,10 @@ const CardMedia = ({ mediaItems }) => {
   if (!mediaItems || mediaItems.length === 0) return null;
 
   return (
-    // CHANGED: outer wrapper now contains multiple .dn-card-media-item children
+    // Outer wrapper now contains multiple .dn-card-media-item children
     <div className="dn-card-media">
       {mediaItems.map((media, index) => (
-        // CHANGED: each media item gets its own .dn-card-media-item wrapper
+        // Each media item gets its own .dn-card-media-item wrapper
         // which handles the spacing between stacked items
         <div className="dn-card-media-item" key={index}>
 
@@ -222,8 +269,9 @@ function ProgressionPane() {
               <span className="dn-date">{item.date}</span>
             </div>
             <div className="dn-card-title">{item.title}</div>
-            {item.body && <div className="dn-card-body">{item.body}</div>}
-            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            {/* Was {item.body && <div className="dn-card-body">{item.body}</div>} */}
+            <CardBody body={item.body} />
+            {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
@@ -252,8 +300,9 @@ function FuturePane() {
               {byPriority(p).map((item) => (
                 <div className="dn-card" key={item.id}>
                   <div className="dn-card-title">{item.title}</div>
-                  {item.body && <div className="dn-card-body">{item.body}</div>}
-                  {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+                  {/* CardBody handles string or array */}
+                  <CardBody body={item.body} />
+                  {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
                   <CardMedia mediaItems={item.mediaItems} />
                 </div>
               ))}
@@ -283,8 +332,9 @@ function LearnedPane() {
               </span>
             </div>
             <div className="dn-card-title">{item.topic}</div>
-            {item.body && <div className="dn-card-body">{item.body}</div>}
-            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            {/* CardBody handles string or array */}
+            <CardBody body={item.body} />
+            {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
@@ -317,8 +367,9 @@ function BugsPane() {
               {item.date && <span className="dn-date">{item.date}</span>}
             </div>
             <div className="dn-card-title">{item.title}</div>
-            {item.body && <div className="dn-card-body">{item.body}</div>}
-            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            {/* CardBody handles string or array */}
+            <CardBody body={item.body} />
+            {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
@@ -362,9 +413,10 @@ function SnippetsPane() {
               <span className="dn-snippet-lang">{item.lang}</span>
             </div>
             <div className="dn-card-title">{item.title}</div>
-            {item.body && <div className="dn-card-body">{item.body}</div>}
+            {/* CardBody handles string or array */}
+            <CardBody body={item.body} />
             {item.code  && <pre className="dn-code-block">{item.code}</pre>}
-            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}
@@ -392,8 +444,9 @@ function ResourcesPane() {
                 : item.title
               }
             </div>
-            {item.note && <div className="dn-card-body">{item.note}</div>}
-            {/* CHANGED: was media={item.media} — now mediaItems={item.mediaItems} */}
+            {/* CardBody handles string or array (note field used here) */}
+            <CardBody body={item.note} />
+            {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
         ))}

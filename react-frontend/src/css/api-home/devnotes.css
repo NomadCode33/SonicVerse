@@ -415,18 +415,18 @@
 .dn-card-body a:hover { color: #33c9ff; text-decoration: underline; }
 
 /* ─── Card Media ─────────────────────────────────────────── */
-/* CHANGED: added flex-direction: column so caption sits below media cleanly */
+/* Added flex-direction: column so caption sits below media cleanly */
 .dn-card-media {
   margin-top: 1.25rem;
   width: 100%;
   display: flex;
-  flex-direction: column; /* CHANGED: was not set before — needed for caption alignment */
+  flex-direction: column; /* Was not set before — needed for caption alignment */
   align-items: center;
-  /* CHANGED: gap between stacked media items when multiple are present */
+  /* Gap between stacked media items when multiple are present */
   gap: 1.25rem;
 }
 
-/* CHANGED: new class — wraps each individual media item in the array.
+/* New class — wraps each individual media item in the array.
    Handles spacing between stacked items and centers each one independently.
    All img/video/iframe/caption styles are scoped inside this wrapper. */
 .dn-card-media-item {
@@ -436,36 +436,36 @@
   align-items: center;
 }
 
-/* CHANGED (image): was width:100% / object-fit:cover / no margin / no max-height.
+/* (image): was width:100% / object-fit:cover / no margin / no max-height.
    Now: max-width:75% keeps it from bleeding edge-to-edge (centered look),
    max-height:420px prevents tall images from blowing up the card,
    object-fit:contain ensures nothing is cropped,
    margin:0 auto centers it inside the flex container. */
 .dn-card-media-item img {
-  max-width: 75%;        /* CHANGED: was 100% — now contained and centered */
+  max-width: 75%;        /* Was 100% — now contained and centered */
   width: 100%;
-  max-height: 500px;     /* CHANGED: added — caps runaway tall images */
+  max-height: 500px;     /* Added — caps runaway tall images */
   height: auto;
   border-radius: 10px;
   border: 1px solid var(--dn-border);
   display: block;
   object-fit: cover;
-  margin: 0 auto;        /* CHANGED: was commented out — now active for centering */
+  margin: 0 auto;        
 }
 
-/* CHANGED (video): same centering treatment as image.
+/* (video): same centering treatment as image.
    max-width:85% (slightly wider than image since videos suit a wider frame),
    max-height:480px caps height, margin:0 auto centers it. */
 .dn-card-media-item video {
-  max-width: 85%;        /* CHANGED: was 100% — now centered with breathing room */
-  max-height: 480px;     /* CHANGED: added — caps video height */
+  max-width: 85%;        /* Was 100% — now centered with breathing room */
+  max-height: 480px;     /* Added — caps video height */
   width: 100%;
   height: auto;
   border-radius: 10px;
   border: 1px solid var(--dn-border);
   display: block;
   background: #000;
-  margin: 0 auto;        /* CHANGED: added — centers video */
+  margin: 0 auto;      
 }
 
 /* UNCHANGED: iframe stays full width — aspect-ratio:16/9 already controls height */
@@ -666,13 +666,13 @@
     --dn-cat-font:          0.95rem;
     --dn-snippet-font:      0.95rem;
   }
-  /* CHANGED: max-height scaled up for large screens, border-radius bumped to 12px */
-  /* CHANGED: gap between stacked items increased for larger screens */
+  /* max-height scaled up for large screens, border-radius bumped to 12px */
+  /* gap between stacked items increased for larger screens */
   .dn-card-media             { gap: 1.75rem; }
   .dn-card-media-item img    { max-height: 520px; border-radius: 12px; }
   .dn-card-media-item video  { max-height: 580px; border-radius: 12px; }
-  .dn-card-media-item iframe { border-radius: 12px; } /* CHANGED: border-radius bumped to match */
-  .dn-card-media-caption     { font-size: 0.88rem; } /* CHANGED: scaled up for large screen */
+  .dn-card-media-item iframe { border-radius: 12px; } /* border-radius bumped to match */
+  .dn-card-media-caption     { font-size: 0.88rem; } /* scaled up for large screen */
 }
 
 /* ── XL: 1440–1919px ─────────────────────────────────────── */
@@ -718,12 +718,12 @@
     --dn-cat-font:          0.88rem;
     --dn-snippet-font:      0.88rem;
   }
-  /* CHANGED: max-height scaled for xl screens, border-radius 11px */
-  /* CHANGED: gap between stacked items adjusted for xl */
+  /* max-height scaled for xl screens, border-radius 11px */
+  /* gap between stacked items adjusted for xl */
   .dn-card-media             { gap: 1.5rem; }
   .dn-card-media-item img    { max-height: 460px; border-radius: 11px; }
   .dn-card-media-item video  { max-height: 520px; border-radius: 11px; }
-  .dn-card-media-caption     { font-size: 0.82rem; } /* CHANGED: scaled for xl */
+  .dn-card-media-caption     { font-size: 0.82rem; } /* scaled for xl */
 }
 
 /* ── MD: tablets 768–1023px ──────────────────────────────── */
@@ -771,12 +771,12 @@
   }
   .dn-topbar            { padding: 0 2rem; }
   .dn-topbar-date       { display: none; }
-  /* CHANGED: max-height reduced for tablet, border-radius 8px, margin-top tightened */
-  /* CHANGED: gap between stacked items reduced for tablet */
+  /* max-height reduced for tablet, border-radius 8px, margin-top tightened */
+  /* gap between stacked items reduced for tablet */
   .dn-card-media             { margin-top: 1rem; gap: 1rem; }
   .dn-card-media-item img    { max-height: 340px; border-radius: 8px; }
   .dn-card-media-item video  { max-height: 380px; border-radius: 8px; }
-  .dn-card-media-caption     { font-size: 0.72rem; } /* CHANGED: scaled down for tablet */
+  .dn-card-media-caption     { font-size: 0.72rem; } /* scaled down for tablet */
 }
 
 /* ── SM: phones landscape 480–767px ─────────────────────── */
@@ -827,13 +827,13 @@
   .dn-topbar             { padding: 0 1.25rem; }
   .dn-topbar-title       { font-size: 0.92rem; letter-spacing: 0.08em; }
   .dn-topbar-date        { display: none; }
-  /* CHANGED: on phones, max-width widens slightly (90–95%) since screen space is limited,
+  /* on phones, max-width widens slightly (90–95%) since screen space is limited,
      max-height shrinks, border-radius tightened, margin-top reduced */
-  /* CHANGED: gap between stacked items reduced for phone landscape */
+  /* gap between stacked items reduced for phone landscape */
   .dn-card-media             { margin-top: 0.85rem; gap: 0.85rem; }
-  .dn-card-media-item img    { max-width: 90%; max-height: 280px; border-radius: 7px; } /* CHANGED: max-width 90% for phones */
-  .dn-card-media-item video  { max-width: 95%; max-height: 320px; border-radius: 7px; } /* CHANGED: max-width 95% for phones */
-  .dn-card-media-caption     { font-size: 0.68rem; } /* CHANGED: scaled down for phone landscape */
+  .dn-card-media-item img    { max-width: 90%; max-height: 280px; border-radius: 7px; } /* max-width 90% for phones */
+  .dn-card-media-item video  { max-width: 95%; max-height: 320px; border-radius: 7px; } /* max-width 95% for phones */
+  .dn-card-media-caption     { font-size: 0.68rem; } /* scaled down for phone landscape */
 }
 
 /* ── XS: phones portrait < 480px ────────────────────────── */
@@ -886,11 +886,11 @@
   .dn-topbar-date        { display: none; }
   .dn-live-badge         { display: none; }
   .dn-stack-grid         { grid-template-columns: repeat(2, 1fr); }
-  /* CHANGED: portrait phones get the smallest heights and tightest radius.
+  /* portrait phones get the smallest heights and tightest radius.
      Image max-width 95%, video goes full width since portrait screens are narrow. */
-  /* CHANGED: gap between stacked items smallest on portrait phones */
+  /* gap between stacked items smallest on portrait phones */
   .dn-card-media             { margin-top: 0.75rem; gap: 0.75rem; }
-  .dn-card-media-item img    { max-width: 95%; max-height: 220px; border-radius: 6px; }  /* CHANGED: smallest max-height */
-  .dn-card-media-item video  { max-width: 100%; max-height: 260px; border-radius: 6px; } /* CHANGED: full width on portrait */
-  .dn-card-media-caption     { font-size: 0.64rem; } /* CHANGED: smallest caption size */
+  .dn-card-media-item img    { max-width: 95%; max-height: 220px; border-radius: 6px; }  /* smallest max-height */
+  .dn-card-media-item video  { max-width: 100%; max-height: 260px; border-radius: 6px; } /* full width on portrait */
+  .dn-card-media-caption     { font-size: 0.64rem; } /* smallest caption size */
 }
