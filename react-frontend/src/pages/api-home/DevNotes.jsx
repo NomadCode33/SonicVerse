@@ -1,4 +1,5 @@
 import { useState } from "react";
+//import { Sidebar } from "../../components/verse-hub/shared-templates/Sidebar";
 import "../../css/api-home/devnotes.css";
 
 // ─── Tab Config ───────────────────────────────────────────────────────────────
@@ -71,7 +72,7 @@ const DATA = {
       // multi-paragraph body example — array of strings
       body: [
         "Root-level npm install was missing from the Render build command, causing stale hashed filenames to break production. Fixed by clearing cache and updating the build command to: npm install && cd react-frontend && npm install && npm run build.",
-        "It then was pretty cool to add multiple pictures.",
+        "It then was pretty cool to add multiple pictures. Root-level npm install was missing from the Render build command, causing stale hashed filenames to break production. Fixed by clearing cache and updating the build command to: npm install && cd react-frontend && npm install && npm run build.",
       ],
       tag: "deployment",
       /*mediaItems: [

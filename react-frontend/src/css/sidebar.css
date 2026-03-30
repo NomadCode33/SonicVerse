@@ -93,6 +93,28 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 
+/* Q2: standalone link — dark theme hover + active */
+.sidebar-dark .sidebar-standalone-link:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-dark .sidebar-standalone-link--active {
+  background-color: rgba(50, 100, 230, 0.3);
+  color: rgb(245, 193, 66);
+  border-left: 0.3rem solid rgb(245, 193, 66);
+}
+
+/* Q3: section label link — dark theme */
+.sidebar-dark .sidebar-section-label-link:hover {
+  text-decoration: underline;
+  color: rgb(245, 193, 66);
+}
+
+/* Q2: standalone link — dark theme chevron button */
+.sidebar-dark .sidebar-chevron-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* ── Theme: Light ──────────────────────────────────────────── */
 .sidebar-light {
   background-color: #f0f4ff;
@@ -116,6 +138,28 @@
 }
 
 .sidebar-light .sidebar-logout:hover {
+  background-color: rgba(0, 36, 173, 0.07);
+}
+
+/* Q2: standalone link — light theme hover + active */
+.sidebar-light .sidebar-standalone-link:hover {
+  background-color: rgba(0, 36, 173, 0.07);
+}
+
+.sidebar-light .sidebar-standalone-link--active {
+  background-color: rgba(0, 36, 173, 0.12);
+  color: rgb(0, 36, 173);
+  border-left: 0.3rem solid rgb(0, 36, 173);
+}
+
+/* Q3: section label link — light theme */
+.sidebar-light .sidebar-section-label-link:hover {
+  text-decoration: underline;
+  color: rgb(0, 36, 173);
+}
+
+/* Q2: standalone link — light theme chevron button */
+.sidebar-light .sidebar-chevron-btn:hover {
   background-color: rgba(0, 36, 173, 0.07);
 }
 
@@ -174,16 +218,17 @@
   margin-bottom: 0.2rem;
 }
 
+/*
+  Q3: .sidebar-section-header is now a <div> instead of a <button>
+  so it can contain both a <Link> and a <button> as siblings.
+  The hover background is handled by the theme classes above.
+*/
 .sidebar-section-header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.8rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: inherit;
   transition: background-color 0.2s;
 }
 
@@ -205,6 +250,42 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+/*
+  Q3: the label text as a <Link>.
+  Inherits the same typography as .sidebar-section-label.
+  Underlines on hover; color comes from the theme class.
+  text-decoration-offset gives the underline a little breathing room.
+*/
+.sidebar-section-label-link {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: inherit;
+  text-decoration: none;
+  text-decoration-offset: 3px;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+/*
+  Q3: the chevron lives in its own <button> now, separate from the label.
+  No background by default — just the icon. Hover is handled by theme classes.
+  padding gives it a larger tap target without affecting layout.
+*/
+.sidebar-chevron-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
 }
 
 /* ── Chevron ───────────────────────────────────────────────── */
@@ -240,6 +321,26 @@
   margin-left: 1.8rem !important;
   font-size: 1.45rem;
   font-weight: 400;
+  text-decoration: none;
+  color: inherit;
+  border-left: 0.3rem solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/*
+  Q2: standalone link row — FIX for alignment issue.
+  Uses the exact same padding and flex layout as .sidebar-section-header
+  so the row height, icon position, and label position match dropdown rows
+  perfectly. The old version had a nested <span> that broke vertical centering.
+  Now the icon and label are direct flex children of the <Link> itself,
+  mirroring the flat structure of .sidebar-section-header.
+*/
+.sidebar-standalone-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;                 /* same gap as .sidebar-section-left */
+  width: 100%;
+  padding: 1rem 1.8rem;      /* same padding as .sidebar-section-header */
   text-decoration: none;
   color: inherit;
   border-left: 0.3rem solid transparent;
