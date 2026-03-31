@@ -56,14 +56,14 @@ const NAV_SECTIONS = [
   },
 
   // ← Q2: standalone link — no `links` array, just a direct route
-  /*{
+  {
     label: 'Dev Notes',
     icon: DocumentTextIcon,
     to: '/dev-notes',
     standalone: true,
-  },*/
+  },
 
-  /*{
+  {
     label: 'Quiz',
     icon: QuestionMarkCircleIcon,
     to: '/quiz',
@@ -90,7 +90,7 @@ const NAV_SECTIONS = [
       { label: 'Soundtracks', to: '/music/soundtracks' },
       { label: 'Themes',      to: '/music/themes' },
     ],
-  },*/
+  },
 ];
 
 const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.webp', iconAlt = 'SonicVerse' }) => {
@@ -159,17 +159,17 @@ const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.web
             // ── Q2: STANDALONE LINK ──────────────────────────────────────────
             // If `standalone: true`, render a single full-width Link row.
             // No chevron, no dropdown — just an icon + label that navigates.
-            // Uses the same .sidebar-section-header class as dropdown rows
-            // so height, padding, and icon alignment are identical.
+            // sidebar-section--standalone ensures the wrapper is display:block
+            // with full width, giving the <a> tag a real width context so
+            // display:flex on .sidebar-standalone-link works correctly.
             if (section.standalone) {
               return (
-                <div key={section.label} className="sidebar-section">
+                <div key={section.label} className="sidebar-section--standalone">
                   <Link
                     to={section.to}
                     className={`sidebar-standalone-link${pathname === section.to ? ' sidebar-standalone-link--active' : ''}`}
                     onClick={() => setOpen(false)}
                   >
-                    {/* Same .sidebar-section-left structure as dropdown rows for alignment */}
                     <Icon className="sidebar-section-icon" />
                     <span className="sidebar-section-label exo-2">{section.label}</span>
                   </Link>

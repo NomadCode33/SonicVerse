@@ -328,19 +328,31 @@
 }
 
 /*
-  Q2: standalone link row — FIX for alignment issue.
-  Uses the exact same padding and flex layout as .sidebar-section-header
-  so the row height, icon position, and label position match dropdown rows
-  perfectly. The old version had a nested <span> that broke vertical centering.
-  Now the icon and label are direct flex children of the <Link> itself,
-  mirroring the flat structure of .sidebar-section-header.
+  Q2: standalone link wrapper.
+  display:flex + flex-direction:column makes the <Link> child stretch to
+  full width automatically via align-items default (stretch). This is the
+  key difference from display:block — flex stretch propagates width to
+  inline children like <a> tags, where block width:100% does not.
+*/
+.sidebar-section--standalone {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.2rem;
+}
+
+/*
+  Q2: standalone link row.
+  No width:100% needed — the parent flex:column stretches this naturally.
+  align-self:stretch ensures it fills the full row even without explicit width.
+  Everything else matches .sidebar-section-header exactly:
+  same padding, same gap, same font via .sidebar-section-label inside.
 */
 .sidebar-standalone-link {
   display: flex;
   align-items: center;
-  gap: 1rem;                 /* same gap as .sidebar-section-left */
-  width: 100%;
-  padding: 1rem 1.8rem;      /* same padding as .sidebar-section-header */
+  align-self: stretch;   /* fills full width from the flex parent */
+  gap: 1rem;
+  padding: 1rem 1.8rem;
   text-decoration: none;
   color: inherit;
   border-left: 0.3rem solid transparent;
