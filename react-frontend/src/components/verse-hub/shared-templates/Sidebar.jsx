@@ -56,14 +56,14 @@ const NAV_SECTIONS = [
   },
 
   // ← Q2: standalone link — no `links` array, just a direct route
-  {
+  /*{
     label: 'Dev Notes',
     icon: DocumentTextIcon,
     to: '/dev-notes',
     standalone: true,
-  },
+  },*/
 
-  {
+  /*{
     label: 'Quiz',
     icon: QuestionMarkCircleIcon,
     to: '/quiz',
@@ -90,7 +90,7 @@ const NAV_SECTIONS = [
       { label: 'Soundtracks', to: '/music/soundtracks' },
       { label: 'Themes',      to: '/music/themes' },
     ],
-  },
+  },*/
 ];
 
 const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.webp', iconAlt = 'SonicVerse' }) => {
