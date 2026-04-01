@@ -17,7 +17,8 @@ SonicVerse is a fully responsive, full-stack web app — a one-stop interactive 
 
 I built this project because I wanted a working Sonic API — and simply put, one didn't exist. The goal was to create something educational: a resource that teaches developers how to consume APIs and integrate them into their own projects. I intentionally designed it at an intermediate difficulty level, using more complex data patterns to reflect what you'd encounter in real-world, industry-standard APIs. If you already have a foundational understanding of how APIs work, this is a natural next step. If you're the type who likes jumping into the deep end, that works too — either way, you'll come out with sharper API skills.
 
-On the backend, I started by building out the character data, which became the foundation for all the other routes. I followed MVC architecture to keep everything cleanly organized — routes, controllers, models, and data each in their proper place. I also introduced subcategory routes to logically group related topics (like gameplayFeatures) under a single category. The JSON structures were designed with intention: some objects have empty properties, others are missing properties altogether, pushing users to think critically rather than just pattern-match their way through. Each API request flows from a category list → selected category → index page → fetched item.
+On the backend, I started by building out the character data, which became the foundation for all the other routes. I followed MVC architecture to keep everything cleanly organized — routes, controllers, models, and data each in their proper place. I also introduced subcategory routes to logically group related topics (like gameplayFeatures) under a single category. The JSON structures were designed with intention: some objects have empty properties, others are missing properties altogether, pushing users to think critically rather than just pattern-match their way through. Each API request flows from a category list → selected category → index page → fetched item.  
+
 **API URL:** https://sonicverse-y2s6.onrender.com/api/
 
 On the frontend, I started with vanilla JavaScript before migrating to React — and that decision changed everything. React let me build components faster, reuse them efficiently, and keep the codebase organized in a way that's easy to navigate, reference, and debug. It was a learning curve, but absolutely worth it.
@@ -28,9 +29,12 @@ React isn't optional for projects at this scale — it's necessary. When I was b
 Routing was another major insight. My initial instinct was to create separate files for each page, but I quickly realized that approach would bloat the project and introduce a lot of redundancy — every page shared the same structure and design philosophy anyway. Instead, I refactored the SearchBox.jsx component to detect the current page and filter the API accordingly. This alone cut memory usage by roughly 20% and, more importantly, made the project scalable and automated: adding a new API endpoint and its corresponding route is all it takes to support a new page. No manual page-building required.
 
 ## Docs & Updates
-#### *Updates will be shown in the dev log regarding its progress
+#### Updates will be shown in the dev log regarding its progress
+
 **Development Log:** https://sonicverse-y2s6.onrender.com/dev-notes
+
 **API Documentation:** *coming soon*
+
 **API URL:** https://sonicverse-y2s6.onrender.com/api/
 
 ## More Projects:
