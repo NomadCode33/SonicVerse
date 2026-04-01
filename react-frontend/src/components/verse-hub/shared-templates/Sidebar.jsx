@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Bars3Icon, 
   XMarkIcon, 
   ChevronDownIcon, 
@@ -10,7 +10,7 @@ import { Bars3Icon,
   FilmIcon, 
   MusicalNoteIcon, 
   ArrowRightOnRectangleIcon,
-  DocumentTextIcon,  // ← added for Dev Notes standalone icon
+  DocumentTextIcon 
 } from '@heroicons/react/24/outline';
 
 // ─── NAV STRUCTURE ────────────────────────────────────────────────────────────
@@ -18,14 +18,15 @@ import { Bars3Icon,
 // Each entry in NAV_SECTIONS can be one of two shapes:
 //
 // 1) DROPDOWN SECTION — has an icon, a label, and an array of child links.
-//    Optionally add `to` on the section itself to make the label text a
-//    clickable link (Q3), while the chevron area still toggles the dropdown.
+//    Optionally add `routePrefix` to auto-expand when the URL matches.
+//    The `homeTo` field defines the route the section label navigates to when
+//    clicked directly (independent of the chevron toggle).
 //
 //    {
 //      label: 'VerseHub',
 //      icon: HomeIcon,
-//      to: '/verse-hub',          ← optional: makes the label itself a link
-//      routePrefix: '/verse-hub', ← used for auto-expand: opens when URL starts with this
+//      routePrefix: '/verse-hub', ← auto-expand: opens when URL starts with this
+//      homeTo: '/verse-hub',      ← clicking the label navigates here directly
 //      links: [
 //        { label: 'Home',       to: '/verse-hub' },
 //        { label: 'Characters', to: '/verse-hub/characters' },
@@ -37,65 +38,61 @@ import { Bars3Icon,
 //
 //    {
 //      label: 'Dev Notes',
-//      icon: DocumentTextIcon,
-//      to: '/dev-notes',          ← required for standalone
-//      standalone: true,          ← signals that this is a standalone link
+//      icon: SparklesIcon,
+//      to: '/dev-notes',          ← required: the route this navigates to
 //    }
 
 const NAV_SECTIONS = [
   {
     label: 'VerseHub',
     icon: HomeIcon,
-    to: '/verse-hub',          // ← Q3: makes "VerseHub" text a link to the hub home
-    routePrefix: '/verse-hub', // ← auto-expand: dropdown opens for /verse-hub and all sub-routes
+    routePrefix: '/verse-hub',
+    // Clicking the label text navigates directly to VerseHub home
+    homeTo: '/verse-hub',
     links: [
       { label: 'Home',       to: '/verse-hub' },
       { label: 'Characters', to: '/verse-hub/characters' },
-      //{ label: 'Transformations', to: '/verse-hub/transformations' },
-    ],
+      //{ label: 'Transformations', to: '/verse-hub/transformations' }, // 👈 new page
+    ]
   },
-
-  // ← Q2: standalone link — no `links` array, just a direct route
-  /*{
-    label: 'Dev Notes',
-    icon: DocumentTextIcon,
-    to: '/dev-notes',
-    standalone: true,
-  },*/
-
   /*{
     label: 'Quiz',
     icon: QuestionMarkCircleIcon,
-    to: '/quiz',
-    routePrefix: '/quiz',
+    homeTo: '/quiz',
     links: [
       { label: 'Home', to: '/quiz' },
-    ],
+    ]
   },
   {
     label: 'Media',
     icon: FilmIcon,
-    routePrefix: '/media',
+    homeTo: '/media/comics',
     links: [
       { label: 'Comics',   to: '/media/comics' },
       { label: 'TV Shows', to: '/media/shows' },
       { label: 'Movies',   to: '/media/movies' },
-    ],
+    ]
   },
   {
     label: 'Music',
     icon: MusicalNoteIcon,
-    routePrefix: '/music',
+    homeTo: '/music/soundtracks',
     links: [
       { label: 'Soundtracks', to: '/music/soundtracks' },
       { label: 'Themes',      to: '/music/themes' },
-    ],
-  },*/
+    ]
+  }*/
+  {
+    label: 'Dev Notes',
+    icon: DocumentTextIcon,
+    to: '/dev-notes'
+  }
 ];
 
 const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.webp', iconAlt = 'SonicVerse' }) => {
-  const [open, setOpen] = useState(false);
-  const { pathname }    = useLocation();
+  const [open, setOpen]         = useState(false);
+  const { pathname }            = useLocation();
+  const navigate = useNavigate();
 
   // ── AUTO-EXPAND based on current route ──────────────────────────────────────
   // For each dropdown section, check if the current URL starts with its
@@ -145,100 +142,90 @@ const Sidebar = ({ darkMode, setDarkMode, icon = '/img/icons/Adv3_sonic_idle.web
           <XMarkIcon style={{ width: '2.4rem', height: '2.4rem' }} />
         </button>
 
-        {/* Brand */}
+        {/* Brand — icon prop comes from Navbar, matching the current page's sprite */}
+        {/* To disable per-page sprites, simply stop passing icon/iconAlt from Navbar and remove props from Sidebar.jsx */}
         <div className="sidebar-brand">
           <img src={icon} alt={iconAlt} className="sidebar-brand-icon" />
           <span className="sidebar-brand-name exo-2">SonicVerse</span>
         </div>
 
+        {/*
+        <div className="sidebar-brand">
+          <img src="/img/icons/Adv3_sonic_idle.webp" alt="SonicVerse" className="sidebar-brand-icon" />
+          <span className="sidebar-brand-name exo-2">SonicVerse</span>
+        </div>
+        */}
+
         {/* Nav sections */}
         <nav className="sidebar-nav">
-          {NAV_SECTIONS.map((section) => {
-            const Icon = section.icon;
+          {NAV_SECTIONS.map(({ label, icon: Icon, links, to, homeTo }) => (
+            <div key={label} className="sidebar-section">
 
-            // ── Q2: STANDALONE LINK ──────────────────────────────────────────
-            // If `standalone: true`, render a single full-width Link row.
-            // No chevron, no dropdown — just an icon + label that navigates.
-            // sidebar-section--standalone ensures the wrapper is display:block
-            // with full width, giving the <a> tag a real width context so
-            // display:flex on .sidebar-standalone-link works correctly.
-            if (section.standalone) {
-              return (
-                <div key={section.label} className="sidebar-section--standalone">
-                  <Link
-                    to={section.to}
-                    className={`sidebar-standalone-link${pathname === section.to ? ' sidebar-standalone-link--active' : ''}`}
-                    onClick={() => setOpen(false)}
-                  >
-                    <Icon className="sidebar-section-icon" />
-                    <span className="sidebar-section-label exo-2">{section.label}</span>
-                  </Link>
-                </div>
-              );
-            }
-
-            // ── DROPDOWN SECTION ─────────────────────────────────────────────
-            return (
-              <div key={section.label} className="sidebar-section">
-
-                {/*
-                  Q3: The header row is now split into two interactive zones:
-                  - Left zone: the icon + label text. If `section.to` exists,
-                    the label becomes a <Link>; hovering shows an underline.
-                    Clicking it navigates without toggling the dropdown.
-                  - Right zone: the chevron button. Clicking this toggles the
-                    dropdown open/closed without navigating anywhere.
-                  Both zones share the same row styling via .sidebar-section-header.
-                */}
-                <div
-                  className="sidebar-section-header"
-                  aria-expanded={!!expanded[section.label]}
+              {to ? (
+                // ── Standalone link (no dropdown) ──────────────────────────
+                <button
+                  className={`sidebar-section-header${pathname === to ? ' sidebar-section-header--active' : ''}`}
+                  onClick={() => { navigate(to); setOpen(false); }}
                 >
-                  {/* Left: icon + label (optionally a link) */}
                   <span className="sidebar-section-left">
                     <Icon className="sidebar-section-icon" />
-                    {section.to ? (
-                      // Q3: label text is a Link — underlines on hover, navigates on click
+                    <span className="sidebar-section-label exo-2">{label}</span>
+                  </span>
+                </button>
+              ) : (
+                // ── Collapsible section (split header behavior) ─────────────
+                // The header row is divided into two independent interaction zones:
+                //   LEFT ZONE  → icon + label: navigates to `homeTo` and closes the sidebar
+                //   RIGHT ZONE → chevron button: toggles the dropdown open/closed only
+                // This lets the section name act as a direct shortcut to its home route
+                // without interfering with the expand/collapse mechanic.
+                <>
+                  <div
+                    className={`sidebar-section-header sidebar-section-header--split${
+                      pathname === homeTo ? ' sidebar-section-header--active' : ''
+                    }`}
+                  >
+                    {/* Left zone — navigates to the section's home route on click.
+                        Shows an underline on hover to signal it is a link. */}
+                    <button
+                      className="sidebar-section-left sidebar-section-home-btn"
+                      onClick={() => { navigate(homeTo); setOpen(false); }}
+                      aria-label={`Go to ${label} home`}
+                    >
+                      <Icon className="sidebar-section-icon" />
+                      <span className="sidebar-section-label exo-2">{label}</span>
+                    </button>
+
+                    {/* Right zone — chevron only; toggles dropdown independently of label */}
+                    <button
+                      className="sidebar-chevron-btn"
+                      onClick={() => toggle(label)}
+                      aria-expanded={!!expanded[label]}
+                      aria-label={`${expanded[label] ? 'Collapse' : 'Expand'} ${label}`}
+                    >
+                      <ChevronDownIcon
+                        className={`sidebar-chevron${expanded[label] ? ' sidebar-chevron--open' : ''}`}
+                      />
+                    </button>
+                  </div>
+
+                  <div className={`sidebar-links${expanded[label] ? ' sidebar-links--open' : ''}`}>
+                    {links.map(({ label: lbl, to }) => (
                       <Link
-                        to={section.to}
-                        className="sidebar-section-label-link exo-2"
+                        key={to}
+                        to={to}
+                        className={`sidebar-link exo-2${pathname === to ? ' sidebar-link--active' : ''}`}
                         onClick={() => setOpen(false)}
                       >
-                        {section.label}
+                        {lbl}
                       </Link>
-                    ) : (
-                      // No `to` on the section — plain text label, not a link
-                      <span className="sidebar-section-label exo-2">{section.label}</span>
-                    )}
-                  </span>
+                    ))}
+                  </div>
+                </>
+              )}
 
-                  {/* Right: chevron toggles dropdown */}
-                  <button
-                    className="sidebar-chevron-btn"
-                    onClick={() => toggle(section.label)}
-                    aria-label={`Toggle ${section.label}`}
-                  >
-                    <ChevronDownIcon
-                      className={`sidebar-chevron${expanded[section.label] ? ' sidebar-chevron--open' : ''}`}
-                    />
-                  </button>
-                </div>
-
-                <div className={`sidebar-links${expanded[section.label] ? ' sidebar-links--open' : ''}`}>
-                  {section.links.map(({ label: lbl, to }) => (
-                    <Link
-                      key={to}
-                      to={to}
-                      className={`sidebar-link exo-2${pathname === to ? ' sidebar-link--active' : ''}`}
-                      onClick={() => setOpen(false)}
-                    >
-                      {lbl}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+            </div>
+          ))}
         </nav>
 
         {/* Bottom controls */}

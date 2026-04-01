@@ -93,28 +93,6 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Q2: standalone link — dark theme hover + active */
-.sidebar-dark .sidebar-standalone-link:hover {
-  background-color: rgba(255, 255, 255, 0.06);
-}
-
-.sidebar-dark .sidebar-standalone-link--active {
-  background-color: rgba(50, 100, 230, 0.3);
-  color: rgb(245, 193, 66);
-  border-left: 0.3rem solid rgb(245, 193, 66);
-}
-
-/* Q3: section label link — dark theme */
-.sidebar-dark .sidebar-section-label-link:hover {
-  text-decoration: underline;
-  color: rgb(245, 193, 66);
-}
-
-/* Q2: standalone link — dark theme chevron button */
-.sidebar-dark .sidebar-chevron-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 /* ── Theme: Light ──────────────────────────────────────────── */
 .sidebar-light {
   background-color: #f0f4ff;
@@ -138,28 +116,6 @@
 }
 
 .sidebar-light .sidebar-logout:hover {
-  background-color: rgba(0, 36, 173, 0.07);
-}
-
-/* Q2: standalone link — light theme hover + active */
-.sidebar-light .sidebar-standalone-link:hover {
-  background-color: rgba(0, 36, 173, 0.07);
-}
-
-.sidebar-light .sidebar-standalone-link--active {
-  background-color: rgba(0, 36, 173, 0.12);
-  color: rgb(0, 36, 173);
-  border-left: 0.3rem solid rgb(0, 36, 173);
-}
-
-/* Q3: section label link — light theme */
-.sidebar-light .sidebar-section-label-link:hover {
-  text-decoration: underline;
-  color: rgb(0, 36, 173);
-}
-
-/* Q2: standalone link — light theme chevron button */
-.sidebar-light .sidebar-chevron-btn:hover {
   background-color: rgba(0, 36, 173, 0.07);
 }
 
@@ -218,17 +174,16 @@
   margin-bottom: 0.2rem;
 }
 
-/*
-  Q3: .sidebar-section-header is now a <div> instead of a <button>
-  so it can contain both a <Link> and a <button> as siblings.
-  The hover background is handled by the theme classes above.
-*/
 .sidebar-section-header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
   transition: background-color 0.2s;
 }
 
@@ -250,42 +205,6 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-}
-
-/*
-  Q3: the label text as a <Link>.
-  Inherits the same typography as .sidebar-section-label.
-  Underlines on hover; color comes from the theme class.
-  text-decoration-offset gives the underline a little breathing room.
-*/
-.sidebar-section-label-link {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: inherit;
-  text-decoration: none;
-  text-decoration-offset: 3px;
-  transition: color 0.2s, text-decoration 0.2s;
-}
-
-/*
-  Q3: the chevron lives in its own <button> now, separate from the label.
-  No background by default — just the icon. Hover is handled by theme classes.
-  padding gives it a larger tap target without affecting layout.
-*/
-.sidebar-chevron-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  padding: 0.4rem;
-  border-radius: 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-  flex-shrink: 0;
 }
 
 /* ── Chevron ───────────────────────────────────────────────── */
@@ -321,38 +240,6 @@
   margin-left: 1.8rem !important;
   font-size: 1.45rem;
   font-weight: 400;
-  text-decoration: none;
-  color: inherit;
-  border-left: 0.3rem solid transparent;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-}
-
-/*
-  Q2: standalone link wrapper.
-  display:flex + flex-direction:column makes the <Link> child stretch to
-  full width automatically via align-items default (stretch). This is the
-  key difference from display:block — flex stretch propagates width to
-  inline children like <a> tags, where block width:100% does not.
-*/
-.sidebar-section--standalone {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.2rem;
-}
-
-/*
-  Q2: standalone link row.
-  No width:100% needed — the parent flex:column stretches this naturally.
-  align-self:stretch ensures it fills the full row even without explicit width.
-  Everything else matches .sidebar-section-header exactly:
-  same padding, same gap, same font via .sidebar-section-label inside.
-*/
-.sidebar-standalone-link {
-  display: flex;
-  align-items: center;
-  align-self: stretch;   /* fills full width from the flex parent */
-  gap: 1rem;
-  padding: 1rem 1.8rem;
   text-decoration: none;
   color: inherit;
   border-left: 0.3rem solid transparent;
@@ -427,6 +314,113 @@
   font-size: 1.4rem;
   font-weight: 600;
   transition: background-color 0.2s;
+}
+
+/* ── Standalone section link (no dropdown) ─────────────────── */
+a.sidebar-section-header--link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.8rem;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar-dark a.sidebar-section-header--link:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-light a.sidebar-section-header--link:hover {
+  background-color: rgba(0, 36, 173, 0.07);
+}
+
+.sidebar-dark .sidebar-section-header--active {
+  background-color: rgba(50, 100, 230, 0.3);
+  color: rgb(245, 193, 66);
+  border-left: 0.3rem solid rgb(245, 193, 66);
+}
+
+.sidebar-light .sidebar-section-header--active {
+  background-color: rgba(0, 36, 173, 0.12);
+  color: rgb(0, 36, 173);
+  border-left: 0.3rem solid rgb(0, 36, 173);
+}
+
+/* ── Split section header ──────────────────────────────────────
+   Used for collapsible sections that also have a navigable label.
+   The row is a flex container holding two independent zones:
+     - .sidebar-section-home-btn (left): icon + label, acts as a nav link
+     - .sidebar-chevron-btn (right): chevron icon, toggles the dropdown only
+   This replaces the single full-row button for dropdown sections.
+────────────────────────────────────────────────────────────── */
+.sidebar-section-header--split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0; /* padding lives on the child buttons instead */
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+
+/* Left zone: icon + label as a navigable button.
+   Underlines the label text on hover to communicate it is clickable. */
+.sidebar-section-home-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  padding: 1rem 0 1rem 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.sidebar-section-home-btn:hover .sidebar-section-label {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Right zone: chevron-only toggle button.
+   Sized to be a comfortable tap target without bleeding into the label zone. */
+.sidebar-chevron-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+/* Hover states for the split header zones per theme */
+.sidebar-dark .sidebar-section-home-btn:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-light .sidebar-section-home-btn:hover {
+  background-color: rgba(0, 36, 173, 0.07);
+}
+
+.sidebar-dark .sidebar-chevron-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-light .sidebar-chevron-btn:hover {
+  background-color: rgba(0, 36, 173, 0.1);
 }
 
 /******************************************
