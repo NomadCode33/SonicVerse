@@ -3,7 +3,7 @@ SonicVerse is a fully responsive, full-stack web app — a one-stop interactive 
 
 **Link to project:** https://sonicverse-y2s6.onrender.com/
 
-<img src="./assets/SonicVerse-home-page" img alt = "SonicVerse Front Page"/>
+<img src="./assets/SonicVerse-home-page.png" img alt = "SonicVerse Front Page"/>
 
 ## How It's Made:
 
