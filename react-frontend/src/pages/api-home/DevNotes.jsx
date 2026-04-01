@@ -1,5 +1,5 @@
-import { useState } from "react";
-//import { Sidebar } from "../../components/verse-hub/shared-templates/Sidebar";
+import { useState, useEffect } from "react";
+import Sidebar from "../../components/verse-hub/shared-templates/Sidebar";
 import "../../css/api-home/devnotes.css";
 
 // ─── Tab Config ───────────────────────────────────────────────────────────────
@@ -469,7 +469,19 @@ const PANES = {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 const DevNotes = () => {
+  // BEFORE: const [darkMode, setDarkMode] = useState(false);
+  // AFTER: reads from localStorage on mount, same pattern as VerseHubLayout
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem('darkMode') === 'true';
+  });
+
+  // saves preference to localStorage whenever darkMode changes
+  useEffect(() => {
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
   const [activeTab, setActiveTab] = useState("progression");
+
   const sections = [...new Set(TABS.map((t) => t.section))];
   const getCount = (id) => { const d = DATA[id]; return Array.isArray(d) ? d.length : 0; };
   const formattedDate = new Date().toLocaleDateString("en-US", {
@@ -478,6 +490,9 @@ const DevNotes = () => {
 
   return (
     <div className="dn-page">
+      {/* Sidebar lives outside <header> so its fixed overlay escapes the
+          backdrop-filter stacking context that .dn-topbar creates */}
+      <Sidebar darkMode={darkMode} setDarkMode={setDarkMode} />
       <header className="dn-topbar">
         <div className="dn-topbar-left">
           <div className="dn-logo-dot" />

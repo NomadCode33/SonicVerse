@@ -142,7 +142,7 @@
   align-items: center;
   justify-content: space-between;
   height: var(--dn-topbar-h);
-  padding: 0 3.5rem;
+  padding: 0 3.5rem 0 6rem;
   border-bottom: 1px solid var(--dn-border);
   background: rgba(5,5,8,0.92);
   backdrop-filter: blur(16px);
@@ -154,6 +154,21 @@
   display: flex;
   align-items: center;
   gap: 1.1rem;
+}
+
+/* ─── Sidebar hamburger — positioned into the topbar ────────
+   Sidebar renders outside <header> to escape the backdrop-filter
+   stacking context. The hamburger is pulled into the topbar row
+   using position:fixed, matching the topbar's height exactly.   */
+.dn-page .sidebar-hamburger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: var(--dn-topbar-h);
+  z-index: 101; /* above .dn-topbar (z-index:100) but below overlay (200) */
+  padding: 0 1rem;
+  margin: 0;
+  border-radius: 0;
 }
  
 .dn-logo-dot {
@@ -769,7 +784,7 @@
     --dn-cat-font:          0.72rem;
     --dn-snippet-font:      0.72rem;
   }
-  .dn-topbar            { padding: 0 2rem; }
+  .dn-topbar            { padding: 0 2rem 0 5.5rem; }
   .dn-topbar-date       { display: none; }
   /* max-height reduced for tablet, border-radius 8px, margin-top tightened */
   /* gap between stacked items reduced for tablet */
@@ -824,7 +839,7 @@
   .dn-tab-sub            { display: none; }
   .dn-tab-badge          { margin-left: 0; font-size: 0.7rem; }
   .dn-tab-icon           { font-size: 1.1rem; width: 22px; }
-  .dn-topbar             { padding: 0 1.25rem; }
+  .dn-topbar             { padding: 0 1.25rem 0 5rem; }
   .dn-topbar-title       { font-size: 0.92rem; letter-spacing: 0.08em; }
   .dn-topbar-date        { display: none; }
   /* on phones, max-width widens slightly (90–95%) since screen space is limited,
@@ -881,7 +896,7 @@
   .dn-tab-sub            { display: none; }
   .dn-tab-badge          { display: none; }
   .dn-tab-icon           { font-size: 1.05rem; width: 20px; }
-  .dn-topbar             { padding: 0 1rem; }
+  .dn-topbar             { padding: 0 1rem 0 5rem; }
   .dn-topbar-title       { font-size: 0.82rem; letter-spacing: 0.06em; }
   .dn-topbar-date        { display: none; }
   .dn-live-badge         { display: none; }
