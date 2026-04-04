@@ -83,9 +83,9 @@ const NAV_SECTIONS = [
     ]
   }*/
   {
-    label: 'Dev Notes',
+    label: 'Dev Log',
     icon: DocumentTextIcon,
-    to: '/dev-notes'
+    to: '/dev-log'
   }
 ];
 

@@ -429,6 +429,44 @@
 .dn-card-body a { color: var(--dn-cyan); text-decoration: none; transition: color 0.15s ease; }
 .dn-card-body a:hover { color: #33c9ff; text-decoration: underline; }
 
+/* ─── Card Bullets ───────────────────────────────────────── */
+/* Optional <ul> rendered by CardBullets helper.
+   Appears below body text (or at top of card content if no body).
+   list-style:none removes browser default bullets — custom dot
+   is added via ::before on each <li>.
+   margin-top matches .dn-card-body spacing for visual consistency. */
+.dn-card-bullets {
+  list-style: none;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+/* Each bullet item — custom cyan dot before the text.
+   padding-left creates space for the dot to sit in. */
+.dn-card-bullet-item {
+  font-size: var(--dn-card-body);
+  color: var(--dn-text-dim);
+  line-height: var(--dn-card-body-lh);
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+/* Cyan filled circle as the bullet marker.
+   Positioned absolutely in the padding-left space. */
+.dn-card-bullet-item::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.6em;      /* vertically centers with the first line of text */
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--dn-cyan);
+  opacity: 0.7;
+}
+
 /* ─── Card Media ─────────────────────────────────────────── */
 /* Added flex-direction: column so caption sits below media cleanly */
 .dn-card-media {
@@ -517,6 +555,29 @@
   font-size: var(--dn-date-font);
   color: var(--dn-text-muted);
   font-style: italic;
+}
+
+/* ─── Optimizations: Month grouping ─────────────────────── */
+/* Outer wrapper for one month's worth of cards.
+   gap separates the month heading from the card stack beneath it. */
+.dn-optimize-month-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Month heading (e.g. "March 2026").
+   Uses display font for consistency with other section titles,
+   but smaller than the main content title.
+   Border-bottom acts as the underline below the month label. */
+.dn-optimize-month-heading {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  color: var(--dn-text);
+  text-transform: uppercase;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--dn-border-active); /* cyan-tinted underline */
 }
  
 /* ─── Priority Groups ────────────────────────────────────── */
@@ -688,6 +749,8 @@
   .dn-card-media-item video  { max-height: 580px; border-radius: 12px; }
   .dn-card-media-item iframe { border-radius: 12px; } /* border-radius bumped to match */
   .dn-card-media-caption     { font-size: 0.88rem; } /* scaled up for large screen */
+  /* Month heading scaled up for 2xl */
+  .dn-optimize-month-heading { font-size: 1.35rem; }
 }
 
 /* ── XL: 1440–1919px ─────────────────────────────────────── */
@@ -739,6 +802,8 @@
   .dn-card-media-item img    { max-height: 460px; border-radius: 11px; }
   .dn-card-media-item video  { max-height: 520px; border-radius: 11px; }
   .dn-card-media-caption     { font-size: 0.82rem; } /* scaled for xl */
+  /* Month heading scaled for xl */
+  .dn-optimize-month-heading { font-size: 1.25rem; }
 }
 
 /* ── MD: tablets 768–1023px ──────────────────────────────── */
@@ -792,6 +857,8 @@
   .dn-card-media-item img    { max-height: 340px; border-radius: 8px; }
   .dn-card-media-item video  { max-height: 380px; border-radius: 8px; }
   .dn-card-media-caption     { font-size: 0.72rem; } /* scaled down for tablet */
+  /* Month heading scaled down for tablet */
+  .dn-optimize-month-heading { font-size: 1rem; }
 }
 
 /* ── SM: phones landscape 480–767px ─────────────────────── */
@@ -849,6 +916,8 @@
   .dn-card-media-item img    { max-width: 90%; max-height: 280px; border-radius: 7px; } /* max-width 90% for phones */
   .dn-card-media-item video  { max-width: 95%; max-height: 320px; border-radius: 7px; } /* max-width 95% for phones */
   .dn-card-media-caption     { font-size: 0.68rem; } /* scaled down for phone landscape */
+  /* Month heading smallest for phone landscape */
+  .dn-optimize-month-heading { font-size: 0.92rem; }
 }
 
 /* ── XS: phones portrait < 480px ────────────────────────── */
@@ -908,4 +977,6 @@
   .dn-card-media-item img    { max-width: 95%; max-height: 220px; border-radius: 6px; }  /* smallest max-height */
   .dn-card-media-item video  { max-width: 100%; max-height: 260px; border-radius: 6px; } /* full width on portrait */
   .dn-card-media-caption     { font-size: 0.64rem; } /* smallest caption size */
+  /* Month heading smallest for portrait phones */
+  .dn-optimize-month-heading { font-size: 0.88rem; }
 }

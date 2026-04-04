@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import Sidebar from "../../components/verse-hub/shared-templates/Sidebar";
-import "../../css/api-home/devnotes.css";
+import "../../css/api-home/devlog.css";
 
 // ─── Tab Config ───────────────────────────────────────────────────────────────
 const TABS = [
   { id: "progression", icon: "🚀", label: "Progression",    sublabel: "Updates & milestones", section: "PROGRESS" },
   { id: "future",      icon: "🔮", label: "Future Updates", sublabel: "Planned features",     section: "PROGRESS" },
+  { id: "optimize",    icon: "⚡", label: "Optimizations",  sublabel: "Performance & refactors", section: "PROGRESS" },
   { id: "learned",     icon: "🧠", label: "What I Learned", sublabel: "Lessons & insights",   section: "PROGRESS" },
   { id: "bugs",        icon: "🐛", label: "Bug Log",         sublabel: "Issues & fixes",       section: "PROGRESS" },
   { id: "stack",       icon: "⚙️", label: "Tech Stack",     sublabel: "Tools & deps",         section: "REFERENCE" },
@@ -62,6 +63,48 @@ const TABS = [
 //
 // Both formats work everywhere — progression, future, learned, bugs, snippets, resources.
 // ─────────────────────────────────────────────────────────────────────────────
+// HOW TO USE BULLET POINTS IN A CARD:
+// Add a `bullets` array to any card entry alongside (or instead of) `body`.
+// Each string in the array becomes one bullet point. They render as a styled
+// unordered list below the body text (or at the top of the card content if
+// there's no body). This is optional — leave it out if you don't need bullets.
+//
+// Example with body + bullets:
+//   body: "Here's what changed:",
+//   bullets: [
+//     "Reduced bundle size by 40% using tree-shaking",
+//     "Switched from useEffect polling to WebSocket",
+//     "Lazy-loaded the Characters page component",
+//   ]
+//
+// Bullets-only (no body):
+//   bullets: [
+//     "First improvement",
+//     "Second improvement",
+//   ]
+//
+// Works in all tabs: progression, optimize, future, learned, bugs, snippets, resources.
+// ─────────────────────────────────────────────────────────────────────────────
+// HOW TO ADD OPTIMIZATIONS (optimize tab):
+// Each entry in DATA.optimize needs a `month` field (e.g. "March 2026").
+// Cards are grouped by month — all cards sharing the same `month` string
+// appear under that month heading. Within a month, cards are shown in the
+// order they appear in the array, so put newest first if you want that.
+//
+// Required fields per entry: id, date, title, month
+// Optional fields:           body, bullets, tag, mediaItems
+//
+// Example:
+//   {
+//     id: 1,
+//     month: "March 2026",
+//     date: "Mar 23, 2026",
+//     title: "Lazy-loaded Characters page",
+//     body: "Reduced initial bundle size.",
+//     bullets: ["Cut JS payload by 38kb", "First paint improved by ~200ms"],
+//     tag: "performance",
+//   }
+// ─────────────────────────────────────────────────────────────────────────────
 
 const DATA = {
   progression: [
@@ -85,27 +128,153 @@ const DATA = {
       //   { type: "image", src: "/images/another.png" },
       // ]
     },
-    {
+    {// pulling data from MongoDB via the Express API.
       id: 2,
       date: "Mar 20, 2026",
       title: "Characters page live",
-      body: "Characters nested route under /verse-hub is live, pulling data from MongoDB via the Express API.",
+      body: "Characters nested route under /verse-hub is live, pulling data from the Express API.",
       tag: "feature",
     },
-    {
+    {// with MongoDB Atlas connection
       id: 3,
       date: "Mar 10, 2026",
       title: "Initial SonicVerse deploy",
-      body: "React + Vite frontend served by Express backend. Successfully deployed to Render with MongoDB Atlas connection.",
+      body: "React + Vite frontend served by Express backend. Successfully deployed to Render.",
       tag: "deployment",
     },
   ],
 
   future: [
-    { id: 1, title: "Quiz Page",            priority: "high",   body: "Route is already set up in the codebase. A full Sonic trivia quiz with score tracking and a leaderboard." },
-    { id: 2, title: "Transformations Page", priority: "medium", body: "Document all Sonic transformations — Super, Hyper, Dark Sonic, and more — with stats and lore entries." },
-    { id: 3, title: "Admin / API Home",     priority: "medium", body: "A dedicated admin panel route for managing content and monitoring the Express API." },
-    { id: 4, title: "User Auth",            priority: "low",    body: "Allow users to create accounts, save favourite characters, and track quiz scores." },
+    { id: 1, 
+      title: "API Documentation",
+      priority: "high",  
+      body: "The API Documentation is crucial for developers to understand how to interact with the backend services."
+    },
+    { id: 2, 
+      title: "Skeleton Loading & Tile Routes",
+      priority: "high",  
+      body: [
+        "Needs to be in the codebase to handle high network traffic. Currently, all the data is loaded at once. If a lot of users hit the site at once, it could cause performance issues.",
+        "I also need to tile routing (signified by the '#' in url) for users to go back to a character they just searched. When you click the back button on the current build, takes you back to the home page. Tile routing allows for a better user experience and to easily navigate back to characters they just searched for without having to search again."
+      ],
+      mediaItems: [
+        { type: "image", src: "/img/planning-development/skeleton-button-tile-links.png", caption: "Example of skeleton loading states and character tile routing." },
+      ]
+    },
+    { id: 3, 
+      title: "Games Page", 
+      priority: "medium", 
+      body: "Document all Sonic games, including spin-off titles, that have been released." 
+    },
+    { id: 4, 
+      title: "Transformations Page", 
+      priority: "medium", 
+      body: "Document all Sonic transformations — Super, Hyper, Dark Sonic, and more — with stats and lore entries." 
+    },
+    { id: 5, 
+      title: "Admin / API Home",     
+      priority: "medium", 
+      body: "A dedicated admin panel route for managing content and monitoring the Express API." 
+    },
+    { id: 6, 
+      title: "User Auth",            
+      priority: "low",    
+      body: "Allow users to create accounts, save favourite characters, and track quiz scores." 
+    },
+    { id: 7, 
+      title: "Quiz Trivia Page",     
+      priority: "low",   
+      body: "Route is already set up in the codebase. A full Sonic trivia quiz with score tracking and a leaderboard." 
+    },
+  ],
+
+  // ── Optimizations data ────────────────────────────────────────────────────
+  // Cards are grouped by `month` in OptimizePane. Add new months freely —
+  // the pane auto-discovers all unique months from this array in order.
+  // Put the most recent entries at the top within each month.
+  optimize: [
+    {
+      id: 1,
+      month: "April 2026",
+      date: "Apr 03, 2026",
+      title: "Optimizations Tab",
+      body: "Made the Optimizations tab in Dev Log that has the structure of (Month, Year) with the card content below it.",
+      bullets: [
+        "I didn't want the optimizations tab in Dev Log because I thought that the 'Progression' 'What I Learned' tabs would showcase my skillset",
+        "I realized that showing optimizations was important to show my growth as a developer and show that I can not only build features, but also make them more efficient over time"
+      ],
+      tag: "refactor",
+    },
+    {
+      id: 2,
+      month: "March 2026",
+      date: "Mar 02, 2026",
+      title: "Characters: Character tiles (mobile)",
+      body: "Updated how the character tiles are displayed on mobile devices for the 'Browse Characters List' in the search box.",
+      bullets: [
+        "Used the flexbox features to have the tile wrap side-by-side, if possible",
+        "If they're not able to...then they are centered with each entry being on their own row like a normal list",
+      ],
+      tag: "refactor",
+    },
+    {
+      id: 3,
+      month: "March 2026",
+      date: "Mar 02, 2026",
+      title: "Added custom search names for character searching",
+      body: "I added nicknames by how they're called in universe and in reference material for easier searching.",
+      bullets: [
+        "For example, searching 'Tails' will now also pull up 'Miles Tails Prower' since that's his nickname and how he's often referred to in official materials",
+      ],
+      tag: "refactor",
+    },
+    {
+      id: 4,
+      month: "March 2026",
+      date: "Mar 02, 2026",
+      title: "Hash table implementation w/localhost",
+      body: "I implemented new search functionality allowing it to search via localhost for O(1) time.",
+      bullets: [
+        "My previous implementation worked, but was too slow because Render often spun down with inactivity",
+        "To circumvent this, the hash table is now built on the frontend at runtime, so searching is lightning fast even if the backend is asleep",
+      ],
+      tag: "performance",
+    },
+    {
+      id: 5,
+      month: "February 2026",
+      date: "Feb 26, 2026",
+      title: "Dynamic API URLs",
+      body: "I refactored the SearchBox.jsx component to detect the current page and filter the API accordingly. I also changed the javascript in the backend to have dynamic routing based on the URL. It fetches from the correct collection based on the URL.",
+      bullets: [
+        "This alone cut memory usage by roughly 20% and, more importantly, made the project scalable and automated",
+        "To add a new page with the corresponding API endpoint and route, I simply added a new route to the backend and updated the frontend to detect the current page and filter the API accordingly",
+        "No more manual page-building required for each new page — just add the content to the database and the API and frontend will handle the rest!"
+      ],
+      tag: "refactor"
+    },
+    
+    /*{
+      id: 1,
+      month: "March 2026",
+      date: "Mar 23, 2026",
+      title: "Example optimization entry",
+      body: "Replace this with a real optimization. Bullets are optional — remove the bullets field if not needed.",
+      bullets: [
+        "First specific improvement made",
+        "Second specific improvement made",
+        "Third specific improvement made",
+      ],
+      tag: "performance",
+    },
+    {
+      id: 2,
+      month: "March 2026",
+      date: "Mar 19, 2026",
+      title: "Another March optimization",
+      body: "Body text is also optional — a card can have bullets only, body only, or both.",
+      tag: "refactor",
+    },*/
   ],
 
   learned: [
@@ -157,10 +326,12 @@ const DATA = {
 
 // ─── Style maps ───────────────────────────────────────────────────────────────
 const TAG_STYLES = {
-  deployment: { bg: "rgba(0,180,255,0.1)",   color: "#00b4ff", border: "rgba(0,180,255,0.25)" },
-  feature:    { bg: "rgba(0,229,160,0.1)",   color: "#00e5a0", border: "rgba(0,229,160,0.25)" },
-  fix:        { bg: "rgba(255,201,60,0.1)",  color: "#ffc93c", border: "rgba(255,201,60,0.25)" },
-  refactor:   { bg: "rgba(167,139,250,0.1)", color: "#a78bfa", border: "rgba(167,139,250,0.25)" },
+  deployment:  { bg: "rgba(0,180,255,0.1)",   color: "#00b4ff", border: "rgba(0,180,255,0.25)" },
+  feature:     { bg: "rgba(0,229,160,0.1)",   color: "#00e5a0", border: "rgba(0,229,160,0.25)" },
+  fix:         { bg: "rgba(255,201,60,0.1)",  color: "#ffc93c", border: "rgba(255,201,60,0.25)" },
+  refactor:    { bg: "rgba(167,139,250,0.1)", color: "#a78bfa", border: "rgba(167,139,250,0.25)" },
+  // ── New tag for Optimizations tab ─────────────────────────────────────────
+  performance: { bg: "rgba(255,150,0,0.1)",   color: "#ff9600", border: "rgba(255,150,0,0.25)" },
 };
 
 const PRIORITY_STYLES = {
@@ -202,6 +373,22 @@ const CardBody = ({ body }) => {
 
   // String (original behaviour): single paragraph
   return <div className="dn-card-body">{body}</div>;
+};
+
+// ─── CardBullets helper ───────────────────────────────────────────────────────
+// Optional bullet list that can be added to any card alongside body text.
+// Renders as a styled <ul> below the body (or at the top of card content
+// if no body is provided). Pass a `bullets` array of strings to the card
+// data object to activate — leave it out entirely if not needed.
+const CardBullets = ({ bullets }) => {
+  if (!bullets || bullets.length === 0) return null;
+  return (
+    <ul className="dn-card-bullets">
+      {bullets.map((point, i) => (
+        <li key={i} className="dn-card-bullet-item">{point}</li>
+      ))}
+    </ul>
+  );
 };
 
 // ─── CardMedia helper ─────────────────────────────────────────────────────────
@@ -272,6 +459,8 @@ function ProgressionPane() {
             <div className="dn-card-title">{item.title}</div>
             {/* Was {item.body && <div className="dn-card-body">{item.body}</div>} */}
             <CardBody body={item.body} />
+            {/* Optional bullet list — omit bullets field on card data to hide */}
+            <CardBullets bullets={item.bullets} />
             {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
@@ -303,6 +492,8 @@ function FuturePane() {
                   <div className="dn-card-title">{item.title}</div>
                   {/* CardBody handles string or array */}
                   <CardBody body={item.body} />
+                  {/* Optional bullet list — omit bullets field on card data to hide */}
+                  <CardBullets bullets={item.bullets} />
                   {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
                   <CardMedia mediaItems={item.mediaItems} />
                 </div>
@@ -311,6 +502,58 @@ function FuturePane() {
           </div>
         ) : null
       )}
+    </>
+  );
+}
+
+// ─── OptimizePane ─────────────────────────────────────────────────────────────
+// Groups cards by their `month` field (e.g. "March 2026").
+// Each month renders as a heading with an underline, followed by its cards.
+// Months appear in the order their first card appears in DATA.optimize —
+// so put newer months at the top of the array to show them first.
+// Total count shown in the header counts all entries across all months.
+function OptimizePane() {
+  const items = DATA.optimize;
+
+  // Build an ordered list of unique months, preserving insertion order
+  const months = [...new Set(items.map((i) => i.month))];
+
+  return (
+    <>
+      <div className="dn-content-header">
+        <div className="dn-content-title">⚡ <span>Optimizations</span></div>
+        <div className="dn-content-desc">Performance improvements and code refactors.</div>
+        <div className="dn-count-line"><span>{items.length}</span> optimizations logged</div>
+      </div>
+
+      {/* Render one month group per unique month value */}
+      {months.map((month) => {
+        const monthItems = items.filter((i) => i.month === month);
+        return (
+          <div className="dn-optimize-month-group" key={month}>
+            {/* Month heading with underline — styled via .dn-optimize-month-heading */}
+            <div className="dn-optimize-month-heading">{month}</div>
+            <div className="dn-cards">
+              {monthItems.map((item) => (
+                <div className="dn-card" key={item.id}>
+                  <div className="dn-card-meta">
+                    {/* Tag is optional on optimize cards — only renders if tag field exists */}
+                    {item.tag && <Tag type={item.tag} />}
+                    <span className="dn-date">{item.date}</span>
+                  </div>
+                  <div className="dn-card-title">{item.title}</div>
+                  {/* CardBody handles string or array */}
+                  <CardBody body={item.body} />
+                  {/* Optional bullet list — omit bullets field on card data to hide */}
+                  <CardBullets bullets={item.bullets} />
+                  {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
+                  <CardMedia mediaItems={item.mediaItems} />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </>
   );
 }
@@ -335,6 +578,8 @@ function LearnedPane() {
             <div className="dn-card-title">{item.topic}</div>
             {/* CardBody handles string or array */}
             <CardBody body={item.body} />
+            {/* Optional bullet list — omit bullets field on card data to hide */}
+            <CardBullets bullets={item.bullets} />
             {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
@@ -370,6 +615,8 @@ function BugsPane() {
             <div className="dn-card-title">{item.title}</div>
             {/* CardBody handles string or array */}
             <CardBody body={item.body} />
+            {/* Optional bullet list — omit bullets field on card data to hide */}
+            <CardBullets bullets={item.bullets} />
             {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
@@ -416,6 +663,8 @@ function SnippetsPane() {
             <div className="dn-card-title">{item.title}</div>
             {/* CardBody handles string or array */}
             <CardBody body={item.body} />
+            {/* Optional bullet list — omit bullets field on card data to hide */}
+            <CardBullets bullets={item.bullets} />
             {item.code  && <pre className="dn-code-block">{item.code}</pre>}
             {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
@@ -447,6 +696,8 @@ function ResourcesPane() {
             </div>
             {/* CardBody handles string or array (note field used here) */}
             <CardBody body={item.note} />
+            {/* Optional bullet list — omit bullets field on card data to hide */}
+            <CardBullets bullets={item.bullets} />
             {/* Was media={item.media} — now mediaItems={item.mediaItems} */}
             <CardMedia mediaItems={item.mediaItems} />
           </div>
@@ -460,6 +711,8 @@ function ResourcesPane() {
 const PANES = {
   progression: <ProgressionPane />,
   future:      <FuturePane />,
+  // ── OptimizePane added to match the new tab entry above ───────────────────
+  optimize:    <OptimizePane />,
   learned:     <LearnedPane />,
   bugs:        <BugsPane />,
   stack:       <StackPane />,
@@ -468,7 +721,7 @@ const PANES = {
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
-const DevNotes = () => {
+const DevLog = () => {
   // BEFORE: const [darkMode, setDarkMode] = useState(false);
   // AFTER: reads from localStorage on mount, same pattern as VerseHubLayout
   const [darkMode, setDarkMode] = useState(() => {
@@ -496,7 +749,7 @@ const DevNotes = () => {
       <header className="dn-topbar">
         <div className="dn-topbar-left">
           <div className="dn-logo-dot" />
-          <span className="dn-topbar-title">Sonic<span>Verse</span> — Dev Notes</span>
+          <span className="dn-topbar-title">Sonic<span>Verse</span> — Dev Log</span>
         </div>
         <div className="dn-topbar-right">
           <span className="dn-live-badge">● live</span>
@@ -541,4 +794,4 @@ const DevNotes = () => {
   );
 };
 
-export default DevNotes;
+export default DevLog;

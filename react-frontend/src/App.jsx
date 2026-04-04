@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
-import DevNotes from './pages/api-home/DevNotes';
+import DevLog from './pages/api-home/DevLog';
 import VerseHubLayout from './components/verse-hub/layouts/VerseHubLayout';
 import Home from './pages/verse-hub/home/Home';
 import Characters from './pages/verse-hub/characters/Characters';
@@ -14,8 +14,6 @@ const App = () => {
       <Routes>
         {/* The <Navigate> just automatically redirects anyone hitting / over to /verse-hub */}
         <Route path="/" element={<Navigate to="/verse-hub" replace />} />
-
-        <Route path="/dev-notes" element={<DevNotes />} />
 
         <Route
           path="/verse-hub"
@@ -34,6 +32,8 @@ const App = () => {
           {/* <Route path="quiz" element={<Quiz />} /> */}
           {/* <Route path="transformations" element={<Transformations />} /> */}
         </Route>
+
+        <Route path="/dev-log" element={<DevLog />} />
 
         {/* 
           <Route

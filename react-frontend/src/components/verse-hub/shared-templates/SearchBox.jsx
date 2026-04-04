@@ -65,6 +65,7 @@ const SearchBox = ({ variant = "characters", setCharacter }) => {
     setSuggestion(null);
     setNotFound("");
 
+    // The charData and things here must be changed at a later date
     try {
       const { searchCharacter } = await import("../../../utils/verse-hub/verseApi.js");
       const charData = await searchCharacter(suggestedIndex, apiUrl);
