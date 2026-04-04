@@ -31,7 +31,7 @@ Routing was another major insight. My initial instinct was to create separate fi
 ## Docs & Updates
 #### Updates will be shown in the dev log regarding its progress
 
-**Development Log:** https://sonicverse-y2s6.onrender.com/dev-notes
+**Development Log:** https://sonicverse-y2s6.onrender.com/dev-log
 
 **API Documentation:** *coming soon*
 
