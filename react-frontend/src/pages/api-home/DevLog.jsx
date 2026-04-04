@@ -65,25 +65,49 @@ const TABS = [
 // ─────────────────────────────────────────────────────────────────────────────
 // HOW TO USE BULLET POINTS IN A CARD:
 // Add a `bullets` array to any card entry alongside (or instead of) `body`.
-// Each string in the array becomes one bullet point. They render as a styled
-// unordered list below the body text (or at the top of the card content if
-// there's no body). This is optional — leave it out if you don't need bullets.
+// Each item is either a plain string (flat bullet) or an object with `text`
+// and optional `children` for nested sub-bullets. Nesting is unlimited.
 //
-// Example with body + bullets:
-//   body: "Here's what changed:",
-//   bullets: [
-//     "Reduced bundle size by 40% using tree-shaking",
-//     "Switched from useEffect polling to WebSocket",
-//     "Lazy-loaded the Characters page component",
-//   ]
+// LEVEL MARKERS (styled in CSS):
+//   Level 1 (*):  filled cyan circle   — main point
+//   Level 2 (**): hollow cyan circle   — sub-point
+//   Level 3 (^):  en-dash              — detail
+//   Level 4 (#):  right guillemet ›    — further detail
+//   Level 5 (!):  asterisk *           — edge case / warning
 //
-// Bullets-only (no body):
+// Flat bullets (same as before — backwards compatible):
+//   bullets: ["First point", "Second point"]
+//
+// Nested bullets:
 //   bullets: [
-//     "First improvement",
-//     "Second improvement",
+//     "Top-level point",
+//     { text: "Another top-level", children: [
+//       "Sub-point under it",
+//       { text: "Sub-point with child", children: [
+//         "Third-level detail",
+//       ]},
+//     ]},
 //   ]
 //
 // Works in all tabs: progression, optimize, future, learned, bugs, snippets, resources.
+// ─────────────────────────────────────────────────────────────────────────────
+// HOW TO USE MULTIPLE TAGS PER CARD:
+// The `tag` field (single string) still works as before.
+// To add multiple tags, use `tags` (array of strings) instead, or both together.
+// Duplicates are automatically removed.
+//
+// Single tag (unchanged):
+//   tag: "refactor"
+//
+// Multiple tags:
+//   tags: ["refactor", "performance"]
+//
+// Both tag and tags together (deduplicated automatically):
+//   tag: "deployment", tags: ["feature"]   →  shows both badges
+//
+// MAX TAGS DISPLAYED: no hard cap by default. To limit how many tags show,
+// find the Tags component below and change `.map(...)` to `.slice(0, N).map(...)`
+// where N is your desired maximum. Example: .slice(0, 2) shows at most 2 tags.
 // ─────────────────────────────────────────────────────────────────────────────
 // HOW TO ADD OPTIMIZATIONS (optimize tab):
 // Each entry in DATA.optimize needs a `month` field (e.g. "March 2026").
@@ -92,7 +116,7 @@ const TABS = [
 // order they appear in the array, so put newest first if you want that.
 //
 // Required fields per entry: id, date, title, month
-// Optional fields:           body, bullets, tag, mediaItems
+// Optional fields:           body, bullets, tag, tags, mediaItems
 //
 // Example:
 //   {
@@ -102,7 +126,7 @@ const TABS = [
 //     title: "Lazy-loaded Characters page",
 //     body: "Reduced initial bundle size.",
 //     bullets: ["Cut JS payload by 38kb", "First paint improved by ~200ms"],
-//     tag: "performance",
+//     tags: ["performance", "refactor"],
 //   }
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -197,7 +221,7 @@ const DATA = {
       id: 1,
       month: "April 2026",
       date: "Apr 03, 2026",
-      title: "Optimizations Tab",
+      title: "Dev Log: Optimizations Tab",
       body: "Made the Optimizations tab in Dev Log that has the structure of (Month, Year) with the card content below it.",
       bullets: [
         "I didn't want the optimizations tab in Dev Log because I thought that the 'Progression' 'What I Learned' tabs would showcase my skillset",
@@ -221,7 +245,7 @@ const DATA = {
       id: 3,
       month: "March 2026",
       date: "Mar 02, 2026",
-      title: "Added custom search names for character searching",
+      title: "Custom search names for character searching",
       body: "I added nicknames by how they're called in universe and in reference material for easier searching.",
       bullets: [
         "For example, searching 'Tails' will now also pull up 'Miles Tails Prower' since that's his nickname and how he's often referred to in official materials",
@@ -236,7 +260,7 @@ const DATA = {
       body: "I implemented new search functionality allowing it to search via localhost for O(1) time.",
       bullets: [
         "My previous implementation worked, but was too slow because Render often spun down with inactivity",
-        "To circumvent this, the hash table is now built on the frontend at runtime, so searching is lightning fast even if the backend is asleep",
+        "To circumvent this, the hash table is now built on the frontend at runtime, so searching is lightning fast even if the backend is down",
       ],
       tag: "performance",
     },
@@ -251,7 +275,7 @@ const DATA = {
         "To add a new page with the corresponding API endpoint and route, I simply added a new route to the backend and updated the frontend to detect the current page and filter the API accordingly",
         "No more manual page-building required for each new page — just add the content to the database and the API and frontend will handle the rest!"
       ],
-      tag: "refactor"
+      tags: ["refactor", "performance"]
     },
     
     /*{
@@ -340,13 +364,38 @@ const PRIORITY_STYLES = {
   low:    { color: "#00e5a0", label: "● Low priority" },
 };
 
-// ─── Tag helper ───────────────────────────────────────────────────────────────
-const Tag = ({ type }) => {
-  const s = TAG_STYLES[type] || TAG_STYLES.feature;
+// ─── Tags helper ──────────────────────────────────────────────────────────────
+// Replaces the old single-value Tag component.
+// Accepts `tag` (string) and/or `tags` (array of strings) — both are normalised
+// into one deduplicated list and rendered as individual badge spans.
+//
+// To cap the number of displayed tags, change the comment line below:
+//   tagList.map(...)        → no cap (default)
+//   tagList.slice(0, 2).map → show at most 2 tags
+//   tagList.slice(0, 3).map → show at most 3 tags
+const Tags = ({ tag, tags }) => {
+  // Normalise: merge singular `tag` and plural `tags` into one flat array,
+  // then deduplicate so the same label never appears twice on a card.
+  const tagList = [
+    ...(tags ? (Array.isArray(tags) ? tags : [tags]) : []),
+    ...(tag  ? (Array.isArray(tag)  ? tag  : [tag])  : []),
+  ].filter((v, i, arr) => arr.indexOf(v) === i); // deduplicate
+
+  if (tagList.length === 0) return null;
+
+  // Remove or replace `.slice(0, N)` below to set a maximum tag display count.
+  // Default: no cap — all tags in the array are shown.
   return (
-    <span className="dn-tag" style={{ background: s.bg, color: s.color, borderColor: s.border }}>
-      {type}
-    </span>
+    <>
+      {tagList.map((t) => {
+        const s = TAG_STYLES[t] || TAG_STYLES.feature;
+        return (
+          <span key={t} className="dn-tag" style={{ background: s.bg, color: s.color, borderColor: s.border }}>
+            {t}
+          </span>
+        );
+      })}
+    </>
   );
 };
 
@@ -376,17 +425,43 @@ const CardBody = ({ body }) => {
 };
 
 // ─── CardBullets helper ───────────────────────────────────────────────────────
-// Optional bullet list that can be added to any card alongside body text.
-// Renders as a styled <ul> below the body (or at the top of card content
-// if no body is provided). Pass a `bullets` array of strings to the card
-// data object to activate — leave it out entirely if not needed.
-const CardBullets = ({ bullets }) => {
+// Optional nested bullet list that can be added to any card alongside body text.
+// Each item in the `bullets` array is either:
+//   - a plain string → flat bullet at the current depth level
+//   - an object { text, children } → bullet with optional nested sub-list
+//
+// The `depth` prop is used internally for recursion — never pass it manually.
+// CSS classes dn-bullet-level-0 through dn-bullet-level-4 control the marker
+// style at each nesting depth (filled circle → hollow circle → dash → › → *).
+// Nesting deeper than level 4 reuses level-4 styling.
+const CardBullets = ({ bullets, depth = 0 }) => {
   if (!bullets || bullets.length === 0) return null;
+
+  // Clamp depth to 0–4 so CSS level classes stay valid
+  const levelClass = `dn-bullet-level-${Math.min(depth, 4)}`;
+
   return (
-    <ul className="dn-card-bullets">
-      {bullets.map((point, i) => (
-        <li key={i} className="dn-card-bullet-item">{point}</li>
-      ))}
+    <ul className={`dn-card-bullets${depth > 0 ? ' dn-card-bullets--nested' : ''}`}>
+      {bullets.map((point, i) => {
+        // Plain string — no children
+        if (typeof point === 'string') {
+          return (
+            <li key={i} className={`dn-card-bullet-item ${levelClass}`}>
+              {point}
+            </li>
+          );
+        }
+        // Object with text + optional children array
+        return (
+          <li key={i} className={`dn-card-bullet-item ${levelClass}`}>
+            {point.text}
+            {/* Recurse one level deeper for any children */}
+            {point.children && point.children.length > 0 && (
+              <CardBullets bullets={point.children} depth={depth + 1} />
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 };
@@ -453,7 +528,8 @@ function ProgressionPane() {
         {items.map((item) => (
           <div className="dn-card" key={item.id}>
             <div className="dn-card-meta">
-              <Tag type={item.tag} />
+              {/* Tags handles single tag or array of tags via `tag` or `tags` field */}
+              <Tags tag={item.tag} tags={item.tags} />
               <span className="dn-date">{item.date}</span>
             </div>
             <div className="dn-card-title">{item.title}</div>
@@ -537,8 +613,9 @@ function OptimizePane() {
               {monthItems.map((item) => (
                 <div className="dn-card" key={item.id}>
                   <div className="dn-card-meta">
-                    {/* Tag is optional on optimize cards — only renders if tag field exists */}
-                    {item.tag && <Tag type={item.tag} />}
+                    {/* Tags handles single tag or array of tags via `tag` or `tags` field */}
+                    {/* Tag is optional on optimize cards — only renders if tag/tags field exists */}
+                    <Tags tag={item.tag} tags={item.tags} />
                     <span className="dn-date">{item.date}</span>
                   </div>
                   <div className="dn-card-title">{item.title}</div>

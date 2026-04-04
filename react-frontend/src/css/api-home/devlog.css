@@ -101,6 +101,10 @@
 }
  
 /* ─── Page Shell ─────────────────────────────────────────── */
+/* REMOVED overflow-x: hidden — it was creating a containing block
+   that trapped position:fixed children (the Sidebar hamburger),
+   making them scroll with the page instead of staying fixed.
+   Horizontal overflow is now clipped on .dn-body instead.     */
 .dn-page {
   width: 100%;
   min-height: 100vh;
@@ -110,7 +114,6 @@
   font-family: var(--font-body);
   color: var(--dn-text);
   position: relative;
-  overflow-x: hidden;
 }
  
 .dn-page::before {
@@ -220,12 +223,17 @@
 }
  
 /* ─── Body Layout ────────────────────────────────────────── */
+/* overflow-x:hidden moved here from .dn-page so it clips horizontal
+   bleed within the body area only, not the whole page.
+   This frees .dn-page from being a fixed-position containing block,
+   letting the Sidebar hamburger stay truly fixed on scroll.      */
 .dn-body {
   position: relative;
   z-index: 1;
   display: flex;
   flex: 1;
   min-height: calc(100vh - var(--dn-topbar-h));
+  overflow-x: hidden; /* ← moved here from .dn-page */
 }
  
 /* ─── Sidebar ────────────────────────────────────────────── */
@@ -323,6 +331,10 @@
 }
  
 /* ─── Main Content ───────────────────────────────────────── */
+/* overflow-y:auto makes only this column scroll — the sidebar
+   and topbar remain completely unaffected. height matches the
+   visible viewport below the topbar so the scroll container is
+   exactly the right size and never overflows the page itself.  */
 .dn-main {
   flex: 1;
   min-width: 0;
@@ -330,9 +342,19 @@
   display: flex;
   flex-direction: column;
   gap: var(--dn-gap);
+  overflow-y: auto; /* ← scrolls only this column */
+  height: calc(100vh - var(--dn-topbar-h)); /* ← constrains height so scroll triggers */
 }
  
 /* ─── Pane ───────────────────────────────────────────────── */
+/* overflow-y:auto on .dn-pane.active makes only the active
+   tab's content scroll. .dn-main's padding stays fixed, and
+   the left sidebar is completely unaffected.
+   height: calc(...) constrains the pane so the scroll container
+   is exactly the visible area beneath the topbar — without this,
+   the pane would just grow and the page itself would scroll.
+   padding-right adds breathing room so scrollbar doesn't
+   overlap the card content.                                  */
 .dn-pane {
   display: none;
   flex-direction: column;
@@ -343,6 +365,28 @@
   display: flex;
   animation: fadeSlideIn 0.22s ease both;
 }
+
+/* Option A */
+/*
+.dn-pane.active {
+  display: flex;
+  animation: fadeSlideIn 0.22s ease both;
+  overflow-y: auto;
+  height: calc(100vh - var(--dn-topbar-h) - var(--dn-main-pad-v, 7rem));
+  padding-right: 0.5rem;
+}
+*/
+
+/* Option B — scroll dn-pane.active only (content header stays put, only cards scroll): */
+/*
+.dn-pane.active {
+  display: flex;
+  animation: fadeSlideIn 0.22s ease both;
+  overflow-y: auto;
+  height: calc(100vh - var(--dn-topbar-h) - 7rem); /* 7rem = 3.5rem top + 3.5rem bottom from --dn-main-pad 
+  padding-right: 0.5rem; /* breathing room so scrollbar doesn't overlap card text 
+}
+*/
  
 @keyframes fadeSlideIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -350,11 +394,28 @@
 }
  
 /* ─── Content Header ─────────────────────────────────────── */
+/* ─── Sticky content header (OPTIONAL) ──────────────────── */
+/* Uncomment to make the tab's title/description/count bar
+   stick to the top of .dn-main while cards scroll below it.
+   top: 0 is relative to .dn-main's scroll container since
+   .dn-main is the overflow:auto ancestor.
+   z-index:10 keeps it above cards as they slide under it.    */
 .dn-content-header {
   padding-bottom: 1.75rem;
   border-bottom: 1px solid var(--dn-border);
 }
- 
+
+/*
+.dn-content-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--dn-bg);
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--dn-border);
+}
+*/ 
+
 .dn-content-title {
   font-family: var(--font-display);
   font-size: var(--dn-title-size);
@@ -403,10 +464,14 @@
  
 .dn-card:hover { border-color: var(--dn-border-hover); }
  
+/* ─── Card Meta ──────────────────────────────────────────── */
+/* flex-wrap:wrap lets multiple tag badges flow to a second line
+   if the total width of all tags + date exceeds the card width.
+   gap provides consistent spacing between each badge and the date. */
 .dn-card-meta {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
   margin-bottom: 0.5rem;
 }
@@ -429,12 +494,11 @@
 .dn-card-body a { color: var(--dn-cyan); text-decoration: none; transition: color 0.15s ease; }
 .dn-card-body a:hover { color: #33c9ff; text-decoration: underline; }
 
-/* ─── Card Bullets ───────────────────────────────────────── */
-/* Optional <ul> rendered by CardBullets helper.
-   Appears below body text (or at top of card content if no body).
-   list-style:none removes browser default bullets — custom dot
-   is added via ::before on each <li>.
-   margin-top matches .dn-card-body spacing for visual consistency. */
+/* ─── Card Bullets — nested levels ──────────────────────── */
+/* Top-level bullet list wrapper.
+   list-style:none removes browser default markers — custom markers
+   are applied per-level via ::before pseudo-elements below.
+   margin-top matches .dn-card-body for visual consistency.     */
 .dn-card-bullets {
   list-style: none;
   margin-top: 0.75rem;
@@ -443,8 +507,15 @@
   gap: 0.45rem;
 }
 
-/* Each bullet item — custom cyan dot before the text.
-   padding-left creates space for the dot to sit in. */
+/* Nested sub-lists — tighter vertical gap, no extra top margin
+   since they render directly under their parent bullet.        */
+.dn-card-bullets--nested {
+  margin-top: 0.35rem;
+  gap: 0.3rem;
+}
+
+/* Base bullet item — all levels share font/color.
+   Indent and marker differ per level via the level classes below. */
 .dn-card-bullet-item {
   font-size: var(--dn-card-body);
   color: var(--dn-text-dim);
@@ -453,18 +524,86 @@
   position: relative;
 }
 
-/* Cyan filled circle as the bullet marker.
-   Positioned absolutely in the padding-left space. */
-.dn-card-bullet-item::before {
+/* ── Level 0 (*): filled cyan circle ─────────────────────
+   Main point — top-level bullet, same as the original single-
+   level dot. Positioned in the padding-left gap.             */
+.dn-bullet-level-0::before {
   content: "";
   position: absolute;
   left: 0.1rem;
-  top: 0.6em;      /* vertically centers with the first line of text */
+  top: 0.58em;
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--dn-cyan);
-  opacity: 0.7;
+  opacity: 0.75;
+}
+
+/* ── Level 1 (**): hollow cyan circle ────────────────────
+   Sub-point under a main point. Extra padding-left indents
+   it further; the dot is positioned within that extra space. */
+.dn-bullet-level-1 {
+  padding-left: 2.6rem;
+}
+.dn-bullet-level-1::before {
+  content: "";
+  position: absolute;
+  left: 1.3rem;
+  top: 0.58em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--dn-cyan);
+  opacity: 0.65;
+}
+
+/* ── Level 2 (^): en-dash ────────────────────────────────
+   Detail point — one further indent. Uses a text character
+   so it aligns naturally with the text baseline.            */
+.dn-bullet-level-2 {
+  padding-left: 3.8rem;
+}
+.dn-bullet-level-2::before {
+  content: "–";
+  position: absolute;
+  left: 2.4rem;
+  top: 0;
+  color: var(--dn-cyan);
+  opacity: 0.6;
+  font-size: 0.9em;
+}
+
+/* ── Level 3 (#): right guillemet › ──────────────────────
+   Further detail — another step in. The › character is
+   visually distinct from the dash at level 2.              */
+.dn-bullet-level-3 {
+  padding-left: 5rem;
+}
+.dn-bullet-level-3::before {
+  content: "›";
+  position: absolute;
+  left: 3.7rem;
+  top: 0;
+  color: var(--dn-cyan);
+  opacity: 0.6;
+  font-size: 1em;
+}
+
+/* ── Level 4 (!): asterisk * ─────────────────────────────
+   Edge case / warning. Deepest styled level — anything
+   nested deeper than 4 reuses this style via the JS clamp. */
+.dn-bullet-level-4 {
+  padding-left: 6.2rem;
+}
+.dn-bullet-level-4::before {
+  content: "*";
+  position: absolute;
+  left: 4.95rem;
+  top: 0;
+  color: var(--dn-cyan);
+  opacity: 0.55;
+  font-size: 0.85em;
 }
 
 /* ─── Card Media ─────────────────────────────────────────── */
@@ -541,6 +680,9 @@
 }
  
 /* ─── Tags ───────────────────────────────────────────────── */
+/* Multiple tags per card are now supported via the Tags component.
+   Each individual badge still uses .dn-tag with inline color styles.
+   Spacing between badges is handled by .dn-card-meta gap.         */
 .dn-tag {
   font-size: var(--dn-tag-font);
   font-weight: 700;
@@ -751,6 +893,11 @@
   .dn-card-media-caption     { font-size: 0.88rem; } /* scaled up for large screen */
   /* Month heading scaled up for 2xl */
   .dn-optimize-month-heading { font-size: 1.35rem; }
+  /* Nested bullet indents scale proportionally at 2xl */
+  .dn-bullet-level-1 { padding-left: 3rem; }
+  .dn-bullet-level-2 { padding-left: 4.4rem; }
+  .dn-bullet-level-3 { padding-left: 5.8rem; }
+  .dn-bullet-level-4 { padding-left: 7.2rem; }
 }
 
 /* ── XL: 1440–1919px ─────────────────────────────────────── */
@@ -859,6 +1006,11 @@
   .dn-card-media-caption     { font-size: 0.72rem; } /* scaled down for tablet */
   /* Month heading scaled down for tablet */
   .dn-optimize-month-heading { font-size: 1rem; }
+  /* Tighten nested bullet indents on tablet to prevent excessive nesting width */
+  .dn-bullet-level-1 { padding-left: 2.2rem; }
+  .dn-bullet-level-2 { padding-left: 3.2rem; }
+  .dn-bullet-level-3 { padding-left: 4.2rem; }
+  .dn-bullet-level-4 { padding-left: 5.2rem; }
 }
 
 /* ── SM: phones landscape 480–767px ─────────────────────── */
@@ -918,6 +1070,11 @@
   .dn-card-media-caption     { font-size: 0.68rem; } /* scaled down for phone landscape */
   /* Month heading smallest for phone landscape */
   .dn-optimize-month-heading { font-size: 0.92rem; }
+  /* Compact nested bullets on small screens — deep nesting rare but handled */
+  .dn-bullet-level-1 { padding-left: 2rem; }
+  .dn-bullet-level-2 { padding-left: 2.8rem; }
+  .dn-bullet-level-3 { padding-left: 3.6rem; }
+  .dn-bullet-level-4 { padding-left: 4.4rem; }
 }
 
 /* ── XS: phones portrait < 480px ────────────────────────── */
@@ -979,4 +1136,9 @@
   .dn-card-media-caption     { font-size: 0.64rem; } /* smallest caption size */
   /* Month heading smallest for portrait phones */
   .dn-optimize-month-heading { font-size: 0.88rem; }
+  /* Tightest nested bullet indents for portrait phones */
+  .dn-bullet-level-1 { padding-left: 1.8rem; }
+  .dn-bullet-level-2 { padding-left: 2.4rem; }
+  .dn-bullet-level-3 { padding-left: 3rem; }
+  .dn-bullet-level-4 { padding-left: 3.6rem; }
 }
