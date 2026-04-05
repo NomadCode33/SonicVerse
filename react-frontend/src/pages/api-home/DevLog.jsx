@@ -63,6 +63,41 @@ const TABS = [
 //
 // Both formats work everywhere — progression, future, learned, bugs, snippets, resources.
 // ─────────────────────────────────────────────────────────────────────────────
+// HOW TO EMBED BULLETS INSIDE `body` (mixed array):
+// Instead of using the separate `bullets` field, you can embed bullet lists
+// directly inside `body` by putting `{ bullets: [...] }` objects in the array.
+// Paragraphs and bullet lists render in the exact order you write them, so
+// you can freely interleave text and bullets within a single card.
+//
+// The `{ bullets: [...] }` objects inside body support the exact same nested
+// bullet syntax as the standalone `bullets` field — flat strings, objects with
+// `text` + `children`, any depth. See the bullet points section below for details.
+//
+// Paragraph → bullets → paragraph:
+//   body: [
+//     "Intro paragraph before the bullets.",
+//     { bullets: ["First point", "Second point"] },
+//     "Closing paragraph after the bullets.",
+//   ]
+//
+// Multiple bullet blocks with paragraphs between them:
+//   body: [
+//     "First section intro.",
+//     { bullets: ["Point A", "Point B"] },
+//     "Second section intro.",
+//     { bullets: ["Point C", { text: "Point D", children: ["Sub-detail"] }] },
+//   ]
+//
+// Bullets only (no paragraphs):
+//   body: [
+//     { bullets: ["Just bullets", "No paragraphs needed"] },
+//   ]
+//
+// NOTE: The standalone `bullets` field on the card still works exactly as before
+// and renders after the body. Use whichever approach fits your content better —
+// embed bullets in `body` when they're part of a flowing explanation, use the
+// standalone `bullets` field when they're a simple list at the end of the card.
+// ─────────────────────────────────────────────────────────────────────────────
 // HOW TO USE BULLET POINTS IN A CARD:
 // Add a `bullets` array to any card entry alongside (or instead of) `body`.
 // Each item is either a plain string (flat bullet) or an object with `text`
@@ -404,24 +439,62 @@ const Tags = ({ tag, tags }) => {
 // If body is a string → renders one .dn-card-body paragraph (same as before).
 // If body is an array → renders each string as its own .dn-card-body paragraph
 // with natural spacing between them (handled by the gap on .dn-card-body + margin-top).
+
+// Handles all content formats for the `body` field on a card:
+//
+// 1) String — single paragraph (unchanged from before):
+//      body: "This is one paragraph."
+//
+// 2) Array of strings — multiple paragraphs:
+//      body: ["First paragraph.", "Second paragraph."]
+//
+// 3) Mixed array — paragraphs and bullet lists in any order:
+//      body: [
+//        "Intro paragraph.",
+//        { bullets: ["Point one", "Point two"] },
+//        "Closing paragraph.",
+//        { bullets: [
+//            "Another point",
+//            { text: "Nested point", children: ["Sub-detail"] },
+//          ]
+//        },
+//      ]
+//
+// When a `{ bullets: [...] }` object appears in the array, it renders using
+// the same CardBullets component (same nested levels, same CSS markers).
+// The standalone `bullets` field on the card data still works exactly as
+// before — this just adds the option to embed bullets inside `body` too.
 const CardBody = ({ body }) => {
   if (!body) return null;
 
-  // Array: render each string as its own paragraph
+  // Plain string — single paragraph, same as original behaviour
+  if (typeof body === 'string') {
+    return <div className="dn-card-body">{body}</div>;
+  }
+
+  // Array — render each entry in order:
+  //   string  → paragraph
+  //   object with `bullets` key → bullet list via CardBullets
   if (Array.isArray(body)) {
     return (
       <>
-        {body.map((paragraph, i) => (
-          <div className="dn-card-body" key={i}>
-            {paragraph}
-          </div>
-        ))}
+        {body.map((entry, i) => {
+          // Object with bullets key — inline bullet list
+          if (entry && typeof entry === 'object' && entry.bullets) {
+            return <CardBullets key={i} bullets={entry.bullets} />;
+          }
+          // Plain string — paragraph
+          return (
+            <div className="dn-card-body" key={i}>
+              {entry}
+            </div>
+          );
+        })}
       </>
     );
   }
 
-  // String (original behaviour): single paragraph
-  return <div className="dn-card-body">{body}</div>;
+  return null;
 };
 
 // ─── CardBullets helper ───────────────────────────────────────────────────────
