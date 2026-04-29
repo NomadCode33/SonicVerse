@@ -338,7 +338,7 @@ Old ui glow:
 /* 4. The scrollable panel that appears to the right of the search box */
 .char-list-panel {
   /*flex: 1;*/
-  width: 30%;
+  width: 35%;
   /*max-width: 70rem;*/
   height: 23rem;
   overflow-y: auto;
@@ -475,7 +475,7 @@ Old ui glow:
 /* MAIN
 /**************************************************************/
 #main-area {
-  margin-top: 8rem;
+  margin: 2.5rem 0 6rem 0; /* originally at 8rem for the top */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
