@@ -14,6 +14,68 @@ const TABS = [
   { id: "resources",   icon: "🔗", label: "Resources",      sublabel: "Docs & links",         section: "REFERENCE" },
 ];
 
+// ─── Pinned Cards ─────────────────────────────────────────────────────────────
+// Optional pinned card shown at the top of a tab, inside the content header
+// (below the description/count line, above the horizontal rule). One card
+// per tab, keyed by tab id. To take a card down, delete its entry (or set
+// it to null/undefined) and redeploy — no separate on/off flag needed.
+//
+// Fields:
+//   label:   small eyebrow tag above the title, e.g. "PINNED" (optional)
+//   title:   card title (required)
+//   body:    string or array of strings, same rules as card `body` (optional)
+//   linkText / linkUrl: single CTA link, e.g. a Trello board (optional)
+//   links:   array of { text, url } for multiple CTAs, e.g. one per phase
+//            (optional — use this instead of linkText/linkUrl when you need
+//            more than one link on the same card)
+//   linksLayout: "horizontal" (default) or "vertical" — only matters when
+//            `links` is used. Horizontal = row, wraps if it runs out of space.
+//            Vertical = stacked list, one per line.
+//
+// Example — single link:
+//   progression: {
+//     label: "PINNED",
+//     title: "Roadmap board",
+//     body: "Live task tracking for what's in progress right now.",
+//     linkText: "Open Trello →",
+//     linkUrl: "https://trello.com/b/yourboard",
+//   },
+//
+// Example — multiple links (e.g. one per phase), horizontal (default):
+//   progression: {
+//     label: "PINNED",
+//     title: "Roadmap",
+//     body: "Phase boards for the current build-out.",
+//     links: [
+//       { text: "Phase 1 →", url: "https://trello.com/b/phase1" },
+//       { text: "Phase 2 →", url: "https://trello.com/b/phase2" },
+//     ],
+//   },
+//
+// Example — same, but stacked vertically:
+//   progression: {
+//     ...
+//     linksLayout: "vertical",
+//     links: [
+//       { text: "Phase 1 →", url: "https://trello.com/b/phase1" },
+//       { text: "Phase 2 →", url: "https://trello.com/b/phase2" },
+//     ],
+//   },
+//
+// If both `links` and `linkText`/`linkUrl` are present, `links` takes priority.
+//
+// Leave a tab's entry out entirely (or null) to show no pinned card there.
+const PINNED = {
+  progression: null,
+  future: null,
+  optimize: null,
+  learned: null,
+  bugs: null,
+  stack: null,
+  snippets: null,
+  resources: null,
+};
+
 // ─── Content Data ─────────────────────────────────────────────────────────────
 // HOW TO ADD MEDIA TO A CARD:
 // Add a `mediaItems` array to any card entry. Each item in the array is one
@@ -586,6 +648,45 @@ const CardMedia = ({ mediaItems }) => {
   );
 };
 
+// ─── PinnedCard helper ────────────────────────────────────────────────────────
+// Renders the optional pinned card for a tab, looked up from PINNED by tab id.
+// Returns null (renders nothing) if that tab has no entry in PINNED — this is
+// how a pinned card gets "taken down": delete/null the PINNED entry, not a flag.
+const PinnedCard = ({ id }) => {
+  const config = PINNED[id];
+  if (!config) return null;
+
+  return (
+    <div className="dn-pinned-card">
+      {config.label && <div className="dn-pinned-label">{config.label}</div>}
+      <div className="dn-pinned-title">{config.title}</div>
+      {/* Reuses CardBody so pinned cards support string or array body, same as regular cards */}
+      <CardBody body={config.body} />
+      {/* Multiple links (e.g. one per phase) — takes priority over linkText/linkUrl below.
+          linksLayout controls row (default) vs stacked list. */}
+      {config.links && config.links.length > 0 ? (
+        <div className={`dn-pinned-links${config.linksLayout === "vertical" ? " dn-pinned-links--vertical" : ""}`}>
+          {config.links.map((link, i) => (
+            <a
+              key={i}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dn-pinned-link"
+            >
+              {link.text || "Open link ↗"}
+            </a>
+          ))}
+        </div>
+      ) : config.linkUrl && (
+        <a href={config.linkUrl} target="_blank" rel="noopener noreferrer" className="dn-pinned-link">
+          {config.linkText || "Open link ↗"}
+        </a>
+      )}
+    </div>
+  );
+};
+
 // ─── Tab Panes ────────────────────────────────────────────────────────────────
 
 function ProgressionPane() {
@@ -596,6 +697,8 @@ function ProgressionPane() {
         <div className="dn-content-title">🚀 <span>Progression</span></div>
         <div className="dn-content-desc">Every milestone, fix, and feature shipped so far.</div>
         <div className="dn-count-line"><span>{items.length}</span> updates logged</div>
+        {/* Optional pinned card — no-op if PINNED.progression is null */}
+        <PinnedCard id="progression" />
       </div>
       <div className="dn-cards">
         {items.map((item) => (
@@ -628,6 +731,8 @@ function FuturePane() {
         <div className="dn-content-title">🔮 <span>Future Updates</span></div>
         <div className="dn-content-desc">What's coming next for SonicVerse.</div>
         <div className="dn-count-line"><span>{items.length}</span> features planned</div>
+        {/* Optional pinned card — no-op if PINNED.future is null */}
+        <PinnedCard id="future" />
       </div>
       {["high", "medium", "low"].map((p) =>
         byPriority(p).length > 0 ? (
@@ -673,6 +778,8 @@ function OptimizePane() {
         <div className="dn-content-title">⚡ <span>Optimizations</span></div>
         <div className="dn-content-desc">Performance improvements and code refactors.</div>
         <div className="dn-count-line"><span>{items.length}</span> optimizations logged</div>
+        {/* Optional pinned card — no-op if PINNED.optimize is null */}
+        <PinnedCard id="optimize" />
       </div>
 
       {/* Render one month group per unique month value */}
@@ -716,6 +823,8 @@ function LearnedPane() {
         <div className="dn-content-title">🧠 <span>What I Learned</span></div>
         <div className="dn-content-desc">Lessons and insights picked up while building SonicVerse.</div>
         <div className="dn-count-line"><span>{items.length}</span> lessons logged</div>
+        {/* Optional pinned card — no-op if PINNED.learned is null */}
+        <PinnedCard id="learned" />
       </div>
       <div className="dn-cards">
         {items.map((item, i) => (
@@ -754,6 +863,8 @@ function BugsPane() {
           <span style={{ color: "#ff4d6a" }}>{open} open</span>
           <span style={{ color: "#00e5a0" }}>{fixed} fixed</span>
         </div>
+        {/* Optional pinned card — no-op if PINNED.bugs is null */}
+        <PinnedCard id="bugs" />
       </div>
       <div className="dn-cards">
         {items.map((item) => (
@@ -782,6 +893,8 @@ function StackPane() {
       <div className="dn-content-header">
         <div className="dn-content-title">⚙️ <span>Tech Stack</span></div>
         <div className="dn-content-desc">Every tool and service powering SonicVerse.</div>
+        {/* Optional pinned card — no-op if PINNED.stack is null */}
+        <PinnedCard id="stack" />
       </div>
       <div className="dn-stack-grid">
         {DATA.stack.map((item) => (
@@ -803,6 +916,8 @@ function SnippetsPane() {
       <div className="dn-content-header">
         <div className="dn-content-title">📎 <span>Code Snippets</span></div>
         <div className="dn-content-desc">Useful patterns and reference code from the project.</div>
+        {/* Optional pinned card — no-op if PINNED.snippets is null */}
+        <PinnedCard id="snippets" />
       </div>
       <div className="dn-cards">
         {DATA.snippets.map((item) => (
@@ -831,6 +946,8 @@ function ResourcesPane() {
       <div className="dn-content-header">
         <div className="dn-content-title">🔗 <span>Resources</span></div>
         <div className="dn-content-desc">Documentation and useful links referenced during development.</div>
+        {/* Optional pinned card — no-op if PINNED.resources is null */}
+        <PinnedCard id="resources" />
       </div>
       <div className="dn-cards">
         {DATA.resources.map((item) => (
